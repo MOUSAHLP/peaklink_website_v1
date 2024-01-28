@@ -37,9 +37,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->sectionColumnSpan(1)
             ->checkboxListColumns([
-                'default' => 1,
+                'default' => 2,
                 'sm' => 2,
-                'lg' => 4,
+                'lg' => 3,
             ])
             ->resourceCheckboxListColumns([
                 'default' => 1,

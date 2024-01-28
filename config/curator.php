@@ -28,7 +28,7 @@ return [
     'glide' => [
         'server' => \Awcodes\Curator\Glide\DefaultServerFactory::class,
         'fallbacks' => [],
-        'route_path' => 'curator',
+        'route_path' => 'storage',
     ],
     'image_crop_aspect_ratio' => null,
     'image_resize_mode' => null,
@@ -36,7 +36,7 @@ return [
     'image_resize_target_width' => null,
     'is_limited_to_directory' => false,
     'is_tenant_aware' => true,
-    'max_size' => 5000,
+    'max_size' => 2048,
     'model' => \Awcodes\Curator\Models\Media::class,
     'min_size' => 0,
     'path_generator' => null,

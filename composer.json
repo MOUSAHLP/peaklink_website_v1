@@ -23,6 +23,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "livewire/livewire": "^3.4",
         "pxlrbt/filament-spotlight": "^1.2",
         "z3d0x/filament-fabricator": "^2.0",
         "z3d0x/filament-logger": "^0.6.3"

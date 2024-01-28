@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f85c1d74d776be1800cc74834e5819e",
+    "content-hash": "defbbeb25d063882c8a1d17f2d67b727",
     "packages": [
         {
             "name": "abanoubnassem/filament-grecaptcha-field",
