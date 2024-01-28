@@ -17,7 +17,7 @@ return new class extends Migration
             $table->json('description');
             $table->string('button_link');
             $table->json('button_title');
-            $table->string('video');
+            $table->string('video')->nullable();
             $table->string('image');
             $table->boolean('status')->default(true);
             $table->timestamps();

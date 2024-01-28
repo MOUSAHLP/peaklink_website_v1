@@ -56,7 +56,7 @@ class AdminPanelProvider extends PanelProvider
                 ->navigationCountBadge(),
 
                 SpatieLaravelTranslatablePlugin::make()
-                ->defaultLocales(['en', 'ar']),
+                ->defaultLocales(['ar', 'en']),
 
                 \Hasnayeen\Themes\ThemesPlugin::make(),
 
