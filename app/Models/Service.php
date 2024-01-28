@@ -4,14 +4,15 @@ namespace App\Models;
 
 use App\Models\Faq;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Service extends Model
 {
-    use HasFactory;
+    use HasFactory,HasTranslations;
+    public $translatable = ['title','description','short_description','meta_title','meta_keywords','meta_description'];
     protected $table = 'services';
     protected $fillable = [
-        'title_section',
         'image',
         'title',
         'slug',
@@ -28,4 +29,8 @@ class Service extends Model
     {
         return $this->hasMany(Faq::class);
     }
+
+    protected $casts = [
+       'meta_keywords' => 'array',
+    ];
 }

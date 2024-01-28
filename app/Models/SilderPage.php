@@ -21,4 +21,6 @@ class SilderPage extends Model
         'image',
         'status',
     ];
+
+ 
 }

@@ -11,6 +11,7 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Support\Colors\Color;
 use Filament\Forms\Components\Section;
+use Filament\Tables\Actions\ActionGroup;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -26,18 +27,25 @@ class SilderPageResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationGroup = 'Home';
-    protected static ?string $navigationLabel = 'Slider';
     protected static ?int $navigationSort = 1;
-    protected static ?string $recordTitleAttribute = 'title';
-    protected static ?string $navigationBadge = 'new';
-    protected static ?string $navigationBadgeLabel = 'New';
-    protected static ?string $navigationBadgeStyle = 'rounded-full';
-    protected static ?string $navigationBadgeIcon = 'heroicon-o-check';
-    protected static ?string $navigationBadgeIconStyle = 'w-4 h-4';
-    protected static ?string $navigationBadgeIconBackgroundStyle = 'rounded-full';
-    protected static ?string $navigationBadgeIconBackgroundPosition = 'center';
-    protected static ?int $navigationBadgeIconBackgroundOpacity = 100;
-    protected static ?string $navigationBadgeIconBackgroundSize = 'w-4 h-4';
+
+                public static function getPluralLabel(): string
+            {
+                return 'الشرائح';
+            }
+                public static function getNavigationLabel(): string
+            {
+                return 'الشرائح';
+            }
+            public static function getNavigationBadge(): ?string
+            {
+                return static::getModel()::count();
+            }
+            public static function getNavigationBadgeColor(): ?string
+            {
+                return static::getModel()::count() > 10 ? 'warning' : 'primary';
+            }
+     
     
 
     public static function form(Form $form): Form
@@ -47,22 +55,28 @@ class SilderPageResource extends Resource
               Section::make()
               ->schema([
                 Forms\Components\TextInput::make('title')
+                ->label(_("العنوان"))
                 ->required(),
             Forms\Components\TextInput::make('button_link')
+            ->label(_("الرابط"))
                 ->required()
                 ->maxLength(255),
             Forms\Components\TextInput::make('button_title')
+            ->label(_("عنوان الزر"))
                 ->required(),
             Forms\Components\TextInput::make('description')
+            ->label(_("الوصف"))
             ->columnSpanFull()
                 ->required(),
             
                 Forms\Components\Toggle::make('Has_Video')
+                ->label(_("هل لديك فيديوة ؟"))
                 ->columnSpanFull()
                 ->dehydrated()
                 ->default(false)
                 ->live(),
             Forms\Components\FileUpload::make('video')
+            ->label(_("الفيديو"))
                 ->columnSpanFull()
                 ->required()
                 ->hidden(fn (Get $get): bool => !$get('Has_Video')),
@@ -76,6 +90,7 @@ class SilderPageResource extends Resource
                     ->listDisplay(false),
                     
             Forms\Components\Toggle::make('status')
+            ->label(_("حالة النشر"))
             ->columnSpanFull(),
               ])->columns(3),
             ]);
@@ -86,11 +101,14 @@ class SilderPageResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('button_link')
+                ->label(_("رابط الزر"))
                     ->searchable(),
                 CuratorColumn::make('image')
+                ->label(_("الصورة"))
                 ->width('100px')
                 ,
-                Tables\Columns\ToggleColumn::make('status'),
+                Tables\Columns\ToggleColumn::make('status')
+                ->label(_("حالة النشر")),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -104,8 +122,12 @@ class SilderPageResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+              ActionGroup::make(
+                [
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
+                ]
+              ),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

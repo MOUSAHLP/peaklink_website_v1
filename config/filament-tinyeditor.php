@@ -2,7 +2,7 @@
 
 return [
     'provider' => 'cloud', // cloud|vendor
-    // 'direction' => 'rtl',
+    'direction' => 'rtl',
     /**
      * change darkMode: auto|force|class|media|false
      */

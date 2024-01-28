@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->json('title_section');
             $table->string('image');
             $table->json('title');
             $table->string('slug');
