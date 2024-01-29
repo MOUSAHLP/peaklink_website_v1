@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('flow_works', function (Blueprint $table) {
             $table->id();
-            $table->json('title_section');
-            $table->string('image');
             $table->json('title');
+            $table->string('image');
             $table->json('short_description');
             $table->boolean('status')->default(true);
             $table->timestamps();

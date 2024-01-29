@@ -1,4 +1,8 @@
-V 1.0.3
+V 1.0.4
 ===> Home Page <===
 1. silder section --> Done
 2. services section --> Done
+3. About us  section --> Done
+4. Flow work section --> Done
+5. Projects section --> Done
+6. Client Review section --> Done

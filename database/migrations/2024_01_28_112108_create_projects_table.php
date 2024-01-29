@@ -20,8 +20,8 @@ return new class extends Migration
             $table->json('description');
             $table->date('date');
             $table->json('client_name');
-            $table->string('website');
-            $table->string('location');
+            $table->string('website')->nullable();
+            $table->string('location')->nullable();
             $table->json('meta_title')->nullable();
             $table->string('meta_image')->nullable();
             $table->json('meta_keywords')->nullable();

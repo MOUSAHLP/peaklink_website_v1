@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->json('title');
             $table->json('description');
-            $table->json('facts');
+            $table->json('facts')->nullable();
             $table->string('phone');
             $table->string('back_image');
-            $table->string('video');
+            $table->string('video')->nullable();
             $table->json('label_title');
             $table->timestamps();
         });
