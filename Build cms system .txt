@@ -1,4 +1,4 @@
-V 1.0.4
+V 1.0.5
 ===> Home Page <===
 1. silder section --> Done
 2. services section --> Done
@@ -7,3 +7,11 @@ V 1.0.4
 5. project categories section --> Done
 6. Projects section --> Done
 7. Client Review section --> Done
+8. BlogCategory section --> Done
+9. Post section --> Done
+10. Brand section --> Done
+11. CallSection section --> Done
+12. Faq section --> Done
+13. Pricing section --> Done
+14. Tags section --> Done
+15. WhyChooseOurService section --> Done

@@ -13,7 +13,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Support\Enums\IconPosition;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Resources\Concerns\Translatable;
-use AmidEsfahani\FilamentTinyEditor\TinyEditor;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use App\Filament\Resources\ProjectResource\Pages;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
