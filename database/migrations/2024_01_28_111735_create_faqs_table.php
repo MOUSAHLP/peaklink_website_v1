@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('service_id');
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
-            $table->json('question');
+            $table->json('title');
+            $table->string('image');
+            $table->json('questions');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

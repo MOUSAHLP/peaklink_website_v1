@@ -6,11 +6,13 @@ use App\Models\Tag;
 use App\Models\User;
 use App\Models\BlogCategory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory,HasTranslations;
+    public $translatable = ['title','content','meta_title','meta_keywords','meta_description'];
     protected $table = 'posts';
     protected $fillable = [
         'category_id',
@@ -27,18 +29,22 @@ class Post extends Model
         'meta_description',
     ];
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(BlogCategory::class);
+        return $this->belongsTo(BlogCategory::class,'category_id');
     }
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
-    public function tag()
+    public function tags()
     {
-        return $this->belongsTo(Tag::class);
+        return $this->belongsTo(Tag::class,'tag_id');
     }
+    
+    protected $casts = [
+        'meta_keywords' => 'array',
+     ];
 }

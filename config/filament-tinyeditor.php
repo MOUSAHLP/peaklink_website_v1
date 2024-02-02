@@ -16,8 +16,20 @@ return [
 
         'simple' => [
             'plugins' => 'autoresize directionality emoticons link wordcount',
-            'toolbar' => 'removeformat | bold italic | rtl ltr | numlist bullist | link emoticons',
-            'upload_directory' => null,
+            'toolbar' => 'removeformat | bold italic | rtl ltr | link emoticons',
+            'custom_configs' => [
+                'image_advtab' => true,
+                'image_class_list' => [
+                  [
+                    'title' => 'None',
+                    'value' => '',
+                  ],
+                  [
+                    'title' => 'Fluid',
+                    'value' => 'img-fluid',
+                  ],
+              ],
+            ]
         ],
 
         'minimal' => [

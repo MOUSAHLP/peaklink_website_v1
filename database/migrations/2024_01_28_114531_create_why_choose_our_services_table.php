@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('why_choose_our_services', function (Blueprint $table) {
             $table->id();
-            $table->json('title_section');
-            $table->json('description');
             $table->json('title');
+            $table->json('description');
             $table->string('image');
+            $table->json('years_of_experience')->nullable();
+            $table->json('title_experience')->nullable();
+            $table->json('features')->nullable();
+            $table->json('facts')->nullable();
             $table->tinyInteger('status')->default(true);
             $table->timestamps();
         });

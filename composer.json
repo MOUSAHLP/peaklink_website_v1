@@ -10,7 +10,6 @@
     "require": {
         "php": "^8.1",
         "abanoubnassem/filament-grecaptcha-field": "^0.0.6",
-        "amidesfahani/filament-tinyeditor": "^1.1",
         "awcodes/filament-curator": "^3.4",
         "bezhansalleh/filament-google-analytics": "^2.0",
         "bezhansalleh/filament-language-switch": "^3.0",
@@ -24,6 +23,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.4",
+        "mohamedsabil83/filament-forms-tinyeditor": "^2.2",
         "pxlrbt/filament-spotlight": "^1.2",
         "z3d0x/filament-fabricator": "^2.0",
         "z3d0x/filament-logger": "^0.6.3"
