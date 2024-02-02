@@ -24,4 +24,4 @@ V 1.0.6
 2. Team Detail section --> Done
 
 ===> Footer Section <===
-1. Footer Section -->  Done
+. Footer Section -->  Done
