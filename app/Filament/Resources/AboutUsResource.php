@@ -88,7 +88,7 @@ class AboutUsResource extends Resource
                 ,
 
                 Forms\Components\Toggle::make('Has_Video')
-                ->label(_("هل لديك فيديوة ؟"))
+                ->label(_("هل لديك فيديو ؟"))
                 ->columnSpanFull()
                 ->dehydrated()
                 ->default(false)

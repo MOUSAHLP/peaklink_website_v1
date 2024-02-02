@@ -26,18 +26,18 @@ class PostResource extends Resource
     protected static ?string $navigationGroup = 'Home';
     protected static ?int $navigationSort = 14;
 
-                public static function getModelLabel(): string
-            {
-                return 'المدونة';
-            }
-                public static function getPluralLabel(): string
-            {
-                return 'المدونة';
-            }
-                public static function getNavigationLabel(): string
-            {
-                return 'المدونة';
-            }
+    public static function getModelLabel(): string
+    {
+        return 'المدونة';
+    }
+    public static function getPluralLabel(): string
+    {
+        return 'المدونة';
+    }
+    public static function getNavigationLabel(): string
+    {
+        return 'المدونة';
+    }
 
     public static function form(Form $form): Form
     {
@@ -46,91 +46,81 @@ class PostResource extends Resource
 
 
                 Tabs::make('Tabs')
-                ->tabs([
-                Tabs\Tab::make('الخدمات')
-                        ->icon('heroicon-m-rectangle-group')
-                        ->iconPosition(IconPosition::After)
-                        ->schema([
-                        
-                                 
-                Forms\Components\Select::make('category_id')
-                ->required()
-                ->label('أختر القسم')
-                ->relationship('categories','name')
-                ->getOptionLabelFromRecordUsing(fn($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
-                ? $record->getTranslation('name', $livewire->activeLocale)
-                : $record->name)
-                ,
+                    ->tabs([
+                        Tabs\Tab::make('الخدمات')
+                            ->icon('heroicon-m-rectangle-group')
+                            ->iconPosition(IconPosition::After)
+                            ->schema([
 
-            Forms\Components\Select::make('tag_id')
-                ->required()
-                ->label('أختر الوسم')
-                ->relationship('tags','name')
-                ->getOptionLabelFromRecordUsing(fn($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
-                ? $record->getTranslation('name', $livewire->activeLocale)
-                : $record->name)
-                ,
-                
 
-            Forms\Components\TextInput::make('title')
-            ->label('عنوان المدونة')
-                ->required(),
+                                Forms\Components\Select::make('category_id')
+                                    ->required()
+                                    ->label('أختر القسم')
+                                    ->relationship('categories', 'name')
+                                    ->getOptionLabelFromRecordUsing(fn ($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
+                                        ? $record->getTranslation('name', $livewire->activeLocale)
+                                        : $record->name),
 
-            Forms\Components\TextInput::make('slug')
-                ->required()
-            ->label('رابط المدونة')
-                ->maxLength(255),
+                                Forms\Components\Select::make('tag_id')
+                                    ->required()
+                                    ->label('أختر الوسم')
+                                    ->relationship('tags', 'name')
+                                    ->getOptionLabelFromRecordUsing(fn ($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
+                                        ? $record->getTranslation('name', $livewire->activeLocale)
+                                        : $record->name),
 
-                TinyEditor::make('content')
-            ->label('محتوى المدونة')
-            ->showMenuBar()
-            ->toolbarSticky(true)
-            ->language('ar')
-            ->columnSpan('full')
-                ->required(),
+
+                                Forms\Components\TextInput::make('title')
+                                    ->label('عنوان المدونة')
+                                    ->required(),
+
+                                Forms\Components\TextInput::make('slug')
+                                    ->required()
+                                    ->label('رابط المدونة')
+                                    ->maxLength(255),
+
+                                TinyEditor::make('content')
+                                    ->label('محتوى المدونة')
+                                    ->showMenuBar()
+                                    ->toolbarSticky(true)
+                                    ->language('ar')
+                                    ->columnSpan('full')
+                                    ->required(),
 
 
 
-            Forms\Components\FileUpload::make('image')
-                ->image()
-             ->columnSpanFull()
-            ->label('صورة المدونة')
-                ->required(),
+                                Forms\Components\FileUpload::make('image')
+                                    ->image()
+                                    ->columnSpanFull()
+                                    ->label('صورة المدونة')
+                                    ->required(),
 
-            Forms\Components\Toggle::make('status')
-            ->label('حالة نشر المدونة')
-                ->required(),
+                                Forms\Components\Toggle::make('status')
+                                    ->label('حالة نشر المدونة')
+                                    ->required(),
 
-                    ])->columns(4),
+                            ])->columns(4),
 
-                    Tabs\Tab::make('محركات البحث جوجل "SEO"')
-                    ->icon('heroicon-m-globe-europe-africa')
-                        ->iconPosition(IconPosition::After)
-                    ->schema([
+                        Tabs\Tab::make('محركات البحث جوجل "SEO"')
+                            ->icon('heroicon-m-globe-europe-africa')
+                            ->iconPosition(IconPosition::After)
+                            ->schema([
 
-                        Forms\Components\TextInput::make('meta_title')
-                        ->maxLength(30),
-                        Forms\Components\TagsInput::make('meta_keywords'),
-                        Forms\Components\TextInput::make('meta_description')
-                        ->columnSpanFull()
-                        ,
-                        CuratorPicker::make('meta_image')->label(__(''))
-                        ->size('sm') 
-                        ->outlined(false)
-                        ->color('info')
-                        ->constrained(true)
-                        ->listDisplay(false),
+                                Forms\Components\TextInput::make('meta_title')
+                                    ->maxLength(30),
+                                Forms\Components\TagsInput::make('meta_keywords'),
+                                Forms\Components\TextInput::make('meta_description')
+                                    ->columnSpanFull(),
+                                CuratorPicker::make('meta_image')->label(__(''))
+                                    ->size('sm')
+                                    ->outlined(false)
+                                    ->color('info')
+                                    ->constrained(true)
+                                    ->listDisplay(false),
 
-                    ])->columns(2),
-               
-                ])->columnSpanFull(),
-                   
+                            ])->columns(2),
 
-                
-
-                
-
-
+                    ])->columnSpanFull(),
             ]);
     }
 
@@ -139,27 +129,27 @@ class PostResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                ->label('عنوان المدونة')
+                    ->label('عنوان المدونة')
                     ->searchable(),
                 Tables\Columns\imageColumn::make('image')
-                ->label('صورة المدونة')
+                    ->label('صورة المدونة')
                     ->searchable(),
-                    Tables\Columns\TextColumn::make('slug')
+                Tables\Columns\TextColumn::make('slug')
                     ->label('رابط المدونة')
-                        ->searchable(),
-                        Tables\Columns\TextColumn::make('users.name')
-                        ->label('اسم المستخدم')
-                            ->sortable(),
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('users.name')
+                    ->label('اسم المستخدم')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('categories.name')
-                ->label('عنوان القسم')
+                    ->label('عنوان القسم')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('tags.name')
-                ->label('عنوان الوسم')
+                    ->label('عنوان الوسم')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\ToggleColumn::make('status')
-                ->label('حالة نشر المدونة'),
+                    ->label('حالة نشر المدونة'),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -174,10 +164,10 @@ class PostResource extends Resource
                 //
             ])
             ->actions([
-              ActionGroup::make([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-              ]),
+                ActionGroup::make([
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

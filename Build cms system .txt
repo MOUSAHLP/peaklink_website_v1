@@ -1,4 +1,4 @@
-V 1.0.5
+V 1.0.6
 -------------------  Dashboard ---------------------
 
 ===> Home Page <===
@@ -17,3 +17,8 @@ V 1.0.5
 13. Pricing section --> Done
 14. Tags section --> Done
 15. WhyChooseOurService section --> Done
+
+
+===> Team Page <===
+1. Team section --> Done
+2. Team Detail section --> Done
