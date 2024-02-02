@@ -20,7 +20,7 @@ class ManageTitlePageResource extends Resource
     use Translatable;
     protected static ?string $model = ManageTitlePage::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-cog-8-tooth';
     protected static ?string $navigationGroup = 'الإعدادات';
     protected static ?int $navigationSort = 2;
 

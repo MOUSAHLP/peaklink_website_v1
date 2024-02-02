@@ -20,7 +20,7 @@ class ManageMenuResource extends Resource
     use Translatable;
     protected static ?string $model = ManageMenu::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-adjustments-horizontal';
     protected static ?string $navigationGroup = 'الإعدادات';
     protected static ?int $navigationSort = 1;
 

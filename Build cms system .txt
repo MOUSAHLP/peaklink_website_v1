@@ -29,3 +29,4 @@ V 1.0.6
 ===> Settings Section <===
 1. Manage Menus -->  Done
 2. Manage Title Pages -->  Done
+3. General Setting Site -->  Done

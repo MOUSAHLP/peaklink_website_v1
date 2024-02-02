@@ -13,20 +13,32 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->json('contact_us_tools');
-            $table->json('social_media');
-            $table->json('colors');
-            $table->tinyInteger('site_active')->default(true);
-            $table->time('open_time');
-            $table->time('close_time');
-            $table->string('site_name');
-            $table->string('powered_by');
-            $table->string('powered_by_link');
-            $table->string('location_map');
+            $table->string("email")->nullable();
+            $table->string("phone")->nullable();
+            $table->string('location_map')->nullable();
+
+            $table->string("headerlogo")->nullable();
+            $table->string("footerlogo")->nullable();
+
+            $table->json('open_time')->nullable();
+            $table->json('close_time')->nullable();
+            $table->json('site_name')->nullable();
+            $table->json('powered_by')->nullable();
+            $table->string('powered_by_link')->nullable();
+
+            $table->json("social_links")->nullable();
+            $table->json("color")->nullable();  
+            $table->boolean("maintenance")->default(true);
+
             $table->json('meta_title')->nullable();
             $table->string('meta_image')->nullable();
             $table->json('meta_keywords')->nullable();
             $table->json('meta_description')->nullable();
+
+
+
+
+
             $table->timestamps();
         });
     }
