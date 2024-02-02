@@ -35,6 +35,8 @@ class AdminPanelProvider extends PanelProvider
                 'المشاريع',
                 'المدونة',
                 'إدارة الفريق',
+                'Footer',
+                // '',
             ]
         )
 
