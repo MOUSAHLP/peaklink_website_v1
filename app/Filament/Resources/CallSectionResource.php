@@ -18,8 +18,8 @@ class CallSectionResource extends Resource
     use Translatable;
     protected static ?string $model = CallSection::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Home';
+    protected static ?string $navigationIcon = 'heroicon-o-phone-x-mark';
+    protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 11;
 
                 public static function getModelLabel(): string

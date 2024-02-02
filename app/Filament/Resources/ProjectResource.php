@@ -23,9 +23,9 @@ class ProjectResource extends Resource
     use Translatable;
     protected static ?string $model = Project::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Home';
-    protected static ?int $navigationSort = 7;
+    protected static ?string $navigationIcon = 'heroicon-o-presentation-chart-line';
+    protected static ?string $navigationGroup = 'المشاريع';
+    protected static ?int $navigationSort = 2;
 
                 public static function getModelLabel(): string
             {

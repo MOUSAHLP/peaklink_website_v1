@@ -22,9 +22,9 @@ class AboutUsResource extends Resource
     use Translatable;
     protected static ?string $model = AboutUs::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-identification';
 
-    protected static ?string $navigationGroup = 'Home';
+    protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 3;
 
                 public static function getModelLabel(): string

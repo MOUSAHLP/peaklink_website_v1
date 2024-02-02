@@ -18,9 +18,9 @@ class FaqResource extends Resource
     use Translatable;
     protected static ?string $model = Faq::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-question-mark-circle';
 
-    protected static ?string $navigationGroup = 'Home';
+    protected static ?string $navigationGroup = 'الصفحة الرئيسية';
 
     protected static ?int $navigationSort = 15;
 

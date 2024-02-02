@@ -25,9 +25,9 @@ class TeamDetailResource extends Resource
 
     protected static ?string $model = TeamDetail::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-identification';
 
-    protected static ?string $navigationGroup = 'Team';
+    protected static ?string $navigationGroup = 'إدارة الفريق';
     protected static ?int $navigationSort = 2;
 
     public static function getPluralLabel(): string

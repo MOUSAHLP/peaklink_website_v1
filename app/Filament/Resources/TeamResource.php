@@ -20,8 +20,8 @@ class TeamResource extends Resource
     use Translatable;
     protected static ?string $model = Team::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Team';
+    protected static ?string $navigationIcon = 'heroicon-o-user-plus';
+    protected static ?string $navigationGroup = 'إدارة الفريق';
     protected static ?int $navigationSort = 1;
 
     public static function getPluralLabel(): string

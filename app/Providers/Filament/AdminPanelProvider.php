@@ -30,8 +30,11 @@ class AdminPanelProvider extends PanelProvider
 
         ->navigationGroups(
             [
-                'User',
-                'Home',
+                'مستخدمين النظام',
+                'الصفحة الرئيسية',
+                'المشاريع',
+                'المدونة',
+                'إدارة الفريق',
             ]
         )
 

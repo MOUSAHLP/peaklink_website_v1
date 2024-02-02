@@ -17,8 +17,8 @@ class BrandResource extends Resource
     use Translatable;
     protected static ?string $model = Brand::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Home';
+    protected static ?string $navigationIcon = 'heroicon-o-square-3-stack-3d';
+    protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 16;
 
                 public static function getModelLabel(): string

@@ -17,9 +17,9 @@ class BlogCategoryResource extends Resource
     use Translatable;
     protected static ?string $model = BlogCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Home';
-    protected static ?int $navigationSort = 12;
+    protected static ?string $navigationIcon = 'heroicon-o-document-plus';
+    protected static ?string $navigationGroup = 'المدونة';
+    protected static ?int $navigationSort = 1;
 
                 public static function getModelLabel(): string
             {

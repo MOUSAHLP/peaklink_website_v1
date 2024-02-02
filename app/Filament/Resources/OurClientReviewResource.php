@@ -18,8 +18,8 @@ class OurClientReviewResource extends Resource
 
     protected static ?string $model = OurClientReview::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Home';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 8;
 
                 public static function getModelLabel(): string

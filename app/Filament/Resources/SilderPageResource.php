@@ -25,8 +25,8 @@ class SilderPageResource extends Resource
     use Translatable;
     protected static ?string $model = SilderPage::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Home';
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
+    protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 1;
 
                 public static function getPluralLabel(): string

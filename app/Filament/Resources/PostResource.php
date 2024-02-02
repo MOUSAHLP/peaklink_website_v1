@@ -22,21 +22,21 @@ class PostResource extends Resource
     use Translatable;
     protected static ?string $model = Post::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Home';
-    protected static ?int $navigationSort = 14;
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?string $navigationGroup = 'المدونة';
+    protected static ?int $navigationSort = 3;
 
     public static function getModelLabel(): string
     {
-        return 'المدونة';
+        return 'التدوينات';
     }
     public static function getPluralLabel(): string
     {
-        return 'المدونة';
+        return 'التدوينات';
     }
     public static function getNavigationLabel(): string
     {
-        return 'المدونة';
+        return 'التدوينات';
     }
 
     public static function form(Form $form): Form

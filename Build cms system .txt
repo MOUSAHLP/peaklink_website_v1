@@ -22,3 +22,6 @@ V 1.0.6
 ===> Team Page <===
 1. Team section --> Done
 2. Team Detail section --> Done
+
+===> Footer Section <===
+1. Footer Section -->  Done

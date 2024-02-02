@@ -20,8 +20,8 @@ class FlowWorkResource extends Resource
     use Translatable;
     protected static ?string $model = FlowWork::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Home';
+    protected static ?string $navigationIcon = 'heroicon-o-receipt-refund';
+    protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 4;
 
                 public static function getModelLabel(): string

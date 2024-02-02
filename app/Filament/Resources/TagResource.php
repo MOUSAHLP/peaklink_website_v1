@@ -17,9 +17,9 @@ class TagResource extends Resource
     use Translatable;
     protected static ?string $model = Tag::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Home';
-    protected static ?int $navigationSort = 13;
+    protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
+    protected static ?string $navigationGroup = 'المدونة';
+    protected static ?int $navigationSort = 2;
 
                 public static function getModelLabel(): string
             {

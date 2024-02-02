@@ -20,10 +20,10 @@ class CategoryProjectResource extends Resource
     use Translatable;
     protected static ?string $model = CategoryProject::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Home';
+    protected static ?string $navigationIcon = 'heroicon-o-chart-pie';
+    protected static ?string $navigationGroup = 'المشاريع';
 
-    protected static ?int $navigationSort = 6;
+    protected static ?int $navigationSort = 1;
 
     public static function getModelLabel(): string
 {

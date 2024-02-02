@@ -20,8 +20,8 @@ class WhyChooseOurServiceResource extends Resource
     use Translatable;
     protected static ?string $model = WhyChooseOurService::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Home';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
+    protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 9;
 
                 public static function getModelLabel(): string
