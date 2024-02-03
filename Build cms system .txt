@@ -1,4 +1,4 @@
-V 1.0.6
+V 1.0.7
 -------------------  Dashboard ---------------------
 
 ===> Home Page <===
@@ -18,8 +18,7 @@ V 1.0.6
 14. Tags section --> Done
 15. WhyChooseOurService section --> Done
 
-
-===> Team Page <===
+===> Team Section <===
 1. Team section --> Done
 2. Team Detail section --> Done
 
@@ -30,3 +29,6 @@ V 1.0.6
 1. Manage Menus -->  Done
 2. Manage Title Pages -->  Done
 3. General Setting Site -->  Done
+
+===> Products Section <===
+1. Product Category section --> Done

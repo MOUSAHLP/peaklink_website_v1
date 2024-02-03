@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\TeamResource\Pages;
+namespace App\Filament\Resources\ProductCategoryResource\Pages;
 
-use App\Filament\Resources\TeamResource;
+use App\Filament\Resources\ProductCategoryResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateTeam extends CreateRecord
+class CreateProductCategory extends CreateRecord
 {
     use CreateRecord\Concerns\Translatable;
 
-    protected static string $resource = TeamResource::class;
+    protected static string $resource = ProductCategoryResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -18,7 +18,7 @@ class CreateTeam extends CreateRecord
             Actions\LocaleSwitcher::make(),
         ];
     }
-     
+    
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');

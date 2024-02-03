@@ -156,6 +156,7 @@ class ServiceResource extends Resource
               ActionGroup::make([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
               ]),
             ])
             ->bulkActions([

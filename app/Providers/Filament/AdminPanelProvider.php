@@ -34,6 +34,7 @@ class AdminPanelProvider extends PanelProvider
                 'الصفحة الرئيسية',
                 'المشاريع',
                 'المدونة',
+                'المتجر',
                 'إدارة الفريق',
                 'Footer',
                 // '',
@@ -74,10 +75,6 @@ class AdminPanelProvider extends PanelProvider
                 \Hasnayeen\Themes\ThemesPlugin::make(),
 
                 SpotlightPlugin::make(),
-
-
-
-
 
             
         ])

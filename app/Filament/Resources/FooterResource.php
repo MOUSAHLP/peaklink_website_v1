@@ -11,11 +11,8 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Repeater;
-use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\FooterResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\FooterResource\RelationManagers;
 use Filament\Forms\Components\Section;
 
 class FooterResource extends Resource
