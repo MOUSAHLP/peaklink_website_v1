@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductCategoryResource\Pages;
-use App\Filament\Resources\ProductCategoryResource\RelationManagers;
 use App\Models\ProductCategory;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,8 +10,7 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class ProductCategoryResource extends Resource
 {
@@ -47,6 +45,14 @@ class ProductCategoryResource extends Resource
                 Forms\Components\TextInput::make('name')
                 ->label(__('اسم الفئة'))
                 ->maxLength(255)
+                ->required()
+                ->debounce()
+                ->afterStateUpdated(function ($set, ?string $state) { 
+                        $set('slug', Str::slug($state));
+                }),
+                Forms\Components\TextInput::make('slug')
+                ->label(__('رابط الفئة'))
+                ->maxLength(255)
                 ->required(),
             ]);
     }
@@ -56,7 +62,14 @@ class ProductCategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                ->label(__('اسم الفئة')),
+                ->label(__('اسم الفئة'))
+                ->searchable()
+                ->sortable(),
+
+                Tables\Columns\TextColumn::make('slug')
+                ->label(__('رابط الفئة'))
+                ->searchable()
+                ->sortable(),
 
             Tables\Columns\TextColumn::make('created_at')
                 ->dateTime()
