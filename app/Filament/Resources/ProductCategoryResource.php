@@ -2,15 +2,16 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ProductCategoryResource\Pages;
-use App\Models\ProductCategory;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Concerns\Translatable;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use App\Models\ProductCategory;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Section;
+use Filament\Resources\Concerns\Translatable;
+use App\Filament\Resources\ProductCategoryResource\Pages;
 
 class ProductCategoryResource extends Resource
 {
@@ -42,6 +43,8 @@ class ProductCategoryResource extends Resource
     {
         return $form
             ->schema([
+              Section::make()
+              ->schema([
                 Forms\Components\TextInput::make('name')
                 ->label(__('اسم الفئة'))
                 ->maxLength(255)
@@ -54,6 +57,10 @@ class ProductCategoryResource extends Resource
                 ->label(__('رابط الفئة'))
                 ->maxLength(255)
                 ->required(),
+                Forms\Components\Toggle::make('status')
+                ->columnSpanFull()
+                ->label(__('حالة الفئة')),
+              ]),
             ]);
     }
 
@@ -70,6 +77,8 @@ class ProductCategoryResource extends Resource
                 ->label(__('رابط الفئة'))
                 ->searchable()
                 ->sortable(),
+                Tables\Columns\ToggleColumn::make('status')
+                ->label(__('حالة الفئة')),
 
             Tables\Columns\TextColumn::make('created_at')
                 ->dateTime()
