@@ -17,7 +17,6 @@ class Post extends Model
     protected $fillable = [
         'category_id',
         'user_id',
-        'tag_id',
         'title',
         'slug',
         'content',
@@ -41,8 +40,9 @@ class Post extends Model
 
     public function tags()
     {
-        return $this->belongsTo(Tag::class,'tag_id');
+        return $this->belongsToMany(Tag::class, 'post_tags_relations', 'post_id', 'post_tag_id');
     }
+
     
     protected $casts = [
         'meta_keywords' => 'array',

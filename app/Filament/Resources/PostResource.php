@@ -61,13 +61,14 @@ class PostResource extends Resource
                                         ? $record->getTranslation('name', $livewire->activeLocale)
                                         : $record->name),
 
-                                Forms\Components\Select::make('tag_id')
-                                    ->required()
-                                    ->label('أختر الوسم')
-                                    ->relationship('tags', 'name')
-                                    ->getOptionLabelFromRecordUsing(fn ($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
-                                        ? $record->getTranslation('name', $livewire->activeLocale)
-                                        : $record->name),
+                                Forms\Components\Select::make('tags')
+                                ->relationship('tags', 'name')
+                                    ->label('اختر الوسوم')
+                                    ->multiple()
+                                    ->preload()
+                                    ->getOptionLabelFromRecordUsing(fn($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
+                                    ? $record->getTranslation('name', $livewire->activeLocale)
+                                    : $record->name),
 
 
                                 Forms\Components\TextInput::make('title')
@@ -76,6 +77,7 @@ class PostResource extends Resource
 
                                 Forms\Components\TextInput::make('slug')
                                     ->required()
+                                    ->unique()
                                     ->label('رابط المدونة')
                                     ->maxLength(255),
 
@@ -88,12 +90,14 @@ class PostResource extends Resource
                                     ->required(),
 
 
-
-                                Forms\Components\FileUpload::make('image')
-                                    ->image()
-                                    ->columnSpanFull()
-                                    ->label('صورة المدونة')
-                                    ->required(),
+                                    Forms\Components\FileUpload::make('image')
+                                    ->label('صورة')
+                                    ->required()
+                                    ->acceptedFileTypes(['image/png','image/jpg','image/jpeg'])
+                                    ->directory('images/posts')
+                                    ->visibility('public')
+                                    ->disk('public')
+                                    ->columnSpanFull(),
 
                                 Forms\Components\Toggle::make('status')
                                     ->label('حالة نشر المدونة')
@@ -131,9 +135,10 @@ class PostResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->label('عنوان المدونة')
                     ->searchable(),
-                Tables\Columns\imageColumn::make('image')
-                    ->label('صورة المدونة')
-                    ->searchable(),
+                Tables\Columns\ImageColumn::make('image')
+                    ->label('صورة')
+                    ->disk('public')
+                    ->visibility('private'),
                 Tables\Columns\TextColumn::make('slug')
                     ->label('رابط المدونة')
                     ->searchable(),
@@ -145,8 +150,9 @@ class PostResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('tags.name')
-                    ->label('عنوان الوسم')
+                    ->label('الوسوم')
                     ->sortable()
+                    ->badge()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\ToggleColumn::make('status')
                     ->label('حالة نشر المدونة'),

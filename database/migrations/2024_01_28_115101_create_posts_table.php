@@ -17,8 +17,6 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('blog_categories')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('tag_id');
-            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
             $table->json('title');
             $table->string('slug')->unique();
             $table->json('content');
