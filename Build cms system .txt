@@ -32,3 +32,4 @@ V 1.0.9
 
 ===> Products Section <===
 1. Product Category section --> Done
+1. Products section --> Done
