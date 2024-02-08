@@ -68,11 +68,11 @@ class ServiceResource extends Resource
 
                     Forms\Components\TextInput::make('slug')
                     ->label('الرابط')
-                    ->readOnly()
                     ->required()
                     ->maxLength(30),
                 Forms\Components\TextInput::make('short_description')
                 ->maxLength(55)
+                ->columnSpanFull()
                 ->label('وصف قصير')
 
                     ->required(),
@@ -94,7 +94,7 @@ class ServiceResource extends Resource
                 ->listDisplay(false),
                 Forms\Components\Toggle::make('status')
                 ->label('الحالة'),
-            ])->columns(3),
+            ])->columns(2),
             Tabs\Tab::make('محركات البحث جوجل "SEO"')
             ->icon('heroicon-m-globe-europe-africa')
                 ->iconPosition(IconPosition::After)

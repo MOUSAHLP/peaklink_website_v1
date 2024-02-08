@@ -32,3 +32,10 @@ V 1.0.7
 
 ===> Products Section <===
 1. Product Category section --> Done
+
+
+-----------------------------------Front End Page -----------------------------------
+1- Home Page 
+.sliders --> Done
+.services --> Done
+.abouts --> Done

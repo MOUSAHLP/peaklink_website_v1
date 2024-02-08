@@ -100,6 +100,9 @@ class SilderPageResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('title')
+                ->label(_("عنوان الشريحة"))
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('button_link')
                 ->label(_("رابط الزر"))
                     ->searchable(),
