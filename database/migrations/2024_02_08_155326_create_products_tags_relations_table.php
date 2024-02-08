@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products_tags_relations', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('product_tag_id')->references('id')->on('product_tags')->onDelete('cascade');
             $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
