@@ -5,6 +5,7 @@
         <div class="auto-container">
             <div class="row">
 
+           
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
                     <div class="inner-column">
                         <div class="image-box">
