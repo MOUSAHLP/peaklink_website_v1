@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('call_sections', function (Blueprint $table) {
             $table->id();
             $table->json('title');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->json('button_title');
-            $table->string('button_link');
-            $table->string('background_image');
+            $table->string('button_link')->nullable();
+            $table->string('background_image')->nullable();
             $table->tinyInteger('status')->default(true);
             $table->timestamps();
         });

@@ -39,3 +39,9 @@ V 1.0.7
 .sliders --> Done
 .services --> Done
 .abouts --> Done
+.FlowWork Section --> Done 
+.Projects Section  --> Done 
+.Our review Clients Section --> Done 
+.choose-us-section Section --> Done 
+.pricing Section  --> Done 
+.Call Action Section --> Done 
