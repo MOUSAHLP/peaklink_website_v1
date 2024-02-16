@@ -27,6 +27,9 @@
     {{-- Call Action Section  --}}
     <livewire:front.home-page.callaction.show-call-action/>
 
+    {{-- Contact us  Section  --}}
+    <livewire:front.home-page.contactus.show-contact-us/>
+
 
 
 

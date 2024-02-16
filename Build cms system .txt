@@ -45,3 +45,4 @@ V 1.0.7
 .choose-us-section Section --> Done 
 .pricing Section  --> Done 
 .Call Action Section --> Done 
+. contact us 
