@@ -48,3 +48,4 @@ V 1.0.7
 .Contact us 
 .Post
 .Faqs
+.Brand

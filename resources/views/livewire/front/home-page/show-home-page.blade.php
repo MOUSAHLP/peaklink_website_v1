@@ -30,11 +30,14 @@
     {{-- Contact us  Section  --}}
     <livewire:front.home-page.contactus.show-contact-us/>
 
-    {{-- Contact us  Section  --}}
+    {{-- post  Section  --}}
     <livewire:front.home-page.post.show-post/>
 
-    {{-- Contact us  Section  --}}
+    {{-- faqs  Section  --}}
     <livewire:front.home-page.faqs.show-faq/>
+
+    {{-- Brands  Section  --}}
+    <livewire:front.home-page.brand.show-brand/>
 
 
 
