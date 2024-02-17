@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Models\Tag;
 use Filament\Forms;
 use App\Models\Post;
 use Filament\Tables;
@@ -62,13 +63,10 @@ class PostResource extends Resource
                                         : $record->name),
 
                                 Forms\Components\Select::make('tags')
-                                ->relationship('tags', 'name')
+                                ->options(Tag::all()->pluck('name','id'))
                                     ->label('اختر الوسوم')
                                     ->multiple()
-                                    ->preload()
-                                    ->getOptionLabelFromRecordUsing(fn($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
-                                    ? $record->getTranslation('name', $livewire->activeLocale)
-                                    : $record->name),
+                                    ->preload(),
 
 
                                 Forms\Components\TextInput::make('title')
@@ -77,7 +75,7 @@ class PostResource extends Resource
 
                                 Forms\Components\TextInput::make('slug')
                                     ->required()
-                                    ->unique()
+                                    ->unique(ignoreRecord: true)
                                     ->label('رابط المدونة')
                                     ->maxLength(255),
 

@@ -30,6 +30,9 @@
     {{-- Contact us  Section  --}}
     <livewire:front.home-page.contactus.show-contact-us/>
 
+    {{-- Contact us  Section  --}}
+    <livewire:front.home-page.post.show-post/>
+
 
 
 

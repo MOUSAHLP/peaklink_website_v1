@@ -12,11 +12,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Post extends Model
 {
     use HasFactory,HasTranslations;
-    public $translatable = ['title','content','meta_title','meta_keywords','meta_description'];
+    public $translatable = ['title','tags','content','meta_title','meta_keywords','meta_description'];
     protected $table = 'posts';
     protected $fillable = [
         'category_id',
         'user_id',
+        'tags',
         'title',
         'slug',
         'content',
@@ -38,13 +39,9 @@ class Post extends Model
         return $this->belongsTo(User::class,'user_id');
     }
 
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class, 'post_tags_relations', 'post_id', 'post_tag_id');
-    }
-
     
     protected $casts = [
         'meta_keywords' => 'array',
+        'tags' => 'array',
      ];
 }

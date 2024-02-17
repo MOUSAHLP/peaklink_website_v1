@@ -17,8 +17,4 @@ class Tag extends Model
         'status',
     ];
 
-    public function posts()
-    {
-        return $this->belongsToMany(Post::class, 'post_tags_relations', 'post_tag_id', 'post_id');
-    }
 }
