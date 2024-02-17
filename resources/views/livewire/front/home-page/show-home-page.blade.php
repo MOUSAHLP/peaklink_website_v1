@@ -33,6 +33,9 @@
     {{-- Contact us  Section  --}}
     <livewire:front.home-page.post.show-post/>
 
+    {{-- Contact us  Section  --}}
+    <livewire:front.home-page.faqs.show-faq/>
+
 
 
 
