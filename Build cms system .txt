@@ -49,3 +49,4 @@ V 1.0.7
 .Post
 .Faqs
 .Brand
+.contact-us-bannder

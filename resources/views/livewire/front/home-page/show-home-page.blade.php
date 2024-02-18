@@ -39,6 +39,9 @@
     {{-- Brands  Section  --}}
     <livewire:front.home-page.brand.show-brand/>
 
+    {{-- contact-us-bannder  Section  --}}
+    <livewire:front.home-page.contacontusbanneder.show-contact-us-bannder/>
+
 
 
 
