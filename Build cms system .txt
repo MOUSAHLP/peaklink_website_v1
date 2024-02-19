@@ -35,7 +35,7 @@ V 1.0.7
 
 
 -----------------------------------Front End Page -----------------------------------
-1- Home Page 
+1---------- Home Page 
 .sliders --> Done
 .services --> Done
 .abouts --> Done
@@ -50,3 +50,8 @@ V 1.0.7
 .Faqs
 .Brand
 .contact-us-bannder
+
+2---------- About US Page
+.Done
+3---------- Project Page
+.Done

@@ -1,7 +1,9 @@
 <?php
 
-use App\Livewire\Front\HomePage\ShowHomePage;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Front\HomePage\ShowHomePage;
+use App\Livewire\Front\AboutUsPage\ShowAboutUsPage;
+use App\Livewire\Front\ProjectPage\ShowProjectsPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', ShowHomePage::class )->name('Home');
+Route::get('/about-us', ShowAboutUsPage::class )->name('aboutUs');
+Route::get('/Projects', ShowProjectsPage::class )->name('Projects');

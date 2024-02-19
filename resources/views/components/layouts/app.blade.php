@@ -64,62 +64,21 @@
 
                     <div class="main-box">
                         <div class="logo-box">
-                            <div class="logo"><a href="index.html"><img src="images/logo.png" alt title="Tronis"></a>
+                            <div class="logo"><a href="index.html"><img src="{{ asset('front/images/logo.png') }}" alt title="Tronis"></a>
                             </div>
                         </div>
 
                         <div class="nav-outer">
                             <nav class="nav main-menu">
                                 <ul class="navigation">
-                                    <li class="current dropdown"> <a href="index.html">بيت</a>
-                                        <ul>
-                                            <li><a href="index.html">Home page 01</a></li>
-                                            <li><a href="index-2.html">Home page 02</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"> <a href="#">الصفحات</a>
-                                        <ul>
-                                            <li><a href="page-about.html">About</a></li>
-                                            <li class="dropdown"> <a href="#">Projects</a>
-                                                <ul>
-                                                    <li><a href="page-projects.html">Projects List</a></li>
-                                                    <li><a href="page-project-details.html">Project Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown"> <a href="#">Team</a>
-                                                <ul>
-                                                    <li><a href="page-team.html">Team List</a></li>
-                                                    <li><a href="page-team-details.html">Team Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="page-testimonial.html">Testimonial</a></li>
-                                            <li><a href="page-pricing.html">Pricing</a></li>
-                                            <li><a href="page-faq.html">FAQ</a></li>
-                                            <li><a href="page-404.html">Page 404</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"> <a href="#">خدمات</a>
-                                        <ul>
-                                            <li><a href="page-services.html">Services List</a></li>
-                                            <li><a href="page-service-details.html">Service Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"> <a href="#">محل</a>
-                                        <ul>
-                                            <li><a href="shop-products.html">Products</a></li>
-                                            <li><a href="shop-products-sidebar.html">Products with Sidebar</a></li>
-                                            <li><a href="shop-product-details.html">Product Details</a></li>
-                                            <li><a href="shop-cart.html">Cart</a></li>
-                                            <li><a href="shop-checkout.html">Checkout</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"> <a href="#">أخبار</a>
-                                        <ul>
-                                            <li><a href="news-grid.html">News Grid</a></li>
-                                            <li><a href="news-details.html">News Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="page-contact.html">اتصال</a></li>
+                                    <li class="current"> <a href="{{ route('Home') }}">الرئيسية</a> </li>
+                                    <li> <a href="{{ route('aboutUs') }}">من حن</a></li>
+                                    <li> <a href="#">الخدمات</a> </li>
+                                    <li> <a href="{{ route('Projects') }}">المشاريع</a> </li>
+                                    <li> <a href="#">الحلول</a> </li>
+                                    <li> <a href="#">المتجر</a></li>
+                                    <li> <a href="#">المدونات</a></li>
+                                    <li><a href="page-contact.html">اتواصل بنا</a></li>
                                 </ul>
                             </nav>
 
@@ -144,7 +103,7 @@
 
                 <nav class="menu-box">
                     <div class="upper-box">
-                        <div class="nav-logo"><a href="index.html"><img src="images/logo.png" alt title></a></div>
+                        <div class="nav-logo"><a href="index.html"><img src="{{ asset('front/images/logo.png') }}" alt title></a></div>
                         <div class="close-btn"><i class="icon fa fa-times"></i></div>
                     </div>
                     <ul class="navigation clearfix">
@@ -165,9 +124,9 @@
                                 <span class="icon lnr-icon-envelope1"></span>
                                 <span class="title">Send Email</span>
                                 <a
-                                    href="#/cdn-cgi/l/email-protection#dbb3beb7ab9bb8b4b6abbab5a2f5b8b4b6"><span
+                                    href=""><span
                                         class="__cf_email__"
-                                        data-cfemail="d4bcb1b8a494b7bbb9a4b5baadfab7bbb9">[email&#160;protected]</span></a>
+                                        data-cfemail="">[email&#160;protected]</span></a>
                             </div>
                         </li>
                         <li>
