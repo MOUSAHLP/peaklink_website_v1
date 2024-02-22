@@ -64,7 +64,7 @@
 
                     <div class="main-box">
                         <div class="logo-box">
-                            <div class="logo"><a href="index.html"><img src="{{ asset('front/images/logo.png') }}" alt title="Tronis"></a>
+                            <div class="logo"><a href="{{ route('Home') }}"><img src="{{ asset('front/images/logo.png') }}" alt title="Tronis"></a>
                             </div>
                         </div>
 
@@ -74,10 +74,18 @@
                                     <li class="current"> <a href="{{ route('Home') }}">الرئيسية</a> </li>
                                     <li> <a href="{{ route('aboutUs') }}">من حن</a></li>
                                     <li> <a href="#">الخدمات</a> </li>
-                                    <li> <a href="{{ route('Projects') }}">المشاريع</a> </li>
-                                    <li> <a href="#">الحلول</a> </li>
-                                    <li> <a href="#">المتجر</a></li>
-                                    <li> <a href="#">المدونات</a></li>
+                                   
+                                   
+                                    <li class="dropdown"><a href="#">الصفحات</a>
+                                        <ul>
+                                            <li> <a href="{{ route('Projects') }}">المشاريع</a> </li>
+                                            <li> <a href="#">الحلول</a> </li>
+                                            <li> <a href="#">المتجر</a></li>
+                                            <li> <a href="#">المدونات</a></li>
+                                        </ul>
+                                    </li>
+                                 
+                                  
                                     <li><a href="{{ route('contactUs') }}">اتواصل بنا</a></li>
                                 </ul>
                             </nav>
@@ -103,7 +111,7 @@
 
                 <nav class="menu-box">
                     <div class="upper-box">
-                        <div class="nav-logo"><a href="index.html"><img src="{{ asset('front/images/logo.png') }}" alt title></a></div>
+                        <div class="nav-logo"><a href="{{ route('Home') }}"><img src="{{ asset('front/images/logo.png') }}" alt title></a></div>
                         <div class="close-btn"><i class="icon fa fa-times"></i></div>
                     </div>
                     <ul class="navigation clearfix">
@@ -151,7 +159,7 @@
                 <span class="search-back-drop"></span>
                 <button class="close-search"><span class="fa fa-times"></span></button>
                 <div class="search-inner">
-                    <form method="post" action="#/2023/❤️-html/index.html">
+                    <form method="post" action="#">
                         <div class="form-group">
                             <input type="search" name="search-field" value placeholder="Search..." required>
                             <button type="submit"><i class="fa fa-search"></i></button>
@@ -166,7 +174,7 @@
                     <div class="inner-container">
 
                         <div class="logo">
-                            <a href="index.html" title><img src="images/logo.png" alt title></a>
+                            <a  href="{{ route('Home') }}" title><img src="{{ asset('front/images/logo.png') }}" alt title></a>
                         </div>
 
                         <div class="nav-outer">
@@ -200,7 +208,7 @@
                         <div class="footer-column col-lg-3 col-sm-6">
                             <div class="footer-widget contact-widget">
                                 <div class="logo-box">
-                                    <div class="logo"><a href="index.html"><img src="images/logo.png" alt
+                                    <div class="logo"><a href="{{ route('Home') }}"><img src="{{ asset('front/images/logo.png') }}" alt
                                                 title="Tronis"></a></div>
                                 </div>
                                 <div class="widget-content">

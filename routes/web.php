@@ -21,3 +21,8 @@ Route::get('/', ShowHomePage::class )->name('Home');
 Route::get('/about-us', ShowAboutUsPage::class )->name('aboutUs');
 Route::get('/contact-us', ShowContactUsPage::class )->name('contactUs');
 Route::get('/Projects', ShowProjectsPage::class )->name('Projects');
+
+// Catch-all route for 404 errors
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
+});
