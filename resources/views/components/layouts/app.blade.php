@@ -78,7 +78,7 @@
                                     <li> <a href="#">الحلول</a> </li>
                                     <li> <a href="#">المتجر</a></li>
                                     <li> <a href="#">المدونات</a></li>
-                                    <li><a href="page-contact.html">اتواصل بنا</a></li>
+                                    <li><a href="{{ route('contactUs') }}">اتواصل بنا</a></li>
                                 </ul>
                             </nav>
 
@@ -88,7 +88,7 @@
                                 <a href="#" class="search"><i class="flaticon-search-3"></i></a>
                             </div>
                             <div class="btn">
-                                <a href="page-contact.html" class="theme-btn">دعونا نتحدث</a>
+                                <a href="{{ route('contactUs') }}" class="theme-btn">دعونا نتحدث</a>
                             </div>
                             <div class="mobile-nav-toggler">
                                 <i class="fa fa-bars"></i>

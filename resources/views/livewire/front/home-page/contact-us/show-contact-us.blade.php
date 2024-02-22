@@ -31,7 +31,7 @@
                                     <div class="inner-box">
                                         <div class="icon-box"> <i class="flaticon-call-3"></i> </div>
                                         <div class="content-box"> <span>هاتف</span>
-                                            <h6 class="title"> <a href="{{ $contact_data['name'] }}" target="_blank"
+                                            <h6 class="title"> <a href="tel:{{ $contact_data['name'] }}" target="_blank"
                                                     rel="noopener noreferrer">{{ $contact_data['title'] }}</a></h6>
                                         </div>
                                     </div>
