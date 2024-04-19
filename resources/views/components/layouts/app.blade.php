@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html dir="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'rtl' : 'ltr' }}"
+    lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
     <head>
         <meta charset="utf-8">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -38,24 +42,16 @@
         <!-- Website to visit when clicked in fb or WhatsApp-->
         <meta property="og:url" content="@yield('copyright')">
 
-        <title>@yield('title')</title>
-        <link href="{{ asset('front/css/bootstrap.min.css') }}" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{ asset('front/css/slick-theme.cs') }}s">
-        <link rel="stylesheet" type="text/css" href="{{ asset('front/css/slick.css') }}">
-        <link rel="shortcut icon" href="{{ asset('front/images/favicon.png') }}" type="image/x-icon">
-        <link rel="icon" href="{{ asset('front/images/favicon.png') }}" type="image/x-icon">
-
         {{-- RTL Style  --}}
-        <link href="{{ asset('front/css/style-rtl.css') }}" rel="stylesheet">
-
-        {{-- LTR Style  --}}
-        {{-- <link href="{{ asset('front/css/style.css') }}" rel="stylesheet"> --}}
-
-
-
+        @if (str_replace('_', '-', app()->getLocale()) == 'ar')
+            <link href="{{ asset('front/css/style-rtl.css') }}" rel="stylesheet">
+        @else
+            {{-- LTR Style  --}}
+            <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
+        @endif
     </head>
 
-    <body class="rtl">
+    <body class="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'rtl' : 'ltr' }}">
         <div class="page-wrapper">
 
             <header class="main-header header-style-one">
@@ -88,6 +84,15 @@
 
 
                                         <li><a href="{{ route('contactUs') }}">اتواصل بنا</a></li>
+
+
+                                        <li class="dropdown"><a
+                                                href="#">{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'العربية' : 'English' }}</a>
+                                            <ul>
+                                                <li> <a href="{{ route('ar') }}">العربية</a> </li>
+                                                <li> <a href="{{ route('en') }}">English</a> </li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </nav>
 
@@ -211,7 +216,8 @@
                                     <div class="logo-box">
                                         <div class="logo"><a href="{{ route('Home') }}"><img
                                                     src="{{ asset('front/images/logo.png') }}" alt
-                                                    title="Tronis"></a></div>
+                                                    title="Tronis"></a>
+                                        </div>
                                     </div>
                                     <div class="widget-content">
                                         <div class="content-box">
@@ -221,99 +227,139 @@
                                             <span>البريد لنا</span>
                                             <h6 class="title">معلومات@بريدك.شركة</h6>
                                         </div>
-                                        <div class="content-box">
-                                            <div class="icon-box">
-                                                <i class="flaticon-clock-3"></i>
-                                            </div>
-                                            <span>وقت متاح</span>
-                                            <h6 class="title">۰۹ أكون - ۰۶ مساءً, الشمس - الخميس</h6>
+                                        </nav>
+
+                                        <div class="mobile-nav-toggler">
+                                            <i class="fa fa-bars"></i>
                                         </div>
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                                            <li><a href="#"><i class="fa-brands fa-behance"></i></a></li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        </header>
 
-                            <div class="footer-column col-lg-3 col-sm-6">
-                                <div class="footer-widget links-widget pl-lg-30 pl-md--0">
-                                    <h4 class="widget-title">خدماتنا</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="#">التسويق الرقمي</a></li>
-                                            <li><a href="#">تصميم العلامات التجارية</a></li>
-                                            <li><a href="#">تصميم المنتج</a></li>
-                                            <li><a href="#">تطوير الشبكة</a></li>
-                                            <li><a href="#">تطوير التطبيقات</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                        {{ $slot }}
 
-                            <div class="footer-column col-lg-3 col-sm-6">
-                                <div class="footer-widget links-widget two pl-lg-30 pl-md--0">
-                                    <h4 class="widget-title">رابط مفيد</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="#">معلومات عنا</a></li>
-                                            <li><a href="#">خدماتنا</a></li>
-                                            <li><a href="#">لدينا محفظة</a></li>
-                                            <li><a href="#">فريقنا</a></li>
-                                            <li><a href="#">اتصل بنا</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="footer-column col-lg-3 col-sm-6">
-                                <div class="footer-widget about-widget">
-                                    <h4 class="widget-title">النشرة الإخبارية</h4>
-                                    <div class="text">وقد تم الاعتماد على عملاء الشركات والترفيه للمسافرين </div>
-                                    <div class="subscribe-form-two">
-                                        <form method="post" action="#">
-                                            <div class="form-group">
-                                                <input type="email" name="email" class="email" value
-                                                    placeholder="عنوان بريدك  الإلكتروني" required>
-                                                <button type="button" class="theme-btn"><span
-                                                        class="btn-title">إشترك
-                                                        الآن</span><i
-                                                        class="btn-icon far fa-arrow-left-long btn-icon me-2 font-size-18"></i>
-                                                </button>
+                        <footer class="main-footer footer-style-one">
+
+                            <div class="widgets-section">
+                                <div class="auto-container">
+                                    <div class="row">
+
+                                        <div class="footer-column col-lg-3 col-sm-6">
+                                            <div class="footer-widget contact-widget">
+                                                <div class="logo-box">
+                                                    <div class="logo"><a href="{{ route('Home') }}"><img
+                                                                src="{{ asset('front/images/logo.png') }}" alt
+                                                                title="Tronis"></a></div>
+                                                </div>
+                                                <div class="widget-content">
+                                                    <div class="content-box">
+                                                        <div class="icon-box">
+                                                            <i class="flaticon-envelope"></i>
+                                                        </div>
+                                                        <span>البريد لنا</span>
+                                                        <h6 class="title">معلومات@بريدك.شركة</h6>
+                                                    </div>
+                                                    <div class="content-box">
+                                                        <div class="icon-box">
+                                                            <i class="flaticon-clock-3"></i>
+                                                        </div>
+                                                        <span>وقت متاح</span>
+                                                        <h6 class="title">۰۹ أكون - ۰۶ مساءً, الشمس - الخميس</h6>
+                                                    </div>
+                                                    <ul class="social-icons">
+                                                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                                        </li>
+                                                        <li><a href="#"><i
+                                                                    class="fa-brands fa-facebook-f"></i></a></li>
+                                                        <li><a href="#"><i
+                                                                    class="fa-brands fa-linkedin-in"></i></a></li>
+                                                        <li><a href="#"><i class="fa-brands fa-behance"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </form>
+                                        </div>
+
+                                        <div class="footer-column col-lg-3 col-sm-6">
+                                            <div class="footer-widget links-widget pl-lg-30 pl-md--0">
+                                                <h4 class="widget-title">خدماتنا</h4>
+                                                <div class="widget-content">
+                                                    <ul class="user-links style-two">
+                                                        <li><a href="#">التسويق الرقمي</a></li>
+                                                        <li><a href="#">تصميم العلامات التجارية</a></li>
+                                                        <li><a href="#">تصميم المنتج</a></li>
+                                                        <li><a href="#">تطوير الشبكة</a></li>
+                                                        <li><a href="#">تطوير التطبيقات</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="footer-column col-lg-3 col-sm-6">
+                                            <div class="footer-widget links-widget two pl-lg-30 pl-md--0">
+                                                <h4 class="widget-title">رابط مفيد</h4>
+                                                <div class="widget-content">
+                                                    <ul class="user-links style-two">
+                                                        <li><a href="#">معلومات عنا</a></li>
+                                                        <li><a href="#">خدماتنا</a></li>
+                                                        <li><a href="#">لدينا محفظة</a></li>
+                                                        <li><a href="#">فريقنا</a></li>
+                                                        <li><a href="#">اتصل بنا</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="footer-column col-lg-3 col-sm-6">
+                                            <div class="footer-widget about-widget">
+                                                <h4 class="widget-title">النشرة الإخبارية</h4>
+                                                <div class="text">وقد تم الاعتماد على عملاء الشركات والترفيه
+                                                    للمسافرين </div>
+                                                <div class="subscribe-form-two">
+                                                    <form method="post" action="#">
+                                                        <div class="form-group">
+                                                            <input type="email" name="email" class="email" value
+                                                                placeholder="عنوان بريدك  الإلكتروني" required>
+                                                            <button type="button" class="theme-btn"><span
+                                                                    class="btn-title">إشترك
+                                                                    الآن</span><i
+                                                                    class="btn-icon far fa-arrow-left-long btn-icon me-2 font-size-18"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="footer-bottom">
-                    <div class="auto-container">
-                        <div class="inner-container">
-                            <div class="copyright-text">© حقوق الطبع والنشر لعام ۲۰۲۳ لشركة ديجيتكس</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="scroll-to-top scroll-to-target arrow-btn" data-target="html" style><i
-                        class="fa-sharp fa-solid fa-arrow-up"></i></div>
-            </footer>
+                            <div class="footer-bottom">
+                                <div class="auto-container">
+                                    <div class="inner-container">
+                                        <div class="copyright-text">© حقوق الطبع والنشر لعام ۲۰۲۳ لشركة ديجيتكس</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="scroll-to-top scroll-to-target arrow-btn" data-target="html" style><i
+                                    class="fa-sharp fa-solid fa-arrow-up"></i></div>
+                        </footer>
 
-        </div>
-        <script src="{{ asset('front/js/jquery.js') }}"></script>
-        <script src="{{ asset('front/js/popper.min.js') }}"></script>
-        <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('front/js/slick.min.js') }}"></script>
-        <script src="{{ asset('front/js/slick-animation.min.js') }}"></script>
-        <script src="{{ asset('front/js/jquery.fancybox.js') }}"></script>
-        <script src="{{ asset('front/js/progress-bar.js') }}"></script>
-        <script src="{{ asset('front/js/wow.js') }}"></script>
-        <script src="{{ asset('front/js/appear.js') }}"></script>
-        <script src="{{ asset('front/js/mixitup.js') }}"></script>
-        <script src="{{ asset('front/js/script.js') }}"></script>
+                    </div>
+                    <script src="{{ asset('front/js/jquery.js') }}"></script>
+                    <script src="{{ asset('front/js/popper.min.js') }}"></script>
+                    <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
+                    <script src="{{ asset('front/js/slick.min.js') }}"></script>
+                    <script src="{{ asset('front/js/slick-animation.min.js') }}"></script>
+                    <script src="{{ asset('front/js/jquery.fancybox.js') }}"></script>
+                    <script src="{{ asset('front/js/progress-bar.js') }}"></script>
+                    <script src="{{ asset('front/js/wow.js') }}"></script>
+                    <script src="{{ asset('front/js/appear.js') }}"></script>
+                    <script src="{{ asset('front/js/mixitup.js') }}"></script>
+                    <script src="{{ asset('front/js/script.js') }}"></script>
     </body>
 
 

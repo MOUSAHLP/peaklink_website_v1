@@ -1,34 +1,49 @@
 <div>
-
     {{-- $AboutUs --}}
+    <section dir="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'rtl' : 'ltr' }}" class="page-title"
+        style="background-image: url({{ $AboutUs->sectionImage->url }});">
+        <div class="auto-container">
+            <div class="title-outer text-center">
+                <h1 class="title">{{ __('about_us.AboutUs') }}</h1>
+                <ul class="page-breadcrumb">
+                    @if (app()->getLocale() == 'ar')
+                        <li>{{ __('about_us.AboutUs') }}</li>
+                        <li><a href="{{ route('Home') }}">{{ __('about_us.Home') }}</a></li>
+                    @else
+                        <li><a href="{{ route('Home') }}">{{ __('about_us.Home') }}</a></li>
+                        <li>{{ __('about_us.AboutUs') }}</li>
+                    @endif
+                </ul>
+            </div>
+        </div>
+    </section>
     <section class="about-section innerpage">
+
         <div class="auto-container">
             <div class="row">
-
-           
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
                     <div class="inner-column">
                         <div class="image-box">
                             <figure class="image overlay-anim">
-                                <x-curator-glider :media="$AboutUs->back_image" :alt="$AboutUs->title"/>
+                                <x-curator-glider :media="$AboutUs->back_image" :alt="$AboutUs->title" />
                             </figure>
 
-                            @if($AboutUs->video != null)
-                            <div class="play-box">
-                                <figure class="image-2 overlay-anim">
-                                    <img src="{{ asset('storage/'.$AboutUs->video) }}" width="200" alt="{{ $AboutUs->title }}">
-                                </figure>
-                                <a title href="#" data-fancybox="gallery"
-                                    data-caption>
-                                    <i class="icon fa fa-play"></i>
-                                </a>
-                            </div>
-                                
+                            @if ($AboutUs->video != null)
+                                <div class="play-box">
+                                    <figure class="image-2 overlay-anim">
+                                        <img src="{{ asset('storage/' . $AboutUs->video) }}" width="200"
+                                            alt="{{ $AboutUs->title }}">
+                                    </figure>
+                                    <a title href="#" data-fancybox="gallery" data-caption>
+                                        <i class="icon fa fa-play"></i>
+                                    </a>
+                                </div>
                             @endif
 
                             <div class="exp-box">
                                 <div class="icon-box">
-                                    <img src="{{ asset('front/images/resource/tv.png') }}" alt="{{ $AboutUs->title }}">
+                                    <img src="{{ asset('front/images/resource/tv.png') }}"
+                                        alt="{{ $AboutUs->title }}">
                                 </div>
                                 <h4 class="title">{{ $AboutUs->label_title }}</h4>
                             </div>
@@ -45,28 +60,27 @@
                             </div>
                         </div>
                         <div class="inner-box">
-                           
+
                             @isset($AboutUs->facts)
-                                
-                            @foreach ($AboutUs->facts as $fact )
-                            
-                            <div class="content-box">
-                                <span>{{ $fact['number']  }}</span>
-                                <h6 class="title">{{ $fact['title'] }}</h6>
-                            </div>
-                            @endforeach
+
+                                @foreach ($AboutUs->facts as $fact)
+                                    <div class="content-box">
+                                        <span>{{ $fact['number'] }}</span>
+                                        <h6 class="title">{{ $fact['title'] }}</h6>
+                                    </div>
+                                @endforeach
                             @endisset
-                           
+
 
                         </div>
                         <div class="btn-box">
-                            <a href="page-about.html" class="theme-btn-v2">البدء <i
+                            <a href="{{ route('contactUs') }}" class="theme-btn-v2">{{ __('about_us.start') }} <i
                                     class="btn-icon far fa-arrow-left-long btn-icon me-1 font-size-18"></i></a>
-                            <div class="contact-btn">
+                            <a href="tel:{{ $AboutUs->phone }}" class="contact-btn">
                                 <i class="flaticon-telephone-1"></i>
-                                <span>اتصل بنا</span>
+                                <span>{{ __('about_us.contactUs') }}</span>
                                 <h6 class="title">{{ $AboutUs->phone }}</h6>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -75,8 +89,7 @@
     </section>
 
 
-       {{-- faqs  Section  --}}
-       <livewire:front.home-page.faqs.show-faq/>
+    {{-- faqs  Section  --}}
+    <livewire:front.home-page.faqs.show-faq />
 
 </div>
-
