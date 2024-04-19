@@ -27,105 +27,111 @@ class AboutUsResource extends Resource
     protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 3;
 
-                public static function getModelLabel(): string
-            {
-                return 'من نحن';
-            }
-                public static function getPluralLabel(): string
-            {
-                return 'من نحن';
-            }
-                public static function getNavigationLabel(): string
-            {
-                return 'من نحن';
-            }
-            public static function getNavigationBadge(): ?string
-            {
-                return static::getModel()::count();
-            }
-            public static function getNavigationBadgeColor(): ?string
-            {
-                return static::getModel()::count() > 10 ? 'warning' : 'info';
-            }
-     
+    public static function getModelLabel(): string
+    {
+        return 'من نحن';
+    }
+    public static function getPluralLabel(): string
+    {
+        return 'من نحن';
+    }
+    public static function getNavigationLabel(): string
+    {
+        return 'من نحن';
+    }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getModel()::count() > 10 ? 'warning' : 'info';
+    }
+
 
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-               Section::make()
-               ->schema([
-                CuratorPicker::make('back_image')->label(__(''))
-                ->size('sm') 
-                ->outlined(false)
-                ->color('info')
-                ->constrained(true)
-                ->listDisplay(false)
-                ->columnSpanFull(),
-                
-                Forms\Components\TextInput::make('title')
-                ->label('العنوان')
-                ->maxLength(20)
-                ->required(),
-         
-        
-            Forms\Components\TextInput::make('phone')
-            ->label('رقم الهاتف')
-                ->tel()
-                ->required()
-                ->maxLength(255),
-           
-            Forms\Components\TextInput::make('label_title')
-            ->label('عنوان الصورة')
-            ->maxLength(20)
-                ->required(),
-                
-                Forms\Components\TextInput::make('description')
-                ->label('الوصف')
-                ->maxLength(255)
-                    ->required()
-                ,
+                Section::make()
+                    ->schema([
 
-                Forms\Components\Toggle::make('Has_Video')
-                ->label(_("هل لديك فيديو ؟"))
-                ->columnSpanFull()
-                ->dehydrated()
-                ->default(false)
-                ->live(),
-            Forms\Components\FileUpload::make('video')
-            ->label(_("الفيديو"))
-                ->columnSpanFull()
-                ->required()
-                ->hidden(fn (Get $get): bool => !$get('Has_Video')),
+                        CuratorPicker::make('section_image')->label(__('صورة القسم'))
+                            ->size('sm')
+                            ->outlined(false)
+                            ->color('info')
+                            ->constrained(true)
+                            ->listDisplay(false)
+                            ->columnSpanFull(),
 
-                
-                
-               ])->columns(2)
-               ->columnSpanFull(),
 
-               Section::make()
-               ->schema([
-                Repeater::make('facts')
-            ->label('الاحصائيات')
+                        Forms\Components\TextInput::make('title')
+                            ->label('العنوان')
+                            ->maxLength(20)
+                            ->required(),
 
-               ->schema([
-                Forms\Components\TextInput::make('number')
-            ->label('الاحصائية')
-                ->numeric()
-                ,
-                Forms\Components\TextInput::make('title')
-            ->label('عنوان الاحصائية')
-            ->maxLength(30)
-                ->string()
-                ,
-               ])->grid(3)
-               ->columns(2),
+                        CuratorPicker::make('back_image')->label(__(''))
+                            ->size('sm')
+                            ->outlined(false)
+                            ->color('info')
+                            ->constrained(true)
+                            ->listDisplay(false)
+                            ->columnSpanFull(),
 
-               ])
-               ->columnSpanFull(),
+                        Forms\Components\TextInput::make('phone')
+                            ->label('رقم الهاتف')
+                            ->tel()
+                            ->required()
+                            ->maxLength(255),
 
-               
+                        Forms\Components\TextInput::make('label_title')
+                            ->label('عنوان الصورة')
+                            ->maxLength(20)
+                            ->required(),
+
+                        Forms\Components\TextInput::make('description')
+                            ->label('الوصف')
+                            ->maxLength(255)
+                            ->required(),
+
+                        Forms\Components\Toggle::make('Has_Video')
+                            ->label(_("هل لديك فيديو ؟"))
+                            ->columnSpanFull()
+                            ->dehydrated()
+                            ->default(false)
+                            ->live(),
+                        Forms\Components\FileUpload::make('video')
+                            ->label(_("الفيديو"))
+                            ->columnSpanFull()
+                            ->required()
+                            ->hidden(fn (Get $get): bool => !$get('Has_Video')),
+
+
+
+                    ])->columns(2)
+                    ->columnSpanFull(),
+
+                Section::make()
+                    ->schema([
+                        Repeater::make('facts')
+                            ->label('الاحصائيات')
+
+                            ->schema([
+                                Forms\Components\TextInput::make('number')
+                                    ->label('الاحصائية')
+                                    ->numeric(),
+                                Forms\Components\TextInput::make('title')
+                                    ->label('عنوان الاحصائية')
+                                    ->maxLength(30)
+                                    ->string(),
+                            ])->grid(3)
+                            ->columns(2),
+
+                    ])
+                    ->columnSpanFull(),
+
+
             ]);
     }
 
@@ -133,16 +139,18 @@ class AboutUsResource extends Resource
     {
         return $table
             ->columns([
+                CuratorColumn::make('section_image')
+                    ->label('صورة القسم')
+                    ->width('100px'),
                 Tables\Columns\TextColumn::make('title')
-                ->label('العنوان')
+                    ->label('العنوان')
                     ->searchable(),
-                    CuratorColumn::make('back_image')
+                CuratorColumn::make('back_image')
                     ->label('الصورة')
-                    ->width('100px')
-                    ,
-                    Tables\Columns\TextColumn::make('phone')
+                    ->width('100px'),
+                Tables\Columns\TextColumn::make('phone')
                     ->label('رقم الهاتف')
-                        ->searchable(),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -162,7 +170,7 @@ class AboutUsResource extends Resource
                         Tables\Actions\EditAction::make(),
                         Tables\Actions\DeleteAction::make(),
                     ]
-                  ),
+                ),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

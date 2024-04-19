@@ -2889,7 +2889,7 @@ figure.image {
 .sec-title.light .text,
 .sec-title.light h2,
 .sec-title.light h1 {
-    color: #fff
+    color: #000
 }
 
 .sec-title.light .sub-title {
@@ -3716,7 +3716,7 @@ figure.image {
 
 .about-section {
     position: relative;
-    padding: 120px 0;
+    padding: 120px 0 40px;
     background-image: url(../images/background/about-bg.jpg);
     -o-object-fit: cover;
     object-fit: cover;

@@ -1209,14 +1209,3 @@ select {
   --tw-text-opacity: 1;
   color: rgba(var(--primary-400), var(--tw-text-opacity));
 }
-
-li.relative.aspect-square {
-  display: inline-block;
-  width: 100px;
-  margin: 10px;
-}
-button.fi-icon-btn.relative.flex.items-center.justify-center.rounded-lg.outline-none.transition.duration-75.focus-visible\:ring-2.disabled\:pointer-events-none.disabled\:opacity-70.-m-1\.5.h-9.w-9.fi-color-gray.text-gray-400.hover\:text-gray-500.focus-visible\:ring-primary-600.dark\:text-gray-500.dark\:hover\:text-gray-400.dark\:focus-visible\:ring-primary-500.fi-modal-close-btn {
-  color: red;
-  cursor: pointer;
-  z-index: 10000;
-}

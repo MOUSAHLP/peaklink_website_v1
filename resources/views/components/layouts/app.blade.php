@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html dir="rtl"   lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html dir="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'rtl' : 'ltr' }}"
+    lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
-   
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
@@ -46,16 +47,15 @@
     <link rel="icon" href="{{ asset('front/images/favicon.png') }}" type="image/x-icon">
 
     {{-- RTL Style  --}}
-    <link href="{{ asset('front/css/style-rtl.css') }}" rel="stylesheet">
-
-    {{-- LTR Style  --}}
-    {{-- <link href="{{ asset('front/css/style.css') }}" rel="stylesheet"> --}}
-
-
-
+    @if (str_replace('_', '-', app()->getLocale()) == 'ar')
+        <link href="{{ asset('front/css/style-rtl.css') }}" rel="stylesheet">
+    @else
+        {{-- LTR Style  --}}
+        <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
+    @endif
 </head>
 
-<body class="rtl">
+<body class="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'rtl' : 'ltr' }}">
     <div class="page-wrapper">
 
         <header class="main-header header-style-one">
@@ -64,7 +64,8 @@
 
                     <div class="main-box">
                         <div class="logo-box">
-                            <div class="logo"><a href="{{ route('Home') }}"><img src="{{ asset('front/images/logo.png') }}" alt title="Tronis"></a>
+                            <div class="logo"><a href="{{ route('Home') }}"><img
+                                        src="{{ asset('front/images/logo.png') }}" alt title="Tronis"></a>
                             </div>
                         </div>
 
@@ -74,8 +75,8 @@
                                     <li class="current"> <a href="{{ route('Home') }}">الرئيسية</a> </li>
                                     <li> <a href="{{ route('aboutUs') }}">من حن</a></li>
                                     <li> <a href="#">الخدمات</a> </li>
-                                   
-                                   
+
+
                                     <li class="dropdown"><a href="#">الصفحات</a>
                                         <ul>
                                             <li> <a href="{{ route('Projects') }}">المشاريع</a> </li>
@@ -84,9 +85,18 @@
                                             <li> <a href="#">المدونات</a></li>
                                         </ul>
                                     </li>
-                                 
-                                  
+
+
                                     <li><a href="{{ route('contactUs') }}">اتواصل بنا</a></li>
+
+
+                                    <li class="dropdown"><a
+                                            href="#">{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'العربية' : 'English' }}</a>
+                                        <ul>
+                                            <li> <a href="{{ route('ar') }}">العربية</a> </li>
+                                            <li> <a href="{{ route('en') }}">English</a> </li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </nav>
 
@@ -111,7 +121,8 @@
 
                 <nav class="menu-box">
                     <div class="upper-box">
-                        <div class="nav-logo"><a href="{{ route('Home') }}"><img src="{{ asset('front/images/logo.png') }}" alt title></a></div>
+                        <div class="nav-logo"><a href="{{ route('Home') }}"><img
+                                    src="{{ asset('front/images/logo.png') }}" alt title></a></div>
                         <div class="close-btn"><i class="icon fa fa-times"></i></div>
                     </div>
                     <ul class="navigation clearfix">
@@ -131,9 +142,7 @@
                             <div class="contact-info-box">
                                 <span class="icon lnr-icon-envelope1"></span>
                                 <span class="title">Send Email</span>
-                                <a
-                                    href=""><span
-                                        class="__cf_email__"
+                                <a href=""><span class="__cf_email__"
                                         data-cfemail="">[email&#160;protected]</span></a>
                             </div>
                         </li>
@@ -174,7 +183,8 @@
                     <div class="inner-container">
 
                         <div class="logo">
-                            <a  href="{{ route('Home') }}" title><img src="{{ asset('front/images/logo.png') }}" alt title></a>
+                            <a href="{{ route('Home') }}" title><img src="{{ asset('front/images/logo.png') }}" alt
+                                    title></a>
                         </div>
 
                         <div class="nav-outer">
@@ -208,8 +218,9 @@
                         <div class="footer-column col-lg-3 col-sm-6">
                             <div class="footer-widget contact-widget">
                                 <div class="logo-box">
-                                    <div class="logo"><a href="{{ route('Home') }}"><img src="{{ asset('front/images/logo.png') }}" alt
-                                                title="Tronis"></a></div>
+                                    <div class="logo"><a href="{{ route('Home') }}"><img
+                                                src="{{ asset('front/images/logo.png') }}" alt title="Tronis"></a>
+                                    </div>
                                 </div>
                                 <div class="widget-content">
                                     <div class="content-box">
