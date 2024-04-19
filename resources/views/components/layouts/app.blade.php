@@ -25,7 +25,7 @@
     <!-- MS Tile - for Microsoft apps-->
     <meta name="msapplication-TileImage" content="@yield('meta_image')">
     <!-- Site Name, Title, and Description to be displayed -->
-    <meta property="og:site_name" content="كلاود زون">
+    <meta property="og:site_name" content="peaklink">
     <meta property="og:title" content="@yield('meta_title')">
     <meta property="og:description" content="@yield('meta_description')">
     <!-- Image to display -->

@@ -9,11 +9,11 @@
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
                     <div class="inner-column">
                         <div class="image-box">
+                        @if($AboutUs != null)
                             <figure class="image overlay-anim">
                                 <x-curator-glider :media="$AboutUs->back_image" :alt="$AboutUs->title"/>
                             </figure>
-
-                            @if($AboutUs->video != null)
+                     
                             <div class="play-box">
                                 <figure class="image-2 overlay-anim">
                                     <img src="{{ asset('storage/'.$AboutUs->video) }}" width="200" alt="{{ $AboutUs->title }}">
@@ -24,7 +24,6 @@
                                 </a>
                             </div>
                                 
-                            @endif
 
                             <div class="exp-box">
                                 <div class="icon-box">
@@ -32,6 +31,7 @@
                                 </div>
                                 <h4 class="title">{{ $AboutUs->label_title }}</h4>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -39,9 +39,20 @@
                 <div class="content-column col-lg-6 col-md-12 col-sm-12">
                     <div class="inner-column">
                         <div class="sec-title light">
-                            <h2>{{ $AboutUs->title }}</h2>
+                            <h2>
+                            @if ($AboutUs != null)
+                                
+                            {{  $AboutUs->title }}
+                            @else
+                                    ghgregergreerggre
+                            @endif    </h2>
                             <div class="text">
-                                {{ $AboutUs->description }}
+                            @if ($AboutUs != null)
+                                
+                                {{  $AboutUs->description }}
+                                @else
+                                        ghgregergreerggre
+                                @endif 
                             </div>
                         </div>
                         <div class="inner-box">
@@ -65,7 +76,14 @@
                             <div class="contact-btn">
                                 <i class="flaticon-telephone-1"></i>
                                 <span>اتصل بنا</span>
-                                <h6 class="title">{{ $AboutUs->phone }}</h6>
+                                <h6 class="title">
+                                @if ($AboutUs != null)
+                                
+                                {{  $AboutUs->phone }}
+                                @else
+                                        ghgregergreerggre
+                                @endif 
+                                   </h6>
                             </div>
                         </div>
                     </div>

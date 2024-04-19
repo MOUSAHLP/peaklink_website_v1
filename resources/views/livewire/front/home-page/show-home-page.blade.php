@@ -1,6 +1,6 @@
 <div>
 
-   {{-- Slider SEction  --}}
+   {{-- Slider Section  --}}
    <livewire:front.home-page.slider.show-slider/>
 
    {{-- Services Section  --}}
@@ -9,12 +9,15 @@
     {{-- About Section  --}}
     <livewire:front.home-page.about.show-about-us/>
     
-    {{-- FlowWork Section  --}}
-    <livewire:front.home-page.flowwork.show-flowwork/>
-    
     {{-- Projects Section  --}}
     <livewire:front.home-page.project.show-project/>
 
+    {{-- FlowWork Section  --}}
+    <livewire:front.home-page.flowwork.show-flowwork/>
+    
+    {{-- Call Action Section  --}}
+    <livewire:front.home-page.callaction.show-call-action/>
+    
     {{-- Our review Clients Section  --}}
     <livewire:front.home-page.ourreviewclient.show-our-review-client/>
 
@@ -24,8 +27,6 @@
     {{-- pricing Section  --}}
     <livewire:front.home-page.pricing.show-pricing/>
 
-    {{-- Call Action Section  --}}
-    <livewire:front.home-page.callaction.show-call-action/>
 
     {{-- Contact us  Section  --}}
     <livewire:front.home-page.contactus.show-contact-us/>
@@ -41,12 +42,5 @@
 
     {{-- contact-us-bannder  Section  --}}
     <livewire:front.home-page.contacontusbanneder.show-contact-us-bannder/>
-
-
-
-
-
-
-
 
 </div>

@@ -29,7 +29,7 @@
                                     data-fancybox="gallery" data-caption data-animation-in="fadeInLeft"
                                     data-delay-in="0.4">
                                     <i class="fa-sharp fa-solid fa-play"></i>
-                                    <span>الفيديوة</span>
+                                    <span>الفيديو</span>
                                 
                                  @endif
                                 </a>
