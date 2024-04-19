@@ -8319,6 +8319,7 @@ figure.image {
 }
 
 .choose-block .inner-box .title {
+    min-height: 60px;
     position: relative;
     color: var(--theme-color-light);
     font-weight: 500;

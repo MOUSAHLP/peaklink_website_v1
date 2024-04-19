@@ -69,20 +69,22 @@ class SilderPageResource extends Resource
             ->columnSpanFull()
                 ->required(),
             
-                Forms\Components\Toggle::make('Has_Video')
-                ->label(_("هل لديك فيديوة ؟"))
-                ->columnSpanFull()
-                ->dehydrated()
-                ->default(false)
-                ->live(),
-            Forms\Components\FileUpload::make('video')
-            ->label(_("الفيديو"))
-                ->columnSpanFull()
-                ->required()
-                ->hidden(fn (Get $get): bool => !$get('Has_Video')),
+            //     Forms\Components\Toggle::make('Has_Video')
+            //     ->label(_("هل لديك فيديو ؟"))
+            //     ->columnSpanFull()
+            //     ->dehydrated()
+            //     ->default(false)
+            //     ->live(),
+            // Forms\Components\FileUpload::make('video')
+            // ->label(_("الفيديو"))
+            // ->acceptedFileTypes(['video/mp4','video/x-m4v','video/*'])
+            // ->columnSpanFull()
+            //     ->required()
+            //     ->hidden(fn (Get $get): bool => !$get('Has_Video')),
 
 
-                CuratorPicker::make('image')->label(__(''))
+                CuratorPicker::make('image')->label(__('image'))
+                    ->required()
                     ->size('sm') 
                     ->outlined(false)
                     ->color('primary')

@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\OurClientReviewResource\Pages;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 
 class OurClientReviewResource extends Resource
 {
@@ -43,12 +44,24 @@ class OurClientReviewResource extends Resource
             ->schema([
                 Section::make()
                 ->schema([
-                Forms\Components\FileUpload::make('client_image')
-                ->label('صورة العميل')
-                    ->image()
-                    ->avatar()
-                ->columnSpanFull()
-                    ->required(),
+                // Forms\Components\FileUpload::make('client_image')
+                // ->label('صورة العميل')
+                //     ->disk('public')
+                //     ->directory('clients_images')
+                //     ->visibility('public')
+                //     ->image()
+                //     ->avatar()
+                // ->columnSpanFull()
+                //     ->required()
+                //     ->imageEditor(),
+
+                CuratorPicker::make('client_image')->label(__(''))
+                ->size('sm') 
+                ->outlined(false)
+                ->color('info')
+                ->constrained(true)
+                ->listDisplay(false)
+                ->columnSpanFull(),
 
                     Forms\Components\TextInput::make('client_name')
                 ->label('اسم العميل')

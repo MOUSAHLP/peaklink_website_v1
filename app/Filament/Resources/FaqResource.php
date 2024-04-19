@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Repeater;
 use App\Filament\Resources\FaqResource\Pages;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Resources\Concerns\Translatable;
 
 class FaqResource extends Resource
@@ -46,10 +47,21 @@ class FaqResource extends Resource
                 Forms\Components\TextInput::make('title')
                 ->label('العنوان')
                     ->required(),
-                Forms\Components\FileUpload::make('image')
-                ->label('الصورة')
-                    ->image()
-                    ->required(),
+
+                // Forms\Components\FileUpload::make('image')
+                // ->label('الصورة')
+                //     ->image()
+                //     ->required(),
+
+
+                    CuratorPicker::make('image')->label(__('الصورة'))
+                    ->size('sm') 
+                    ->outlined(false)
+                    ->color('info')
+                    ->constrained(true)
+                    ->listDisplay(false)
+                    ->columnSpanFull(),
+
                     Forms\Components\Toggle::make('status')
                     ->label('حالة نشر الاسئلة'),
                

@@ -14,6 +14,7 @@ use Filament\Forms\Components\Repeater;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\WhyChooseOurServiceResource\Pages;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 
 class WhyChooseOurServiceResource extends Resource
 {
@@ -65,24 +66,32 @@ class WhyChooseOurServiceResource extends Resource
 
             ->columnSpanFull()
                 ->required(),
-            Forms\Components\FileUpload::make('image')
-            ->label('الصورة')
+            // Forms\Components\FileUpload::make('image')
+            // ->label('الصورة')
+            // ->image()
+            // ->columnSpanFull()
+            // ->required(),
 
-                ->image()
-            ->columnSpanFull()
-                ->required(),
+            Forms\Components\Toggle::make('Has_title_experience')
+            ->label(_("هل لديك عنوان  سنة الخبرة ؟"))
+            ->dehydrated()
+            ->default(false)
+            ->live(),
 
-                Forms\Components\Toggle::make('Has_title_experience')
-                ->label(_("هل لديك عنوان  سنة الخبرة ؟"))
-                ->dehydrated()
-                ->default(false)
-                ->live(),
+            Forms\Components\Toggle::make('Has_years_of_experience')
+            ->label(_("هل لديك سنة من الخبرة ؟"))
+            ->dehydrated()
+            ->default(false)
+            ->live(),
 
-                Forms\Components\Toggle::make('Has_years_of_experience')
-                ->label(_("هل لديك سنة من الخبرة ؟"))
-                ->dehydrated()
-                ->default(false)
-                ->live(),
+            CuratorPicker::make('image')->label(__(''))
+            ->size('sm') 
+            ->outlined(false)
+            ->color('info')
+            ->constrained(true)
+            ->listDisplay(false)
+            ->columnSpanFull(),
+
                
                 Forms\Components\Toggle::make('status')
                 ->label('حالة النشر'),
@@ -107,11 +116,11 @@ class WhyChooseOurServiceResource extends Resource
             ->maxLength(30)
             ->label('العنوان'),
 
-            Forms\Components\FileUpload::make('image')
-            ->label('الصورة')
+        //     Forms\Components\FileUpload::make('image')
+        //     ->label('الصورة')
 
-            ->image()
-        ->columnSpanFull(),
+        //     ->image()
+        // ->columnSpanFull(),
 
                 ])->grid(3)
                 ->columns(1)
