@@ -2889,7 +2889,7 @@ figure.image {
 .sec-title.light .text,
 .sec-title.light h2,
 .sec-title.light h1 {
-    color: #000
+    color: #fff
 }
 
 .sec-title.light .sub-title {
@@ -8324,6 +8324,7 @@ figure.image {
 }
 
 .choose-block .inner-box .title {
+    min-height: 60px;
     position: relative;
     color: var(--theme-color-light);
     font-weight: 500;

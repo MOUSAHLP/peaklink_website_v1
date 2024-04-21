@@ -14,6 +14,7 @@ use Filament\Forms\Components\Repeater;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\WhyChooseOurServiceResource\Pages;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 
 class WhyChooseOurServiceResource extends Resource
 {
@@ -24,17 +25,23 @@ class WhyChooseOurServiceResource extends Resource
     protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 9;
 
+
+            public static function getNavigationGroup(): ?string
+            {
+                return __('home/homepage.homepage');
+            }
+
                 public static function getModelLabel(): string
             {
-                return 'لماذا يجب عليك اختيار خدماتنا';
+                return __('home/why_choose_our_service.why_choose_our_service');
             }
                 public static function getPluralLabel(): string
             {
-                return 'لماذا يجب عليك اختيار خدماتنا';
+                return __('home/why_choose_our_service.why_choose_our_service');
             }
                 public static function getNavigationLabel(): string
             {
-                return 'لماذا يجب عليك اختيار خدماتنا';
+                return __('home/why_choose_our_service.why_choose_our_service');
             }
          
      
@@ -46,72 +53,82 @@ class WhyChooseOurServiceResource extends Resource
              Section::make()
              ->schema([
                 Forms\Components\TextInput::make('title')
-                ->label('العنوان')
+                    ->label(__("filament_form.title"))
                 ->maxLength(50)
                 ->required(),
                 Forms\Components\TextInput::make('years_of_experience')
-                ->numeric()
-                ->label('سنة من الخبرة')
+                    ->label(__("filament_form.years_of_experience"))
+                    ->numeric()
                 ->hidden(fn (Get $get): bool => !$get('Has_years_of_experience'))
                     ->required(),
                 Forms\Components\TextInput::make('title_experience')
-                ->maxLength(30)
-                ->label('عنوان  سنة الخبرة')
+                    ->label(__("filament_form.title_experience"))
+                    ->maxLength(30)
                 ->hidden(fn (Get $get): bool => !$get('Has_title_experience'))
                     ->required(),
             Forms\Components\TextInput::make('description')
-            ->maxLength(255)
-            ->label('الوصف')
+                    ->label(__("filament_form.description"))
+                    ->maxLength(255)
+                   ->columnSpanFull()
+                    ->required(),
+            // Forms\Components\FileUpload::make('image')
+            // ->label('الصورة')
+            // ->image()
+            // ->columnSpanFull()
+            // ->required(),
 
-            ->columnSpanFull()
-                ->required(),
-            Forms\Components\FileUpload::make('image')
-            ->label('الصورة')
+            Forms\Components\Toggle::make('Has_title_experience')
+            ->label(__("filament_form.Has_title_experience"))
+            ->dehydrated()
+            ->default(false)
+            ->live(),
 
-                ->image()
-            ->columnSpanFull()
-                ->required(),
+            Forms\Components\Toggle::make('Has_years_of_experience')
+            ->label(__("filament_form.Has_years_of_experience"))
+            ->dehydrated()
+            ->default(false)
+            ->live(),
 
-                Forms\Components\Toggle::make('Has_title_experience')
-                ->label(_("هل لديك عنوان  سنة الخبرة ؟"))
-                ->dehydrated()
-                ->default(false)
-                ->live(),
+            CuratorPicker::make('image')
+            ->label(__("filament_form.image"))
+            ->size('sm') 
+            ->outlined(false)
+            ->color('info')
+            ->constrained(true)
+            ->listDisplay(false)
+            ->columnSpanFull(),
 
-                Forms\Components\Toggle::make('Has_years_of_experience')
-                ->label(_("هل لديك سنة من الخبرة ؟"))
-                ->dehydrated()
-                ->default(false)
-                ->live(),
                
                 Forms\Components\Toggle::make('status')
+                ->label(__("filament_form.status"))
                 ->label('حالة النشر'),
 
                 Repeater::make('features')
-                ->label('المميزات')
+                ->label(__("filament_form.features"))
                 ->schema([
                     Forms\Components\TextInput::make('title')
                     ->maxLength(50)
-                ->label('العنوان'),
+                ->label(__("filament_form.title")),
+
                 ])->grid(3)
                 ->columns(1)
         ->columnSpanFull()
         ,
             
                 Repeater::make('facts')
-                ->label('امتيازات')
+                ->label(__("filament_form.facts"))
 
                 ->schema([
                     
             Forms\Components\TextInput::make('title')
-            ->maxLength(30)
-            ->label('العنوان'),
+                ->label(__("filament_form.title"))
+                ->maxLength(30),
 
-            Forms\Components\FileUpload::make('image')
-            ->label('الصورة')
+        //     Forms\Components\FileUpload::make('image')
+        //     ->label('الصورة')
 
-            ->image()
-        ->columnSpanFull(),
+        //     ->image()
+        // ->columnSpanFull(),
 
                 ])->grid(3)
                 ->columns(1)
@@ -132,14 +149,22 @@ class WhyChooseOurServiceResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')->label('العنوان'),
-                Tables\Columns\ImageColumn::make('image')->label('الصورة'),
-                Tables\Columns\ToggleColumn::make('status')->label('حالة النشر'),
+                Tables\Columns\TextColumn::make('title')
+                ->label(__("filament_form.title")),
+
+                Tables\Columns\ImageColumn::make('image')
+                ->label(__("filament_form.image")),
+
+                Tables\Columns\ToggleColumn::make('status')
+                ->label(__("filament_form.status")),
+                
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__("filament_form.updated_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

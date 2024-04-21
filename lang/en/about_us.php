@@ -10,15 +10,12 @@ return [
     'sectionImage' => 'section image',
     'title' => 'title',
     'backImage' => 'back image',
-    'phone' =>'phone',
+    'phone' => 'phone',
     'label_title' => 'label title',
     'description' => 'description',
     'facts' => 'facts',
     'fact' => 'fact',
     'fact_title' => 'fact title',
-
-    'description' => 'description',
-    'description' => 'description',
-
+    'not_found' => 'No Content',
 
 ];

@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\BrandResource\Pages;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 
 class BrandResource extends Resource
 {
@@ -60,12 +61,22 @@ class BrandResource extends Resource
     
                         ->required()
                         ->maxLength(255),
-                    Forms\Components\FileUpload::make('logo')
-                    ->label('شعار العلامة التجارية')
-                    ->image()
-                    ->imageEditor()
-                    ->columnSpanFull()
-                        ->required(),
+                    // Forms\Components\FileUpload::make('logo')
+                    // ->label('شعار العلامة التجارية')
+                    // ->image()
+                    // ->imageEditor()
+                    // ->columnSpanFull()
+                    //     ->required(),
+
+                        CuratorPicker::make('logo')
+                        ->label(__('شعار العلامة التجارية'))
+                        ->size('sm') 
+                        ->outlined(false)
+                        ->color('info')
+                        ->constrained(true)
+                        ->listDisplay(false)
+                        ->columnSpanFull(),
+
                     Forms\Components\Toggle::make('status')
                     ->columnSpanFull()
                     ->label('حالة نشر العلامة التجارية'),

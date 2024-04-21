@@ -30,17 +30,22 @@ class ContactUsContactResource extends Resource
 
     protected static ?int $navigationSort = 14;
 
+    
+        public static function getNavigationGroup(): ?string
+        {
+            return __('home/homepage.homepage');
+        }
         public static function getModelLabel(): string
         {
-            return 'تواصل بنا';
+            return __('home/contact_us.contact_us');
         }
             public static function getPluralLabel(): string
         {
-            return 'تواصل بنا';
+            return __('home/contact_us.contact_us');
         }
             public static function getNavigationLabel(): string
         {
-            return 'تواصل بنا';
+            return __('home/contact_us.contact_us');
         }
 
     public static function form(Form $form): Form
@@ -51,26 +56,28 @@ class ContactUsContactResource extends Resource
                ->schema(
                 [
                     Repeater::make("contacts")
-                    ->label(" تواصل بنا")
+                    ->label(__('home/contact_us.contact_us'))
                     ->schema([
                         Select::make('btn_type')
-                        ->options(["email"=>"البريد الالكتروني","text"=>"النص","phone"=>"رقم الهاتف","url"=>"الرابط"])
+                        ->options(["email"=> __("filament_form.email"),
+                        "text"=>__("filament_form.text"),
+                        "phone"=>__("filament_form.phone"),
+                        "url"=>__("filament_form.link")])
                         ->label('is -> [email - text - phone - url]')
-                        ->required()
-                        ,
+                        ->required(),
 
                         Repeater::make("contacts")
-                        ->label("نوع  التواصل")
+                        ->label(__("filament_form.contact_us_info"))
                         ->schema([
-                        TextInput::make('name')
-                        ->label('بيانات التواصل')
+                        TextInput::make('value')
+                        ->label(__("filament_form.contact_us_value"))
                         ->required(),
                         TextInput::make('title')
-                        ->label('العنوان')
+                        ->label(__("filament_form.title"))
                         ->required(),
 
                         Toggle::make('status')
-                        ->label('حالة الظهور')
+                        ->label(__("filament_form.status"))
                         ->columnSpanFull(),
 
                         ])
@@ -88,12 +95,38 @@ class ContactUsContactResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('contacts.name'),
+                Tables\Columns\TextColumn::make('contacts.contacts.btn_type')
+                ->label(__("filament_form.contact_us_type"))
+                ->badge()
+                ->color("danger")
+                ->state(function (ContactUsContact $record){
+                    $types = [];
+                    foreach ($record->contacts as $key => $value) {
+                        $types[] = $value["btn_type"];
+                    }
+                    return $types;
+                }),
+
+                Tables\Columns\TextColumn::make('contacts.contacts.name')
+                ->label(__("filament_form.contact_us_values"))
+                ->badge()
+                ->state(function (ContactUsContact $record){
+                    $values = [];
+                    foreach ($record->contacts as $key => $contacts) {
+                        foreach ($contacts["contacts"] as $key => $value) {
+                            $values[ ] = $value["value"];
+                        }
+                    }
+                    return $values;
+                }),
+
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__("filament_form.updated_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -107,8 +140,11 @@ class ContactUsContactResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    // Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ])
+            ->emptyStateActions([
+                Tables\Actions\CreateAction::make(),
             ]);
     }
 

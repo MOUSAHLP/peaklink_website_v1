@@ -66,8 +66,9 @@
 
                     <div class="main-box">
                         <div class="logo-box">
-                            <div class="logo"><a href="{{ route('Home') }}"><img
-                                        src="{{ asset('front/images/logo.png') }}" alt title="Tronis"></a>
+                            <div class="logo">
+                                <a href="{{ route('Home') }}">
+                                    <img src="{{ asset('front/images/logo.png') }}" alt title="Tronis"></a>
                             </div>
                         </div>
 
