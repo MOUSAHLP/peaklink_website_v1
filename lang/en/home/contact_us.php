@@ -2,6 +2,7 @@
 
 return [
     'contact_us' => 'Contact Us',
+    'name' => 'Name',
     'email' => 'Email',
     'phone' => 'Phone',
     'url' => 'Website',

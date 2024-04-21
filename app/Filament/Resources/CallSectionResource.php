@@ -12,6 +12,8 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\CallSectionResource\Pages;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
 
 class CallSectionResource extends Resource
 {
@@ -22,17 +24,22 @@ class CallSectionResource extends Resource
     protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 11;
 
+    
+            public static function getNavigationGroup(): ?string
+            {
+                return __('home/homepage.homepage');
+            }
                 public static function getModelLabel(): string
             {
-                return 'اتصل بنا';
+                return __('home/call_us_section.call_us');
             }
                 public static function getPluralLabel(): string
             {
-                return 'اتصل بنا';
+                return __('home/call_us_section.call_us');
             }
                 public static function getNavigationLabel(): string
             {
-                return 'اتصل بنا';
+                return __('home/call_us_section.call_us');
             }
           
      
@@ -44,49 +51,51 @@ class CallSectionResource extends Resource
                 Section::make()
                 ->schema([
                     Forms\Components\TextInput::make('title')
-                    ->label('العنوان')
+                    ->label(__("filament_form.title"))
                     ->maxLength(30)
                     ->required(),
 
                 Forms\Components\TextInput::make('phone')
-                ->label('رقم الهاتف')
+                    ->label(__("filament_form.phone"))
                 ->hidden(fn (Get $get): bool => !$get('Has_Phone'))
                     ->tel()
                     ->required()
                     ->maxLength(16),
                 Forms\Components\TextInput::make('button_title')
-                ->label('عنوان الزر')
+                    ->label(__("filament_form.button_title"))
                 ->maxLength(20)
                 ->required(),
 
                 Forms\Components\TextInput::make('button_link')
-                ->hidden(fn (Get $get): bool => !$get('Has_Email'))
-                ->label('رابط الزر')
-                ->url()
-                ->required()
-                ->maxLength(50),
+                    ->label(__("filament_form.email"))
+                    ->hidden(fn (Get $get): bool => !$get('Has_Email'))
+                    ->email()
+                    ->required()
+                    ->maxLength(50),
 
-                    
-                    Forms\Components\FileUpload::make('background_image')
-                    ->label('الصورة')
-                    ->image()
-                    ->columnSpanFull()
-                    ->required(),
+                    CuratorPicker::make('background_image')
+                    ->label(__("filament_form.image"))
+                    ->size('sm') 
+                    ->outlined(false)
+                    ->color('info')
+                    ->constrained(true)
+                    ->listDisplay(false)
+                    ->columnSpanFull(),
                     
                     Forms\Components\Toggle::make('Has_Phone')
-                    ->label(_("هل لديك رقم هاتف للتواصل ؟"))
+                    ->label(__("filament_form.Has_Phone"))
                     ->dehydrated()
                     ->default(false)
                     ->live(),
 
                     Forms\Components\Toggle::make('Has_Email')
-                    ->label(_("هل لديك ايميل للتواصل ؟"))
+                    ->label(__("filament_form.Has_Email"))
                     ->dehydrated()
                     ->default(false)
                     ->live(),
 
                 Forms\Components\Toggle::make('status')
-                ->label('حالة النشر')
+                    ->label(__("filament_form.status"))
                 ,
                 ])->columns(4),
             ]);
@@ -97,17 +106,21 @@ class CallSectionResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('button_link')
-                ->label('رابط الزر')
+                    ->label(__("filament_form.button_link"))
                 
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('background_image'),
+                CuratorColumn::make('image')
+                ->label(__("filament_form.icon"))
+                ->width('100px') ,
                 Tables\Columns\ToggleColumn::make('status')
-                ->label('حالة النشر'),
+                ->label(__("filament_form.status")),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__("filament_form.updated_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
