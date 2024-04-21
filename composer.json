@@ -14,8 +14,10 @@
         "bezhansalleh/filament-google-analytics": "^2.0",
         "bezhansalleh/filament-language-switch": "^3.0",
         "bezhansalleh/filament-shield": "^3.2",
+        "blade-ui-kit/blade-icons": "^1.6",
         "filament/filament": "3.2",
         "filament/spatie-laravel-translatable-plugin": "3.2",
+        "guava/filament-icon-picker": "^2.2",
         "guzzlehttp/guzzle": "^7.2",
         "hasnayeen/themes": "^3.0",
         "ibrahimbougaoua/filament-sort-order": "^1.1",
@@ -24,6 +26,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.4",
         "mohamedsabil83/filament-forms-tinyeditor": "^2.2",
+        "owenvoke/blade-fontawesome": "^2.6",
         "pxlrbt/filament-spotlight": "^1.2",
         "z3d0x/filament-fabricator": "^2.0",
         "z3d0x/filament-logger": "^0.6.3"

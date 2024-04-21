@@ -75,26 +75,28 @@
                         <div class="nav-outer">
                             <nav class="nav main-menu">
                                 <ul class="navigation">
-                                    <li class="current"> <a href="{{ route('Home') }}">الرئيسية</a> </li>
-                                    <li> <a href="{{ route('aboutUs') }}">من حن</a></li>
-                                    <li> <a href="#">الخدمات</a> </li>
+                                    <li class="current"> <a href="{{ route('Home') }}"> @lang('home/homepage.homepage')</a> </li>
+                                    <li> <a href="{{ route('aboutUs') }}"> @lang('home/homepage.aboutUS')</a></li>
+                                    <li> <a href="#"> @lang('home/homepage.services')</a> </li>
 
 
-                                    <li class="dropdown"><a href="#">الصفحات</a>
+                                    <li class="dropdown"><a href="#">@lang('home/homepage.pages') </a>
                                         <ul>
-                                            <li> <a href="{{ route('Projects') }}">المشاريع</a> </li>
-                                            <li> <a href="#">الحلول</a> </li>
-                                            <li> <a href="#">المتجر</a></li>
-                                            <li> <a href="#">المدونات</a></li>
+                                            <li> <a href="{{ route('Projects') }}">@lang('home/homepage.projects') </a> </li>
+                                            <li> <a href="{{ route('team') }}"> @lang('home/homepage.team') </a> </li>
+                                            <li> <a href="#"> @lang('home/homepage.products')</a></li>
+                                            <li> <a href="#"> @lang('home/homepage.blogs') </a></li>
                                         </ul>
                                     </li>
 
 
-                                    <li><a href="{{ route('contactUs') }}">اتواصل بنا</a></li>
+                                    <li><a href="{{ route('contactUs') }}"> @lang('home/homepage.contactUs') </a></li>
 
 
-                                    <li class="dropdown"><a
-                                            href="#">{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'العربية' : 'English' }}</a>
+                                    <li class="dropdown">
+                                        <a href="#">{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'العربية' : 'English' }}
+                                            @svg('heroicon-o-globe-alt', ['style' => 'color: white; width: 30px;padding: 5px;'])
+                                        </a>
                                         <ul>
                                             <li> <a href="{{ route('ar') }}">العربية</a> </li>
                                             <li> <a href="{{ route('en') }}">English</a> </li>
@@ -109,7 +111,7 @@
                                 <a href="#" class="search"><i class="flaticon-search-3"></i></a>
                             </div>
                             <div class="btn">
-                                <a href="{{ route('contactUs') }}" class="theme-btn">دعونا نتحدث</a>
+                                <a href="{{ route('contactUs') }}" class="theme-btn"> @lang('home/homepage.letUsTalk') </a>
                             </div>
                             <div class="mobile-nav-toggler">
                                 <i class="fa fa-bars"></i>
@@ -136,7 +138,7 @@
 
                             <div class="contact-info-box">
                                 <i class="icon lnr-icon-phone-handset"></i>
-                                <span class="title">Call Now</span>
+                                <span class="title"> @lang('home/homepage.CallNow') </span>
                                 <a href="tel:+#">77777</a>
                             </div>
                         </li>
@@ -144,7 +146,7 @@
 
                             <div class="contact-info-box">
                                 <span class="icon lnr-icon-envelope1"></span>
-                                <span class="title">Send Email</span>
+                                <span class="title"> @lang('home/homepage.SendEmail')</span>
                                 <a href=""><span class="__cf_email__"
                                         data-cfemail="">[email&#160;protected]</span></a>
                             </div>
@@ -153,7 +155,7 @@
 
                             <div class="contact-info-box">
                                 <span class="icon lnr-icon-clock"></span>
-                                <span class="title">Send Email</span>
+                                <span class="title"> @lang('home/homepage.SendEmail')</span>
                                 Mon - Sat 8:00 - 6:30, Sunday - CLOSED
                             </div>
                         </li>

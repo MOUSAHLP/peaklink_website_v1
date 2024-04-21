@@ -26,7 +26,11 @@
 
                                 <ul class="social-links">
                                     @foreach ($team->socials as $social)
-                                        <li><a href="{{ $social['url'] }}"><i class="{{ $social['icon'] }}"></i></a>
+                                        <li><a href="{{ $social['url'] }}">
+                                                @svg($social['icon'], [
+                                                    'style' => 'color: white;width: 25px;height: 25px;padding: 5px;',
+                                                ])
+                                            </a>
                                         </li>
                                     @endforeach
                                 </ul>

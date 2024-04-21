@@ -16,6 +16,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\Tabs;
+use Guava\FilamentIconPicker\Forms\IconPicker;
 
 class TeamResource extends Resource
 {
@@ -78,9 +79,11 @@ class TeamResource extends Resource
                                 Repeater::make("socials")
                                     ->label(_("الروابط الاجتماعية"))
                                     ->Schema([
-                                        Forms\Components\Select::make("icon")->label(__(''))->options(
-                                            IconsEnums::getAllValues()
-                                        ),
+                                        Forms\Components\Select::make("icon")->label(__(''))
+                                            ->options(
+                                                IconsEnums::getAllValues()
+                                            ),
+                                        IconPicker::make('icona')->label(__('')),
                                         Forms\Components\TextInput::make('url')
                                             ->label(_("الرابط"))
                                             ->required()->url()
