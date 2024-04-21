@@ -1,10 +1,15 @@
 <?php
 
+use App\Enums\IconsEnums;
 use App\Livewire\Front\ContactUsPage\ShowContactUsPage;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Front\HomePage\ShowHomePage;
 use App\Livewire\Front\AboutUsPage\ShowAboutUsPage;
+use App\Livewire\Front\ProjectDetailPage\ShowProjectDetailPage;
 use App\Livewire\Front\ProjectPage\ShowProjectsPage;
+use App\Livewire\Front\TeamDetailPage\ShowTeamDetailPage;
+use App\Livewire\Front\TeamPage\ShowTeamPage;
+use App\Models\Team;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -15,8 +20,11 @@ Route::group([
 ], function () {
     Route::get('/', ShowHomePage::class)->name('Home');
     Route::get('/about-us', ShowAboutUsPage::class)->name('aboutUs');
+    Route::get('/team', ShowTeamPage::class)->name('team');
+    Route::get('/team-detail/{id}', ShowTeamDetailPage::class)->name('teamDetail');
     Route::get('/contact-us', ShowContactUsPage::class)->name('contactUs');
     Route::get('/Projects', ShowProjectsPage::class)->name('Projects');
+    Route::get('/Projects/{id}', ShowProjectDetailPage::class)->name('ProjectDetail');
 
     // Catch-all route for 404 errors
     Route::fallback(function () {
@@ -39,4 +47,11 @@ Route::group([
 
         return redirect()->back();
     })->name('en');
+
+    Route::get('/a', function () {
+
+        $teams = Team::noDetail();
+        dd($teams);
+        return $teams;
+    })->name('a');
 });

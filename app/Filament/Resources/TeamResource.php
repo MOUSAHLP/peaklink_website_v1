@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\IconsEnums;
 use App\Filament\Resources\TeamResource\Pages;
 use App\Models\Team;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -14,6 +15,7 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Tabs;
 
 class TeamResource extends Resource
 {
@@ -45,43 +47,46 @@ class TeamResource extends Resource
     {
         return $form
             ->schema([
-                Section::make("")->Schema([
+                Tabs::make('Tabs')
+                    ->tabs([
+                        Tabs\Tab::make('معلومات عامة')
+                            ->icon('heroicon-o-chat-bubble-bottom-center-text')
+                            ->schema([
 
-                    Forms\Components\TextInput::make('name')
-                        ->label(_("الاسم"))
-                        ->required()
-                        ->maxLength(255),
-                    Forms\Components\TextInput::make('position')
-                        ->label(_("المنصب"))
-                        ->required()
-                        ->maxLength(255),
-                    CuratorPicker::make('image')->label(__(''))
-                        ->label(_("الصورة"))
-                        ->size('sm')
-                        ->outlined(false)
-                        ->color('info')
-                        ->constrained(true)
-                        ->listDisplay(false)
-                        ->required(),
-                ])->columns(2),
-                Section::make("")
-                ->Schema([
-                        Repeater::make("socials")
-                        ->label(_("الروابط الاجتماعية"))
-                        ->Schema([
-                            CuratorPicker::make('image')->label(__(''))
-                                ->label(_("الصورة"))
-                                ->size('sm')
-                                ->outlined(false)
-                                ->color('info')
-                                ->constrained(true)
-                                ->listDisplay(false)
-                                ->required(),
-                            Forms\Components\TextInput::make('url')
-                                ->label(_("الرابط"))
-                                ->required()->url()
-                        ])->grid(3)->columnSpanFull(),
-                    ])->label("الروابط")
+                                Forms\Components\TextInput::make('name')
+                                    ->label(_("الاسم"))
+                                    ->required()
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('position')
+                                    ->label(_("المنصب"))
+                                    ->required()
+                                    ->maxLength(255),
+                                CuratorPicker::make('image')->label(__(''))
+                                    ->label(_("الصورة"))
+                                    ->size('sm')
+                                    ->outlined(false)
+                                    ->color('info')
+                                    ->constrained(true)
+                                    ->listDisplay(false)
+                                    ->imageResizeTargetWidth(190)
+                                    ->imageResizeTargetHeight(190)
+                                    ->required(),
+                            ]),
+                        Tabs\Tab::make('الروابط الاجتماعية')
+                            ->icon('heroicon-o-document-arrow-up')
+                            ->schema([
+                                Repeater::make("socials")
+                                    ->label(_("الروابط الاجتماعية"))
+                                    ->Schema([
+                                        Forms\Components\Select::make("icon")->label(__(''))->options(
+                                            IconsEnums::getAllValues()
+                                        ),
+                                        Forms\Components\TextInput::make('url')
+                                            ->label(_("الرابط"))
+                                            ->required()->url()
+                                    ])->grid(3)->columnSpanFull(),
+                            ])
+                    ])->columnSpanFull(),
             ]);
     }
 
@@ -100,19 +105,20 @@ class TeamResource extends Resource
                     ->label(_("المنصب"))
                     ->searchable()
                     ->sortable(),
-               
-                CuratorColumn::make('socials.image')
-                    ->label(_("تواصل اجتماعي"))
-                    ->width("50px")
-                    ->stacked()
+
+                Tables\Columns\TextColumn::make('socials')
+                    ->label(_("تم الانشاء"))
                     ->searchable()
+                    ->badge()
+                    ->sortable()
                     ->state(function (Team $record) {
                         $value = [];
                         foreach ($record["socials"] as $social) {
-                            $value[] = $social["image"];
+                            $value[] = IconsEnums::getName($social["icon"]);
                         }
                         return $value;
                     }),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(_("تم الانشاء"))
                     ->dateTime()

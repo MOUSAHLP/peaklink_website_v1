@@ -8,17 +8,21 @@ use Spatie\Translatable\HasTranslations;
 
 class Team extends Model
 {
-    use HasFactory,HasTranslations;
-    public $translatable = ['name','position'];
-   
-protected $fillable=[
-    "name",
-    "position",
-    "image",
-    "socials",
-];
+    use HasFactory, HasTranslations;
+    public $translatable = ['name', 'position'];
 
-protected $casts = [
-    'socials' => 'json',
-];
+    protected $fillable = [
+        "name",
+        "position",
+        "image",
+        "socials",
+    ];
+
+    protected $casts = [
+        'socials' => 'json',
+    ];
+    public function detail()
+    {
+        return $this->hasOne(TeamDetail::class);
+    }
 }

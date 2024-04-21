@@ -235,8 +235,8 @@ var THEMEMASCOT = {};
         });
         $("input.property-amount").val(
             $(".price-range-slider").slider("values", 0) +
-                " - $" +
-                $(".price-range-slider").slider("values", 1)
+            " - $" +
+            $(".price-range-slider").slider("values", 1)
         );
     }
     if ($(".progress-line").length) {

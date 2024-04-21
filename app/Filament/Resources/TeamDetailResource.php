@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TeamDetailResource\Pages;
-use App\Filament\Resources\TeamDetailResource\RelationManagers;
 use App\Models\TeamDetail;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
@@ -15,9 +14,8 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
+use Filament\Forms\Components\Tabs;
 
 class TeamDetailResource extends Resource
 {
@@ -52,69 +50,77 @@ class TeamDetailResource extends Resource
     {
         return $form
             ->schema([
-                Section::make("")->Schema([
+                Tabs::make('Tabs')
+                    ->tabs([
+                        Tabs\Tab::make('معلومات عامة')
+                            ->icon('heroicon-o-chat-bubble-bottom-center-text')
+                            ->schema([
+                                Section::make("")->Schema([
 
-                    Forms\Components\Select::make('team_id')
-                        ->label(_("اسم العضو"))
-                        ->required()
-                        ->searchable()
-                        ->preload()
-                        ->relationship("team", "name")
-                        ->getOptionLabelFromRecordUsing(fn ($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
-                            ? $record->getTranslation('name', $livewire->activeLocale)
-                            : $record->title),
-                    Forms\Components\TextInput::make('email')
-                        ->label(_("البريد الاكتروني"))
-                        ->required()
-                        ->email()
-                        ->maxLength(255),
-                    Forms\Components\TextInput::make('phone')
-                        ->label(_("رقم الهاتف"))
-                        ->required()
-                        ->tel()
-                        ->maxLength(255),
-                    Forms\Components\TextInput::make('website')
-                        ->label(_("رابط الموقع"))
-                        ->required()
-                        ->url()
-                        ->maxLength(255),
-                    TinyEditor::make('description')
-                        ->label(_("الشرح"))
-                        ->required()
-                        ->columnSpanFull(),
-                    CuratorPicker::make('image')->label(__(''))
-                        ->label(_("الصورة"))
-                        ->size('sm')
-                        ->outlined(false)
-                        ->color('info')
-                        ->constrained(true)
-                        ->listDisplay(false)
-                        ->required(),
-                ])->columns(3),
-                Section::make("")
-                    ->label(_("المهارات"))
-                    ->Schema([
-                        Forms\Components\TextInput::make('skills_title')
-                            ->label(_("عنوان قسم المهارات"))
-                            ->required()
-                            ->maxLength(255),
-                        TinyEditor::make('skills_description')
-                            ->label(_("شرح قسم المهارات"))
-                            ->required(),
-                        Repeater::make("skills")
-                            ->label(_("المهارات"))
-                            ->Schema([
-                                Forms\Components\TextInput::make('title')
-                                    ->label(_("عنوان المهارة"))
-                                    ->required(),
-                                Forms\Components\TextInput::make('progress')
-                                    ->label(_("التقدم (0 - 100)"))
+                                    Forms\Components\Select::make('team_id')
+                                        ->label(_("العضو"))
+                                        ->required()
+                                        ->searchable()
+                                        ->preload()
+                                        ->relationship('team', 'name', fn ($query) => $query->doesntHave("detail"))
+                                        ->getOptionLabelFromRecordUsing(fn ($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
+                                            ? $record->getTranslation('name', $livewire->activeLocale)
+                                            : $record->title),
+                                    Forms\Components\TextInput::make('email')
+                                        ->label(_("البريد الاكتروني"))
+                                        ->required()
+                                        ->email()
+                                        ->maxLength(255),
+                                    Forms\Components\TextInput::make('phone')
+                                        ->label(_("رقم الهاتف"))
+                                        ->required()
+                                        ->tel()
+                                        ->maxLength(255),
+                                    Forms\Components\TextInput::make('website')
+                                        ->label(_("رابط الموقع"))
+                                        ->required()
+                                        ->url()
+                                        ->maxLength(255),
+                                    TinyEditor::make('description')
+                                        ->label(_("الشرح"))
+                                        ->required()
+                                        ->columnSpanFull(),
+                                    CuratorPicker::make('image')->label(__(''))
+                                        ->label(_("الصورة"))
+                                        ->size('sm')
+                                        ->outlined(false)
+                                        ->color('info')
+                                        ->constrained(true)
+                                        ->listDisplay(false)
+                                        ->required(),
+                                ])->columns(3),
+                            ]),
+                        Tabs\Tab::make('قسم المهارات')
+                            ->icon('heroicon-o-document-arrow-up')
+                            ->schema([
+
+                                Forms\Components\TextInput::make('skills_title')
+                                    ->label(_("عنوان قسم المهارات"))
                                     ->required()
-                                    ->numeric()
-                                    ->minValue(0)
-                                    ->maxValue(100)
-                            ])->grid(3)->columnSpanFull(),
-                    ])->label("الروابط")
+                                    ->maxLength(255),
+                                TinyEditor::make('skills_description')
+                                    ->label(_("شرح قسم المهارات"))
+                                    ->required(),
+                                Repeater::make("skills")
+                                    ->label(_("المهارات"))
+                                    ->Schema([
+                                        Forms\Components\TextInput::make('title')
+                                            ->label(_("عنوان المهارة"))
+                                            ->required(),
+                                        Forms\Components\TextInput::make('progress')
+                                            ->label(_("التقدم (0 - 100)"))
+                                            ->required()
+                                            ->numeric()
+                                            ->minValue(0)
+                                            ->maxValue(100)
+                                    ])->grid(3)->columnSpanFull(),
+                            ])
+                    ])->columnSpanFull(),
             ]);
     }
 

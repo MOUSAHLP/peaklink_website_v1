@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="copyright" content="@yield('copyright')">
-    <meta name="robots" content="@yield('copyright')">
+    <meta name="copyright" content="@yield('copyright', 'peaklink')">
+    <meta name="robots" content="@yield('copyright', 'peaklink')">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="keywords" content="@yield('meta_keywords')">
@@ -37,9 +37,11 @@
     <meta property="og:image:width" content="1024">
     <meta property="og:image:height" content="1024">
     <!-- Website to visit when clicked in fb or WhatsApp-->
-    <meta property="og:url" content="@yield('copyright')">
+    <meta property="og:url" content="@yield('copyright', 'peaklink')">
 
-    <title>@yield('title')</title>
+    {{-- <title>{{ $title }}</title> --}}
+    <title> @yield('title', 'peaklink') </title>
+
     <link href="{{ asset('front/css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/slick-theme.cs') }}s">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/slick.css') }}">

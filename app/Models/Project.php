@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\CategoryProject;
+use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -36,4 +37,9 @@ class Project extends Model
     protected $casts = [
         'meta_keywords' => 'array',
      ];
+
+     public function metaImage()
+     {
+         return $this->belongsTo(Media::class, 'meta_image', 'id');
+     }
 }
