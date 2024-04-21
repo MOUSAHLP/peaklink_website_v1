@@ -10,8 +10,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Service extends Model
 {
     use HasFactory,HasTranslations;
-    public $translatable = ['title','description','short_description','meta_title','meta_keywords','meta_description'];
+
+    public $translatable = [
+        'title',
+        'description',
+        'short_description',
+        'meta_title',
+        'meta_keywords',
+        'meta_description',
+        'faq',
+    ];
+
     protected $table = 'services';
+
     protected $fillable = [
         'image',
         'title',
@@ -23,14 +34,18 @@ class Service extends Model
         'meta_keywords',
         'meta_description',
         'status',
+        'service_category_id',
+        'faq',
     ];
 
-    public function faqs()
-    {
-        return $this->hasMany(Faq::class);
-    }
 
     protected $casts = [
+       'faq' => 'json',
        'meta_keywords' => 'array',
     ];
+
+    public function serviceCategory()
+    {
+        return $this->belongsTo(ServiceCategory::class,'service_category_id');
+    }
 }

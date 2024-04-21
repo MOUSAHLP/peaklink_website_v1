@@ -7,6 +7,8 @@ use App\Livewire\Front\HomePage\ShowHomePage;
 use App\Livewire\Front\AboutUsPage\ShowAboutUsPage;
 use App\Livewire\Front\ProjectDetailPage\ShowProjectDetailPage;
 use App\Livewire\Front\ProjectPage\ShowProjectsPage;
+use App\Livewire\Front\ServiceDetailPage\ShowServiceDetailPage;
+use App\Livewire\Front\ServicesPage\ShowServicesPage;
 use App\Livewire\Front\TeamDetailPage\ShowTeamDetailPage;
 use App\Livewire\Front\TeamPage\ShowTeamPage;
 use App\Models\Team;
@@ -25,6 +27,8 @@ Route::group([
     Route::get('/contact-us', ShowContactUsPage::class)->name('contactUs');
     Route::get('/Projects', ShowProjectsPage::class)->name('Projects');
     Route::get('/Projects/{id}', ShowProjectDetailPage::class)->name('ProjectDetail');
+    Route::get('/services', ShowServicesPage::class)->name('services');
+    Route::get('/services/{id}', ShowServiceDetailPage::class)->name('servicesDetail');
 
     // Catch-all route for 404 errors
     Route::fallback(function () {

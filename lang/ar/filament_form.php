@@ -36,6 +36,8 @@ return [
     'contact_us_value' => 'معلومة التواصل',
     'Has_Phone' => 'هل لديك رقم هاتف للتواصل ؟',
     'Has_Email' => 'هل لديك ايميل للتواصل ؟',
-    
+    'choose_category' => 'أختر القسم',
+    'category_name' => 'اسم القسم',
+    'category_url' => 'رابط القسم',
     
 ];
