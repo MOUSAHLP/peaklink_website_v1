@@ -79,11 +79,7 @@ class TeamResource extends Resource
                                 Repeater::make("socials")
                                     ->label(_("الروابط الاجتماعية"))
                                     ->Schema([
-                                        Forms\Components\Select::make("icon")->label(__(''))
-                                            ->options(
-                                                IconsEnums::getAllValues()
-                                            ),
-                                        IconPicker::make('icona')->label(__('')),
+                                        IconPicker::make('icon')->label(__('')),
                                         Forms\Components\TextInput::make('url')
                                             ->label(_("الرابط"))
                                             ->required()->url()
