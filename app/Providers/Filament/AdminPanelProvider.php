@@ -28,56 +28,56 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
 
-        ->navigationGroups(
-            [
-                'مستخدمين النظام',
-                'الصفحة الرئيسية',
-                'المشاريع',
-                'المدونة',
-                'المتجر',
-                'إدارة الفريق',
-                'Footer',
-                // '',
-            ]
-        )
+            ->navigationGroups(
+                [
+                    'مستخدمين النظام',
+                    'الصفحة الرئيسية',
+                    'المشاريع',
+                    'المدونة',
+                    'المتجر',
+                    'إدارة الفريق',
+                    'Footer',
+                    // '',
+                ]
+            )
 
-        ->plugins([
-            FilamentFabricatorPlugin::make(),
-            FilamentShieldPlugin::make()
-            ->gridColumns([
-                'default' => 1,
-                'sm' => 2,
-                'lg' => 3
-            ])
-            ->sectionColumnSpan(1)
-            ->checkboxListColumns([
-                'default' => 2,
-                'sm' => 2,
-                'lg' => 3,
-            ])
-            ->resourceCheckboxListColumns([
-                'default' => 1,
-                'sm' => 2,
-            ]),
+            ->plugins([
+                FilamentFabricatorPlugin::make(),
+                FilamentShieldPlugin::make()
+                    ->gridColumns([
+                        'default' => 1,
+                        'sm' => 2,
+                        'lg' => 3
+                    ])
+                    ->sectionColumnSpan(1)
+                    ->checkboxListColumns([
+                        'default' => 2,
+                        'sm' => 2,
+                        'lg' => 3,
+                    ])
+                    ->resourceCheckboxListColumns([
+                        'default' => 1,
+                        'sm' => 2,
+                    ]),
 
 
-            \Awcodes\Curator\CuratorPlugin::make()
-                ->label('Media')
-                ->pluralLabel('Media')
-                ->navigationIcon('heroicon-o-photo')
-                ->navigationGroup('Content')
-                ->navigationSort(3)
-                ->navigationCountBadge(),
+                \Awcodes\Curator\CuratorPlugin::make()
+                    ->label('Media')
+                    ->pluralLabel('Media')
+                    ->navigationIcon('heroicon-o-photo')
+                    ->navigationGroup('Content')
+                    ->navigationSort(3)
+                    ->navigationCountBadge(),
 
                 SpatieLaravelTranslatablePlugin::make()
-                ->defaultLocales(['ar', 'en']),
+                    ->defaultLocales(['ar', 'en']),
 
                 \Hasnayeen\Themes\ThemesPlugin::make(),
 
                 SpotlightPlugin::make(),
 
-            
-        ])
+
+            ])
             ->default()
             ->id('admin')
             ->path('admin')

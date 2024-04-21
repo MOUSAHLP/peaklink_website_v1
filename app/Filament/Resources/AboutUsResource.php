@@ -24,20 +24,24 @@ class AboutUsResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-identification';
 
-    protected static ?string $navigationGroup = 'الصفحة الرئيسية';
+    protected static ?string $navigationGroup = "";
     protected static ?int $navigationSort = 3;
 
+    public static function getNavigationGroup(): ?string
+    {
+        return __("about_us.Home");
+    }
     public static function getModelLabel(): string
     {
-        return 'من نحن';
+        return __("about_us.AboutUs");
     }
     public static function getPluralLabel(): string
     {
-        return 'من نحن';
+        return __("about_us.AboutUs");
     }
     public static function getNavigationLabel(): string
     {
-        return 'من نحن';
+        return __("about_us.AboutUs");
     }
     public static function getNavigationBadge(): ?string
     {
@@ -57,7 +61,8 @@ class AboutUsResource extends Resource
                 Section::make()
                     ->schema([
 
-                        CuratorPicker::make('section_image')->label(__('صورة القسم'))
+                        CuratorPicker::make('section_image')
+                            ->label(__('about_us.sectionImage'))
                             ->size('sm')
                             ->outlined(false)
                             ->color('info')
@@ -67,11 +72,11 @@ class AboutUsResource extends Resource
 
 
                         Forms\Components\TextInput::make('title')
-                            ->label('العنوان')
+                            ->label(__('about_us.title'))
                             ->maxLength(20)
                             ->required(),
 
-                        CuratorPicker::make('back_image')->label(__(''))
+                        CuratorPicker::make('back_image')->label(__('about_us.backImage'))
                             ->size('sm')
                             ->outlined(false)
                             ->color('info')
@@ -80,34 +85,32 @@ class AboutUsResource extends Resource
                             ->columnSpanFull(),
 
                         Forms\Components\TextInput::make('phone')
-                            ->label('رقم الهاتف')
+                            ->label(__('about_us.phone'))
                             ->tel()
                             ->required()
                             ->maxLength(255),
 
                         Forms\Components\TextInput::make('label_title')
-                            ->label('عنوان الصورة')
+                            ->label(__('about_us.label_title'))
                             ->maxLength(20)
                             ->required(),
 
                         Forms\Components\TextInput::make('description')
-                            ->label('الوصف')
+                            ->label(__('about_us.description'))
                             ->maxLength(255)
                             ->required(),
 
-                        Forms\Components\Toggle::make('Has_Video')
-                            ->label(_("هل لديك فيديو ؟"))
-                            ->columnSpanFull()
-                            ->dehydrated()
-                            ->default(false)
-                            ->live(),
-                        Forms\Components\FileUpload::make('video')
-                            ->label(_("الفيديو"))
-                            ->columnSpanFull()
-                            ->required()
-                            ->hidden(fn (Get $get): bool => !$get('Has_Video')),
-
-
+                        // Forms\Components\Toggle::make('Has_Video')
+                        //     ->label(_("هل لديك فيديو ؟"))
+                        //     ->columnSpanFull()
+                        //     ->dehydrated()
+                        //     ->default(false)
+                        //     ->live(),
+                        // Forms\Components\FileUpload::make('video')
+                        //     ->label(_("الفيديو"))
+                        //     ->columnSpanFull()
+                        //     ->required()
+                        //     ->hidden(fn (Get $get): bool => !$get('Has_Video')),
 
                     ])->columns(2)
                     ->columnSpanFull(),
@@ -115,14 +118,13 @@ class AboutUsResource extends Resource
                 Section::make()
                     ->schema([
                         Repeater::make('facts')
-                            ->label('الاحصائيات')
-
+                            ->label(__('about_us.facts'))
                             ->schema([
                                 Forms\Components\TextInput::make('number')
-                                    ->label('الاحصائية')
+                                    ->label(__('about_us.fact'))
                                     ->numeric(),
                                 Forms\Components\TextInput::make('title')
-                                    ->label('عنوان الاحصائية')
+                                    ->label(__('about_us.fact_title'))
                                     ->maxLength(30)
                                     ->string(),
                             ])->grid(3)
@@ -140,16 +142,16 @@ class AboutUsResource extends Resource
         return $table
             ->columns([
                 CuratorColumn::make('section_image')
-                    ->label('صورة القسم')
+                    ->label(__('about_us.sectionImage'))
                     ->width('100px'),
                 Tables\Columns\TextColumn::make('title')
-                    ->label('العنوان')
+                    ->label(__('about_us.title'))
                     ->searchable(),
                 CuratorColumn::make('back_image')
-                    ->label('الصورة')
+                    ->label(__('about_us.backImage'))
                     ->width('100px'),
                 Tables\Columns\TextColumn::make('phone')
-                    ->label('رقم الهاتف')
+                    ->label(__('about_us.phone'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

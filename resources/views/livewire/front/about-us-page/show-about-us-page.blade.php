@@ -1,22 +1,14 @@
 <div>
+    @section('title', __('about_us.AboutUsPageTitle'))
+
     {{-- $AboutUs --}}
-    <section dir="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'rtl' : 'ltr' }}" class="page-title"
-        @if (isset($AboutUs->sectionImage)) style="background-image: url({{ $AboutUs->sectionImage->url }});" @endif>
-        <div class="auto-container">
-            <div class="title-outer text-center">
-                <h1 class="title">{{ __('about_us.AboutUs') }}</h1>
-                <ul class="page-breadcrumb">
-                    @if (app()->getLocale() == 'ar')
-                        <li>{{ __('about_us.AboutUs') }}</li>
-                        <li><a href="{{ route('Home') }}">{{ __('about_us.Home') }}</a></li>
-                    @else
-                        <li><a href="{{ route('Home') }}">{{ __('about_us.Home') }}</a></li>
-                        <li>{{ __('about_us.AboutUs') }}</li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </section>
+    @component('components.breadcumb', [
+        'image_url' => $AboutUs->sectionImage->url,
+        'upper_title' => __('about_us.AboutUs'),
+        'title' => __('about_us.AboutUs'),
+    ])
+    @endcomponent
+
     <section class="about-section innerpage">
 
         <div class="auto-container">
@@ -27,23 +19,20 @@
                             <figure class="image overlay-anim">
                                 <x-curator-glider :media="$AboutUs->back_image" :alt="$AboutUs->title" />
                             </figure>
-
-                            @if ($AboutUs->video != null)
-                                <div class="play-box">
-                                    <figure class="image-2 overlay-anim">
-                                        <img src="{{ asset('storage/' . $AboutUs->video) }}" width="200"
-                                            alt="{{ $AboutUs->title }}">
-                                    </figure>
-                                    <a title href="#" data-fancybox="gallery" data-caption>
-                                        <i class="icon fa fa-play"></i>
-                                    </a>
-                                </div>
-                            @endif
-
+                            {{-- @if ($AboutUs->video != null)
+                            <div class="play-box">
+                                <figure class="image-2 overlay-anim">
+                                    <img src="{{ asset('storage/' . $AboutUs->video) }}" width="200"
+                                        alt="{{ $AboutUs->title }}">
+                                </figure>
+                                <a title href="#" data-fancybox="gallery" data-caption>
+                                    <i class="icon fa fa-play"></i>
+                                </a>
+                            </div>
+                        @endif --}}
                             <div class="exp-box">
                                 <div class="icon-box">
-                                    <img src="{{ asset('front/images/resource/tv.png') }}"
-                                        alt="{{ $AboutUs->title }}">
+                                    <img src="{{ asset('front/images/resource/tv.png') }}" alt="{{ $AboutUs->title }}">
                                 </div>
                                 <h4 class="title">{{ $AboutUs->label_title }}</h4>
                             </div>
