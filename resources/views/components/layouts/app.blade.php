@@ -305,7 +305,7 @@
             <div class="footer-bottom">
                 <div class="auto-container">
                     <div class="inner-container">
-                        <div class="copyright-text">© حقوق الطبع والنشر لعام ۲۰۲۳ لشركة ديجيتكس</div>
+                        <div class="copyright-text">© {{ __('home/homepage.PoweredBy') }}</div>
                     </div>
                 </div>
             </div>
