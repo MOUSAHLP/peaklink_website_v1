@@ -23,19 +23,25 @@ class OurClientReviewResource extends Resource
     protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 8;
 
+
+                    
+            public static function getNavigationGroup(): ?string
+            {
+                return __('home/homepage.homepage');
+            }
+
                 public static function getModelLabel(): string
             {
-                return 'مراجعة العملاء';
+                return __('home/client_review.client_review');
             }
                 public static function getPluralLabel(): string
             {
-                return 'مراجعة العملاء';
+                return __('home/client_review.client_review');
             }
                 public static function getNavigationLabel(): string
             {
-                return 'مراجعة العملاء';
+                return __('home/client_review.client_review');
             }
-         
 
 
     public static function form(Form $form): Form
@@ -55,26 +61,26 @@ class OurClientReviewResource extends Resource
                 //     ->required()
                 //     ->imageEditor(),
 
-                CuratorPicker::make('client_image')->label(__(''))
-                ->size('sm') 
-                ->outlined(false)
-                ->color('info')
-                ->constrained(true)
-                ->listDisplay(false)
-                ->columnSpanFull(),
+                CuratorPicker::make('client_image')
+                    ->label(__("filament_form.client_image"))
+                    ->size('sm') 
+                    ->outlined(false)
+                    ->color('info')
+                    ->constrained(true)
+                    ->listDisplay(false)
+                    ->columnSpanFull(),
 
                     Forms\Components\TextInput::make('client_name')
-                ->label('اسم العميل')
-                ->maxLength(30)
+                    ->label(__("filament_form.client_name"))
+                    ->maxLength(30)
                     ->required(),
 
                 Forms\Components\TextInput::make('client_job')
-                ->label('وظيفة العميل')
-                ->maxLength(30)
-
+                    ->label(__("filament_form.client_job"))
+                    ->maxLength(30)
                     ->required(),
                 Forms\Components\Select::make('stars')
-                ->label('تقييم العميل  [1 - 5]')
+                    ->label("[1 - 5] ".__("filament_form.stars"))
                     ->options([
                         
                         1,2,3,4,5
@@ -83,13 +89,13 @@ class OurClientReviewResource extends Resource
                     ->required(),
 
                 Forms\Components\TextInput::make('description')
-                ->label('تعليق العميل')
+                    ->label(__("filament_form.client_comment"))
                 ->columnSpanFull()
                 ->maxLength(255)
                     ->required(),
 
                 Forms\Components\Toggle::make('status')
-                ->label('حالة نشر  مراجعة العميل ')
+                    ->label(__("filament_form.status"))
                 ->columnSpanFull(),
                 ])->columns(3),
             ]);
@@ -100,21 +106,25 @@ class OurClientReviewResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('client_name')
-                ->label('اسم العميل')
+                ->label(__("filament_form.client_name"))
 
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('client_image')
-                   ->label('صورة العميل'),
+                    ->label(__("filament_form.client_image")),
+
                 Tables\Columns\TextColumn::make('stars')
-                   ->label('تقييم العميل  [1 - 5]')
+                    ->label("[1 - 5] ".__("filament_form.stars"))
                     ->sortable(),
                 Tables\Columns\ToggleColumn::make('status')
-                    ->label('حالة نشر  مراجعة العميل '),
+                ->label(__("filament_form.status")),
+
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__("filament_form.updated_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

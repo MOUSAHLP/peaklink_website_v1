@@ -1,8 +1,8 @@
 <div>
-
     @if ($sliders->count() > 0)
-        <section class="banner-section">
-            <div class="banner-slider-rtl">
+        <section dir="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'rtl' : 'ltr' }}" class="banner-section">
+            <div
+                class="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'banner-slider-rtl' : 'banner-slider' }} ">
 
                 @foreach ($sliders as $slider)
                     <div class="banner-slide">
@@ -40,7 +40,7 @@
 
             </div>
             <div class="banner-social">
-                <h4>تابعنا</h4>
+                <h4>@lang('home/slider.follow_us')</h4>
                 <ul>
                     <li><a href="#" title><i class="fab fa-dribbble"></i></a></li>
                     <li><a href="#" title><i class="fab fa-behance"></i></a></li>

@@ -21,9 +21,8 @@
                                 @endif
                             </div>
                         </div>
-                        @if (isset($WhyChooseOurService->features))
+                        @if (isset($WhyChooseOurService->features) && $WhyChooseOurService->features != '')
                             <div class="list-sec">
-
                                 @php $sections = 0 ; @endphp
                                 @foreach ($WhyChooseOurService->features as $feature)
                                     @php  $sections++ ;   @endphp
@@ -50,7 +49,7 @@
                             </div>
                         @endif
 
-                        @if (isset($WhyChooseOurService->facts))
+                        @if (isset($WhyChooseOurService->facts) && $WhyChooseOurService->features != '')
 
                             <div class="row">
 

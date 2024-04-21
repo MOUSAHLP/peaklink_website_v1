@@ -1,7 +1,7 @@
 <div>
     {{-- $AboutUs --}}
     <section dir="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'rtl' : 'ltr' }}" class="page-title"
-        style="background-image: url({{ $AboutUs->sectionImage->url }});">
+        @if (isset($AboutUs->sectionImage)) style="background-image: url({{ $AboutUs->sectionImage->url }});" @endif>
         <div class="auto-container">
             <div class="title-outer text-center">
                 <h1 class="title">{{ __('about_us.AboutUs') }}</h1>
@@ -54,22 +54,21 @@
                 <div class="content-column col-lg-6 col-md-12 col-sm-12">
                     <div class="inner-column">
                         <div class="sec-title light">
-                            <h2>{{ $AboutUs->title }}</h2>
+                            <h2 style="color:black;">{{ $AboutUs->title }}</h2>
                             <div class="text">
                                 {{ $AboutUs->description }}
                             </div>
                         </div>
                         <div class="inner-box">
 
-                            @isset($AboutUs->facts)
-
+                            @if (isset($AboutUs->facts) && $AboutUs->facts != '')
                                 @foreach ($AboutUs->facts as $fact)
                                     <div class="content-box">
                                         <span>{{ $fact['number'] }}</span>
                                         <h6 class="title">{{ $fact['title'] }}</h6>
                                     </div>
                                 @endforeach
-                            @endisset
+                            @endif
 
 
                         </div>
@@ -79,7 +78,13 @@
                             <a href="tel:{{ $AboutUs->phone }}" class="contact-btn">
                                 <i class="flaticon-telephone-1"></i>
                                 <span>{{ __('about_us.contactUs') }}</span>
-                                <h6 class="title">{{ $AboutUs->phone }}</h6>
+                                <h6 class="title">
+                                    @if ($AboutUs != null)
+                                        {{ $AboutUs->phone }}
+                                    @else
+                                        {{ __('about_us.not_found') }}
+                                    @endif
+                                </h6>
                             </a>
                         </div>
                     </div>

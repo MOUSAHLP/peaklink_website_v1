@@ -27,17 +27,22 @@ class ServiceResource extends Resource
     protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 2;
 
+    
+            public static function getNavigationGroup(): ?string
+            {
+                return __('home/homepage.homepage');
+            }
                 public static function getModelLabel(): string
             {
-                return 'الخدمات';
+                return __('home/services.services');
             }
                 public static function getPluralLabel(): string
             {
-                return 'الخدمات';
+                return __('home/services.services');
             }
                 public static function getNavigationLabel(): string
             {
-                return 'الخدمات';
+                return __('home/services.services');
             }
             public static function getNavigationBadge(): ?string
             {
@@ -56,28 +61,27 @@ class ServiceResource extends Resource
 
                 Tabs::make('Tabs')
         ->tabs([
-        Tabs\Tab::make('الخدمات')
+        Tabs\Tab::make(__('home/services.services'))
                 ->icon('heroicon-m-rectangle-group')
                 ->iconPosition(IconPosition::After)
                 ->schema([
                     Forms\Components\TextInput::make('title')
                     ->maxLength(30)
-                    ->label('العنوان')
+                    ->label(__("filament_form.title"))
                     ->required()
                     ->debounce(1000),
 
                     Forms\Components\TextInput::make('slug')
-                    ->label('الرابط')
+                    ->label(__("filament_form.link"))
                     ->required()
                     ->maxLength(30),
                 Forms\Components\TextInput::make('short_description')
-                ->maxLength(55)
-                ->columnSpanFull()
-                ->label('وصف قصير')
-
+                    ->label(__("filament_form.short_description"))
+                    ->maxLength(55)
+                    ->columnSpanFull()
                     ->required(),
                     TinyEditor::make('description')
-                    ->label('الوصف')
+                    ->label(__("filament_form.description"))
                     ->showMenuBar()
                     ->toolbarSticky(true)
                     ->language('ar')
@@ -86,31 +90,39 @@ class ServiceResource extends Resource
 
                 ->required(),
                 
-                CuratorPicker::make('image')->label(__(''))
-                ->size('sm') 
-                ->outlined(false)
-                ->color('info')
-                ->constrained(true)
-                ->listDisplay(false),
+                CuratorPicker::make('image')
+                    ->label(__("filament_form.image"))
+                    ->size('sm') 
+                    ->outlined(false)
+                    ->color('info')
+                    ->constrained(true)
+                    ->listDisplay(false),
                 Forms\Components\Toggle::make('status')
-                ->label('الحالة'),
+                    ->label(__("filament_form.status")),
+
             ])->columns(2),
-            Tabs\Tab::make('محركات البحث جوجل "SEO"')
+            Tabs\Tab::make("SEO")
             ->icon('heroicon-m-globe-europe-africa')
                 ->iconPosition(IconPosition::After)
             ->schema([
                 Forms\Components\TextInput::make('meta_title')
-                ->maxLength(30),
-                Forms\Components\TagsInput::make('meta_keywords'),
+                    ->label(__("filament_form.meta_title"))
+                    ->maxLength(30),
+
+                Forms\Components\TagsInput::make('meta_keywords')
+                ->label(__("filament_form.meta_keywords")),
+
                 Forms\Components\TextInput::make('meta_description')
-                ->columnSpanFull()
-                ,
-                CuratorPicker::make('meta_image')->label(__(''))
-                ->size('sm') 
-                ->outlined(false)
-                ->color('info')
-                ->constrained(true)
-                ->listDisplay(false),
+                ->label(__("filament_form.meta_description"))
+                ->columnSpanFull(),
+
+                CuratorPicker::make('meta_image')
+                    ->label(__("filament_form.image"))
+                    ->size('sm') 
+                    ->outlined(false)
+                    ->color('info')
+                    ->constrained(true)
+                    ->listDisplay(false),
             ])->columns(2),
        
         ])->columnSpanFull(),
@@ -124,28 +136,28 @@ class ServiceResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                ->label('العنوان')
+                    ->label(__("filament_form.title"))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('short_description')
-                ->label('وصف قصير')
+                    ->label(__("filament_form.short_description"))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
-                ->label('الرابط')
+                    ->label(__("filament_form.link"))
                     ->searchable(),
                     CuratorColumn::make('image')
-                    ->label(_("الصورة"))
+                    ->label(__("filament_form.image"))
                     ->width('100px'),
                 ToggleColumn::make('status')
-                ->label('الحالة')
-                
+                    ->label(__("filament_form.status"))
                 ,
                 Tables\Columns\TextColumn::make('created_at')
-                
+                ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
+                ->label(__("filament_form.updated_at"))
+                ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

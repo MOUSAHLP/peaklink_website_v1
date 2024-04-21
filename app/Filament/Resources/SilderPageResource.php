@@ -29,13 +29,18 @@ class SilderPageResource extends Resource
     protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 1;
 
-                public static function getPluralLabel(): string
+            public static function getNavigationGroup(): ?string
             {
-                return 'الشرائح';
+                return __('home/homepage.homepage');
+            }
+            
+            public static function getPluralLabel(): string
+            {
+                return __('home/slider.sliders');
             }
                 public static function getNavigationLabel(): string
             {
-                return 'الشرائح';
+                return __('home/slider.sliders');
             }
             public static function getNavigationBadge(): ?string
             {
@@ -55,44 +60,45 @@ class SilderPageResource extends Resource
               Section::make()
               ->schema([
                 Forms\Components\TextInput::make('title')
-                ->label(_("العنوان"))
+                ->label(__("filament_form.title"))
                 ->required(),
             Forms\Components\TextInput::make('button_link')
-            ->label(_("الرابط"))
+            ->label(__("filament_form.link"))
                 ->required()
                 ->maxLength(255),
             Forms\Components\TextInput::make('button_title')
-            ->label(_("عنوان الزر"))
+            ->label(__("filament_form.button_title"))
                 ->required(),
             Forms\Components\TextInput::make('description')
-            ->label(_("الوصف"))
+            ->label(__("filament_form.description"))
             ->columnSpanFull()
                 ->required(),
             
             //     Forms\Components\Toggle::make('Has_Video')
-            //     ->label(_("هل لديك فيديو ؟"))
+            //     ->label(__("هل لديك فيديو ؟"))
             //     ->columnSpanFull()
             //     ->dehydrated()
             //     ->default(false)
             //     ->live(),
             // Forms\Components\FileUpload::make('video')
-            // ->label(_("الفيديو"))
+            // ->label(__("الفيديو"))
             // ->acceptedFileTypes(['video/mp4','video/x-m4v','video/*'])
             // ->columnSpanFull()
             //     ->required()
             //     ->hidden(fn (Get $get): bool => !$get('Has_Video')),
 
 
-                CuratorPicker::make('image')->label(__('image'))
+                CuratorPicker::make('image')
+                    ->label(__('filament_form.image'))
                     ->required()
-                    ->size('sm') 
+                    ->size('md') 
                     ->outlined(false)
                     ->color('primary')
                     ->constrained(true)
                     ->listDisplay(false),
                     
             Forms\Components\Toggle::make('status')
-            ->label(_("حالة النشر"))
+            ->label(__("filament_form.status"))
             ->columnSpanFull(),
               ])->columns(3),
             ]);
@@ -103,22 +109,24 @@ class SilderPageResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                ->label(_("عنوان الشريحة"))
+                ->label(__("filament_form.title"))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('button_link')
-                ->label(_("رابط الزر"))
+                ->label(__("filament_form.link"))
                     ->searchable(),
                 CuratorColumn::make('image')
-                ->label(_("الصورة"))
+                ->label(__("filament_form.image"))
                 ->width('100px')
                 ,
                 Tables\Columns\ToggleColumn::make('status')
-                ->label(_("حالة النشر")),
+                ->label(__("filament_form.status")),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__("filament_form.updated_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

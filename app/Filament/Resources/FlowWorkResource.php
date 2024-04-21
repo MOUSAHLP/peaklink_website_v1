@@ -24,17 +24,23 @@ class FlowWorkResource extends Resource
     protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 4;
 
+
+            public static function getNavigationGroup(): ?string
+            {
+                return __('home/homepage.homepage');
+            }
+
                 public static function getModelLabel(): string
             {
-                return 'سير العمل';
+                return __('home/workflow.workflow');
             }
                 public static function getPluralLabel(): string
             {
-                return 'سير العمل';
+                return __('home/workflow.workflow');
             }
                 public static function getNavigationLabel(): string
             {
-                return 'سير العمل';
+                return __('home/workflow.workflow');
             }
             public static function getNavigationBadge(): ?string
             {
@@ -52,22 +58,22 @@ class FlowWorkResource extends Resource
                 Section::make()
                 ->schema([
                     Forms\Components\TextInput::make('title')
-                    ->label('العنوان')
+                    ->label(__("filament_form.title"))
                     ->maxLength(30)
                     ->required(),
                     Forms\Components\TextInput::make('short_description')
-                    ->label('وصف قصير')
-
+                    ->label(__("filament_form.short_description"))
                     ->maxLength(60)
                     ->required(),
-                    CuratorPicker::make('image')->label(__(''))
-                ->size('sm') 
-                ->outlined(false)
-                ->color('info')
-                ->constrained(true)
-                ->listDisplay(false),
+                    CuratorPicker::make('image')
+                    ->label(__("filament_form.image"))
+                    ->size('sm') 
+                    ->outlined(false)
+                    ->color('info')
+                    ->constrained(true)
+                    ->listDisplay(false),
                 Forms\Components\Toggle::make('status')
-                ->label('حالة النشر')
+                    ->label(__("filament_form.status"))
                 ->columnSpanFull(),
 
                 ])->columns(2),
@@ -79,20 +85,23 @@ class FlowWorkResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                ->label('العنوان')
+                    ->label(__("filament_form.title"))
                 ->searchable()
                 ,
                 CuratorColumn::make('image')
-                ->label('الإيقونة')
+                    ->label(__("filament_form.icon"))
                 ->width('100px')
                 ,
                 Tables\Columns\ToggleColumn::make('status')
-                ->label('حالة النشر'),
+                    ->label(__("filament_form.status")),
+
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__("filament_form.updated_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

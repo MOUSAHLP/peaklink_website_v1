@@ -29,7 +29,7 @@
                             <ul class="accordion-box wow fadeInRight">
 
 
-                                @if (isset($Faqs->questions))
+                                @if (isset($Faqs->questions) && $Faqs->questions != '')
 
                                     @foreach ($Faqs->questions as $faq)
                                         @if ($loop->first)
