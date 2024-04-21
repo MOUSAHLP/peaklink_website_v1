@@ -12,6 +12,7 @@ use Filament\Forms\Components\Section;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\BrandResource\Pages;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
 
 class BrandResource extends Resource
 {
@@ -22,17 +23,23 @@ class BrandResource extends Resource
     protected static ?string $navigationGroup = 'الصفحة الرئيسية';
     protected static ?int $navigationSort = 16;
 
+
+    
+            public static function getNavigationGroup(): ?string
+            {
+                return __('home/homepage.homepage');
+            }
                 public static function getModelLabel(): string
             {
-                return 'العلامة التجارية';
+                return __('home/brands.brands');
             }
                 public static function getPluralLabel(): string
             {
-                return 'العلامة التجارية';
+                return __('home/brands.brands');
             }
                 public static function getNavigationLabel(): string
             {
-                return 'العلامة التجارية';
+                return __('home/brands.brands');
             }
             public static function getNavigationBadge(): ?string
             {
@@ -54,10 +61,10 @@ class BrandResource extends Resource
                 Section::make()
                 ->schema([
                     Forms\Components\TextInput::make('name')
-                    ->label('اسم العلامة التجارية')
+                     ->label(__('home/brands.brand_name'))
                         ->required(),
                     Forms\Components\TextInput::make('slug')
-                    ->label('رابط العلامة التجارية')
+                     ->label(__('home/brands.brand_link'))
     
                         ->required()
                         ->maxLength(255),
@@ -69,7 +76,7 @@ class BrandResource extends Resource
                     //     ->required(),
 
                         CuratorPicker::make('logo')
-                        ->label(__('شعار العلامة التجارية'))
+                        ->label(__('home/brands.brand_logo'))
                         ->size('sm') 
                         ->outlined(false)
                         ->color('info')
@@ -78,8 +85,8 @@ class BrandResource extends Resource
                         ->columnSpanFull(),
 
                     Forms\Components\Toggle::make('status')
-                    ->columnSpanFull()
-                    ->label('حالة نشر العلامة التجارية'),
+                    ->label(__("filament_form.status"))
+                    ->columnSpanFull(),
 
                 ])->columns(2),
 
@@ -91,22 +98,26 @@ class BrandResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                ->label('اسم العلامة التجارية')
+                    ->label(__('home/brands.brand_name'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
-                ->label('رابط العلامة التجارية')
+                    ->label(__('home/brands.brand_link'))
                     ->searchable(),
-                Tables\Columns\imageColumn::make('logo')
-                ->label('شعار العلامة التجارية')
-                    ->searchable(),
+              
+                CuratorColumn::make('logo')
+                    ->label(__('home/brands.brand_logo'))
+                    ->width('100px'),
+
                 Tables\Columns\ToggleColumn::make('status')
-                ->label('حالة نشر العلامة التجارية'),
+                    ->label(__("filament_form.status")),
 
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__("filament_form.updated_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

@@ -8,6 +8,7 @@ return [
     'title' => 'العنوان',
     'link' => 'الرابط',
     'button_title' => "عنوان الزر",
+    'button_link' => 'رابط الزر',
     'description' => 'الوصف',
     'short_description' => 'وصف قصير',
     'image' => 'الصورة',
@@ -33,5 +34,8 @@ return [
     'contact_us_values' => 'قيم التواصل',
     'contact_us_info' => 'بيانات التواصل',
     'contact_us_value' => 'معلومة التواصل',
+    'Has_Phone' => 'هل لديك رقم هاتف للتواصل ؟',
+    'Has_Email' => 'هل لديك ايميل للتواصل ؟',
+    
     
 ];

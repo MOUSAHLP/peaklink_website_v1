@@ -8,6 +8,7 @@ return [
     'title' => 'Title',
     'link' => 'Link',
     'button_title' => 'Button title',
+    'button_link' => 'Button link',
     'description' => 'Description',
     'short_description' => 'Short Description',
     'image' => 'Image',
@@ -33,4 +34,6 @@ return [
     'contact_us_values' => ' Contact Us Values',
     'contact_us_info' => 'Contact Us Info',
     'contact_us_value' => 'Contact Us Value',
+    'Has_Phone' => 'Do You Have Phone Number?',
+    'Has_Email' => 'Do You Have Email?',
 ];
