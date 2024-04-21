@@ -27,9 +27,10 @@ class AboutUsResource extends Resource
     protected static ?string $navigationGroup = "";
     protected static ?int $navigationSort = 3;
 
+   
     public static function getNavigationGroup(): ?string
     {
-        return __("about_us.Home");
+        return __('home/homepage.homepage');
     }
     public static function getModelLabel(): string
     {

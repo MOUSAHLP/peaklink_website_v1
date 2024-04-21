@@ -12,6 +12,8 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\CallSectionResource\Pages;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
 
 class CallSectionResource extends Resource
 {
@@ -65,19 +67,20 @@ class CallSectionResource extends Resource
                 ->required(),
 
                 Forms\Components\TextInput::make('button_link')
-                    ->label(__("filament_form.button_link"))
+                    ->label(__("filament_form.email"))
                     ->hidden(fn (Get $get): bool => !$get('Has_Email'))
-                    ->url()
+                    ->email()
                     ->required()
                     ->maxLength(50),
 
-                    
-                    Forms\Components\FileUpload::make('background_image')
+                    CuratorPicker::make('background_image')
                     ->label(__("filament_form.image"))
-                    ->label('الصورة')
-                    ->image()
-                    ->columnSpanFull()
-                    ->required(),
+                    ->size('sm') 
+                    ->outlined(false)
+                    ->color('info')
+                    ->constrained(true)
+                    ->listDisplay(false)
+                    ->columnSpanFull(),
                     
                     Forms\Components\Toggle::make('Has_Phone')
                     ->label(__("filament_form.Has_Phone"))
@@ -106,9 +109,9 @@ class CallSectionResource extends Resource
                     ->label(__("filament_form.button_link"))
                 
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('background_image')
-                ->label(__("filament_form.image"))
-                ,
+                CuratorColumn::make('image')
+                ->label(__("filament_form.icon"))
+                ->width('100px') ,
                 Tables\Columns\ToggleColumn::make('status')
                 ->label(__("filament_form.status")),
                 Tables\Columns\TextColumn::make('created_at')
