@@ -14,6 +14,8 @@ use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\FlowWorkResource\Pages;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
+use Guava\FilamentIconPicker\Forms\IconPicker;
+use Guava\FilamentIconPicker\Tables\IconColumn;
 
 class FlowWorkResource extends Resource
 {
@@ -65,13 +67,15 @@ class FlowWorkResource extends Resource
                     ->label(__("filament_form.short_description"))
                     ->maxLength(60)
                     ->required(),
-                    CuratorPicker::make('image')
-                    ->label(__("filament_form.image"))
-                    ->size('sm') 
-                    ->outlined(false)
-                    ->color('info')
-                    ->constrained(true)
-                    ->listDisplay(false),
+
+                    IconPicker::make('image')
+                    ->label(__("filament_form.icon"))
+                    ->columns([
+                        'default' => 1,
+                        'lg' => 3,
+                        '2xl' => 5,
+                    ]),
+                    
                 Forms\Components\Toggle::make('status')
                     ->label(__("filament_form.status"))
                 ->columnSpanFull(),
@@ -88,10 +92,10 @@ class FlowWorkResource extends Resource
                     ->label(__("filament_form.title"))
                 ->searchable()
                 ,
-                CuratorColumn::make('image')
-                    ->label(__("filament_form.icon"))
-                ->width('100px')
-                ,
+             
+                IconColumn::make("image")
+                ->label(__("filament_form.icon")),
+                
                 Tables\Columns\ToggleColumn::make('status')
                     ->label(__("filament_form.status")),
 

@@ -4462,7 +4462,7 @@ figure.image {
 .service-block .inner-box .icon-box {
     margin-bottom: 20px;
     background-color: var(--theme-color1);
-    width: 140px;
+    width: 75px;
     height: 75px;
     line-height: 75px;
     position: relative;
@@ -5136,12 +5136,16 @@ figure.image {
     border-color: var(--theme-color1)
 }
 
-.process-block .inner-box:hover .icon-box i {
+.process-block .inner-box:hover .icon-box i,
+.process-block .inner-box:hover .icon-box svg {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg)
 }
 
 .process-block .inner-box .icon-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 45px;
     color: var(--theme-color-light);
     width: 80px;
@@ -5152,7 +5156,8 @@ figure.image {
     margin: 0 auto 25px
 }
 
-.process-block .inner-box .icon-box i {
+.process-block .inner-box .icon-box i ,
+.process-block .inner-box .icon-box svg {
     display: block;
     -webkit-transition: all .3s ease;
     transition: all .3s ease
