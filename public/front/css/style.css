@@ -4637,6 +4637,9 @@ figure.image {
 .service-block-two {
     margin-bottom: 30px
 }
+.service-block-two.mix {
+    display: none;
+}
 
 .service-block-two .inner-box {
     border: 2px solid transparent;
@@ -4658,7 +4661,8 @@ figure.image {
     border-bottom: 1px solid var(--theme-color-light)
 }
 
-.service-block-two .inner-box:hover .icon-box i {
+.service-block-two .inner-box:hover .icon-box i,
+.service-block-two .inner-box:hover .icon-box svg {
     color: var(--theme-color-light);
     -webkit-transform: scale(.9);
     transform: scale(.9)
@@ -4694,7 +4698,8 @@ figure.image {
     width: 100%
 }
 
-.service-block-two .inner-box .icon-box i {
+.service-block-two .inner-box .icon-box i ,
+.service-block-two .inner-box .icon-box svg {
     color: var(--theme-color1);
     font-size: 56px;
     -webkit-transition: all .3s ease;

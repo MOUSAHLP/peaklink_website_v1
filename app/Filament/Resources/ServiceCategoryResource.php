@@ -69,6 +69,7 @@ class ServiceCategoryResource extends Resource
                     }),
                     Forms\Components\TextInput::make('slug')
                     ->label(__("filament_form.category_url"))
+                    ->unique()
                     ->maxLength(255)
                     ->required(),
                     Forms\Components\Toggle::make('status')

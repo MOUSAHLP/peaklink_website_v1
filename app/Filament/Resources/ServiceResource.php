@@ -133,6 +133,7 @@ class ServiceResource extends Resource
 
                 Repeater::make('faq')
                 ->label(__("home/faq.faq"))
+                ->defaultItems(0)
                 ->schema([
                     Forms\Components\TextInput::make('question')
                     ->label(__("home/faq.question"))

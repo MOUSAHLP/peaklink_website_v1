@@ -3,6 +3,7 @@
 namespace App\Livewire\Front\ServicesPage;
 
 use App\Models\Service;
+use App\Models\ServiceCategory;
 use Livewire\Component;
 
 class ShowServicesPage extends Component
@@ -11,6 +12,7 @@ class ShowServicesPage extends Component
     {
         $title = "peaklink Services";
         $services = Service::latest()->where('status', 1)->get();
-        return view('livewire.front.services-page.show-services-page', compact('services', 'title'));
+        $categories = ServiceCategory::where('status', 1)->get();
+        return view('livewire.front.services-page.show-services-page', compact('services','categories', 'title'));
     }
 }

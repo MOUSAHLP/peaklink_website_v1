@@ -78,7 +78,7 @@
                                         <li class="current"> <a href="{{ route('Home') }}"> @lang('home/homepage.homepage')</a>
                                         </li>
                                         <li> <a href="{{ route('aboutUs') }}"> @lang('home/homepage.aboutUS')</a></li>
-                                        <li> <a href="#"> @lang('home/homepage.services')</a> </li>
+                                        <li> <a href="{{ route('services') }}"> @lang('home/homepage.services')</a> </li>
 
                                         <li class="dropdown"><a href="#">@lang('home/homepage.pages') </a>
                                             <ul>

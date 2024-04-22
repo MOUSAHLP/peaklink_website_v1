@@ -19,47 +19,43 @@
                         <div class="sidebar-widget service-sidebar-single">
                             <div class="sidebar-service-list">
                                 <ul>
-                                    <li><a href="page-service-details.html" class="current"><i
-                                                class="fas fa-angle-right"></i><span>Website Development</span></a>
-                                    </li>
-                                    <li class="current"><a href="page-service-details.html"><i
-                                                class="fas fa-angle-right"></i><span>Graphic Designing</span></a>
-                                    </li>
-                                    <li><a href="page-service-details.html"><i
-                                                class="fas fa-angle-right"></i><span>Digital Marketing</span></a>
-                                    </li>
-                                    <li><a href="page-service-details.html"><i class="fas fa-angle-right"></i><span>Apps
-                                                Development</span></a>
-                                    </li>
-                                    <li><a href="page-service-details.html"><i class="fas fa-angle-right"></i><span>Seo
-                                                & Content
-                                                Writing</span></a></li>
-                                    <li><a href="page-service-details.html"><i class="fas fa-angle-right"></i><span>UI /
-                                                UX Designing</span></a>
-                                    </li>
+
+                                    @foreach ($serviceCategories as $serviceCategory)
+                                        <li @if ($serviceCategory->id == $service->serviceCategory->id) class="current" @endif>
+                                            <a href="{{ route('services') }}">
+                                                <i class="fas fa-angle-right"></i>
+                                                <span> {{ $serviceCategory->name }}</span></a>
+                                        </li>
+                                    @endforeach
+
                                 </ul>
                             </div>
                             <div class="service-details-help">
                                 <div class="help-shape-1"></div>
                                 <div class="help-shape-2"></div>
-                                <h2 class="help-title">Contact with <br> us for any <br> advice</h2>
+                                <h2 class="help-title">
+                                    @lang('home/services.contact_with')
+                                    <br>@lang('home/services.us_for_any')
+                                    <br> @lang('home/services.advice')
+                                </h2>
                                 <div class="help-icon">
                                     <span class=" lnr-icon-phone-handset"></span>
                                 </div>
                                 <div class="help-contact">
-                                    <p>Need help? Talk to an expert</p>
+                                    <p>@lang('home/services.talk_to_an_expert')</p>
+                                    {{-- need to be linked with settings --}}
                                     <a href="tel:12463330079">+892 ( 123 ) 112 - 9999</a>
                                 </div>
                             </div>
 
-                            <div class="sidebar-widget service-sidebar-single mt-4">
+                            {{-- <div class="sidebar-widget service-sidebar-single mt-4">
                                 <div class="service-sidebar-single-btn wow fadeInUp" data-wow-delay="0.5s"
                                     data-wow-duration="1200m">
                                     <a href="#" class="theme-btn btn-style-one d-grid"><span
                                             class="btn-title"><span class="fas fa-file-pdf"></span> download pdf
                                             file</span></a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                     </div>

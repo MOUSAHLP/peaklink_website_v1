@@ -3,6 +3,7 @@
 namespace App\Livewire\Front\ServiceDetailPage;
 
 use App\Models\Service;
+use App\Models\ServiceCategory;
 use Livewire\Component;
 
 class ShowServiceDetailPage extends Component
@@ -16,6 +17,11 @@ class ShowServiceDetailPage extends Component
     
     public function render()
     {
-        return view('livewire.front.service-detail-page.show-service-detail-page',['service'=>$this->service]);
+        $serviceCategories = ServiceCategory::where("status","1")->get();
+        return view('livewire.front.service-detail-page.show-service-detail-page',
+        [
+            'service'=>$this->service,
+            "serviceCategories"=>$serviceCategories
+         ]);
     }
 }
