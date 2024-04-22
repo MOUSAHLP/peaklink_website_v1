@@ -39,4 +39,5 @@ return [
     'choose_category' => 'Choose Category',
     'category_name' => 'Category Name',
     'category_url' => 'Category Url',
+    'socials' => 'socials',
 ];

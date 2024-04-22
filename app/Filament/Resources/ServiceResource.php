@@ -18,6 +18,8 @@ use App\Filament\Resources\ServiceResource\Pages;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms\Components\Repeater;
+use Guava\FilamentIconPicker\Forms\IconPicker;
+use Guava\FilamentIconPicker\Tables\IconColumn;
 
 class ServiceResource extends Resource
 {
@@ -86,6 +88,15 @@ class ServiceResource extends Resource
                     ->label(__("filament_form.link"))
                     ->required()
                     ->maxLength(30),
+                    
+                    IconPicker::make('image')
+                    ->label(__("filament_form.icon"))
+                    ->columns([
+                        'default' => 1,
+                        'lg' => 3,
+                        '2xl' => 5,
+                    ]),
+
                 Forms\Components\TextInput::make('short_description')
                     ->label(__("filament_form.short_description"))
                     ->maxLength(55)
@@ -101,13 +112,15 @@ class ServiceResource extends Resource
 
                 ->required(),
                 
-                CuratorPicker::make('image')
-                    ->label(__("filament_form.image"))
-                    ->size('sm') 
-                    ->outlined(false)
-                    ->color('info')
-                    ->constrained(true)
-                    ->listDisplay(false),
+                // CuratorPicker::make('image')
+                //     ->label(__("filament_form.image"))
+                //     ->size('sm') 
+                //     ->outlined(false)
+                //     ->color('info')
+                //     ->constrained(true)
+                //     ->listDisplay(false),
+
+
                 Forms\Components\Toggle::make('status')
                     ->label(__("filament_form.status")),
 
@@ -165,6 +178,9 @@ class ServiceResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('serviceCategory.name')
+                    ->label(__("filament_form.category_name"))
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('title')
                     ->label(__("filament_form.title"))
                     ->searchable(),
@@ -174,9 +190,17 @@ class ServiceResource extends Resource
                 Tables\Columns\TextColumn::make('slug')
                     ->label(__("filament_form.link"))
                     ->searchable(),
-                    CuratorColumn::make('image')
-                    ->label(__("filament_form.image"))
-                    ->width('100px'),
+                    
+                    // CuratorColumn::make('image')
+                    // ->label(__("filament_form.image"))
+                    // ->width('100px'),
+                   
+
+                IconColumn::make("image")
+                ->label(__("filament_form.icon")),
+
+                
+
                 ToggleColumn::make('status')
                     ->label(__("filament_form.status"))
                 ,

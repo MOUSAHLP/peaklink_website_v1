@@ -39,5 +39,6 @@ return [
     'choose_category' => 'أختر القسم',
     'category_name' => 'اسم القسم',
     'category_url' => 'رابط القسم',
+    'socials' => 'الروابط الاجتماعية',
     
 ];

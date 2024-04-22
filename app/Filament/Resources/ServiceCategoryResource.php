@@ -6,6 +6,7 @@ use App\Filament\Resources\ServiceCategoryResource\Pages;
 use App\Filament\Resources\ServiceCategoryResource\RelationManagers;
 use App\Models\ServiceCategory;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
@@ -56,21 +57,24 @@ class ServiceCategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                ->label(__("filament_form.category_name"))
-                ->maxLength(255)
-                ->required()
-                ->debounce()
-                ->afterStateUpdated(function ($set, ?string $state) { 
-                        $set('slug', Str::slug($state));
-                }),
-                Forms\Components\TextInput::make('slug')
-                ->label(__("filament_form.category_url"))
-                ->maxLength(255)
-                ->required(),
-                Forms\Components\Toggle::make('status')
-                ->label(__("filament_form.status"))
-                ->columnSpanFull(),
+                Section::make()
+            ->schema([
+                    Forms\Components\TextInput::make('name')
+                    ->label(__("filament_form.category_name"))
+                    ->maxLength(255)
+                    ->required()
+                    ->debounce()
+                    ->afterStateUpdated(function ($set, ?string $state) { 
+                            $set('slug', Str::slug($state));
+                    }),
+                    Forms\Components\TextInput::make('slug')
+                    ->label(__("filament_form.category_url"))
+                    ->maxLength(255)
+                    ->required(),
+                    Forms\Components\Toggle::make('status')
+                    ->label(__("filament_form.status"))
+                    ->columnSpanFull(),
+                ]),
             ]);
     }
 
@@ -108,6 +112,7 @@ class ServiceCategoryResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

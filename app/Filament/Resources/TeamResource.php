@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use App\Enums\IconsEnums;
 use App\Filament\Resources\TeamResource\Pages;
 use App\Models\Team;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -16,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\Tabs;
+use Guava\FilamentIconPicker\Forms\IconPicker;
 
 class TeamResource extends Resource
 {
@@ -76,11 +76,15 @@ class TeamResource extends Resource
                             ->icon('heroicon-o-document-arrow-up')
                             ->schema([
                                 Repeater::make("socials")
-                                    ->label(_("الروابط الاجتماعية"))
+                                   ->label(__("filament_form.socials"))
                                     ->Schema([
-                                        Forms\Components\Select::make("icon")->label(__(''))->options(
-                                            IconsEnums::getAllValues()
-                                        ),
+                                        IconPicker::make('icon')
+                                        ->label(__("filament_form.icon"))
+                                        ->columns([
+                                            'default' => 1,
+                                            'lg' => 3,
+                                            '2xl' => 5,
+                                        ]),
                                         Forms\Components\TextInput::make('url')
                                             ->label(_("الرابط"))
                                             ->required()->url()
@@ -106,7 +110,7 @@ class TeamResource extends Resource
                     ->searchable()
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('socials')
+                    Tables\Columns\TextColumn::make('socials')
                     ->label(_("تم الانشاء"))
                     ->searchable()
                     ->badge()
@@ -114,7 +118,7 @@ class TeamResource extends Resource
                     ->state(function (Team $record) {
                         $value = [];
                         foreach ($record["socials"] as $social) {
-                            $value[] = IconsEnums::getName($social["icon"]);
+                            $value[] = $social["url"];
                         }
                         return $value;
                     }),
