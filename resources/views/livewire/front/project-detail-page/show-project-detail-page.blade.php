@@ -2,8 +2,11 @@
 
     @section('title', 'peaklink-' . $project->title)
     @section('meta_title', $project->meta_title)
-    @section('meta_keywords', $project->meta_description)
-    @section('meta_description', json_encode($project->meta_keywords))
+    @section('meta_description', $project->meta_description)
+    @if ($project->meta_keywords)
+        @section('meta_keywords', implode(',', $project->meta_keywords))
+    @endif
+
     @if ($project->meta_image)
         @section('meta_image', $project->metaImage->url)
     @endif

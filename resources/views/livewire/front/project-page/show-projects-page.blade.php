@@ -1,6 +1,6 @@
 <div>
 
-    @section('title', $title)
+    @section('title', __('projects.PeaklinkProjects'))
 
     @component('components.breadcumb', [
         'image_url' => asset('images/page-title-bg.png'),

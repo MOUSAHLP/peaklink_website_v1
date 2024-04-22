@@ -5,11 +5,7 @@ return [
     'phone' => 'Phone Number',
     'webAddress' => 'Web Address',
     'OurTeam' => 'Our Team',
-    'team' => 'team',
-    'peaklinkTeam' => 'peaklink team',
-
-    'team' => 'team',
-    'team' => 'team',
-
+    'team' => 'Team',
+    'peaklinkTeam' => 'Peak Link Team',
 
 ];

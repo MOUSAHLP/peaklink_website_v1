@@ -5,14 +5,15 @@ namespace App\Models;
 use App\Models\Tag;
 use App\Models\User;
 use App\Models\BlogCategory;
+use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
-    use HasFactory,HasTranslations;
-    public $translatable = ['title','tags','content','meta_title','meta_keywords','meta_description'];
+    use HasFactory, HasTranslations;
+    public $translatable = ['title', 'tags', 'content', 'meta_title', 'meta_keywords', 'meta_description'];
     protected $table = 'posts';
     protected $fillable = [
         'category_id',
@@ -22,6 +23,7 @@ class Post extends Model
         'slug',
         'content',
         'image',
+        "socials",
         'status',
         'meta_title',
         'meta_image',
@@ -31,17 +33,27 @@ class Post extends Model
 
     public function categories()
     {
-        return $this->belongsTo(BlogCategory::class,'category_id');
+        return $this->belongsTo(BlogCategory::class, 'category_id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 
     public function users()
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function metaImage()
+    {
+        return $this->belongsTo(Media::class, 'meta_image', 'id');
     }
 
-    
     protected $casts = [
         'meta_keywords' => 'array',
         'tags' => 'array',
-     ];
+        'socials' => 'json',
+
+    ];
 }

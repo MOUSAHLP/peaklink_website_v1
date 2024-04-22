@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'AboutUsPageTitle' => 'عن Peaklink',
+    'AboutUsPageTitle' => 'عن Peak Link',
     'AboutUs' => 'من نحن',
     'Home' => 'الصفحة الرئيسية',
     'start' => 'البدء',

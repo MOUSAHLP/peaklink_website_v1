@@ -5,7 +5,7 @@ return [
     'phone' => 'رقم الهاتف',
     'webAddress' => 'الموقع الالكتروني',
     'OurTeam' => 'فريقنا',
-    'peaklinkTeam' => 'فريق peaklink',
+    'peaklinkTeam' => 'فريق Peak Link',
     'team' => 'الفريق',
 
 

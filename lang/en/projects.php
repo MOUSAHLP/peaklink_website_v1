@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'PeaklinkProjects' => 'Peak Link Projects',
+
     'projects' => 'Projects',
     'Date' => 'Date',
     'Website' => 'Website',

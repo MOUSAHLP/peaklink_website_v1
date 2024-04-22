@@ -10,9 +10,14 @@ class ShowProjectsPage extends Component
 {
     public function render()
     {
-        $title = "peaklink projects";
         $categories = CategoryProject::where('status', 1)->get();
         $projects = Project::latest()->where('status', 1)->get();
-        return view('livewire.front.project-page.show-projects-page', compact('projects', 'title', 'categories'));
+        return view(
+            'livewire.front.project-page.show-projects-page',
+            [
+                "projects" => $projects,
+                "categories" => $categories,
+            ]
+        );
     }
 }

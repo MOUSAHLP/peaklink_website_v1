@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="copyright" content="@yield('copyright', 'peaklink')">
-    <meta name="robots" content="@yield('copyright', 'peaklink')">
+    <meta name="copyright" content="@yield('copyright', 'Peak Link')">
+    <meta name="robots" content="@yield('copyright', 'Peak Link')">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="keywords" content="@yield('meta_keywords')">
@@ -26,7 +26,7 @@
     <!-- MS Tile - for Microsoft apps-->
     <meta name="msapplication-TileImage" content="@yield('meta_image')">
     <!-- Site Name, Title, and Description to be displayed -->
-    <meta property="og:site_name" content="peaklink">
+    <meta property="og:site_name" content="Peak Link">
     <meta property="og:title" content="@yield('meta_title')">
     <meta property="og:description" content="@yield('meta_description')">
     <!-- Image to display -->
@@ -37,10 +37,10 @@
     <meta property="og:image:width" content="1024">
     <meta property="og:image:height" content="1024">
     <!-- Website to visit when clicked in fb or WhatsApp-->
-    <meta property="og:url" content="@yield('copyright', 'peaklink')">
+    <meta property="og:url" content="@yield('copyright', 'Peak Link')">
 
     {{-- <title>{{ $title }}</title> --}}
-    <title> @yield('title', 'peaklink') </title>
+    <title> @yield('title', 'Peak Link') </title>
 
     <link href="{{ asset('front/css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/slick-theme.cs') }}s">
@@ -85,7 +85,7 @@
                                             <li> <a href="{{ route('Projects') }}">@lang('home/homepage.projects') </a> </li>
                                             <li> <a href="{{ route('team') }}"> @lang('home/homepage.team') </a> </li>
                                             <li> <a href="#"> @lang('home/homepage.products')</a></li>
-                                            <li> <a href="#"> @lang('home/homepage.blogs') </a></li>
+                                            <li> <a href="{{ route('Posts') }}"> @lang('home/homepage.blogs') </a></li>
                                         </ul>
                                     </li>
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tag extends Model
 {
-    use HasFactory,HasTranslations;
+    use HasFactory, HasTranslations;
     public $translatable = ['name'];
     protected $table = 'tags';
     protected $fillable = [
@@ -16,5 +16,8 @@ class Tag extends Model
         'slug',
         'status',
     ];
-
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 }

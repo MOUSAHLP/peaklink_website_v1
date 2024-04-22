@@ -16,6 +16,8 @@ use Filament\Tables\Actions\ActionGroup;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\PostResource\Pages;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Filament\Forms\Components\Repeater;
+use Guava\FilamentIconPicker\Forms\IconPicker;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PostResource extends Resource
@@ -52,8 +54,6 @@ class PostResource extends Resource
                             ->icon('heroicon-m-rectangle-group')
                             ->iconPosition(IconPosition::After)
                             ->schema([
-
-
                                 Forms\Components\Select::make('category_id')
                                     ->required()
                                     ->label('أختر القسم')
@@ -63,7 +63,11 @@ class PostResource extends Resource
                                         : $record->name),
 
                                 Forms\Components\Select::make('tags')
-                                ->options(Tag::all()->pluck('name','id'))
+                                    ->relationship('tags', 'name')
+                                    ->getOptionLabelFromRecordUsing(fn ($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
+                                        ? $record->getTranslation('name', $livewire->activeLocale)
+                                        : $record->name)
+
                                     ->label('اختر الوسوم')
                                     ->multiple()
                                     ->preload(),
@@ -88,10 +92,10 @@ class PostResource extends Resource
                                     ->required(),
 
 
-                                    Forms\Components\FileUpload::make('image')
+                                Forms\Components\FileUpload::make('image')
                                     ->label('صورة')
                                     ->required()
-                                    ->acceptedFileTypes(['image/png','image/jpg','image/jpeg'])
+                                    ->acceptedFileTypes(['image/png', 'image/jpg', 'image/jpeg'])
                                     ->directory('images/posts')
                                     ->visibility('public')
                                     ->disk('public')
@@ -102,7 +106,18 @@ class PostResource extends Resource
                                     ->required(),
 
                             ])->columns(4),
-
+                        Tabs\Tab::make('الروابط الاجتماعية')
+                            ->icon('heroicon-o-document-arrow-up')
+                            ->schema([
+                                Repeater::make("socials")
+                                    ->label(_("الروابط الاجتماعية"))
+                                    ->Schema([
+                                        IconPicker::make('icon')->label(__('')),
+                                        Forms\Components\TextInput::make('url')
+                                            ->label(_("الرابط"))
+                                            ->required()->url()
+                                    ])->grid(3)->columnSpanFull(),
+                            ]),
                         Tabs\Tab::make('محركات البحث جوجل "SEO"')
                             ->icon('heroicon-m-globe-europe-africa')
                             ->iconPosition(IconPosition::After)

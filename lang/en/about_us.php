@@ -2,7 +2,7 @@
 
 return [
 
-    'AboutUsPageTitle' => 'About Peaklink',
+    'AboutUsPageTitle' => 'About Peak Link',
     'AboutUs' => 'About Us',
     'Home' => 'Home',
     'start' => 'start',

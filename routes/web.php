@@ -5,10 +5,15 @@ use App\Livewire\Front\ContactUsPage\ShowContactUsPage;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Front\HomePage\ShowHomePage;
 use App\Livewire\Front\AboutUsPage\ShowAboutUsPage;
+use App\Livewire\Front\PostCategoryPage\ShowPostCategoryPage;
+use App\Livewire\Front\PostDetailPage\ShowPostDetailPage;
+use App\Livewire\Front\PostsPage\ShowPostsPage;
 use App\Livewire\Front\ProjectDetailPage\ShowProjectDetailPage;
 use App\Livewire\Front\ProjectPage\ShowProjectsPage;
 use App\Livewire\Front\TeamDetailPage\ShowTeamDetailPage;
 use App\Livewire\Front\TeamPage\ShowTeamPage;
+use App\Models\Post;
+use App\Models\Tag;
 use App\Models\Team;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
@@ -25,6 +30,10 @@ Route::group([
     Route::get('/contact-us', ShowContactUsPage::class)->name('contactUs');
     Route::get('/Projects', ShowProjectsPage::class)->name('Projects');
     Route::get('/Projects/{id}', ShowProjectDetailPage::class)->name('ProjectDetail');
+    Route::get('/Posts', ShowPostsPage::class)->name('Posts');
+    Route::get('/Posts/{slug}', ShowPostDetailPage::class)->name('PostDetail');
+    Route::get('/Posts/categories/{slug}', ShowPostCategoryPage::class)->name('ShowPostCategory');
+
 
     // Catch-all route for 404 errors
     Route::fallback(function () {
@@ -48,10 +57,11 @@ Route::group([
         return redirect()->back();
     })->name('en');
 
-    Route::get('/a', function () {
+    Route::get('/z', function () {
 
-        $teams = Team::noDetail();
-        dd($teams);
-        return $teams;
+        $posts = Post::whereHas('categories', function ($query) {
+            return $query->where('slug', "رابط القسم2");
+        })->get();
+        return $posts;
     })->name('a');
 });

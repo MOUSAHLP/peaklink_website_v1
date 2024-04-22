@@ -5664,6 +5664,10 @@ figure.image {
     margin-bottom: 30px
 }
 
+.news-block.mix {
+    display: none;
+}
+
 .news-block .inner-box {
     -webkit-transition: all .3s ease;
     transition: all .3s ease
@@ -13072,19 +13076,20 @@ table.tbl-shopping-cart>tfoot>tr>th {
     position: relative;
     font-size: 12px;
     background-color: var(--theme-color1);
-    color: var(--theme-color-light);
+    color: var(--theme-color-light) !important;
     display: inline-block;
     padding: 5px 30px;
     font-weight: var(--body-font-weight-bold);
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
-    border-radius: 35px
+    border-radius: 35px;
+    cursor: default;
 }
 
 .blog-details__tags a:hover {
     background-color: var(--theme-color2);
     color: var(--text-color-bg-theme-color1);
-    text-decoration: none
+    text-decoration: none !important;
 }
 
 .blog-details__tags a+a {
@@ -13125,6 +13130,17 @@ table.tbl-shopping-cart>tfoot>tr>th {
 }
 
 .blog-details__social-list a:hover {
+    color: var(--text-color-bg-theme-color2)
+}
+
+.blog-details__social-list a svg {
+    width: 20px;
+    color: var(--theme-color-light);
+    /* margin: 0px 0px 5px; */
+    color: var(--text-color-bg-theme-color2);
+}
+
+.blog-details__social-list a:hover svg {
     color: var(--text-color-bg-theme-color2)
 }
 
