@@ -75,6 +75,7 @@ class ProductCategoryResource extends Resource
 
                 Tables\Columns\TextColumn::make('slug')
                 ->label(__('رابط الفئة'))
+                ->unique()
                 ->searchable()
                 ->sortable(),
                 Tables\Columns\ToggleColumn::make('status')

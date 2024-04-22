@@ -10,6 +10,8 @@ use App\Livewire\Front\PostDetailPage\ShowPostDetailPage;
 use App\Livewire\Front\PostsPage\ShowPostsPage;
 use App\Livewire\Front\ProjectDetailPage\ShowProjectDetailPage;
 use App\Livewire\Front\ProjectPage\ShowProjectsPage;
+use App\Livewire\Front\ServiceDetailPage\ShowServiceDetailPage;
+use App\Livewire\Front\ServicesPage\ShowServicesPage;
 use App\Livewire\Front\TeamDetailPage\ShowTeamDetailPage;
 use App\Livewire\Front\TeamPage\ShowTeamPage;
 use App\Models\Post;
@@ -34,6 +36,8 @@ Route::group([
     Route::get('/Posts/{slug}', ShowPostDetailPage::class)->name('PostDetail');
     Route::get('/Posts/categories/{slug}', ShowPostCategoryPage::class)->name('ShowPostCategory');
 
+    Route::get('/services', ShowServicesPage::class)->name('services');
+    Route::get('/services/{id}', ShowServiceDetailPage::class)->name('servicesDetail');
 
     // Catch-all route for 404 errors
     Route::fallback(function () {

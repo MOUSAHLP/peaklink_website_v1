@@ -32,6 +32,7 @@ class AdminPanelProvider extends PanelProvider
                 [
                     'مستخدمين النظام',
                     'الصفحة الرئيسية',
+                    'الخدمات',
                     'المشاريع',
                     'المدونة',
                     'المتجر',

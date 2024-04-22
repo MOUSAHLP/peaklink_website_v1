@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
@@ -77,7 +77,7 @@
                                 <ul class="navigation">
                                     <li class="current"> <a href="{{ route('Home') }}"> @lang('home/homepage.homepage')</a> </li>
                                     <li> <a href="{{ route('aboutUs') }}"> @lang('home/homepage.aboutUS')</a></li>
-                                    <li> <a href="#"> @lang('home/homepage.services')</a> </li>
+                                    <li> <a href="{{ route('services') }}"> @lang('home/homepage.services')</a> </li>
 
 
                                     <li class="dropdown"><a href="#">@lang('home/homepage.pages') </a>
@@ -88,6 +88,7 @@
                                             <li> <a href="{{ route('Posts') }}"> @lang('home/homepage.blogs') </a></li>
                                         </ul>
                                     </li>
+
 
 
                                     <li><a href="{{ route('contactUs') }}"> @lang('home/homepage.contactUs') </a></li>
@@ -147,7 +148,7 @@
                             <div class="contact-info-box">
                                 <span class="icon lnr-icon-envelope1"></span>
                                 <span class="title"> @lang('home/homepage.SendEmail')</span>
-                                <a href=""><span class="__cf_email__"
+                                <a href=""><span class="cf_email"
                                         data-cfemail="">[email&#160;protected]</span></a>
                             </div>
                         </li>

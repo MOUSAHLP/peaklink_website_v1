@@ -17,6 +17,9 @@ use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use App\Filament\Resources\ServiceResource\Pages;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
+use Filament\Forms\Components\Repeater;
+use Guava\FilamentIconPicker\Forms\IconPicker;
+use Guava\FilamentIconPicker\Tables\IconColumn;
 
 class ServiceResource extends Resource
 {
@@ -24,13 +27,13 @@ class ServiceResource extends Resource
     protected static ?string $model = Service::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-server-stack';
-    protected static ?string $navigationGroup = 'الصفحة الرئيسية';
+    protected static ?string $navigationGroup = 'الخدمات';
     protected static ?int $navigationSort = 2;
 
     
             public static function getNavigationGroup(): ?string
             {
-                return __('home/homepage.homepage');
+                return __('home/services.services');
             }
                 public static function getModelLabel(): string
             {
@@ -65,6 +68,16 @@ class ServiceResource extends Resource
                 ->icon('heroicon-m-rectangle-group')
                 ->iconPosition(IconPosition::After)
                 ->schema([
+
+
+                    Forms\Components\Select::make('service_category_id')
+                    ->required()
+                    ->label(__("filament_form.choose_category"))
+                    ->relationship('serviceCategory', 'name')
+                    ->getOptionLabelFromRecordUsing(fn ($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
+                        ? $record->getTranslation('name', $livewire->activeLocale)
+                        : $record->name),
+                        
                     Forms\Components\TextInput::make('title')
                     ->maxLength(30)
                     ->label(__("filament_form.title"))
@@ -75,6 +88,15 @@ class ServiceResource extends Resource
                     ->label(__("filament_form.link"))
                     ->required()
                     ->maxLength(30),
+                    
+                    IconPicker::make('image')
+                    ->label(__("filament_form.icon"))
+                    ->columns([
+                        'default' => 1,
+                        'lg' => 3,
+                        '2xl' => 5,
+                    ]),
+
                 Forms\Components\TextInput::make('short_description')
                     ->label(__("filament_form.short_description"))
                     ->maxLength(55)
@@ -90,17 +112,39 @@ class ServiceResource extends Resource
 
                 ->required(),
                 
-                CuratorPicker::make('image')
-                    ->label(__("filament_form.image"))
-                    ->size('sm') 
-                    ->outlined(false)
-                    ->color('info')
-                    ->constrained(true)
-                    ->listDisplay(false),
+                // CuratorPicker::make('image')
+                //     ->label(__("filament_form.image"))
+                //     ->size('sm') 
+                //     ->outlined(false)
+                //     ->color('info')
+                //     ->constrained(true)
+                //     ->listDisplay(false),
+
+
                 Forms\Components\Toggle::make('status')
                     ->label(__("filament_form.status")),
 
             ])->columns(2),
+
+            Tabs\Tab::make(__("home/faq.faq"))
+            ->icon('heroicon-o-question-mark-circle')
+            ->iconPosition(IconPosition::After)
+            ->schema([
+
+                Repeater::make('faq')
+                ->label(__("home/faq.faq"))
+                ->defaultItems(0)
+                ->schema([
+                    Forms\Components\TextInput::make('question')
+                    ->label(__("home/faq.question"))
+                    ->required(),
+                    Forms\Components\TextInput::make('answer')
+                    ->label(__("home/faq.answer"))
+                    ->required(),
+
+                ])->grid(2)->columnSpanFull(),
+            ])->columns(2),
+
             Tabs\Tab::make("SEO")
             ->icon('heroicon-m-globe-europe-africa')
                 ->iconPosition(IconPosition::After)
@@ -135,6 +179,9 @@ class ServiceResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('serviceCategory.name')
+                    ->label(__("filament_form.category_name"))
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('title')
                     ->label(__("filament_form.title"))
                     ->searchable(),
@@ -144,9 +191,17 @@ class ServiceResource extends Resource
                 Tables\Columns\TextColumn::make('slug')
                     ->label(__("filament_form.link"))
                     ->searchable(),
-                    CuratorColumn::make('image')
-                    ->label(__("filament_form.image"))
-                    ->width('100px'),
+                    
+                    // CuratorColumn::make('image')
+                    // ->label(__("filament_form.image"))
+                    // ->width('100px'),
+                   
+
+                IconColumn::make("image")
+                ->label(__("filament_form.icon")),
+
+                
+
                 ToggleColumn::make('status')
                     ->label(__("filament_form.status"))
                 ,

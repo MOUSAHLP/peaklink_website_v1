@@ -36,4 +36,8 @@ return [
     'contact_us_value' => 'Contact Us Value',
     'Has_Phone' => 'Do You Have Phone Number?',
     'Has_Email' => 'Do You Have Email?',
+    'choose_category' => 'Choose Category',
+    'category_name' => 'Category Name',
+    'category_url' => 'Category Url',
+    'socials' => 'socials',
 ];

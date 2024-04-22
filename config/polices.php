@@ -31,4 +31,5 @@ return [
     "team",
     "user",
     "why::choose::our::service",
+    "service::category",
 ];
