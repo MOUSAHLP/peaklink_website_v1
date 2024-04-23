@@ -54,6 +54,5 @@ class Post extends Model
         'meta_keywords' => 'array',
         'tags' => 'array',
         'socials' => 'json',
-
     ];
 }

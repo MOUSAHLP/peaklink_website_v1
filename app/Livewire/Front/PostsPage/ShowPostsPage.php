@@ -11,7 +11,7 @@ class ShowPostsPage extends Component
     public function render()
     {
         $posts = Post::where('status', 1)->get();
-        $categories = BlogCategory::all();
+        $categories = BlogCategory::where('status', 1)->get();
 
         return view('livewire.front.posts-page.show-posts-page', [
             "posts" => $posts,

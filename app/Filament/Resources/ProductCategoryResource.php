@@ -24,43 +24,44 @@ class ProductCategoryResource extends Resource
     protected static ?string $navigationGroup = 'المتجر';
     protected static ?int $navigationSort = 1;
 
-                public static function getModelLabel(): string
-            {
-                return 'فئة';
-            }
-                public static function getPluralLabel(): string
-            {
-                return 'الفئات';
-            }
-                public static function getNavigationLabel(): string
-            {
-                return 'الفئات';
-            }
-         
+    public static function getModelLabel(): string
+    {
+        return 'فئة';
+    }
+    public static function getPluralLabel(): string
+    {
+        return 'الفئات';
+    }
+    public static function getNavigationLabel(): string
+    {
+        return 'الفئات';
+    }
+
 
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-              Section::make()
-              ->schema([
-                Forms\Components\TextInput::make('name')
-                ->label(__('اسم الفئة'))
-                ->maxLength(255)
-                ->required()
-                ->debounce()
-                ->afterStateUpdated(function ($set, ?string $state) { 
-                        $set('slug', Str::slug($state));
-                }),
-                Forms\Components\TextInput::make('slug')
-                ->label(__('رابط الفئة'))
-                ->maxLength(255)
-                ->required(),
-                Forms\Components\Toggle::make('status')
-                ->columnSpanFull()
-                ->label(__('حالة الفئة')),
-              ]),
+                Section::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label(__('اسم الفئة'))
+                            ->maxLength(255)
+                            ->required()
+                            ->debounce()
+                            ->afterStateUpdated(function ($set, ?string $state) {
+                                $set('slug', Str::slug($state));
+                            }),
+                        Forms\Components\TextInput::make('slug')
+                            ->label(__('رابط الفئة'))
+                            ->maxLength(255)
+                            ->unique()
+                            ->required(),
+                        Forms\Components\Toggle::make('status')
+                            ->columnSpanFull()
+                            ->label(__('حالة الفئة')),
+                    ])->columns(2),
             ]);
     }
 
@@ -69,26 +70,25 @@ class ProductCategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                ->label(__('اسم الفئة'))
-                ->searchable()
-                ->sortable(),
+                    ->label(__('اسم الفئة'))
+                    ->searchable()
+                    ->sortable(),
 
                 Tables\Columns\TextColumn::make('slug')
-                ->label(__('رابط الفئة'))
-                ->unique()
-                ->searchable()
-                ->sortable(),
+                    ->label(__('رابط الفئة'))
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\ToggleColumn::make('status')
-                ->label(__('حالة الفئة')),
+                    ->label(__('حالة الفئة')),
 
-            Tables\Columns\TextColumn::make('created_at')
-                ->dateTime()
-                ->sortable()
-                ->toggleable(isToggledHiddenByDefault: true),
-            Tables\Columns\TextColumn::make('updated_at')
-                ->dateTime()
-                ->sortable()
-                ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

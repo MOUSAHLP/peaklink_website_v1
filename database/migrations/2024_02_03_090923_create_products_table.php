@@ -16,11 +16,17 @@ return new class extends Migration
             $table->string("name");
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('product_categories')->onDelete('cascade');
-            $table->integer("price");
-            $table->string("short_description");
+            $table->string("image");
+            $table->longText("short_description");
             $table->longText("long_description");
+            $table->string("demo_url")->nullable();
             $table->string("slug");
-            $table->boolean("is_in_store");
+            $table->boolean("status")->default(true);
+            $table->json("socials");
+            $table->json('meta_title')->nullable();
+            $table->string('meta_image')->nullable();
+            $table->json('meta_keywords')->nullable();
+            $table->json('meta_description')->nullable();
             $table->timestamps();
         });
     }

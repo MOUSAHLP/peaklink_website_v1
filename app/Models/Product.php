@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
@@ -13,27 +14,46 @@ class Product extends Model
         "name",
         "short_description",
         "long_description",
+        'meta_title',
+        'meta_image',
+        'meta_keywords',
+        'meta_description',
     ];
 
     protected $fillable = [
         "name",
         "category_id",
-        "price",
+        "image",
+        "demo_url",
         "short_description",
         "long_description",
         "slug",
-        "is_in_store",
+        "status",
+        "socials",
+        'meta_title',
+        'meta_image',
+        'meta_keywords',
+        'meta_description',
     ];
-
     public function category()
     {
         return $this->belongsTo(ProductCategory::class, 'category_id');
     }
 
-    
+
     public function tags()
     {
         return $this->belongsToMany(ProductTag::class, 'products_tags_relations', 'product_id', 'product_tag_id');
     }
 
+    public function metaImage()
+    {
+        return $this->belongsTo(Media::class, 'meta_image', 'id');
+    }
+
+    protected $casts = [
+        'meta_keywords' => 'array',
+        'tags' => 'array',
+        'socials' => 'json',
+    ];
 }
