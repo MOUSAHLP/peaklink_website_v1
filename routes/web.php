@@ -32,19 +32,24 @@ Route::group([
 
     Route::get('/About-us', ShowAboutUsPage::class)->name('aboutUs');
 
+    // Team //
     Route::get('/Team', ShowTeamPage::class)->name('team');
     Route::get('/Team-detail/{id}', ShowTeamDetailPage::class)->name('teamDetail');
 
+    // Projects //
     Route::get('/Projects', ShowProjectsPage::class)->name('Projects');
     Route::get('/Projects/{id}', ShowProjectDetailPage::class)->name('ProjectDetail');
 
+    // Posts //
     Route::get('/Posts', ShowPostsPage::class)->name('Posts');
     Route::get('/Posts/{slug}', ShowPostDetailPage::class)->name('PostDetail');
     Route::get('/Posts/categories/{slug}', ShowPostCategoryPage::class)->name('ShowPostCategory');
 
+    // Services //
     Route::get('/Services', ShowServicesPage::class)->name('services');
     Route::get('/Services/{id}', ShowServiceDetailPage::class)->name('servicesDetail');
 
+    // Products //
     Route::get('/Products', ShowProductsPage::class)->name('Products');
     Route::get('/Products/{slug}', ShowProductsDetailPage::class)->name('ProductsDetail');
 
@@ -55,6 +60,7 @@ Route::group([
     });
 
 
+    // For Translating To Arabic
     Route::get('/ar', function (Request $request) {
 
         Session::put("locale", "ar");
@@ -63,6 +69,7 @@ Route::group([
         return redirect()->back();
     })->name('ar');
 
+    // For Translating To English
     Route::get('/en', function () {
 
         Session::put("locale", "en");
@@ -78,11 +85,11 @@ Route::group([
         return $product;
     })->name('a');
 
-    
+
     Route::get('/qwer', function () {
 
         return "qwer";
     })->name('qwer');
 
-        Route::post('/qwer', [ContactUsFormController::class, 'save'])->name('qwer');
+    Route::post('/qwer', [ContactUsFormController::class, 'save'])->name('qwer');
 });
