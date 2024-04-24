@@ -25,74 +25,44 @@ class FooterResource extends Resource
     protected static ?string $navigationGroup = 'Footer';
     protected static ?int $navigationSort = 1;
 
-                public static function getModelLabel(): string
-            {
-                return 'Footer';
-            }
-                public static function getPluralLabel(): string
-            {
-                return 'Footer';
-            }
-                public static function getNavigationLabel(): string
-            {
-                return 'Footer';
-            }
-          
+    public static function getModelLabel(): string
+    {
+        return 'Footer';
+    }
+    public static function getPluralLabel(): string
+    {
+        return 'Footer';
+    }
+    public static function getNavigationLabel(): string
+    {
+        return 'Footer';
+    }
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Section::make()
-                ->schema([
-                    Forms\Components\Toggle::make('is_inputSubscrip')
-                ->label("هل لديك طريقة لإشتراك في النشرة الإخبارية؟")
-                ->default(false)
-                ->live()
-                    ->required(),
-
-                Repeater::make('inputSubscrip')
-                ->label('بيانات الإشتراك')
-                ->hidden(fn (Get $get): bool => !$get('is_inputSubscrip'))
-                ->schema([
-                        Forms\Components\TextInput::make('inputSubscrip_title')->label('العنوان')->required(),
-                       Forms\Components\TextInput::make('inputSubscrip_description')->label('الوصف')->required(),
-                ])->columns(2)
-                ->disableItemCreation()
-                ->disableItemDeletion()
-                ->columnSpanFull(),
-
-                Repeater::make('footers')
-                ->schema([
-                    Forms\Components\TextInput::make('title')->label('عنوان القسم')->required()
-                    ,
-                    Repeater::make('footers')
-                    ->label('اقسام  المنيو')
                     ->schema([
-                        Forms\Components\Select::make('type')
-                    ->options(["email"=>"البريد الالكتروني","text"=>"النص","phone"=>"رقم الهاتف","url"=>"الرابط"])
-                    ->label('is -> [email - text - phone - url]')
-                    ->required()
-                    ->reactive()
-                    ->afterStateUpdated(function (Get $get,Set $set){
-                        $set('name',$get('type'));
-                    })
-                    ,
-                    Forms\Components\TextInput::make('name')
-                    ->label('بيانات التواصل')
-                    ->required(),
-                    ])->grid(2)
-                    ->columns(2)
-                    ->columnSpanFull(),
-                ])
-                ->columns(2)
-                ->defaultItems(2)
-                ->disableItemCreation()
-                ->disableItemDeletion()
-                ->columnSpanFull(),
 
+                        Forms\Components\TextInput::make('name')
+                            ->label('عنوان القسم')
+                            ->required(),
 
-                ]),
+                        Repeater::make('links')
+                            ->label('روابط القسم')
+                            ->schema([
+                                Forms\Components\TextInput::make('text')
+                                    ->label('نص الرابط')
+                                    ->required(),
+                                Forms\Components\TextInput::make('url')
+                                    ->label('رابط الرابط')
+                                    ->url()
+                                    ->required(),
+                            ])->grid(3)
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 
@@ -100,8 +70,23 @@ class FooterResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\IconColumn::make('is_inputSubscrip')
-                    ->boolean(),
+                Tables\Columns\TextColumn::make('name')
+                    ->label(_("عنوان القسم"))
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('links')
+                    ->label(_("روابط القسم"))
+                    ->searchable()
+                    ->badge()
+                    ->state(function (Footer $record) {
+                        $value = [];
+                        foreach ($record["links"] as $skill) {
+                            $value[] = $skill["text"];
+                        }
+                        return $value;
+                    }),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

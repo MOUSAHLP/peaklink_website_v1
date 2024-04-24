@@ -8,20 +8,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Footer extends Model
 {
-    use HasFactory,HasTranslations;
-    public $translatable = ['footers','inputSubscrip'];
+    use HasFactory, HasTranslations;
     protected $table = "footers";
+    public $translatable = ['name', 'links'];
 
     protected $fillable = [
-        'is_inputSubscrip',
-        'inputSubscrip',
-        'footers'
+        'name',
+        'links',
     ];
-
 
     protected $casts = [
-        "footers"=>"array",
-        "inputSubscrip"=>"array",
+        "links" => "array",
     ];
-
+    
 }

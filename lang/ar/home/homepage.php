@@ -13,7 +13,12 @@ return [
     'letUsTalk' => 'دعنا نتحدث',
     'CallNow' => 'اتصل الان',
     'SendEmail' => 'ارسل بريد الكتروني',
-
+    'ourEmail' => 'بريدنا الالكتروني',
+    'phone' => 'رقم الهاتف',
+    'location' => 'موقعنا',
+    'openingTimes' => 'أوقات الفتح',
+    'from' => 'من',
+    'until' => 'حتى',
 
 
     'PoweredBy' => 'مطور من قبل PeakLink',

@@ -15,29 +15,22 @@ return new class extends Migration
             $table->id();
             $table->string("email")->nullable();
             $table->string("phone")->nullable();
-            $table->string('location_map')->nullable();
+            $table->string('location')->nullable();
 
             $table->string("headerlogo")->nullable();
             $table->string("footerlogo")->nullable();
 
-            $table->json('open_time')->nullable();
-            $table->json('close_time')->nullable();
-            $table->json('site_name')->nullable();
-            $table->json('powered_by')->nullable();
-            $table->string('powered_by_link')->nullable();
+            $table->string('open_time')->nullable();
+            $table->string('close_time')->nullable();
 
-            $table->json("social_links")->nullable();
-            $table->json("color")->nullable();  
-            $table->boolean("maintenance")->default(true);
+            $table->json("social")->nullable();
+            $table->json("color")->nullable();
+            $table->boolean("maintenance")->default(false);
 
             $table->json('meta_title')->nullable();
             $table->string('meta_image')->nullable();
             $table->json('meta_keywords')->nullable();
             $table->json('meta_description')->nullable();
-
-
-
-
 
             $table->timestamps();
         });

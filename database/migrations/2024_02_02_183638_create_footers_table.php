@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('footers', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('is_inputSubscrip')->default(true);
-            $table->json('inputSubscrip')->nullable();
-            $table->json('footers')->nullable();
+            $table->string('name');
+            $table->json('links')->nullable();
             $table->timestamps();
         });
     }

@@ -9,18 +9,18 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\FileUpload;
-use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\SettingResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\SettingResource\RelationManagers;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Filament\Forms\Components\TimePicker;
+use Filament\Support\Enums\IconPosition;
+use Guava\FilamentIconPicker\Forms\IconPicker;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
+use Filament\Forms\Components\Section;
 
 class SettingResource extends Resource
 {
@@ -31,151 +31,95 @@ class SettingResource extends Resource
     protected static ?string $navigationGroup = 'الإعدادات';
     protected static ?int $navigationSort = 3;
 
-                public static function getModelLabel(): string
-            {
-                return 'إدارة  الموقع';
-            }
-                public static function getPluralLabel(): string
-            {
-                return 'إدارة  الموقع';
-            }
-                public static function getNavigationLabel(): string
-            {
-                return 'إدارة  الموقع';
-            }
+    public static function getModelLabel(): string
+    {
+        return 'إدارة  الموقع';
+    }
+    public static function getPluralLabel(): string
+    {
+        return 'إدارة  الموقع';
+    }
+    public static function getNavigationLabel(): string
+    {
+        return 'إدارة  الموقع';
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Section::make()
-                ->schema([
-                    Section::make(__('البيانات الأساسية'))
-                    ->schema([
-                        TextInput::make('email')->label(__('البريد الالكتروني') ),
-                        TextInput::make('phone')->label(__('رقم الهاتف') )->numeric(),
-                        TextInput::make('location_map')->label(__('خريطة قوقل') ),
-                        TextInput::make('site_name')->label(__('اسم الموقع') ),
-                        TextInput::make('powered_by')->label(__('نشئ بواسطة  " اسم الموقع  "') ),
-                        TextInput::make('powered_by_link')
-                            ->maxLength(255)->label(__('رابط الموقع " www.exmaple.com " ') ),
-                            FileUpload::make('headerlogo')
-                            ->label(__('شعار رأس الصفحة'))
-                            ->required()
-                            ->acceptedFileTypes(['image/png','image/jpg','image/jpeg'])
-                            ->directory('settingImages/favIcon')
-                            ->visibility('public')
-                            ->disk('public')
-                            ->imageEditor(),
-                            FileUpload::make('footerlogo')
-                            ->label(__('شعار إسفل الصفحة'))
-                            ->required()
-                            ->acceptedFileTypes(['image/png','image/jpg','image/jpeg'])
-                            ->directory('settingImages/favIcon')
-                            ->visibility('public')
-                            ->disk('public')
-                            ->imageEditor(),
+                Tabs::make('Tabs')
+                    ->tabs([
+                        Tabs\Tab::make('البيانات الأساسية')
+                            ->icon('heroicon-o-chat-bubble-bottom-center-text')
+                            ->schema([
+                                TextInput::make('email')->label(__('البريد الالكتروني'))->email(),
+                                TextInput::make('phone')->label(__('رقم الهاتف'))->numeric()->prefix("+963"),
+                                TextInput::make('location')->label(__('الموقع الجغرافي'))
+                                    ->columnSpanFull(),
 
-                        Toggle::make('maintenance')->label(__('الصيانة') ),
-    
-    
+                                TimePicker::make('open_time')->label(__('وقت الفتح')),
+                                TimePicker::make('close_time')->label(__('وقت الاغلاق')),
+
+                                CuratorPicker::make('headerlogo')->label(__('شعار اعلى الصفحة'))
+                                    ->size('sm')
+                                    ->outlined(false)
+                                    ->color('info')
+                                    ->listDisplay(false)
+                                    ->columns(2)
+                                    ->columnSpanFull(),
+
+                                CuratorPicker::make('footerlogo')->label(__('شعار إسفل الصفحة'))
+                                    ->size('sm')
+                                    ->outlined(false)
+                                    ->color('info')
+                                    ->constrained(true)
+                                    ->listDisplay(false)
+                                    ->columns(2)
+                                    ->columnSpanFull(),
+
+                                Section::make("color")
+                                    ->label(__('اللون'))
+                                    ->schema([
+                                        ColorPicker::make('color.primary')->required()->label(__('قيمة اللون الأساسي')),
+                                        ColorPicker::make('color.secondary')->required()->label(__('قيمة اللون الفرعي')),
+                                    ])
+                                    ->columns(2)
+                                    ->columnSpanFull(),
+
+                                Toggle::make('maintenance')->label(__('الصيانة')),
+                            ])
+                            ->columns(2),
+                        Tabs\Tab::make('الروابط الاجتماعية')
+                            ->icon('heroicon-m-link')
+                            ->schema([
+                                Repeater::make("socials")
+                                    ->label(_("الروابط الاجتماعية"))
+                                    ->Schema([
+                                        IconPicker::make('icon')->label(__('الايقونة')),
+                                        Forms\Components\TextInput::make('url')
+                                            ->label(_("الرابط"))
+                                            ->required()->url()
+                                    ])->grid(3)->columnSpanFull(),
+                            ]),
+                        Tabs\Tab::make('محركات البحث جوجل "SEO"')
+                            ->icon('heroicon-m-globe-europe-africa')
+                            ->iconPosition(IconPosition::After)
+                            ->schema([
+                                Forms\Components\TextInput::make('meta_title')
+                                    ->maxLength(30),
+                                Forms\Components\TagsInput::make('meta_keywords'),
+                                Forms\Components\TextInput::make('meta_description')
+                                    ->columnSpanFull(),
+                                CuratorPicker::make('meta_image')->label(__(''))
+                                    ->size('sm')
+                                    ->outlined(false)
+                                    ->color('info')
+                                    ->constrained(true)
+                                    ->listDisplay(false),
+                            ])->columns(2),
                     ])
-                    ->columnSpan(
-                        [  
-                          'default' => 1,
-                          'sm' => 3,
-                          'md' => 3,
-                          'lg' => 3,
-                          'xl' => 3,
-                          '2xl' => 1,
-                          ]
-                      ),
-
-                    Section::make()
-                    ->schema([
-                        
-                        
-                        Repeater::make('color')->label(__('اللون'))
-                        ->schema([
-                            TextInput::make('primary_name')->required()->label(__('اسم الون الأساسي')),
-                        ColorPicker::make('primary_value')->required()->label(__('قيمة اللون')),
-                        
-                        TextInput::make('seondary_name')->label(__('اسم الون الفرعي')),
-                        ColorPicker::make('seondary_value')->label(__('قيمة اللون')),
-                        ])
-                        ->disableItemCreation()
-                        ->disableItemDeletion()
-                        ->columns(4)
-                        ,
-
-                        Repeater::make('open_time')->label(__('أوقات العمل'))
-                    ->schema([
-                        TagsInput::make('day')->label(__('اليوم  [ أيام الأسبوع ]')),
-                        TextInput::make('time')->label(__('الوقت'))->default('10:00 صباحاً الى 9:00 مساءً'),
-                    ])
-                    ->grid(1)
-                    ->columns(2)
-                    ->columnSpanFull()
-                    ,
-
-                        Repeater::make('close_time')->label(__('أوقات الغلق'))
-                    ->schema([
-                        TagsInput::make('day')->required()->label(__('اليوم  [ أيام الأسبوع ]')),
-                        TextInput::make('time')->required()->label(__('الوقت'))->default('الجمعة 10:00 صباحاً الى 9:00 مساءً'),
-                    ])
-                    ->grid(1)
-                    ->columns(2)
-                    ->columnSpanFull()
-                    ,
-
-                        Repeater::make('social_links')->label(__('روابط التواصل الاجتماعي') )
-                        ->schema([
-                            TextInput::make('name')->required()->label(__('اسم الشوسل ميديا')),
-                            TextInput::make('url')->rules('url')->required()->label(__('الرابط السوشل ميديا')),
-                            FileUpload::make('icon')
-                            ->label(__('الأيقونة السوشل ميديا'))
-                            ->required()
-                            ->directory('settingImages/socialIcon')
-                            ->visibility('public')
-                            ->disk('public')
-                            ->imageEditor(),
-                        ])
-                        ->columns(1)
-                        ->grid(3)
-                        ,
-                  
-
-    
-                    ])
-                    ->columnSpan(
-                      [  
-                        'default' => 1,
-                        'sm' => 3,
-                        'md' => 3,
-                        'lg' => 3,
-                        'xl' => 3,
-                        '2xl' => 2,
-                        ]
-                    ),
-
-                ])->columns(3),
-
-
-             
-
-                Section::make(__('seo -- بيانات لمحرك البحث جوجل'))
-                ->schema([
-                 TextInput::make('meta_title'),
-                 FileUpload::make('meta_image')
-                 ->image()
-                 ->imageEditor(),
-                 TagsInput::make('meta_keywords'),
-                 TextInput::make('meta_description'),
-                ]),
-                
-              
-              
-            
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -183,22 +127,47 @@ class SettingResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('site_name')
-                ->label(__('اسم الموقع') )
+                CuratorColumn::make('headerlogo')
+                    ->label(_("صورة المنتج"))
+                    ->width('100px'),
+                CuratorColumn::make('footerlogo')
+                    ->label(_("صورة المنتج"))
+                    ->width('100px'),
+                Tables\Columns\TextColumn::make('email')
+                    ->label(__('البريد الالكتروني'))
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('headerlogo')
-                ->label(__('شعار رأس الصفحة'))
+
+                Tables\Columns\TextColumn::make('phone')
+                    ->label(__('شعار رأس الصفحة'))
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('footerlogo')
-                ->label(__('شعار إسفل الصفحة'))
-                    ->searchable(),
+
                 Tables\Columns\ToggleColumn::make('maintenance')
-                ->label(__('الصيانة') ),
+                    ->label(__('الصيانة')),
+
+                Tables\Columns\TextColumn::make('location')
+                    ->label(__('شعار إسفل الصفحة'))
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+
+                Tables\Columns\TextColumn::make("socials")
+                    ->label(__("filament_form.socials"))
+                    ->badge()
+                    ->state(function (Setting $record) {
+                        $value = [];
+                        foreach ($record["socials"] as $social) {
+                            $value[] = $social["url"];
+                        }
+                        return $value;
+                    })
+                    ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__("filament_form.updated_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

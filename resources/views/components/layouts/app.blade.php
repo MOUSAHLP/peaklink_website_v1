@@ -83,8 +83,8 @@
                                     <li class="dropdown"><a href="#">@lang('home/homepage.pages') </a>
                                         <ul>
                                             <li> <a href="{{ route('Projects') }}">@lang('home/homepage.projects') </a> </li>
-                                            <li> <a href="{{ route('team') }}"> @lang('home/homepage.team') </a> </li>
                                             <li> <a href="{{ route('Products') }}"> @lang('home/homepage.products')</a></li>
+                                            <li> <a href="{{ route('team') }}"> @lang('home/homepage.team') </a> </li>
                                             <li> <a href="{{ route('Posts') }}"> @lang('home/homepage.blogs') </a></li>
                                         </ul>
                                     </li>
@@ -216,105 +216,116 @@
 
 
         <footer class="main-footer footer-style-one">
-
+            @php
+                use App\Models\Setting;
+                use App\Models\Footer;
+                $setting = Setting::first();
+                $footers = Footer::all();
+                $logo_alt = 'logo';
+            @endphp
+            <style>
+                :root {
+                    --theme-color1: {{ $setting->color['primary'] }}
+                }
+            </style>
             <div class="widgets-section">
                 <div class="auto-container">
+                    <div class="logo-box">
+                        <div class="logo"><a href="{{ route('Home') }}">
+                                <x-curator-glider :media="$setting->footerlogo" :alt="$logo_alt" />
+                            </a>
+                        </div>
+                    </div>
                     <div class="row">
-
-                        <div class="footer-column col-lg-3 col-sm-6">
+                        <div class="footer-column col-lg-3 col-sm-5">
                             <div class="footer-widget contact-widget">
-                                <div class="logo-box">
-                                    <div class="logo"><a href="{{ route('Home') }}"><img
-                                                src="{{ asset('front/images/logo.png') }}" alt title="Tronis"></a>
-                                    </div>
-                                </div>
                                 <div class="widget-content">
                                     <div class="content-box">
+                                        <a href="mailto:{{ $setting->email }}">
+                                            <div class="icon-box">
+                                                <i class="flaticon-envelope"></i>
+                                            </div>
+                                            <span>@lang('home/homepage.ourEmail')</span>
+                                            <h6 class="title">{{ $setting->email }}</h6>
+                                        </a>
+
+                                    </div>
+                                    <div class="content-box">
+                                        <a href="tel:{{ $setting->prefixed_phone }}">
+
+                                            <div class="icon-box">
+                                                <i class="flaticon-phone"></i>
+                                            </div>
+                                            <span>@lang('home/homepage.phone')</span>
+                                            <h6 class="title">{{ $setting->prefixed_phone }}</h6>
+                                        </a>
+
+                                    </div>
+                                    <div class="content-box">
                                         <div class="icon-box">
-                                            <i class="flaticon-envelope"></i>
+                                            <i class="flaticon-placeholder"></i>
                                         </div>
-                                        <span>البريد لنا</span>
-                                        <h6 class="title">معلومات@بريدك.شركة</h6>
+                                        <span> @lang('home/homepage.location')</span>
+                                        <h6 class="title">{{ $setting->location }}</h6>
                                     </div>
                                     <div class="content-box">
                                         <div class="icon-box">
                                             <i class="flaticon-clock-3"></i>
                                         </div>
-                                        <span>وقت متاح</span>
-                                        <h6 class="title">۰۹ أكون - ۰۶ مساءً, الشمس - الخميس</h6>
+                                        <span> @lang('home/homepage.openingTimes')</span>
+                                        <h6 class="title"> @lang('home/homepage.from') {{ $setting->open_time }}
+                                            @lang('home/homepage.until')
+                                            {{ $setting->close_time }}</h6>
+
                                     </div>
+                                    <a href="{{ route('contactUs') }}" type="button" class="theme-btn"><span
+                                            class="btn-title">@lang('home/homepage.letUsTalk')</span>
+                                        <i class="btn-icon far fa-arrow-left-long btn-icon me-2 font-size-18"></i>
+                                    </a>
                                     <ul class="social-icons">
-                                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-behance"></i></a></li>
+                                        @foreach ($setting->socials as $social)
+                                            <li>
+                                                <a href="{{ $social['url'] }}">
+                                                    @svg($social['icon'], ['style' => 'width: 20px;margin: 0 0 5px;'])
+                                                </a>
+                                            </li>
+                                        @endforeach
                                     </ul>
+
                                 </div>
                             </div>
                         </div>
 
-                        <div class="footer-column col-lg-3 col-sm-6">
-                            <div class="footer-widget links-widget pl-lg-30 pl-md--0">
-                                <h4 class="widget-title">خدماتنا</h4>
-                                <div class="widget-content">
-                                    <ul class="user-links style-two">
-                                        <li><a href="#">التسويق الرقمي</a></li>
-                                        <li><a href="#">تصميم العلامات التجارية</a></li>
-                                        <li><a href="#">تصميم المنتج</a></li>
-                                        <li><a href="#">تطوير الشبكة</a></li>
-                                        <li><a href="#">تطوير التطبيقات</a></li>
-                                    </ul>
+                        @foreach ($footers as $footer)
+                            <div class="footer-column col-lg-3 col-sm-5">
+                                <div class="footer-widget links-widget pl-lg-30 pl-md--0">
+                                    <h4 class="widget-title">{{ $footer->name }}</h4>
+                                    <div class="widget-content">
+                                        <ul class="user-links style-two">
+                                            @foreach ($footer->links as $link)
+                                                <li><a href="{{ $link['url'] }}">{{ $link['text'] }}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="footer-column col-lg-3 col-sm-6">
-                            <div class="footer-widget links-widget two pl-lg-30 pl-md--0">
-                                <h4 class="widget-title">رابط مفيد</h4>
-                                <div class="widget-content">
-                                    <ul class="user-links style-two">
-                                        <li><a href="#">معلومات عنا</a></li>
-                                        <li><a href="#">خدماتنا</a></li>
-                                        <li><a href="#">لدينا محفظة</a></li>
-                                        <li><a href="#">فريقنا</a></li>
-                                        <li><a href="#">اتصل بنا</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="footer-column col-lg-3 col-sm-6">
-                            <div class="footer-widget about-widget">
-                                <h4 class="widget-title">النشرة الإخبارية</h4>
-                                <div class="text">وقد تم الاعتماد على عملاء الشركات والترفيه للمسافرين </div>
-                                <div class="subscribe-form-two">
-                                    <form method="post" action="#">
-                                        <div class="form-group">
-                                            <input type="email" name="email" class="email" value
-                                                placeholder="عنوان بريدك  الإلكتروني" required>
-                                            <button type="button" class="theme-btn"><span class="btn-title">إشترك
-                                                    الآن</span><i
-                                                    class="btn-icon far fa-arrow-left-long btn-icon me-2 font-size-18"></i>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
 
-            <div class="footer-bottom">
-                <div class="auto-container">
-                    <div class="inner-container">
-                        <div class="copyright-text">© {{ __('home/homepage.PoweredBy') }}</div>
-                    </div>
-                </div>
             </div>
-            <div class="scroll-to-top scroll-to-target arrow-btn" data-target="html" style><i
-                    class="fa-sharp fa-solid fa-arrow-up"></i></div>
-        </footer>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="auto-container">
+            <div class="inner-container">
+                <div class="copyright-text">© {{ __('home/homepage.PoweredBy') }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-to-top scroll-to-target arrow-btn" data-target="html" style><i
+            class="fa-sharp fa-solid fa-arrow-up"></i></div>
+    </footer>
 
     </div>
     <script src="{{ asset('front/js/jquery.js') }}"></script>

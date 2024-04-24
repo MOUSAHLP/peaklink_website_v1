@@ -10,7 +10,6 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Tabs;
-use Filament\Forms\Components\Section;
 use Filament\Support\Enums\IconPosition;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Resources\Concerns\Translatable;

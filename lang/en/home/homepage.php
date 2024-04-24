@@ -13,6 +13,12 @@ return [
     'letUsTalk' => 'Let Us Talk',
     'CallNow' => 'Call Now',
     'SendEmail' => 'Send Email',
+    'ourEmail' => 'Email',
+    'phone' => 'Phone',
+    'location' => 'Location',
+    'openingTimes' => 'Opening Times',
+    'from' => 'From',
+    'until' => 'Until',
 
     'PoweredBy' => 'Powered By PeakLink',
 ];
