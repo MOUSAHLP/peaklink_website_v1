@@ -4,7 +4,7 @@
             <div class="auto-container">
 
                 <div class="sec-title text-center">
-                    <h2>سوف نقدم لك <br>أفضل خدمة</h2>
+                    <h2>@lang('home/services.we_will_offer') <br>@lang('home/services.best_service')</h2>
                 </div>
                 <div class="row">
                     @foreach ($services as $service)

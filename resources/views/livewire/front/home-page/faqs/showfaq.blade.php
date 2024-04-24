@@ -24,7 +24,9 @@
                     <div class="faq-column col-lg-6 col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
                         <div class="inner-column">
                             <div class="sec-title light">
-                                <h2 class="title">راجع الأسئلة المتداولة</h2>
+                                <h2 class="title">
+                                    @lang('home/faq.see_faq')
+                                </h2>
                             </div>
                             <ul class="accordion-box wow fadeInRight">
 

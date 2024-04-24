@@ -11,5 +11,7 @@ return [
     'advice' => " advice",
     'talk_to_an_expert' => "Need help? Talk to an expert",
     'all' => "All",
+    'we_will_offer' => "We will offer You",
+    'best_service' => "The Best service",
     
 ];
