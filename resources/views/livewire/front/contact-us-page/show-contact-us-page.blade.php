@@ -1,144 +1,206 @@
 <div>
-    
-    
-        
-		<section class="page-title" style="background-image: url({{ asset('front/images/background/page-title-bg.png') }});">
-			<div class="auto-container">
-				<div class="title-outer text-center">
-					<h1 class="title">اتصل بنا</h1>
-					<ul class="page-breadcrumb">
-						<li><a href="{{ route('Home') }}">الرئيسية</a></li>
-						<li>اتصل بنا</li>
-					</ul>
-				</div>
-			</div>
-		</section>
 
 
-		<section class="contact-details">
-			<div class="container ">
-				<div class="row">
-					<div class="col-xl-7 col-lg-6">
-						<div class="sec-title">
-							<span class="sub-title">ارسل لنا بريد الكتروني</span>
-							<h2>لا تتردد في الكتابة</h2>
-						</div>
 
-						<form id="contact_form" name="contact_form" class action="#"
-							method="post">
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="mb-3">
-										<input name="form_name" class="form-control" type="text"
-											placeholder="الاسم">
-									</div>
-								</div>
-								<div class="col-sm-6">
-									<div class="mb-3">
-										<input name="form_email" class="form-control required email" type="email"
-											placeholder="الايميل">
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="mb-3">
-										<input name="form_subject" class="form-control required" type="text"
-											placeholder="الموضوع">
-									</div>
-								</div>
-								<div class="col-sm-6">
-									<div class="mb-3">
-										<input name="form_phone" class="form-control" type="text"
-											placeholder="رقم الهاتف">
-									</div>
-								</div>
-							</div>
-							<div class="mb-3">
-								<textarea name="form_message" class="form-control required" rows="7"
-									placeholder="الرسالة"></textarea>
-							</div>
-							<div class="mb-5">
-								<input name="form_botcheck" class="form-control" type="hidden" value />
-								<button type="submit" class="theme-btn btn-style-one"
-									data-loading-text="جاري الإرسال"><span class="btn-title">إرسال</span></button>
-								<button type="reset" class="theme-btn btn-style-one bg-theme-color5"><span
-										class="btn-title">مسح النموذج</span></button>
-							</div>
-						</form>
+    {{-- <section class="page-title" style="background-image: url({{ asset('front/images/background/page-title-bg.png') }});">
+    <div class="auto-container">
+        <div class="title-outer text-center">
+            <h1 class="title">@lang('home/contact_us.call_us')</h1>
+            <ul class="page-breadcrumb">
+                <li><a href="{{ route('Home') }}">الرئيسية</a></li>
+                <li>اتصل بنا</li>
+            </ul>
+        </div>
+    </div>
+</section> --}}
 
-					</div>
+    @section('title', __('home/contact_us.contact_us'))
 
-                    @if(isset($ContactUsContact))
-                    
-					<div class="col-xl-5 col-lg-6">
-						<div class="contact-details__right">
-							<div class="sec-title">
-								<span class="sub-title">هل تحتاج إلى أي مساعدة؟</span>
-								<h2>ابق على تواصل معنا</h2>
-								<div class="text">
-                                    أبجد هوز هو ببساطة النص الحر المتاحة
+    {{-- $AboutUs --}}
+    @component('components.breadcumb', [
+        'image_url' => asset('images/page-title-bg.png'),
+        'upper_title' => __('home/contact_us.contact_us'),
+        'title' => __('home/contact_us.call_us'),
+    ])
+    @endcomponent
+
+
+    <section class="contact-details">
+        <div class="container ">
+            <div class="row">
+                <div class="col-xl-7 col-lg-6">
+                    <div class="sec-title">
+                        <span class="sub-title">@lang('home/contact_us.send_us_email')</span>
+                        <h2>@lang('home/contact_us.dont_hesitate')</h2>
+                    </div>
+
+                    {{-- <form wire:submit.prevent="save" id="contact_form" name="contact_form" enctype="multipart/form-data"> --}}
+                    <form action="{{ route('qwer') }}" method="POST" id="contact_form" name="contact_form"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <input value="{{ old('name') }}" name="name" class="form-control"
+                                        type="text" required placeholder="@lang('home/contact_us.name')">
+                                    <div>
+                                        @error('name')
+                                            <span style="color: red;font-size: 14px;"
+                                                class="error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <input value="{{ old('email') }}" name="email"
+                                        class="form-control required email" type="email" required
+                                        placeholder="@lang('home/contact_us.email')">
+                                    <div>
+                                        @error('email')
+                                            <span style="color: red;font-size: 14px;"
+                                                class="error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <ul class="list-unstyled contact-details__info">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    {{-- input --}}
+                                    <input name="file" type="file" class="form-control">
+                                    <div>
+                                        @error('file')
+                                            <span style="color: red;font-size: 14px;"
+                                                class="error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <input value="{{ old('phone') }}" name="phone" class="form-control"
+                                        type="text" required placeholder="@lang('home/contact_us.phone')">
+                                    <div>
+                                        @error('phone')
+                                            <span style="color: red;font-size: 14px;"
+                                                class="error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <textarea name="message" class="form-control required" rows="7" required placeholder="@lang('home/contact_us.message')">{{ old('message') }}</textarea>
+                            <div>
+                                @error('message')
+                                    <span style="color: red;font-size: 14px;" class="error">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <input name="botcheck" class="form-control" type="hidden" value />
+
+                            <div>
+                                @if (session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
+                            </div>
+
+                            <button wire:loading.attr="disabled" type="submit" class="theme-btn btn-style-one"
+                                data-loading-text="@lang('home/contact_us.sending')">
+
+                                <span class="btn-title" wire:loading wire:target="file">@lang('home/contact_us.uploading_file')</span>
+                                <span class="btn-title" wire:loading.remove>@lang('home/contact_us.send')</span>
+                                <span class="btn-title" wire:loading wire:target="save()">@lang('home/contact_us.sending')</span>
+
+                            </button>
+
+                            <button type="reset" class="theme-btn btn-style-one bg-theme-color5"><span
+                                    class="btn-title">@lang('home/contact_us.clear_form')</span></button>
+                        </div>
+                    </form>
+
+                </div>
+
+                @if (isset($ContactUsContact))
+
+                    <div class="col-xl-5 col-lg-6">
+                        <div class="contact-details__right">
+                            <div class="sec-title">
+                                <span class="sub-title">@lang('home/contact_us.need_any_help')</span>
+                                <h2>@lang('home/contact_us.keep_in_contact')</h2>
+                                <div class="text">
+                                    @lang('home/contact_us.section_desc')
+                                </div>
+                            </div>
+                            <ul class="list-unstyled contact-details__info">
                                 @foreach ($ContactUsContact as $contact)
-
-                                @if(isset($contact['contacts']))
-                                @foreach($contact['contacts'] as $contact_data)
-
-                                @if($contact_data['title'] && $contact_data['name'] && $contact_data['status'] == true  && $contact['btn_type'] == 'phone')
-								<li>
-									<div class="icon bg-theme-color2">
-										<span class="lnr-icon-phone-plus"></span>
-									</div>
-									<div class="text">
-										<a href="tel:{{ $contact_data['name'] }}">{{ $contact_data['title'] }}</a>
-									</div>
-								</li>
-                                @elseif($contact_data['title'] && $contact_data['name'] && $contact_data['status'] == true && $contact['btn_type'] == 'email')
-								<li>
-									<div class="icon">
-										<span class="lnr-icon-envelope1"></span>
-									</div>
-									<div class="text">
-										<a
-											href="mailTo:{{ $contact_data['name'] }}"><span
-												class="__cf_email__">{{ $contact_data['title'] }}</span></a>
-									</div>
-								</li>
-
-                                @elseif($contact_data['title'] && $contact_data['name'] && $contact_data['status'] == true && $contact['btn_type'] == 'text')
-								<li>
-									<div class="icon">
-										<span class="lnr-icon-location"></span>
-									</div>
-									<div class="text">
-										<h6>عنوان الشركة</h6>
-										<span>{{ $contact_data['title'] }}</span>
-									</div>
-								</li>
-                             
-                                @endif
-
+                                    @if (isset($contact['contacts']))
+                                        @foreach ($contact['contacts'] as $contact_data)
+                                            @if (
+                                                $contact_data['title'] &&
+                                                    $contact_data['value'] &&
+                                                    $contact_data['status'] == true &&
+                                                    $contact['btn_type'] == 'phone')
+                                                <li>
+                                                    <div class="icon bg-theme-color2">
+                                                        <span class="lnr-icon-phone-plus"></span>
+                                                    </div>
+                                                    <div class="text">
+                                                        <a
+                                                            href="tel:{{ $contact_data['value'] }}">{{ $contact_data['title'] }}</a>
+                                                    </div>
+                                                </li>
+                                            @elseif(
+                                                $contact_data['title'] &&
+                                                    $contact_data['value'] &&
+                                                    $contact_data['status'] == true &&
+                                                    $contact['btn_type'] == 'email')
+                                                <li>
+                                                    <div class="icon">
+                                                        <span class="lnr-icon-envelope1"></span>
+                                                    </div>
+                                                    <div class="text">
+                                                        <a href="mailTo:{{ $contact_data['value'] }}"><span
+                                                                class="__cf_email__">{{ $contact_data['title'] }}</span></a>
+                                                    </div>
+                                                </li>
+                                            @elseif(
+                                                $contact_data['title'] &&
+                                                    $contact_data['value'] &&
+                                                    $contact_data['status'] == true &&
+                                                    $contact['btn_type'] == 'text')
+                                                <li>
+                                                    <div class="icon">
+                                                        <span class="lnr-icon-location"></span>
+                                                    </div>
+                                                    <div class="text">
+                                                        <h6>{{ $contact_data['title'] }}</h6>
+                                                        <span>{{ $contact_data['value'] }}</span>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 @endforeach
-                                @endif
+                            </ul>
+                        </div>
+                    </div>
 
-                                @endforeach
-							</ul>
-						</div>
-					</div>
-                  
-                    @endif
+                @endif
 
-				</div>
-			</div>
-		</section>
+            </div>
+        </div>
+    </section>
 
 
-		<section class="map-section">
-			<iframe class="map w-100"
-				src="{!! $ContactUsSetting_location_map !!}"></iframe>
-		</section>
+    {{-- <section class="map-section">
+        <iframe class="map w-100" src="{!! $ContactUsSetting_location_map !!}"></iframe>
+    </section> --}}
 
 
 </div>

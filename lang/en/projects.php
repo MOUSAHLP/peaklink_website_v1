@@ -13,8 +13,7 @@ return [
     'Recently' => 'Recently',
     'CompletedProjects' => 'Completed Projects',
     'CompletedProjectsBody' => 'We Help You Build An Online Brand.',
-
-    'email' => 'Email',
-    'email' => 'Email',
+    'recently_projects' => 'Recently Projects',
+    'recently_projects_desc' => 'Our modern projects that we complete professionally using well-known techniques to achieve customer satisfaction',
 
 ];

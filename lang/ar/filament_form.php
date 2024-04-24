@@ -12,6 +12,7 @@ return [
     'description' => 'الوصف',
     'short_description' => 'وصف قصير',
     'image' => 'الصورة',
+    'message' => 'الرسالة',
     'icon' => 'الايقونة',
     'status' => "حالة النشر",
     'created_at' => 'تم الانشاء',
@@ -40,5 +41,5 @@ return [
     'category_name' => 'اسم القسم',
     'category_url' => 'رابط القسم',
     'socials' => 'الروابط الاجتماعية',
-    
+    'download_file' => "تحميل الملف",
 ];

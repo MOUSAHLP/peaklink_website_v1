@@ -7,7 +7,9 @@
         <section class="testimonial-section">
             <div class="inner-container">
                 <div class="sec-title text-center">
-                    <h2>ما الذي نتحدث عنه؟<br> زبوننا؟</h2>
+                    <h2>
+                        @lang('home/client_review.client_review_title')
+                    </h2>
                 </div>
                 <div class="row testi-slider-rtl">
 

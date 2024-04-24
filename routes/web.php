@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\IconsEnums;
+use App\Http\Controllers\ContactUsFormController;
 use App\Livewire\Front\ContactUsPage\ShowContactUsPage;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Front\HomePage\ShowHomePage;
@@ -76,4 +77,12 @@ Route::group([
 
         return $product;
     })->name('a');
+
+    
+    Route::get('/qwer', function () {
+
+        return "qwer";
+    })->name('qwer');
+
+        Route::post('/qwer', [ContactUsFormController::class, 'save'])->name('qwer');
 });

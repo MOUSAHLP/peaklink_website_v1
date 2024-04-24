@@ -73,20 +73,24 @@
                             </p>
                             <ul class="accordion-box wow fadeInRight">
 
-                                @foreach ($service->faq as $faq)
-                                    <li class="accordion block">
-                                        <div class="acc-btn">{{ $faq['question'] }}
-                                            <div class="icon fa fa-plus"></div>
-                                        </div>
-                                        <div class="acc-content">
-                                            <div class="content">
-                                                <div class="text">
-                                                    {{ $faq['answer'] }}
+                                @if ($service->faq != '')
+
+                                    @foreach ($service->faq as $faq)
+                                        <li class="accordion block">
+                                            <div class="acc-btn">{{ $faq['question'] }}
+                                                <div class="icon fa fa-plus"></div>
+                                            </div>
+                                            <div class="acc-content">
+                                                <div class="content">
+                                                    <div class="text">
+                                                        {{ $faq['answer'] }}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                @endforeach
+                                        </li>
+                                    @endforeach
+                                @endif
+
                             </ul>
                         </div>
                     </div>

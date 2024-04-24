@@ -4496,7 +4496,8 @@ figure.image {
     transition: all .3s ease
 }
 
-.service-block .inner-box .icon-box i {
+.service-block .inner-box .icon-box i,
+.service-block .inner-box .icon-box svg {
     color: #fff;
     font-size: 40px;
     -webkit-transition: all .3s ease;

@@ -83,34 +83,80 @@
                                 <h4 class="title">
                                     @lang('home/contact_us.get_in_touch')
                                 </h4>
-                                <form id="contact-forms">
+                                <form action="{{ route('qwer') }}" method="POST" id="contact_form" name="contact_form"
+                                    enctype="multipart/form-data">
+                                    @csrf
                                     <div class="row">
                                         <div class="form-group col-lg-12">
                                             <div class="input-outer">
-                                                <input type="text" name="name" placeholder="@lang('home/contact_us.name')"
-                                                    required>
+                                                <input type="text" name="name" value="{{ old('name') }}"
+                                                    placeholder="@lang('home/contact_us.name')" required>
                                                 <span class="icon fa fa-user"></span>
                                             </div>
+                                            <div>
+                                                @error('name')
+                                                    <span style="color: red;font-size: 14px;"
+                                                        class="error">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
                                         <div class="form-group col-lg-12">
                                             <div class="input-outer">
-                                                <input type="email" name="email" placeholder="@lang('home/contact_us.email')"
-                                                    required>
+                                                <input type="email" name="email" value="{{ old('email') }}"
+                                                    placeholder="@lang('home/contact_us.email')" required>
                                                 <span class="icon fa fa-envelope"></span>
+                                                <div>
+                                                    @error('email')
+                                                        <span style="color: red;font-size: 14px;"
+                                                            class="error">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group col-lg-12">
                                             <div class="input-outer">
-                                                <input type="text" name="phone" placeholder="@lang('home/contact_us.phone')"
-                                                    required>
+                                                <input type="text" name="phone" value="{{ old('phone') }}"
+                                                    placeholder="@lang('home/contact_us.phone')" required>
                                                 <span class="icon fa fa-phone"></span>
+                                                <div>
+                                                    @error('phone')
+                                                        <span style="color: red;font-size: 14px;"
+                                                            class="error">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group col-lg-12">
                                             <div class="input-outer">
-                                                <textarea name="message" placeholder="@lang('home/contact_us.message')" required></textarea>
-                                                <span class="icon fa fa-paper-plane"></span>
+                                                <input type="file" name="file" placeholder="@lang('home/contact_us.file')">
+                                                <span class="icon fa fa-file"></span>
+                                                <div>
+                                                    @error('file')
+                                                        <span style="color: red;font-size: 14px;"
+                                                            class="error">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
                                             </div>
+                                        </div>
+                                        <div class="form-group col-lg-12">
+                                            <div class="input-outer">
+                                                <textarea name="message" placeholder="@lang('home/contact_us.message')" required>{{ old('message') }}</textarea>
+                                                <span class="icon fa fa-paper-plane"></span>
+                                                <div>
+                                                    @error('message')
+                                                        <span style="color: red;font-size: 14px;"
+                                                            class="error">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            @if (session()->has('message'))
+                                                <div class="alert alert-success">
+                                                    {{ session('message') }}
+                                                </div>
+                                            @endif
                                         </div>
                                         <div class="form-group col-lg-12">
                                             <button class="theme-btn" type="submit" name="submit-form"><span
