@@ -4637,6 +4637,7 @@ figure.image {
 .service-block-two {
     margin-bottom: 30px
 }
+
 .service-block-two.mix {
     display: none;
 }
@@ -4698,7 +4699,7 @@ figure.image {
     width: 100%
 }
 
-.service-block-two .inner-box .icon-box i ,
+.service-block-two .inner-box .icon-box i,
 .service-block-two .inner-box .icon-box svg {
     color: var(--theme-color1);
     font-size: 56px;
@@ -9886,6 +9887,29 @@ figure.image {
     height: 100px
 }
 
+.product-details .bxslider .thumb-box.tags li {
+    position: relative;
+    font-size: 12px;
+    background-color: var(--theme-color1);
+    color: var(--theme-color-light) !important;
+    display: inline-block;
+    padding: 5px 30px;
+    font-weight: var(--body-font-weight-bold);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    border-radius: 35px;
+    width: auto;
+    height: auto;
+    cursor: default;
+}
+
+.product-details .bxslider .thumb-box.tags li:hover {
+
+    background-color: var(--theme-color2);
+    color: var(--text-color-bg-theme-color1);
+    text-decoration: none !important;
+}
+
 .product-details .bxslider .thumb-box li:last-child {
     margin: 0 !important
 }
@@ -10384,6 +10408,10 @@ figure.image {
 .product-discription .comment-box .custom-controls-stacked {
     position: relative;
     float: left
+}
+
+.related-product .filter-list.row {
+    height: auto !important;
 }
 
 .related-product h3 {

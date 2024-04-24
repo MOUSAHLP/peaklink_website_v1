@@ -9,7 +9,7 @@
     @if ($post->meta_image)
         @section('meta_image', $post->metaImage->url)
     @endif
-    <section class="blog-details">
+    <article class="blog-details">
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 col-lg-7">
@@ -95,5 +95,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </article>
 </div>

@@ -46,8 +46,6 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-
-
                 Tabs::make('Tabs')
                     ->tabs([
                         Tabs\Tab::make('الخدمات')
@@ -57,13 +55,13 @@ class PostResource extends Resource
                                 Forms\Components\Select::make('category_id')
                                     ->required()
                                     ->label('أختر القسم')
-                                    ->relationship('categories', 'name')
+                                    ->relationship('categories', 'name', fn ($query) => $query->where("status",1))
                                     ->getOptionLabelFromRecordUsing(fn ($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
                                         ? $record->getTranslation('name', $livewire->activeLocale)
                                         : $record->name),
 
                                 Forms\Components\Select::make('tags')
-                                    ->relationship('tags', 'name')
+                                    ->relationship('tags', 'name', fn ($query) => $query->where("status",1))
                                     ->getOptionLabelFromRecordUsing(fn ($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
                                         ? $record->getTranslation('name', $livewire->activeLocale)
                                         : $record->name)
@@ -107,7 +105,7 @@ class PostResource extends Resource
 
                             ])->columns(4),
                         Tabs\Tab::make('الروابط الاجتماعية')
-                            ->icon('heroicon-o-document-arrow-up')
+                            ->icon('heroicon-m-link')
                             ->schema([
                                 Repeater::make("socials")
                                     ->label(_("الروابط الاجتماعية"))

@@ -84,7 +84,7 @@
                                         <ul>
                                             <li> <a href="{{ route('Projects') }}">@lang('home/homepage.projects') </a> </li>
                                             <li> <a href="{{ route('team') }}"> @lang('home/homepage.team') </a> </li>
-                                            <li> <a href="#"> @lang('home/homepage.products')</a></li>
+                                            <li> <a href="{{ route('Products') }}"> @lang('home/homepage.products')</a></li>
                                             <li> <a href="{{ route('Posts') }}"> @lang('home/homepage.blogs') </a></li>
                                         </ul>
                                     </li>
