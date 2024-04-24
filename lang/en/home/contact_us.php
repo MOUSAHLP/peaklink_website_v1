@@ -2,9 +2,12 @@
 
 return [
     'contact_us' => 'Contact Us',
+    'forms' => 'Forms',
+    'contact_us_form' => 'Contact us form',
     'name' => 'Name',
     'email' => 'Email',
     'phone' => 'Phone',
+    'file' => 'File',
     'url' => 'Website',
     'text' => 'Website',
     'get_in_touch' => 'GET IN TOUCH',
@@ -12,5 +15,18 @@ return [
     'send_your_message' => 'Send Your Message',
     'section_title' => 'LET’S WORK TOGETHER FOR A GREAT BUSINESS',
     'section_desc' => 'Contact us for any inquiries or any project you have in mind',
+    'call_us' => 'Call us',
+    'send_us_email' => 'Send Us An Email',
+    'dont_hesitate' => 'Write To us',
+    'sending' => 'Sending',
+    'uploading_file' => 'Uploading File',
+    'send' => 'Send',
+    'clear_form' => 'Clear Form',
+    'need_any_help' => 'Do You Need Any Help??',
+    'keep_in_contact' => 'Keep In Contact',
+    'submited' => 'Post successfully Submited',
+    'accepted_extensions' => 'Accepted Extensions : ',
+    'no_file' => 'This Record Has No Attached File',
+    'file_saved' => 'File Saved successfully',
 ];
  

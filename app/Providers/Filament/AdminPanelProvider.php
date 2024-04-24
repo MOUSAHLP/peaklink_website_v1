@@ -35,6 +35,7 @@ class AdminPanelProvider extends PanelProvider
                     'الخدمات',
                     'المشاريع',
                     'المدونة',
+                    'الاستمارات',
                     'المتجر',
                     'إدارة الفريق',
                     'Footer',

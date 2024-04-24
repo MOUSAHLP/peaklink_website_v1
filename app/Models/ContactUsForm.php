@@ -12,8 +12,8 @@ class ContactUsForm extends Model
     protected $fillable = [
         'name',
         'email',
-        'subject',
+        'phone',
         'message',
-        'status',
+        'file',
     ];
 }

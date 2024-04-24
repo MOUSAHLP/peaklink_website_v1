@@ -12,6 +12,7 @@ return [
     'description' => 'Description',
     'short_description' => 'Short Description',
     'image' => 'Image',
+    'message' => 'Message',
     'icon' => 'Icon',
     'status' => "status",
     'created_at' => 'Created at',
@@ -40,4 +41,5 @@ return [
     'category_name' => 'Category Name',
     'category_url' => 'Category Url',
     'socials' => 'socials',
+    'download_file' => "Download File",
 ];
