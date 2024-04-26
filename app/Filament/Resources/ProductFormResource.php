@@ -2,47 +2,55 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ContactUsFormResource\Pages;
-use App\Models\ContactUsForm;
+use App\Filament\Resources\ProductFormResource\Pages;
+use App\Filament\Resources\ProductFormResource\RelationManagers;
+use App\Models\ProductForm;
 use Filament\Tables\Actions\Action;
+use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ContactUsFormResource extends Resource
+class ProductFormResource extends Resource
 {
-    protected static ?string $model = ContactUsForm::class;
+    protected static ?string $model = ProductForm::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    
     protected static ?string $navigationGroup = 'الاستمارات';
 
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 2;
 
     
         public static function getNavigationGroup(): ?string
         {
             return __('home/contact_us.forms');
         }
-        public static function getModelLabel(): string
-        {
-            return __('home/contact_us.contact_us_form');
-        }
-            public static function getPluralLabel(): string
-        {
-            return __('home/contact_us.contact_us_form');
-        }
-            public static function getNavigationLabel(): string
-        {
-            return __('home/contact_us.contact_us_form');
-        }
+        // public static function getModelLabel(): string
+        // {
+        //     return __('home/contact_us.contact_us_form');
+        // }
+        //     public static function getPluralLabel(): string
+        // {
+        //     return __('home/contact_us.contact_us_form');
+        // }
+        //     public static function getNavigationLabel(): string
+        // {
+        //     return __('home/contact_us.contact_us_form');
+        // }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+                // Forms\Components\TextInput::make('product_id')
+                //     ->required()
+                //     ->numeric(),
                 // Forms\Components\TextInput::make('name')
                 //     ->required()
                 //     ->maxLength(255),
@@ -59,7 +67,6 @@ class ContactUsFormResource extends Resource
                 //     ->maxLength(65535)
                 //     ->columnSpanFull(),
                 // Forms\Components\TextInput::make('file')
-                //     ->required()
                 //     ->maxLength(255),
             ]);
     }
@@ -68,18 +75,21 @@ class ContactUsFormResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('product.name')
+                ->label(__("product_form.product_name"))
+                ->sortable()
+                ->searchable(),
                 
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__("filament_form.name"))
-                    ->sortable()
-                    ->searchable(),
+                ->label(__("filament_form.name"))
+                ->sortable()
+                ->searchable(),
 
                 Tables\Columns\TextColumn::make('email')
                     ->label(__("filament_form.email"))
                     ->sortable()
                     ->searchable(),
-
-                Tables\Columns\TextColumn::make('phone')
+                    Tables\Columns\TextColumn::make('phone')
                     ->label(__("filament_form.phone"))
                     ->sortable()
                     ->searchable(),
@@ -104,7 +114,8 @@ class ContactUsFormResource extends Resource
                 //
             ])
             ->actions([
-        
+                // Tables\Actions\EditAction::make(),
+                
                 Action::make('file')
                 ->label(__("filament_form.download_file"))
                 ->icon('heroicon-o-document-arrow-down')
@@ -124,7 +135,7 @@ class ContactUsFormResource extends Resource
                         return response()->download($record->file);
                     }
                   }),
-                ])
+            ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -142,9 +153,9 @@ class ContactUsFormResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListContactUsForms::route('/'),
-            // 'create' => Pages\CreateContactUsForm::route('/create'),
-            // 'edit' => Pages\EditContactUsForm::route('/{record}/edit'),
+            'index' => Pages\ListProductForms::route('/'),
+            // 'create' => Pages\CreateProductForm::route('/create'),
+            // 'edit' => Pages\EditProductForm::route('/{record}/edit'),
         ];
     }
 }

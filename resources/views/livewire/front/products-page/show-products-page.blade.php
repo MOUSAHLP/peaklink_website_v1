@@ -3,8 +3,8 @@
 
     @component('components.breadcumb', [
         'image_url' => asset('images/page-title-bg.png'),
-        'upper_title' => __('posts.posts'),
-        'title' => __('posts.posts'),
+        'upper_title' => __('products.products'),
+        'title' => __('products.products'),
     ])
     @endcomponent
 
@@ -40,7 +40,7 @@
                                     <span class="price">{{ $product->category->name }}</span>
                                 </div>
                                 <div class="icon-box">
-                                    <a href="{{ route('contactUs') }}" class="ui-btn add-to-cart"><i
+                                    <a href="{{ route('productForm', $product->slug) }}" class="ui-btn add-to-cart"><i
                                             class="fa fa-shopping-cart"></i>
                                     </a>
                                 </div>

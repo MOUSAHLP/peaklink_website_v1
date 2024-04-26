@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('open_time')->nullable();
             $table->string('close_time')->nullable();
 
-            $table->json("social")->nullable();
+            $table->json("socials")->nullable();
             $table->json("color")->nullable();
             $table->boolean("maintenance")->default(false);
 

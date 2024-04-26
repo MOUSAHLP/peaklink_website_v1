@@ -1,19 +1,5 @@
 <div>
 
-
-
-    {{-- <section class="page-title" style="background-image: url({{ asset('front/images/background/page-title-bg.png') }});">
-    <div class="auto-container">
-        <div class="title-outer text-center">
-            <h1 class="title">@lang('home/contact_us.call_us')</h1>
-            <ul class="page-breadcrumb">
-                <li><a href="{{ route('Home') }}">الرئيسية</a></li>
-                <li>اتصل بنا</li>
-            </ul>
-        </div>
-    </div>
-</section> --}}
-
     @section('title', __('home/contact_us.contact_us'))
 
     {{-- $AboutUs --}}
@@ -35,7 +21,7 @@
                     </div>
 
                     {{-- <form wire:submit.prevent="save" id="contact_form" name="contact_form" enctype="multipart/form-data"> --}}
-                    <form action="{{ route('qwer') }}" method="POST" id="contact_form" name="contact_form"
+                    <form action="{{ route('save_contact_us_form') }}" method="POST" id="contact_form" name="contact_form"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row">
@@ -98,6 +84,12 @@
                                     <span style="color: red;font-size: 14px;" class="error">{{ $message }}</span>
                                 @enderror
                             </div>
+                        </div>
+                        <!-- Google Recaptcha Widget-->
+                        <div class="form-group mt-3">
+
+                            {!! NoCaptcha::renderJs() !!}
+                            {!! NoCaptcha::display() !!}
                         </div>
                         <div class="mb-5">
                             <input name="botcheck" class="form-control" type="hidden" value />
@@ -190,9 +182,7 @@
                             </ul>
                         </div>
                     </div>
-
                 @endif
-
             </div>
         </div>
     </section>

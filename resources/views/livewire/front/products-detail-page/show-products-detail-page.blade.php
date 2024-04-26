@@ -52,7 +52,8 @@
 
                     <div class="product-details__buttons">
                         <div class="product-details__buttons-1">
-                            <a href="{{ route('contactUs') }}" class="theme-btn btn-style-one">@lang('products.buyNow')</a>
+                            <a href="{{ route('productForm', $product->slug) }}"
+                                class="theme-btn btn-style-one">@lang('products.buyNow')</a>
                         </div>
                         @if ($product->demo_url)
                             <div class="product-details__buttons-2">
