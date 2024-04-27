@@ -10,8 +10,6 @@
                     <div class="image-column col-lg-6 col-md-12 col-sm-12">
                         <div class="inner-column">
                             <div class="image-box">
-                                <figure class="image overlay-anim"><img src="{{ asset('storage/' . $Faqs->image) }}" alt>
-                                </figure>
 
                                 <figure class="image overlay-anim">
                                     <x-curator-glider :media="$Faqs->image" :alt="'FAQ'" />

@@ -19,6 +19,7 @@ return [
     'openingTimes' => 'Opening Times',
     'from' => 'From',
     'until' => 'Until',
-
+    'testimonials' => 'Testimonials',
+    
     'PoweredBy' => 'Powered By PeakLink',
 ];

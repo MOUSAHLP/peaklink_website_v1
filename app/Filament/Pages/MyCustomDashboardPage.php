@@ -4,13 +4,14 @@ namespace App\Filament\Pages;
 
 use Filament\Pages\Page;
 use BezhanSalleh\FilamentGoogleAnalytics\Widgets;
-class GoogleDashboardPage extends Page
+
+class MyCustomDashboardPage extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
- 
-    // protected static string $view = 'filament.pages.my-custom-dashboard-page';
-    protected static string $view = 'filament.pages.google-dashboard-page';
- 
+
+    protected static string $view = 'filament.pages.my-custom-dashboard-page';
+
+    
     protected function getHeaderWidgets(): array
     {
         return [

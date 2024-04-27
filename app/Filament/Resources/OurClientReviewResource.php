@@ -12,6 +12,7 @@ use Filament\Forms\Components\Section;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\OurClientReviewResource\Pages;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
 
 class OurClientReviewResource extends Resource
 {
@@ -82,9 +83,11 @@ class OurClientReviewResource extends Resource
                 Forms\Components\Select::make('stars')
                     ->label("[1 - 5] ".__("filament_form.stars"))
                     ->options([
-                        
-                        1,2,3,4,5
-
+                        1=>1,
+                        2=>2,
+                        3=>3,
+                        4=>4,
+                        5=>5,
                     ])
                     ->required(),
 
@@ -107,10 +110,13 @@ class OurClientReviewResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('client_name')
                 ->label(__("filament_form.client_name"))
-
                     ->sortable(),
-                Tables\Columns\ImageColumn::make('client_image')
-                    ->label(__("filament_form.client_image")),
+
+                    
+                CuratorColumn::make('client_image')
+                ->label(__("filament_form.client_image"))
+                ->width('100px'),
+
 
                 Tables\Columns\TextColumn::make('stars')
                     ->label("[1 - 5] ".__("filament_form.stars"))

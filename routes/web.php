@@ -16,6 +16,7 @@ use App\Livewire\Front\ProjectDetailPage\ShowProjectDetailPage;
 use App\Livewire\Front\ProjectPage\ShowProjectsPage;
 use App\Livewire\Front\ServiceDetailPage\ShowServiceDetailPage;
 use App\Livewire\Front\ServicesPage\ShowServicesPage;
+use App\Livewire\Front\ShowTestimonialPage;
 use App\Livewire\Front\TeamDetailPage\ShowTeamDetailPage;
 use App\Livewire\Front\TeamPage\ShowTeamPage;
 use App\Models\Product;
@@ -59,6 +60,10 @@ Route::group([
     // for save forms
     Route::post('/contact-us-form', [FormController::class, 'save_contact_us_form'])->name('save_contact_us_form');
     Route::post('/product-form', [FormController::class, 'save_product_form'])->name('save_product_form');
+
+    // Testimonial //
+    Route::get('/Testimonial', ShowTestimonialPage::class)->name('Testimonial');
+    
 
     // Catch-all route for 404 errors
     Route::fallback(function () {

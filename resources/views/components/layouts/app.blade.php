@@ -55,6 +55,20 @@
             {{-- LTR Style  --}}
             <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
         @endif
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DE7CFR9YER"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-DE7CFR9YER');
+        </script>
+
     </head>
 
     <body class="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'rtl' : 'ltr' }}">
@@ -87,6 +101,7 @@
                                                 <li> <a href="{{ route('Products') }}"> @lang('home/homepage.products')</a></li>
                                                 <li> <a href="{{ route('team') }}"> @lang('home/homepage.team') </a> </li>
                                                 <li> <a href="{{ route('Posts') }}"> @lang('home/homepage.blogs') </a></li>
+                                                <li> <a href="{{ route('Testimonial') }}"> @lang('home/homepage.testimonials') </a></li>
                                             </ul>
                                         </li>
 
@@ -207,6 +222,9 @@
                                 <div class="mobile-nav-toggler">
                                     <i class="fa fa-bars"></i>
                                 </div>
+                            </div>
+                            <div class="btn">
+                                <a href="{{ route('contactUs') }}" class="theme-btn"> @lang('home/homepage.letUsTalk') </a>
                             </div>
                         </div>
                     </div>

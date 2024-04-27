@@ -2267,7 +2267,16 @@ figure.image {
 .sticky-header .nav-outer {
     position: relative;
     background: 0 0;
-    margin-left: auto
+    margin: 0 auto;
+}
+
+.sticky-header .btn a{
+    padding: 0 35px;
+    line-height: 59px;
+    height: 59px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--text-font);
 }
 
 .sticky-header .main-menu .navigation>li {
@@ -5515,9 +5524,8 @@ figure.image {
     margin-right: 9px
 }
 
-.testimonial-block-two .inner-box .content-box .rating li:last-child {
+.testimonial-block-two .inner-box .content-box .rating li.disabled {
     color: var(--text-color);
-    margin-right: 0
 }
 
 .testimonial-block-two .inner-box .content-box .auther-info {
