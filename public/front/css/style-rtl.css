@@ -7023,7 +7023,7 @@ figure.image {
 .faqs-section {
     position: relative;
     padding: 120px 0;
-    background-image: url(../images/resource/faqbac.jpg);
+    background-color: var(--theme-color1);
     background-repeat: no-repeat;
     background-size: cover
 }
@@ -7143,7 +7143,7 @@ figure.image {
     right: 0;
     width: 6px;
     height: 120px;
-    background-color: var(--theme-color1)
+    background-color: var(--second-color)
 }
 
 @media(max-width:767.98px) {

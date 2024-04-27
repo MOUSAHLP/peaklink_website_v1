@@ -9,7 +9,7 @@ class Showfaq extends Component
 {
     public function render()
     {
-        $Faqs = Faq::latest()->where('status',1)->first();
+        $Faqs = Faq::latest()->where('status',1)->orderBy("id","desc")->get()->take(5);
         return view('livewire.front.home-page.faqs.showfaq',['Faqs'=>$Faqs]);;
     }
 }

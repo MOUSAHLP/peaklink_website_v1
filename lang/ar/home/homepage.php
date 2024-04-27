@@ -21,6 +21,7 @@ return [
     'until' => 'حتى',
     'more' => 'المزيد',
     'testimonials' => 'مراجعة العملاء',
+    'faq' => 'الأسئلة الشائعة',
 
 
     'PoweredBy' => 'مطور من قبل PeakLink',

@@ -14,7 +14,6 @@ class CreateFaq extends CreateRecord
     {
         return [
             Actions\LocaleSwitcher::make(),
-            // ...
         ];
     }
 }

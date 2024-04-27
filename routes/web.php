@@ -6,6 +6,7 @@ use App\Livewire\Front\ContactUsPage\ShowContactUsPage;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Front\HomePage\ShowHomePage;
 use App\Livewire\Front\AboutUsPage\ShowAboutUsPage;
+use App\Livewire\Front\FAQPage\ShowFAQPage;
 use App\Livewire\Front\PostCategoryPage\ShowPostCategoryPage;
 use App\Livewire\Front\PostDetailPage\ShowPostDetailPage;
 use App\Livewire\Front\PostsPage\ShowPostsPage;
@@ -16,9 +17,9 @@ use App\Livewire\Front\ProjectDetailPage\ShowProjectDetailPage;
 use App\Livewire\Front\ProjectPage\ShowProjectsPage;
 use App\Livewire\Front\ServiceDetailPage\ShowServiceDetailPage;
 use App\Livewire\Front\ServicesPage\ShowServicesPage;
-use App\Livewire\Front\ShowTestimonialPage;
 use App\Livewire\Front\TeamDetailPage\ShowTeamDetailPage;
 use App\Livewire\Front\TeamPage\ShowTeamPage;
+use App\Livewire\Front\TestimonialPage\ShowTestimonialPage;
 use App\Models\Product;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
@@ -63,6 +64,9 @@ Route::group([
 
     // Testimonial //
     Route::get('/Testimonial', ShowTestimonialPage::class)->name('Testimonial');
+    
+    // FAQ //
+    Route::get('/FAQ', ShowFAQPage::class)->name('FAQ');
     
 
     // Catch-all route for 404 errors

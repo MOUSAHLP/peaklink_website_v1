@@ -10,22 +10,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Faq extends Model
 {
     use HasFactory,HasTranslations;
-    public $translatable = ['title','title','questions'];
+    public $translatable = ['question','answer'];
 
     protected $table = 'faqs';
     protected $fillable = [
-        'title',
-        'image',
-        'questions',
+        'question',
+        'answer',
         'status',
     ];
-
-    public function service()
-    {
-        return $this->belongsTo(Service::class);
-    }
-
-    protected $casts = [
-        'questions' => 'array',
-     ];
 }

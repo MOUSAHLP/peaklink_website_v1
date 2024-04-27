@@ -95,7 +95,7 @@
         @if (isset($setting->color['third']))
             <style>
                 :root {
-                    --theme-color1: {{ $setting->color['third'] }};
+                    --third-color: {{ $setting->color['third'] }};
                 }
             </style>
         @endif
@@ -135,6 +135,8 @@
                                                 <li> <a href="{{ route('team') }}"> @lang('home/homepage.team') </a> </li>
                                                 <li> <a href="{{ route('Posts') }}"> @lang('home/homepage.blogs') </a></li>
                                                 <li> <a href="{{ route('Testimonial') }}"> @lang('home/homepage.testimonials') </a></li>
+                                                <li> <a href="{{ route('FAQ') }}"> @lang('home/homepage.faq') </a></li>
+
                                             </ul>
                                         </li>
 

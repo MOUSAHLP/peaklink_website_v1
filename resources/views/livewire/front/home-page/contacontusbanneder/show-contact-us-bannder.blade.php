@@ -12,8 +12,8 @@
                         @lang('home/call_us_section.free_consultations')
                         <i class="btn-icon far fa-arrow-left-long btn-icon me-2 font-size-18"></i>
                     </a>
-                    <a href="tel:963946649532" class="theme-btn-v2 two">
-                        +963-946649532
+                    <a href="tel:{{ $phone }}" class="theme-btn-v2 two">
+                        {{ $phone }}
                         <i class="fa-sharp far fa-phone mr-10 font-size-18"></i>
                     </a>
                 </div>
