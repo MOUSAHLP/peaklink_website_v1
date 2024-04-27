@@ -24,7 +24,7 @@ return [
     'clear_form' => 'Clear Form',
     'need_any_help' => 'Do You Need Any Help??',
     'keep_in_contact' => 'Keep In Contact',
-    'submited' => 'Post successfully Submited',
+    'submited' => 'Form successfully Submited',
     'accepted_extensions' => 'Accepted Extensions : ',
     'no_file' => 'This Record Has No Attached File',
     'file_saved' => 'File Saved successfully',

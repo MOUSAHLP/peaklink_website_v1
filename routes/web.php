@@ -1,7 +1,7 @@
 <?php
 
 use App\Enums\IconsEnums;
-use App\Http\Controllers\ContactUsFormController;
+use App\Http\Controllers\FormController;
 use App\Livewire\Front\ContactUsPage\ShowContactUsPage;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Front\HomePage\ShowHomePage;
@@ -9,6 +9,7 @@ use App\Livewire\Front\AboutUsPage\ShowAboutUsPage;
 use App\Livewire\Front\PostCategoryPage\ShowPostCategoryPage;
 use App\Livewire\Front\PostDetailPage\ShowPostDetailPage;
 use App\Livewire\Front\PostsPage\ShowPostsPage;
+use App\Livewire\Front\ProductForm\ShowProductFormPage;
 use App\Livewire\Front\ProductsDetailPage\ShowProductsDetailPage;
 use App\Livewire\Front\ProductsPage\ShowProductsPage;
 use App\Livewire\Front\ProjectDetailPage\ShowProjectDetailPage;
@@ -29,6 +30,8 @@ Route::group([
     Route::get('/', ShowHomePage::class)->name('Home');
 
     Route::get('/Contact-us', ShowContactUsPage::class)->name('contactUs');
+
+    Route::get('/product-form/{product_slug?}', ShowProductFormPage::class)->name('productForm');
 
     Route::get('/About-us', ShowAboutUsPage::class)->name('aboutUs');
 
@@ -53,6 +56,9 @@ Route::group([
     Route::get('/Products', ShowProductsPage::class)->name('Products');
     Route::get('/Products/{slug}', ShowProductsDetailPage::class)->name('ProductsDetail');
 
+    // for save forms
+    Route::post('/contact-us-form', [FormController::class, 'save_contact_us_form'])->name('save_contact_us_form');
+    Route::post('/product-form', [FormController::class, 'save_product_form'])->name('save_product_form');
 
     // Catch-all route for 404 errors
     Route::fallback(function () {
@@ -86,10 +92,4 @@ Route::group([
     })->name('a');
 
 
-    Route::get('/qwer', function () {
-
-        return "qwer";
-    })->name('qwer');
-
-    Route::post('/qwer', [ContactUsFormController::class, 'save'])->name('qwer');
 });
