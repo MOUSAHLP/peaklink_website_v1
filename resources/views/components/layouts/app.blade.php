@@ -3,6 +3,14 @@
     lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    @php
+        use App\Models\Setting;
+        use App\Models\Footer;
+        $setting = Setting::first();
+        $footers = Footer::all();
+        $logo_alt = 'logo';
+    @endphp
+
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,6 +63,19 @@
         {{-- LTR Style  --}}
         <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
     @endif
+    <style>
+        :root {
+            @if (isset($setting->color['primary']))
+                --theme-color1: {{ $setting->color['primary'] }};
+            @endif
+            @if (isset($setting->color['secondary']))
+                --second-color: {{ $setting->color['secondary'] }};
+            @endif
+            @if (isset($setting->color['third']))
+                --third-color: {{ $setting->color['third'] }};
+            @endif
+        }
+    </style>
 </head>
 
 <body class="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'rtl' : 'ltr' }}">
@@ -68,7 +89,10 @@
                         <div class="logo-box">
                             <div class="logo">
                                 <a href="{{ route('Home') }}">
-                                    <img src="{{ asset('front/images/logo.png') }}" alt title="Tronis"></a>
+                                    @if (isset($setting->headerlogo))
+                                        <x-curator-glider :media="$setting->headerlogo" :alt="$logo_alt" />
+                                    @endif
+
                             </div>
                         </div>
 
@@ -80,7 +104,7 @@
                                     <li> <a href="{{ route('services') }}"> @lang('home/homepage.services')</a> </li>
 
 
-                                    <li class="dropdown"><a href="#">@lang('home/homepage.pages') </a>
+                                    <li class="dropdown"><a>@lang('home/homepage.pages') </a>
                                         <ul>
                                             <li> <a href="{{ route('Projects') }}">@lang('home/homepage.projects') </a> </li>
                                             <li> <a href="{{ route('Products') }}"> @lang('home/homepage.products')</a></li>
@@ -95,7 +119,7 @@
 
 
                                     <li class="dropdown">
-                                        <a href="#">{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'العربية' : 'English' }}
+                                        <a>{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'العربية' : 'English' }}
                                             @svg('heroicon-o-globe-alt', ['style' => 'color: white; width: 30px;padding: 5px;'])
                                         </a>
                                         <ul>
@@ -127,8 +151,11 @@
 
                 <nav class="menu-box">
                     <div class="upper-box">
-                        <div class="nav-logo"><a href="{{ route('Home') }}"><img
-                                    src="{{ asset('front/images/logo.png') }}" alt title></a></div>
+                        <div class="nav-logo"><a href="{{ route('Home') }}">
+                                @if (isset($setting->headerlogo))
+                                    <x-curator-glider :media="$setting->headerlogo" :alt="$logo_alt" />
+                                @endif
+                            </a></div>
                         <div class="close-btn"><i class="icon fa fa-times"></i></div>
                     </div>
                     <ul class="navigation clearfix">
@@ -189,8 +216,11 @@
                     <div class="inner-container">
 
                         <div class="logo">
-                            <a href="{{ route('Home') }}" title><img src="{{ asset('front/images/logo.png') }}" alt
-                                    title></a>
+                            <a href="{{ route('Home') }}" title>
+                                @if (isset($setting->headerlogo))
+                                    <x-curator-glider :media="$setting->headerlogo" :alt="$logo_alt" />
+                                @endif
+                            </a>
                         </div>
 
                         <div class="nav-outer">
@@ -216,18 +246,8 @@
 
 
         <footer class="main-footer footer-style-one">
-            @php
-                use App\Models\Setting;
-                use App\Models\Footer;
-                $setting = Setting::first();
-                $footers = Footer::all();
-                $logo_alt = 'logo';
-            @endphp
-            <style>
-                :root {
-                    --theme-color1: {{ $setting->color['primary'] }}
-                }
-            </style>
+
+
             <div class="widgets-section">
                 <div class="auto-container">
                     <div class="logo-box">

@@ -9,19 +9,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CallSection extends Model
 {
-    use HasFactory,HasTranslations;
-    public $translatable = ['title','button_title'];
+    use HasFactory, HasTranslations;
+    public $translatable = ['title', 'phone_button_title', "email_button_title"];
     protected $table = 'call_sections';
     protected $fillable = [
         'title',
         'phone',
-        'button_title',
-        'button_link',
+        'phone_button_title',
+        'email',
+        'email_button_title',
         'background_image',
         'status',
     ];
 
-    
+
     public function sectionImage()
     {
         return $this->belongsTo(Media::class, 'background_image', 'id');

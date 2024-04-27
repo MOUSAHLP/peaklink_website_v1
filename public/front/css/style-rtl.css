@@ -12,7 +12,9 @@
     --theme-color-dark: #202020;
     --theme-color-dark2: #505050;
     --theme-color-gray: #F6F6F6;
-    --theme-color1: #F94A29;
+    --theme-color1: #244879;
+    --second-color: #72bc42;
+    --third-color: #f3b31d;
     --theme-color2: #fdece3;
     --theme-color3: #faf7f2;
     --theme-color4: #f5f5f5;
@@ -1217,6 +1219,12 @@ figure.image {
     overflow: hidden
 }
 
+.theme-btn.more {
+    display: block;
+    width: fit-content;
+    margin: auto;
+}
+
 .theme-btn .btn-title {
     position: relative;
     display: -webkit-box;
@@ -1235,7 +1243,7 @@ figure.image {
     width: 100%;
     content: "";
     z-index: -1;
-    background: #000;
+    background: var(--second-color);
     border-radius: inherit;
     -webkit-transform: scale(0, 1);
     transform: scale(0, 1);
@@ -1604,7 +1612,8 @@ figure.image {
 }
 
 .main-header .header-lower .logo-box {
-    position: relative
+    position: relative;
+    width: 120px;
 }
 
 .main-header {
@@ -2261,7 +2270,8 @@ figure.image {
 }
 
 .sticky-header .logo img {
-    max-height: 40px
+    max-height: 40px;
+    width: 120px;
 }
 
 .sticky-header .nav-outer {
@@ -2363,6 +2373,7 @@ figure.image {
     position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
+    background-color: #fff;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -2384,7 +2395,7 @@ figure.image {
     height: 30px;
     width: 30px;
     line-height: 30px;
-    background-color: rgba(255, 255, 255, .1);
+    background-color: rgb(0 0 0 / 70%);
     cursor: pointer;
     z-index: 10;
     -webkit-transition: all .5s ease;
@@ -3186,6 +3197,17 @@ figure.image {
     height: 100%
 }
 
+.banner-section .banner-slide::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+
+}
+
 .banner-section .banner-slider-rtl .banner-slide>img,
 .banner-section .banner-slider .banner-slide>img {
     width: 100%;
@@ -3716,13 +3738,26 @@ figure.image {
 
 .about-section {
     position: relative;
-    padding: 120px 0 40px;
-    background-image: url(../images/background/about-bg.jpg);
+    padding: 100px 0 10px;
+    background-color: var(--theme-color1);
     -o-object-fit: cover;
     object-fit: cover;
     background-repeat: no-repeat;
     background-size: cover
 }
+
+.about-section::before {
+    background-image: url(../../images/about-bg.png);
+    content: "";
+    background-size: cover;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 
 .about-section .image-column .inner-column {
     position: relative;
@@ -3781,7 +3816,7 @@ figure.image {
     text-align: center;
     color: var(--theme-color1);
     border-radius: 69.742px;
-    border: 1px solid var(--Primary-Color, #F94A29);
+    border: 1px solid var(--Primary-Color, var(--theme-color1));
     background: var(--theme-color-light)
 }
 
@@ -3805,7 +3840,7 @@ figure.image {
 .about-section .image-column .inner-column .image-box .exp-box .title {
     font-size: 25px;
     color: var(--theme-color-light);
-    background-color: var(--theme-color1);
+    background-color: var(--second-color);
     padding: 20px 21px 22px;
     margin-bottom: 0;
     width: 177px
@@ -3858,7 +3893,7 @@ figure.image {
     right: 0;
     width: 6px;
     height: 100%;
-    background-color: var(--theme-color1)
+    background-color: var(--second-color);
 }
 
 .about-section .content-column .inner-column .sec-title .text {
@@ -3873,7 +3908,7 @@ figure.image {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    border-bottom: 1px solid var(--theme-color1);
+    border-bottom: 1px solid var(--second-color);
     padding-bottom: 39px;
     margin-bottom: 40px
 }
@@ -3930,7 +3965,7 @@ figure.image {
 
 .about-section .content-column .inner-column .inner-box .content-box span {
     font-size: 40px;
-    color: var(--theme-color1);
+    color: var(--second-color);
     line-height: 55px;
     font-weight: 500;
     font-family: var(--title-font)
@@ -3966,18 +4001,18 @@ figure.image {
     line-height: 26px;
     text-transform: uppercase;
     font-family: var(--title-font);
-    background-color: var(--theme-color1);
+    background-color: var(--second-color);
     padding: 17px 29px;
     display: inline-block;
     margin-left: 30px
 }
 
 .about-section .content-column .inner-column .btn-box .theme-btn-v2:hover {
-    color: #000
+    color: var(--second-color);
 }
 
 .about-section .content-column .inner-column .btn-box .theme-btn-v2:hover svg path {
-    fill: #000
+    fill: var(--second-color);
 }
 
 .about-section .content-column .inner-column .btn-box .theme-btn-v2 svg {
@@ -4000,13 +4035,13 @@ figure.image {
     height: 60px;
     line-height: 60px;
     text-align: center;
-    border: 1px solid var(--theme-color1);
-    color: var(--theme-color1);
+    border: 1px solid var(--second-color);
+    color: var(--second-color);
     font-size: 28px
 }
 
 .about-section .content-column .inner-column .btn-box .contact-btn span {
-    color: var(--theme-color1);
+    color: var(--second-color);
     font-family: var(--text-font);
     font-size: 14px;
     font-weight: 700;
@@ -4284,7 +4319,7 @@ figure.image {
 .about-block-two .inner-box {
     position: relative;
     border-radius: 10px;
-    border: 1px solid var(--Effect, #F94A29);
+    border: 1px solid var(--Effect, var(--theme-color1));
     background: var(--theme-color-light);
     -webkit-box-shadow: -15px 15px 60px 0 rgba(17, 17, 17, .07);
     box-shadow: -15px 15px 60px 0 rgba(17, 17, 17, .07);
@@ -4412,7 +4447,8 @@ figure.image {
 }
 
 .service-block .inner-box {
-    border: 2px solid #febfac;
+    text-align: center;
+    border: 2px solid var(--theme-color1);
     background-color: var(--theme-color-light);
     -webkit-box-shadow: -30px 30px 60px 0 rgba(0, 0, 1, .05);
     box-shadow: -30px 30px 60px 0 rgba(0, 0, 1, .05);
@@ -4426,6 +4462,11 @@ figure.image {
 .service-block .inner-box:hover {
     border-color: var(--theme-color1);
     background-color: transparent
+}
+
+.service-block .inner-box a {
+    display: flex;
+    justify-content: center;
 }
 
 .service-block .inner-box:hover .icon-box {
@@ -4449,6 +4490,15 @@ figure.image {
     z-index: 1
 }
 
+.service-block .inner-box .icon-box svg {
+    width: 40px;
+    height: 40px;
+}
+
+.service-block .inner-box:hover .icon-box svg {
+    color: var(--third-color);
+}
+
 .service-block .inner-box:hover:after {
     -webkit-transform: scaleY(1);
     transform: scaleY(1)
@@ -4461,7 +4511,7 @@ figure.image {
 
 .service-block .inner-box .icon-box {
     margin-bottom: 20px;
-    background-color: var(--theme-color1);
+    background-color: var(--third-color);
     width: 75px;
     height: 75px;
     line-height: 75px;
@@ -4733,6 +4783,10 @@ figure.image {
     background-repeat: no-repeat;
     -o-object-fit: cover;
     object-fit: cover
+}
+
+.project-section.home {
+    padding: 80px 0;
 }
 
 .project-section .sec-title {
@@ -5064,7 +5118,7 @@ figure.image {
 
 .process-section {
     position: relative;
-    padding: 120px 0 90px
+    padding: 50px 0 90px
 }
 
 @media(max-width:575.98px) {
@@ -5098,7 +5152,7 @@ figure.image {
 
 .process-block .inner-box {
     position: relative;
-    border: 1px solid #febfac;
+    border: 1px solid var(--theme-color1);
     background: var(--theme-color-light);
     -webkit-box-shadow: -20px 20px 60px 0 rgba(0, 0, 1, .05);
     box-shadow: -20px 20px 60px 0 rgba(0, 0, 1, .05);
@@ -5119,8 +5173,8 @@ figure.image {
     content: "";
     position: absolute;
     top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%) rotate(180deg);
+    transform: translateY(-50%) rotate(180deg);
     left: -31px;
     width: 30px;
     height: 16px;
@@ -5134,7 +5188,7 @@ figure.image {
 }
 
 .process-block .inner-box:hover {
-    border-color: var(--theme-color1)
+    border-color: var(--third-color)
 }
 
 .process-block .inner-box:hover .icon-box i,
@@ -5153,7 +5207,7 @@ figure.image {
     height: 75px;
     line-height: 75px;
     text-align: center;
-    background-color: var(--theme-color1);
+    background-color: var(--third-color);
     margin: 0 auto 25px
 }
 
@@ -5318,7 +5372,7 @@ figure.image {
 }
 
 .testimonial-section .slick-dots .slick-active {
-    background-color: var(--theme-color1);
+    background-color: var(--second-color);
     width: 30px;
     border-radius: 10px
 }
@@ -5335,7 +5389,7 @@ figure.image {
 }
 
 .testimonial-block .inner-box {
-    border: 1px solid #febfac;
+    border: 1px solid var(--theme-color1);
     background: var(--theme-color-light);
     padding: 40px;
     -webkit-transition: all .3s ease;
@@ -5357,8 +5411,14 @@ figure.image {
 }
 
 .testimonial-block .inner-box .icon-box i {
-    color: var(--theme-color1);
+    color: var(--second-color);
     font-size: 51px
+}
+
+.slick-prev:before,
+.slick-next:before {
+    background-color: var(--theme-color1);
+    padding: 5px;
 }
 
 .testimonial-block .inner-box .content-box .text {
@@ -5664,7 +5724,7 @@ figure.image {
 
 .news-section {
     position: relative;
-    padding: 0 0 90px
+    padding: 0 0 80px 0;
 }
 
 @media(max-width:575.98px) {
@@ -5687,7 +5747,6 @@ figure.image {
 }
 
 .news-block .inner-box:hover .image-box .image::before {
-    opacity: 1;
     visibility: visible;
     right: 0;
     width: 100%
@@ -5708,7 +5767,8 @@ figure.image {
     right: 50%;
     width: 0;
     height: 100%;
-    background: linear-gradient(-134deg, rgba(249, 74, 41, 0.8) -151.02%, rgba(249, 74, 41, 0) 125.25%);
+    background: var(--third-color);
+    opacity: 0.2;
     -webkit-transition: all .3s ease;
     transition: all .3s ease
 }
@@ -8104,7 +8164,7 @@ figure.image {
 
 .choose-us-section {
     position: relative;
-    padding: 120px 0;
+    padding: 0px 0;
     background-image: url(../images/background/bg-3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -8174,7 +8234,8 @@ figure.image {
     line-height: 26px;
     text-transform: lowercase;
     opacity: .8;
-    color: var(--theme-color-light)
+    color: var(--theme-color-light);
+    padding-right: 30px;
 }
 
 .choose-us-section .content-column .inner-column .list-sec {
@@ -8326,7 +8387,7 @@ figure.image {
     right: 20px;
     width: 54px;
     height: 54px;
-    background: var(--theme-color1);
+    background: var(--second-color);
     display: inline-block;
     text-align: center;
     line-height: 54px
@@ -8645,7 +8706,6 @@ figure.image {
 
 .contact-banner {
     position: relative;
-    padding: 120px 0;
     margin-top: -101px;
     z-index: 99
 }
@@ -8666,6 +8726,16 @@ figure.image {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between
+}
+
+.contact-banner .outer-box::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 @media(max-width:991.98px) {
@@ -8732,7 +8802,7 @@ figure.image {
     line-height: 26px;
     text-transform: uppercase;
     font-family: var(--title-font);
-    background-color: var(--theme-color1);
+    background-color: var(--second-color);
     padding: 20px 30px;
     display: inline-block
 }
@@ -8992,7 +9062,7 @@ figure.image {
     left: -15px;
     width: 450px;
     height: 590px;
-    background: var(--Effect, linear-gradient(-135deg, rgba(249, 74, 41, 0.8) -151.02%, rgba(249, 74, 41, 0) 100%));
+    background: var(--Effect, var(--theme-color1));
     z-index: -1
 }
 
@@ -9011,7 +9081,7 @@ figure.image {
 
 .contact-section .form-column .inner-column .form-group .input-outer input,
 .contact-section .form-column .inner-column .form-group .input-outer textarea {
-    border: 1px solid var(--Effect, #F94A29);
+    border: 1px solid var(--Effect, var(--theme-color1));
     background: rgba(217, 217, 217, .1);
     height: 60px;
     width: 100%;
@@ -9063,7 +9133,7 @@ figure.image {
 }
 
 .contact-section .form-column .inner-column .form-group .theme-btn:hover:before {
-    background-color: #000
+    background-color: var(--second-color)
 }
 
 .contact-block {
@@ -9544,7 +9614,7 @@ figure.image {
 .footer-bottom {
     position: relative;
     z-index: 3;
-    background: #282828;
+    background: var(--theme-color1);
     padding: 17px 0
 }
 

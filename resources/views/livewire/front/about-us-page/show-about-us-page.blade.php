@@ -9,7 +9,7 @@
     ])
     @endcomponent
 
-    <section class="about-section innerpage">
+    <section class="about-section about innerpage">
 
         <div class="auto-container">
             <div class="row">

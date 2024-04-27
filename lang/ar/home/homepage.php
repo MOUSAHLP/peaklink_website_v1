@@ -19,6 +19,7 @@ return [
     'openingTimes' => 'أوقات الفتح',
     'from' => 'من',
     'until' => 'حتى',
+    'more' => 'المزيد',
 
 
     'PoweredBy' => 'مطور من قبل PeakLink',

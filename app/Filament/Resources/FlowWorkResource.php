@@ -27,60 +27,61 @@ class FlowWorkResource extends Resource
     protected static ?int $navigationSort = 4;
 
 
-            public static function getNavigationGroup(): ?string
-            {
-                return __('home/homepage.homepage');
-            }
+    public static function getNavigationGroup(): ?string
+    {
+        return __('home/homepage.homepage');
+    }
 
-                public static function getModelLabel(): string
-            {
-                return __('home/workflow.workflow');
-            }
-                public static function getPluralLabel(): string
-            {
-                return __('home/workflow.workflow');
-            }
-                public static function getNavigationLabel(): string
-            {
-                return __('home/workflow.workflow');
-            }
-            public static function getNavigationBadge(): ?string
-            {
-                return static::getModel()::count();
-            }
-            public static function getNavigationBadgeColor(): ?string
-            {
-                return static::getModel()::count() > 10 ? 'warning' : 'dark';
-            }
+    public static function getModelLabel(): string
+    {
+        return __('home/workflow.workflow');
+    }
+    public static function getPluralLabel(): string
+    {
+        return __('home/workflow.workflow');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('home/workflow.workflow');
+    }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getModel()::count() > 10 ? 'warning' : 'dark';
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Section::make()
-                ->schema([
-                    Forms\Components\TextInput::make('title')
-                    ->label(__("filament_form.title"))
-                    ->maxLength(30)
-                    ->required(),
-                    Forms\Components\TextInput::make('short_description')
-                    ->label(__("filament_form.short_description"))
-                    ->maxLength(60)
-                    ->required(),
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->label(__("filament_form.title"))
+                            ->maxLength(30)
+                            ->required(),
+                        Forms\Components\TextInput::make('short_description')
+                            ->label(__("filament_form.short_description"))
+                            ->maxLength(60)
+                            ->required(),
 
-                    IconPicker::make('image')
-                    ->label(__("filament_form.icon"))
-                    ->columns([
-                        'default' => 1,
-                        'lg' => 3,
-                        '2xl' => 5,
-                    ]),
-                    
-                Forms\Components\Toggle::make('status')
-                    ->label(__("filament_form.status"))
-                ->columnSpanFull(),
+                        IconPicker::make('image')
+                            ->label(__("filament_form.icon"))
+                            ->columns([
+                                'default' => 1,
+                                'lg' => 3,
+                                '2xl' => 5,
+                            ])
+                            ->required(),
 
-                ])->columns(2),
+                        Forms\Components\Toggle::make('status')
+                            ->label(__("filament_form.status"))
+                            ->columnSpanFull(),
+
+                    ])->columns(2),
             ]);
     }
 
@@ -90,12 +91,11 @@ class FlowWorkResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                     ->label(__("filament_form.title"))
-                ->searchable()
-                ,
-             
+                    ->searchable(),
+
                 IconColumn::make("image")
-                ->label(__("filament_form.icon")),
-                
+                    ->label(__("filament_form.icon")),
+
                 Tables\Columns\ToggleColumn::make('status')
                     ->label(__("filament_form.status")),
 
@@ -119,7 +119,7 @@ class FlowWorkResource extends Resource
                         Tables\Actions\ViewAction::make(),
                         Tables\Actions\EditAction::make(),
                     ]
-                  ),
+                ),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->json('title');
             $table->string('phone')->nullable();
-            $table->json('button_title');
-            $table->string('button_link')->nullable();
+            $table->string('phone_button_title')->nullable();
+            $table->string('email')->nullable();
+            $table->string('email_button_title')->nullable();
             $table->string('background_image')->nullable();
             $table->tinyInteger('status')->default(true);
             $table->timestamps();

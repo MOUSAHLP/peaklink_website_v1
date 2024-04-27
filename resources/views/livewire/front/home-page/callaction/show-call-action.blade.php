@@ -19,17 +19,25 @@
             align-items: center;
             -webkit-box-pack: justify;
             -ms-flex-pack: justify;
+            position: relative;
             justify-content: space-between;">
+
+                    <style>
+                        @media(max-width:768px) {
+                            .contact-banner {
+                                display: none;
+                            }
+                        }
+                    </style>
                     <h3 class="title">{{ $callAction->title }} </h3>
 
                     @if (isset($callAction->phone) & ($callAction->phone != null))
-                        <a href="tel:{{ $callAction->phone }}" class="theme-btn-v2">{{ $callAction->button_title }} <i
-                                class="fas fa-phone btn-icon me-1 font-size-18"></i></a>
+                        <a href="tel:{{ $callAction->phone }}" class="theme-btn">{{ $callAction->phone_button_title }}
+                            <i class="fas fa-phone me-1 font-size-18"></i></a>
                     @endif
-                    @if (isset($callAction->button_link) & ($callAction->button_link != null))
-                        <a href="mailTo:{{ $callAction->button_link }}"
-                            class="theme-btn-v2">{{ $callAction->button_title }} <i
-                                class="fas fa-envelope btn-icon me-1 font-size-18"></i></a>
+                    @if (isset($callAction->email) & ($callAction->email != null))
+                        <a href="mailTo:{{ $callAction->email }}" class="theme-btn">{{ $callAction->email_button_title }}
+                            <i class="fas fa-envelope me-1 font-size-18"></i></a>
                     @endif
                 </div>
             </div>

@@ -42,11 +42,13 @@
             <div class="banner-social">
                 <h4>@lang('home/slider.follow_us')</h4>
                 <ul>
-                    <li><a href="#" title><i class="fab fa-dribbble"></i></a></li>
-                    <li><a href="#" title><i class="fab fa-behance"></i></a></li>
-                    <li><a href="#" title><i class="fab fa-linkedin-in"></i></a></li>
-                    <li><a href="#" title><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#" title><i class="fab fa-twitter"></i></a></li>
+                    @foreach ($socials as $social)
+                        <li>
+                            <a href="{{ $social['url'] }}" title>
+                                @svg($social['icon'], ['style' => 'width: 20px;height: 20px;margin-bottom: 4px;'])
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </section>

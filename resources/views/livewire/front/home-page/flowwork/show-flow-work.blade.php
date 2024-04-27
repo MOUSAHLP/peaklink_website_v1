@@ -3,7 +3,7 @@
 
     @if (isset($FlowWork) & ($FlowWork->count() > 0))
 
-        <section class="process-section">
+        <section class="process-section" dir={{ app()->getlocale() == 'ar' ? 'rtl' : 'ltr' }}>
             <div class="auto-container">
                 <div class="sec-title text-center">
                     <h2>
@@ -12,13 +12,7 @@
                 </div>
                 <div class="row">
 
-                    @php
-                        if (app()->getlocale() == 'ar') {
-                            $FlowWork = array_reverse($FlowWork->toArray());
-                        } else {
-                            $FlowWork = $FlowWork->toArray();
-                        }
-                    @endphp
+
 
                     @foreach ($FlowWork as $Flow)
                         <div class="process-block col-lg-3 col-sm-6">
@@ -32,13 +26,13 @@
                                 </div>
                                 <div class="content-box">
                                     <h4 class="title">
-                                        @if (isset($Flow['title'][app()->getlocale()]))
-                                            {{ $Flow['title'][app()->getlocale()] }}
+                                        @if (isset($Flow['title']))
+                                            {{ $Flow['title'] }}
                                         @endif
                                     </h4>
                                     <div class="text">
-                                        @if (isset($Flow['short_description'][app()->getlocale()]))
-                                            {{ $Flow['short_description'][app()->getlocale()] }}
+                                        @if (isset($Flow['short_description']))
+                                            {{ $Flow['short_description'] }}
                                         @endif
                                     </div>
                                 </div>

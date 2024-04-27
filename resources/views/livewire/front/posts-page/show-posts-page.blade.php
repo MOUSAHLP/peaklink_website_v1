@@ -12,7 +12,7 @@
             <div class="mixitup-gallery">
                 <div class="filters clearfix">
                     <ul class="filter-tabs filter-btns clearfix">
-                        <li class="active filter" data-role="button" data-filter="all">All</li>
+                        <li class="active filter" data-role="button" data-filter="all"> @lang('home/posts.all')</li>
                         @foreach ($categories as $category)
                             <li class="filter" data-role="button" data-filter=".category-{{ $category->id }}">
                                 {{ $category->name }}</li>
@@ -38,7 +38,7 @@
                                                 <path opacity="0.8"
                                                     d="M4.9 0V1.4H9.1V0H10.5V1.4H13.3C13.6866 1.4 14 1.7134 14 2.1V13.3C14 13.6866 13.6866 14 13.3 14H0.7C0.313404 14 0 13.6866 0 13.3V2.1C0 1.7134 0.313404 1.4 0.7 1.4H3.5V0H4.9ZM12.6 7H1.4V12.6H12.6V7ZM3.5 2.8H1.4V5.6H12.6V2.8H10.5V4.2H9.1V2.8H4.9V4.2H3.5V2.8Z"
                                                     fill="#F94A29" />
-                                            </svg>{{ $post->created_at->format('Y M d') }}
+                                            </svg>{{ $post->created_at->diffForHumans() }}
                                         </li>
                                         <li>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14"
