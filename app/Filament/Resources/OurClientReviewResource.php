@@ -25,24 +25,24 @@ class OurClientReviewResource extends Resource
     protected static ?int $navigationSort = 8;
 
 
-                    
-            public static function getNavigationGroup(): ?string
-            {
-                return __('home/homepage.homepage');
-            }
 
-                public static function getModelLabel(): string
-            {
-                return __('home/client_review.client_review');
-            }
-                public static function getPluralLabel(): string
-            {
-                return __('home/client_review.client_review');
-            }
-                public static function getNavigationLabel(): string
-            {
-                return __('home/client_review.client_review');
-            }
+    public static function getNavigationGroup(): ?string
+    {
+        return __('home/homepage.homepage');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('home/client_review.client_review');
+    }
+    public static function getPluralLabel(): string
+    {
+        return __('home/client_review.client_review');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('home/client_review.client_review');
+    }
 
 
     public static function form(Form $form): Form
@@ -50,31 +50,22 @@ class OurClientReviewResource extends Resource
         return $form
             ->schema([
                 Section::make()
-                ->schema([
-                // Forms\Components\FileUpload::make('client_image')
-                // ->label('صورة العميل')
-                //     ->disk('public')
-                //     ->directory('clients_images')
-                //     ->visibility('public')
-                //     ->image()
-                //     ->avatar()
-                // ->columnSpanFull()
-                //     ->required()
-                //     ->imageEditor(),
+                    ->schema([
 
-                CuratorPicker::make('client_image')
-                    ->label(__("filament_form.client_image"))
-                    ->size('sm') 
-                    ->outlined(false)
-                    ->color('info')
-                    ->constrained(true)
-                    ->listDisplay(false)
-                    ->columnSpanFull(),
+                        CuratorPicker::make('client_image')
+                            ->label(__("filament_form.client_image"))
+                            ->size('sm')
+                            ->outlined(false)
+                            ->color('info')
+                            ->constrained(true)
+                            ->listDisplay(false)
+                            ->columnSpanFull()
+                            ->required(),
 
-                    Forms\Components\TextInput::make('client_name')
-                    ->label(__("filament_form.client_name"))
-                    ->maxLength(30)
-                    ->required(),
+                        Forms\Components\TextInput::make('client_name')
+                            ->label(__("filament_form.client_name"))
+                            ->maxLength(30)
+                            ->required(),
 
                 Forms\Components\TextInput::make('client_job')
                     ->label(__("filament_form.client_job"))
@@ -91,16 +82,17 @@ class OurClientReviewResource extends Resource
                     ])
                     ->required(),
 
-                Forms\Components\TextInput::make('description')
-                    ->label(__("filament_form.client_comment"))
-                ->columnSpanFull()
-                ->maxLength(255)
-                    ->required(),
 
-                Forms\Components\Toggle::make('status')
-                    ->label(__("filament_form.status"))
-                ->columnSpanFull(),
-                ])->columns(3),
+                        Forms\Components\TextInput::make('description')
+                            ->label(__("filament_form.client_comment"))
+                            ->columnSpanFull()
+                            ->maxLength(255)
+                            ->required(),
+
+                        Forms\Components\Toggle::make('status')
+                            ->label(__("filament_form.status"))
+                            ->columnSpanFull(),
+                    ])->columns(3),
             ]);
     }
 
@@ -119,10 +111,10 @@ class OurClientReviewResource extends Resource
 
 
                 Tables\Columns\TextColumn::make('stars')
-                    ->label("[1 - 5] ".__("filament_form.stars"))
+                    ->label("[1 - 5] " . __("filament_form.stars"))
                     ->sortable(),
                 Tables\Columns\ToggleColumn::make('status')
-                ->label(__("filament_form.status")),
+                    ->label(__("filament_form.status")),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__("filament_form.created_at"))
@@ -141,7 +133,7 @@ class OurClientReviewResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-                
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

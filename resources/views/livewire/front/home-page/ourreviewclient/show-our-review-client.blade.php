@@ -11,7 +11,7 @@
                         @lang('home/client_review.client_review_title')
                     </h2>
                 </div>
-                <div class="row testi-slider-rtl">
+                <div class="row testi-slider{{ app()->getlocale() == 'ar' ? '-rtl' : '' }}">
 
                     @foreach ($OurReviewClients as $OurReviewClient)
                         <div class="testimonial-block col-md-6">

@@ -9,7 +9,7 @@ class ShowPost extends Component
 {
     public function render()
     {
-        $Posts = Post::latest()->where('status',1)->get();
-        return view('livewire.front.home-page.post.show-post',['Posts'=>$Posts]);
+        $Posts = Post::latest()->where('status', 1)->take(5)->get();
+        return view('livewire.front.home-page.post.show-post', ['Posts' => $Posts]);
     }
 }

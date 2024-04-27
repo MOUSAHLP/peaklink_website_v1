@@ -15,16 +15,16 @@
                     <button class="prev-btn"><span><i class="fa-regular fa-arrow-right-long btn-icon"></i></span></button>
                 </div>
             </div>
-            <div class="row project-slider-rtl">
+            <div class="row project-slider{{ app()->getlocale() == 'ar' ? '-rtl' : '' }}">
 
                 @foreach ($Projects as $Project)
                     <div class="project-block col-lg-3 col-md-6">
                         <div class="inner-box">
                             <div class="image-box">
-                                <figure class="image overlay-anim"><a href="page-project-details.html">
+                                <figure class="image overlay-anim"><a href="{{ route('ProjectDetail', $Project->id) }}">
                                         <x-curator-glider :media="$Project->image" :alt="$Project->title" />
                                     </a></figure>
-                                <figure class="image-2"><a href="page-project-details.html">
+                                <figure class="image-2"><a href="{{ route('ProjectDetail', $Project->id) }}">
 
                                         <x-curator-glider :media="$Project->image" :alt="$Project->title" />
 
@@ -33,13 +33,15 @@
                             </div>
                             <div class="content-box">
                                 <span>{{ $Project->categories->title }}</span>
-                                <h6 class="title"><a href="page-project-details.html">{{ $Project->title }}</a></h6>
+                                <h6 class="title"><a
+                                        href="{{ route('ProjectDetail', $Project->id) }}">{{ $Project->title }}</a></h6>
                             </div>
                         </div>
                     </div>
                 @endforeach
 
             </div>
+            <a href="{{ route('Projects') }}" class="theme-btn more" style="margin-top: 20px">@lang('more')</a>
         </section>
 
 

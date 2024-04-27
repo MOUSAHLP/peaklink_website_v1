@@ -9,8 +9,8 @@
     {{-- About Section  --}}
     <livewire:front.home-page.about.show-about-us />
 
-    {{-- Projects Section  --}}
-    <livewire:front.home-page.project.show-project />
+    {{-- products  Section  --}}
+    <livewire:front.home-page.products.show-products />
 
     {{-- FlowWork Section  --}}
     <livewire:front.home-page.flowwork.show-flowwork />
@@ -25,8 +25,10 @@
     <livewire:front.home-page.chooseussection.show-choose-us-section />
 
     {{-- pricing Section  --}}
-    <livewire:front.home-page.pricing.show-pricing />
+    {{-- <livewire:front.home-page.pricing.show-pricing/> --}}
 
+    {{-- Projects Section  --}}
+    <livewire:front.home-page.project.show-project />
 
     {{-- Contact us  Section  --}}
     <livewire:front.home-page.contactus.show-contact-us />

@@ -13,10 +13,7 @@
                                 <div class="inner-box">
                                     <div class="icon-box text-center">
 
-                                        {{-- <x-curator-glider :media="$service->image" :alt="$service->title"/> --}}
-                                        @svg($service->image, [
-                                            'style' => 'width: 40px;height: 40px;',
-                                        ])
+                                        @svg($service->image)
 
                                     </div>
                                     <div class="content-box">

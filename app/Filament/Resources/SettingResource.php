@@ -83,8 +83,9 @@ class SettingResource extends Resource
                                     ->schema([
                                         ColorPicker::make('color.primary')->required()->label(__('قيمة اللون الأساسي')),
                                         ColorPicker::make('color.secondary')->required()->label(__('قيمة اللون الفرعي')),
+                                        ColorPicker::make('color.third')->required()->label(__('قيمة اللون الثالث')),
                                     ])
-                                    ->columns(2)
+                                    ->columns(3)
                                     ->columnSpanFull(),
 
                                 Toggle::make('maintenance')->label(__('الصيانة')),

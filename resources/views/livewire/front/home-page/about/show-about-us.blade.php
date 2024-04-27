@@ -14,7 +14,7 @@
                                     <x-curator-glider :media="$AboutUs->back_image" :alt="$AboutUs->title" />
                                 </figure>
 
-                                <div class="play-box">
+                                {{-- <div class="play-box">
                                     <figure class="image-2 overlay-anim">
                                         <img src="{{ asset('storage/' . $AboutUs->video) }}" width="200"
                                             alt="{{ $AboutUs->title }}">
@@ -22,7 +22,7 @@
                                     <a title href="#" data-fancybox="gallery" data-caption>
                                         <i class="icon fa fa-play"></i>
                                     </a>
-                                </div>
+                                </div> --}}
 
 
                                 <div class="exp-box">
@@ -69,7 +69,7 @@
 
                         </div>
                         <div class="btn-box">
-                            <a href="page-about.html" class="theme-btn-v2">{{ __('about_us.start') }} <i
+                            <a href="{{ route('aboutUs') }}" class="theme-btn-v2">{{ __('about_us.start') }} <i
                                     class="btn-icon far fa-arrow-left-long btn-icon me-1 font-size-18"></i></a>
                             <div class="contact-btn">
                                 <i class="flaticon-telephone-1"></i>
