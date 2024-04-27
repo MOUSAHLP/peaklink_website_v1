@@ -78,20 +78,27 @@
             gtag('config', 'G-DE7CFR9YER');
         </script>
 
-        <style>
-            :root {
-                @if (isset($setting->color['primary']))
+        @if (isset($setting->color['primary']))
+            <style>
+                :root {
                     --theme-color1: {{ $setting->color['primary'] }};
-                @endif
-                @if (isset($setting->color['secondary']))
+                }
+            </style>
+        @endif
+        @if (isset($setting->color['secondary']))
+            <style>
+                :root {
                     --second-color: {{ $setting->color['secondary'] }};
-                @endif
-                @if (isset($setting->color['third']))
-                    --third-color: {{ $setting->color['third'] }};
-                @endif
-            }
-        </style>
-
+                }
+            </style>
+        @endif
+        @if (isset($setting->color['third']))
+            <style>
+                :root {
+                    --theme-color1: {{ $setting->color['third'] }};
+                }
+            </style>
+        @endif
     </head>
 
     <body class="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'rtl' : 'ltr' }}">
