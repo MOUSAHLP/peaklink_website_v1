@@ -38,6 +38,7 @@ class AdminPanelProvider extends PanelProvider
                     'الاستمارات',
                     'المتجر',
                     'إدارة الفريق',
+                    'انضم الينا',
                     'Footer',
                     // '',
                 ]

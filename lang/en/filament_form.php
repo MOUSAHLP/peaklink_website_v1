@@ -42,4 +42,5 @@ return [
     'category_url' => 'Category Url',
     'socials' => 'socials',
     'download_file' => "Download File",
+    'join_us_position' => 'Join us position',
 ];

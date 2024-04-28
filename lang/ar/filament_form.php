@@ -42,4 +42,6 @@ return [
     'category_url' => 'رابط القسم',
     'socials' => 'الروابط الاجتماعية',
     'download_file' => "تحميل الملف",
+    'join_us_position' => 'اسم المنصب',
+
 ];

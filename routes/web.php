@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Front\HomePage\ShowHomePage;
 use App\Livewire\Front\AboutUsPage\ShowAboutUsPage;
 use App\Livewire\Front\FAQPage\ShowFAQPage;
+use App\Livewire\Front\JoinUsFormPage\ShowJoinUsFormPage;
 use App\Livewire\Front\PostCategoryPage\ShowPostCategoryPage;
 use App\Livewire\Front\PostDetailPage\ShowPostDetailPage;
 use App\Livewire\Front\PostsPage\ShowPostsPage;
@@ -64,10 +65,14 @@ Route::group([
 
     // Testimonial //
     Route::get('/Testimonial', ShowTestimonialPage::class)->name('Testimonial');
-    
+
     // FAQ //
     Route::get('/FAQ', ShowFAQPage::class)->name('FAQ');
-    
+
+    // join Us Form //
+    Route::get('/join-us-form', ShowJoinUsFormPage::class)->name('joinUsForm');
+
+
 
     // Catch-all route for 404 errors
     Route::fallback(function () {
@@ -99,6 +104,4 @@ Route::group([
 
         return $product;
     })->name('a');
-
-
 });
