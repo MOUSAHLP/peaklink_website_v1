@@ -6,7 +6,10 @@
     @php
         use App\Models\Setting;
         use App\Models\Footer;
+        use Illuminate\Support\Facades\Cache;
+
         $setting = Setting::first();
+
         $footers = Footer::all();
         $logo_alt = 'logo';
     @endphp
@@ -21,24 +24,24 @@
     <meta name="robots" content="@yield('copyright', 'Peak Link')">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta name="keywords" content="@yield('meta_keywords')">
-    <meta name="title" content="@yield('meta_title')">
-    <meta name="description" content="@yield('meta_description')">
+    <meta name="keywords" content="@yield('meta_keywords', implode(',', $setting->meta_keywords))">
+    <meta name="title" content="@yield('meta_title', $setting->meta_title)">
+    <meta name="description" content="@yield('meta_description', $setting->meta_description)">
     <meta name="author" content="Auth admin">
 
-    <meta property="og:keywords" content="@yield('meta_keywords')">
-    <meta property="og:title" content="@yield('meta_title')">
-    <meta property="og:description" content="@yield('meta_description')">
+    <meta property="og:keywords" content="@yield('meta_keywords', implode(',', $setting->meta_keywords))">
+    <meta property="og:title" content="@yield('meta_title', $setting->meta_title)">
+    <meta property="og:description" content="@yield('meta_description', $setting->meta_description)">
     <meta property="og:author" content="Auth admin">
 
     <!-- MS Tile - for Microsoft apps-->
-    <meta name="msapplication-TileImage" content="@yield('meta_image')">
+    <meta name="msapplication-TileImage" content="@yield('meta_image', $setting->metaImage->url)">
     <!-- Site Name, Title, and Description to be displayed -->
     <meta property="og:site_name" content="Peak Link">
-    <meta property="og:title" content="@yield('meta_title')">
-    <meta property="og:description" content="@yield('meta_description')">
+    <meta property="og:title" content="@yield('meta_title', $setting->meta_title)">
+    <meta property="og:description" content="@yield('meta_description', $setting->meta_description)">
     <!-- Image to display -->
-    <meta property="og:image" content="@yield('meta_image')">
+    <meta property="og:image" content="@yield('meta_image', $setting->metaImage->url)">
     <!-- No need to change anything here -->
     <meta property="og:type" content="website" />
     <meta property="og:image:type" content="image/*">
@@ -47,14 +50,13 @@
     <!-- Website to visit when clicked in fb or WhatsApp-->
     <meta property="og:url" content="@yield('copyright', 'Peak Link')">
 
-    {{-- <title>{{ $title }}</title> --}}
     <title> @yield('title', 'Peak Link') </title>
 
     <link href="{{ asset('front/css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/slick-theme.cs') }}s">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/slick.css') }}">
-    <link rel="shortcut icon" href="{{ asset('front/images/favicon.png') }}" type="image/x-icon">
-    <link rel="icon" href="{{ asset('front/images/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ $setting->metaImage->url }}" type="image/x-icon">
+    <link rel="icon" href="{{ $setting->metaImage->url }}" type="image/x-icon">
 
     {{-- RTL Style  --}}
     @if (str_replace('_', '-', app()->getLocale()) == 'ar')
@@ -63,19 +65,34 @@
         {{-- LTR Style  --}}
         <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
     @endif
-    <style>
-        :root {
-            @if (isset($setting->color['primary']))
+
+    {{-- To set the primary color --}}
+    @if (isset($setting->color['primary']))
+        <style>
+            :root {
                 --theme-color1: {{ $setting->color['primary'] }};
-            @endif
-            @if (isset($setting->color['secondary']))
+            }
+        </style>
+    @endif
+
+    {{-- To set the secondary color --}}
+    @if (isset($setting->color['secondary']))
+        <style>
+            :root {
                 --second-color: {{ $setting->color['secondary'] }};
-            @endif
-            @if (isset($setting->color['third']))
+            }
+        </style>
+    @endif
+
+    {{-- To set the third color --}}
+    @if (isset($setting->color['third']))
+        <style>
+            :root {
                 --third-color: {{ $setting->color['third'] }};
-            @endif
-        }
-    </style>
+            }
+        </style>
+    @endif
+
 </head>
 
 <body class="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'rtl' : 'ltr' }}">
@@ -103,7 +120,6 @@
                                     <li> <a href="{{ route('aboutUs') }}"> @lang('home/homepage.aboutUS')</a></li>
                                     <li> <a href="{{ route('services') }}"> @lang('home/homepage.services')</a> </li>
 
-
                                     <li class="dropdown"><a>@lang('home/homepage.pages') </a>
                                         <ul>
                                             <li> <a href="{{ route('Projects') }}">@lang('home/homepage.projects') </a> </li>
@@ -113,10 +129,7 @@
                                         </ul>
                                     </li>
 
-
-
                                     <li><a href="{{ route('contactUs') }}"> @lang('home/homepage.contactUs') </a></li>
-
 
                                     <li class="dropdown">
                                         <a>{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'العربية' : 'English' }}
@@ -167,7 +180,7 @@
                             <div class="contact-info-box">
                                 <i class="icon lnr-icon-phone-handset"></i>
                                 <span class="title"> @lang('home/homepage.CallNow') </span>
-                                <a href="tel:+#">77777</a>
+                                <a href="tel:{{ $setting->prefixed_phone }}">{{ $setting->prefixed_phone }}</a>
                             </div>
                         </li>
                         <li>
@@ -175,24 +188,34 @@
                             <div class="contact-info-box">
                                 <span class="icon lnr-icon-envelope1"></span>
                                 <span class="title"> @lang('home/homepage.SendEmail')</span>
-                                <a href=""><span class="cf_email"
-                                        data-cfemail="">[email&#160;protected]</span></a>
+                                <a href="mailto:{{ $setting->email }}"><span class="cf_email"
+                                        data-cfemail="">{{ $setting->email }}</span></a>
+                            </div>
+                        </li>
+                        <li>
+
+                            <div class="contact-info-box">
+                                <span class="icon"> <i class="flaticon-placeholder"></i></span>
+
+                                <span class="title"> @lang('home/homepage.location')</span>
+                                {{ $setting->location }}
                             </div>
                         </li>
                         <li>
 
                             <div class="contact-info-box">
                                 <span class="icon lnr-icon-clock"></span>
-                                <span class="title"> @lang('home/homepage.SendEmail')</span>
-                                Mon - Sat 8:00 - 6:30, Sunday - CLOSED
+                                <span class="title"> @lang('home/homepage.openingTimes')</span>
+                                @lang('home/homepage.from') {{ $setting->open_time }}
+                                @lang('home/homepage.until')
+                                {{ $setting->close_time }}
                             </div>
                         </li>
                     </ul>
                     <ul class="social-links">
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        @foreach ($setting->socials as $social)
+                            <li><a href="{{ $social['url'] }}">@svg($social['icon'], ['style' => 'width: 25px;'])</i></a></li>
+                        @endforeach
                     </ul>
                 </nav>
             </div>

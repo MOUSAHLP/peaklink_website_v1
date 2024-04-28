@@ -41,7 +41,7 @@
                 @endforeach
 
             </div>
-            <a href="{{ route('Projects') }}" class="theme-btn more" style="margin-top: 20px">@lang('more')</a>
+            <a href="{{ route('Projects') }}" class="theme-btn more" style="margin-top: 20px">@lang('home/homepage.more')</a>
         </section>
 
 

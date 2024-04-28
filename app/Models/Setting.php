@@ -36,6 +36,12 @@ class Setting extends Model
 
         'meta_title', 'meta_image', 'meta_keywords', 'meta_description'
     ];
+
+    public function logo()
+    {
+        return $this->belongsTo(Media::class, 'meta_image', 'id');
+    }
+
     public function metaImage()
     {
         return $this->belongsTo(Media::class, 'meta_image', 'id');
