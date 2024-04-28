@@ -10,6 +10,6 @@ class ShowAboutUs extends Component
     public function render()
     {
         $AboutUs = AboutUs::latest()->first();
-        return view('livewire.front.home-page.about.show-about-us',['AboutUs'=>$AboutUs]);
+        return view('livewire.front.home-page.about.show-about-us', ['AboutUs' => $AboutUs]);
     }
 }

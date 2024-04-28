@@ -43,7 +43,7 @@
                     </div>
                 @endforeach
             </div>
-            <a href="{{ route('Products') }}" class="theme-btn more">@lang('more')</a>
+            <a href="{{ route('Products') }}" class="theme-btn more">@lang('home/homepage.more')</a>
         </section>
     @endif
 </div>

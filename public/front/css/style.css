@@ -2430,7 +2430,7 @@ figure.image {
 .mobile-menu .nav-logo {
     position: relative;
     text-align: left;
-    width: 100%
+    width: 50%
 }
 
 .mobile-menu .nav-logo img {
@@ -2633,7 +2633,8 @@ figure.image {
     align-items: center;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between;
+    justify-content: flex-end;
+    flex-wrap: wrap;
     width: 100%;
     border-top: 1px solid rgba(255, 255, 255, .1);
     margin-top: auto
@@ -2642,8 +2643,8 @@ figure.image {
 .mobile-menu .social-links li {
     position: relative;
     text-align: center;
-    width: 100%;
-    border-right: 1px solid rgba(255, 255, 255, .1)
+    width: 25%;
+    border: 1px solid rgba(255, 255, 255, .1);
 }
 
 .mobile-menu .social-links li a {
@@ -3784,7 +3785,7 @@ figure.image {
 }
 
 .about-section::before {
-    background-image: url(../../images/about-bg.png);
+    background-image: url(../../images/about-bg-light.png);
     content: "";
     background-size: cover;
     opacity: 0.3;
@@ -8205,7 +8206,7 @@ figure.image {
 .choose-us-section {
     position: relative;
     padding: 0px 0;
-    background-image: url(../images/background/bg-3.jpg);
+    background-color: var(--theme-color1);
     background-repeat: no-repeat;
     background-size: cover;
     -o-object-fit: cover;
@@ -8229,7 +8230,7 @@ figure.image {
 }
 
 .choose-us-section .content-column .inner-column .sec-title {
-    choose-us-sectionmargin-bottom: 30px
+    padding-top: 20px;
 }
 
 .choose-us-section .content-column .inner-column .sec-title h2 {
@@ -8260,7 +8261,7 @@ figure.image {
     left: 0;
     width: 6px;
     height: 120px;
-    background-color: var(--theme-color1)
+    background-color: var(--second-color)
 }
 
 @media(max-width:575.98px) {
@@ -8314,7 +8315,7 @@ figure.image {
     position: absolute;
     top: -1px;
     left: 0;
-    color: var(--theme-color1)
+    color: var(--second-color)
 }
 
 .choose-us-section .image-column img {
@@ -8996,7 +8997,7 @@ figure.image {
 
 .contact-section {
     position: relative;
-    background-image: url(../images/background/contact.jpg);
+    background-color: var(--theme-color1);
     background-repeat: no-repeat;
     -o-object-fit: cover;
     object-fit: cover;
@@ -9101,7 +9102,7 @@ figure.image {
     right: -15px;
     width: 450px;
     height: 590px;
-    background: var(--Effect, var(--theme-color1));
+    background: var(--Effect, var(--second-color));
     z-index: -1
 }
 
@@ -9208,7 +9209,7 @@ figure.image {
 }
 
 .contact-block .inner-box .icon-box i {
-    color: var(--theme-color1);
+    color: var(--second-color);
     font-size: 24px;
     font-weight: 500;
     -webkit-transition: all .3s ease;
@@ -9223,7 +9224,7 @@ figure.image {
     right: -3px;
     width: 52px;
     height: 52px;
-    background-color: var(--theme-color1);
+    background-color: var(--second-color);
     z-index: -1;
     -webkit-transition: all .3s ease;
     transition: all .3s ease

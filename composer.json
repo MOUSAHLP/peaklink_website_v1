@@ -29,6 +29,7 @@
         "mohamedsabil83/filament-forms-tinyeditor": "^2.2",
         "owenvoke/blade-fontawesome": "^2.6",
         "pxlrbt/filament-spotlight": "^1.2",
+        "spatie/laravel-sitemap": "^7.2",
         "z3d0x/filament-fabricator": "^2.0",
         "z3d0x/filament-logger": "^0.6.3"
     },
