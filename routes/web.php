@@ -60,10 +60,6 @@ Route::group([
     Route::get('/Products', ShowProductsPage::class)->name('Products');
     Route::get('/Products/{slug}', ShowProductsDetailPage::class)->name('ProductsDetail');
 
-    // for save forms
-    Route::post('/contact-us-form', [FormController::class, 'save_contact_us_form'])->name('save_contact_us_form');
-    Route::post('/product-form', [FormController::class, 'save_product_form'])->name('save_product_form');
-
     // Testimonial //
     Route::get('/Testimonial', ShowTestimonialPage::class)->name('Testimonial');
 
@@ -73,6 +69,11 @@ Route::group([
     // join Us Form //
     Route::get('/join-us-form', ShowJoinUsFormPage::class)->name('joinUsForm');
 
+
+    // for save forms
+    Route::post('/contact-us-form', [FormController::class, 'save_contact_us_form'])->name('save_contact_us_form');
+    Route::post('/product-form', [FormController::class, 'save_product_form'])->name('save_product_form');
+    Route::post('/join-us-form', [FormController::class, 'save_join_us_form'])->name('save_join_us_form');
 
 
     // Catch-all route for 404 errors
