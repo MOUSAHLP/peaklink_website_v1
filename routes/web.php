@@ -6,6 +6,7 @@ use App\Livewire\Front\ContactUsPage\ShowContactUsPage;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Front\HomePage\ShowHomePage;
 use App\Livewire\Front\AboutUsPage\ShowAboutUsPage;
+use App\Livewire\Front\FAQPage\ShowFAQPage;
 use App\Livewire\Front\PostCategoryPage\ShowPostCategoryPage;
 use App\Livewire\Front\PostDetailPage\ShowPostDetailPage;
 use App\Livewire\Front\PostsPage\ShowPostsPage;
@@ -18,6 +19,7 @@ use App\Livewire\Front\ServiceDetailPage\ShowServiceDetailPage;
 use App\Livewire\Front\ServicesPage\ShowServicesPage;
 use App\Livewire\Front\TeamDetailPage\ShowTeamDetailPage;
 use App\Livewire\Front\TeamPage\ShowTeamPage;
+use App\Livewire\Front\TestimonialPage\ShowTestimonialPage;
 use App\Models\Product;
 use App\Models\Setting;
 use Illuminate\Support\Facades\App;
@@ -60,6 +62,13 @@ Route::group([
     // for save forms
     Route::post('/contact-us-form', [FormController::class, 'save_contact_us_form'])->name('save_contact_us_form');
     Route::post('/product-form', [FormController::class, 'save_product_form'])->name('save_product_form');
+
+    // Testimonial //
+    Route::get('/Testimonial', ShowTestimonialPage::class)->name('Testimonial');
+    
+    // FAQ //
+    Route::get('/FAQ', ShowFAQPage::class)->name('FAQ');
+    
 
     // Catch-all route for 404 errors
     Route::fallback(function () {

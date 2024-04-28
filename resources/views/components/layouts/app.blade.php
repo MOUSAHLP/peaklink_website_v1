@@ -24,12 +24,12 @@
     <meta name="robots" content="@yield('copyright', 'Peak Link')">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta name="keywords" content="@yield('meta_keywords', implode(',', $setting->meta_keywords))">
+    <meta name="keywords" content="@yield('meta_keywords', implode(',', $setting->meta_keywords != '' ? $setting->meta_keywords : []))">
     <meta name="title" content="@yield('meta_title', $setting->meta_title)">
     <meta name="description" content="@yield('meta_description', $setting->meta_description)">
     <meta name="author" content="Auth admin">
 
-    <meta property="og:keywords" content="@yield('meta_keywords', implode(',', $setting->meta_keywords))">
+    <meta property="og:keywords" content="@yield('meta_keywords', implode(',', $setting->meta_keywords != '' ? $setting->meta_keywords : []))">
     <meta property="og:title" content="@yield('meta_title', $setting->meta_title)">
     <meta property="og:description" content="@yield('meta_description', $setting->meta_description)">
     <meta property="og:author" content="Auth admin">
@@ -116,9 +116,11 @@
                         <div class="nav-outer">
                             <nav class="nav main-menu">
                                 <ul class="navigation">
-                                    <li class="current"> <a href="{{ route('Home') }}"> @lang('home/homepage.homepage')</a> </li>
+                                    <li class="current"> <a href="{{ route('Home') }}"> @lang('home/homepage.homepage')</a>
+                                    </li>
                                     <li> <a href="{{ route('aboutUs') }}"> @lang('home/homepage.aboutUS')</a></li>
                                     <li> <a href="{{ route('services') }}"> @lang('home/homepage.services')</a> </li>
+
 
                                     <li class="dropdown"><a>@lang('home/homepage.pages') </a>
                                         <ul>
@@ -126,10 +128,16 @@
                                             <li> <a href="{{ route('Products') }}"> @lang('home/homepage.products')</a></li>
                                             <li> <a href="{{ route('team') }}"> @lang('home/homepage.team') </a> </li>
                                             <li> <a href="{{ route('Posts') }}"> @lang('home/homepage.blogs') </a></li>
+                                            <li> <a href="{{ route('Testimonial') }}"> @lang('home/homepage.testimonials') </a></li>
+                                            <li> <a href="{{ route('FAQ') }}"> @lang('home/homepage.faq') </a></li>
+
                                         </ul>
                                     </li>
 
+
+
                                     <li><a href="{{ route('contactUs') }}"> @lang('home/homepage.contactUs') </a></li>
+
 
                                     <li class="dropdown">
                                         <a>{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'العربية' : 'English' }}
@@ -173,15 +181,11 @@
                     </div>
                     <ul class="navigation clearfix">
 
-                    </ul>
-                    <ul class="contact-list-one">
-                        <li>
-
-                            <div class="contact-info-box">
-                                <i class="icon lnr-icon-phone-handset"></i>
-                                <span class="title"> @lang('home/homepage.CallNow') </span>
-                                <a href="tel:{{ $setting->prefixed_phone }}">{{ $setting->prefixed_phone }}</a>
-                            </div>
+                        <div class="contact-info-box">
+                            <i class="icon lnr-icon-phone-handset"></i>
+                            <span class="title"> @lang('home/homepage.CallNow') </span>
+                            <a href="tel:{{ $setting->prefixed_phone }}">{{ $setting->prefixed_phone }}</a>
+                        </div>
                         </li>
                         <li>
 
@@ -259,6 +263,9 @@
                             <div class="mobile-nav-toggler">
                                 <i class="fa fa-bars"></i>
                             </div>
+                        </div>
+                        <div class="btn">
+                            <a href="{{ route('contactUs') }}" class="theme-btn"> @lang('home/homepage.letUsTalk') </a>
                         </div>
                     </div>
                 </div>

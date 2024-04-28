@@ -20,6 +20,8 @@ return [
     'from' => 'From',
     'until' => 'Until',
     'more' => 'More',
+    'testimonials' => 'Testimonials',
+    'faq' => 'FAQ',
 
     'PoweredBy' => 'Powered By PeakLink',
 ];

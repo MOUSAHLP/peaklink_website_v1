@@ -8,7 +8,8 @@ class GoogleDashboardPage extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
  
-    protected static string $view = 'filament.pages.my-custom-dashboard-page';
+    // protected static string $view = 'filament.pages.my-custom-dashboard-page';
+    protected static string $view = 'filament.pages.google-dashboard-page';
  
     protected function getHeaderWidgets(): array
     {

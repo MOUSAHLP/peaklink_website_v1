@@ -67,18 +67,21 @@ class OurClientReviewResource extends Resource
                             ->maxLength(30)
                             ->required(),
 
-                        Forms\Components\TextInput::make('client_job')
-                            ->label(__("filament_form.client_job"))
-                            ->maxLength(30)
-                            ->required(),
-                        Forms\Components\Select::make('stars')
-                            ->label("[1 - 5] " . __("filament_form.stars"))
-                            ->options([
+                Forms\Components\TextInput::make('client_job')
+                    ->label(__("filament_form.client_job"))
+                    ->maxLength(30)
+                    ->required(),
+                Forms\Components\Select::make('stars')
+                    ->label("[1 - 5] ".__("filament_form.stars"))
+                    ->options([
+                        1=>1,
+                        2=>2,
+                        3=>3,
+                        4=>4,
+                        5=>5,
+                    ])
+                    ->required(),
 
-                                1, 2, 3, 4, 5
-
-                            ])
-                            ->required(),
 
                         Forms\Components\TextInput::make('description')
                             ->label(__("filament_form.client_comment"))
@@ -97,13 +100,15 @@ class OurClientReviewResource extends Resource
     {
         return $table
             ->columns([
-                CuratorColumn::make('client_image')
-                    ->label(_(__("filament_form.client_image")))
-                    ->width('100px'),
-
                 Tables\Columns\TextColumn::make('client_name')
-                    ->label(__("filament_form.client_name"))
+                ->label(__("filament_form.client_name"))
                     ->sortable(),
+
+                    
+                CuratorColumn::make('client_image')
+                ->label(__("filament_form.client_image"))
+                ->width('100px'),
+
 
                 Tables\Columns\TextColumn::make('stars')
                     ->label("[1 - 5] " . __("filament_form.stars"))

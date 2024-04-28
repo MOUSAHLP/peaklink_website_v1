@@ -2277,7 +2277,16 @@ figure.image {
 .sticky-header .nav-outer {
     position: relative;
     background: 0 0;
-    margin-right: auto
+    margin: 0 auto;
+}
+
+.sticky-header .btn a{
+    padding: 0 35px;
+    line-height: 59px;
+    height: 59px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--text-font);
 }
 
 .sticky-header .main-menu .navigation>li {
@@ -5551,9 +5560,8 @@ figure.image {
     margin-left: 9px
 }
 
-.testimonial-block-two .inner-box .content-box .rating li:last-child {
+.testimonial-block-two .inner-box .content-box .rating li.disabled {
     color: var(--text-color);
-    margin-left: 0
 }
 
 .testimonial-block-two .inner-box .content-box .auther-info {
@@ -7016,7 +7024,7 @@ figure.image {
 .faqs-section {
     position: relative;
     padding: 120px 0;
-    background-image: url(../images/resource/faqbac.jpg);
+    background-color: var(--theme-color1);
     background-repeat: no-repeat;
     background-size: cover
 }
@@ -7136,7 +7144,7 @@ figure.image {
     right: 0;
     width: 6px;
     height: 120px;
-    background-color: var(--theme-color1)
+    background-color: var(--second-color)
 }
 
 @media(max-width:767.98px) {
