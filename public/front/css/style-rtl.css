@@ -2306,7 +2306,7 @@ figure.image {
     padding: 20px 0
 }
 
-@media (max-width:1025px) {
+@media (min-width:992px) {
 
     .sticky-header .main-menu .navigation>li {
         margin-right: 40px;
@@ -8959,7 +8959,7 @@ figure.image {
 }
 
 .contact-banner-two .outer-box .theme-btn-v2:before {
-    background-color: #000
+    background-color: var(--second-color)
 }
 
 .contact-banner-two .outer-box .theme-btn-v2:hover {
