@@ -4,6 +4,7 @@ namespace App\Livewire\Front\ServiceDetailPage;
 
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Models\Setting;
 use Livewire\Component;
 
 class ShowServiceDetailPage extends Component
@@ -14,14 +15,18 @@ class ShowServiceDetailPage extends Component
     {
         $this->service = Service::findOrFail($id);
     }
-    
+
     public function render()
     {
-        $serviceCategories = ServiceCategory::where("status","1")->get();
-        return view('livewire.front.service-detail-page.show-service-detail-page',
-        [
-            'service'=>$this->service,
-            "serviceCategories"=>$serviceCategories
-         ]);
+        $serviceCategories = ServiceCategory::where("status", "1")->get();
+        $phone = Setting::select("phone")->first()->prefixedPhone;
+        return view(
+            'livewire.front.service-detail-page.show-service-detail-page',
+            [
+                'service' => $this->service,
+                'phone' => $phone,
+                "serviceCategories" => $serviceCategories
+            ]
+        );
     }
 }

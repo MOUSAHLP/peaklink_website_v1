@@ -2,7 +2,7 @@
 
     @if (isset($Projects) & ($Projects->count() > 0))
 
-        <section class="project-section">
+        <section class="project-section home">
             <div class="auto-container">
                 <div class="sec-title">
                     <h2>@lang('projects.recently_projects')</h2>

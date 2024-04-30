@@ -16,7 +16,6 @@
                                 <x-curator-glider :media="$brand->logo" :alt="$brand->slug" />
                             </figure>
                         </li>
-
                     @endforeach
                 </ul>
             </div>
@@ -88,17 +87,6 @@
                         // settings: "unslick"
                         // instead of a settings object
                     ]
-                });
-
-
-                $('.slider-btn .prev-btn').click(function(e) {
-                    //e.preventDefault();
-                    $('.product-slider, .product-slider-rtl').slick('slickPrev');
-                });
-
-                $('.slider-btn .next-btn').click(function(e) {
-                    //e.preventDefault();
-                    $('.product-slider, .product-slider-rtl').slick('slickNext');
                 });
             </script>
         @endscript

@@ -34,7 +34,7 @@
                                 <span class="price">{{ $product->category->name }}</span>
                             </div>
                             <div class="icon-box">
-                                <a href="{{ route('contactUs') }}" class="ui-btn add-to-cart"><i
+                                <a href="{{ route('productForm', $product->slug) }}" class="ui-btn add-to-cart"><i
                                         class="fa fa-shopping-cart"></i>
                                 </a>
                             </div>

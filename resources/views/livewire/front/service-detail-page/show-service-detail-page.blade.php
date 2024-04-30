@@ -1,6 +1,16 @@
 <div>
     @section('title', 'peaklink-' . $service->title)
 
+    @section('meta_title', $service->meta_title)
+    @section('meta_description', $service->meta_description)
+    @if ($service->meta_keywords)
+        @section('meta_keywords', implode(',', $service->meta_keywords))
+    @endif
+
+    @if ($service->meta_image)
+        @section('meta_image', $service->metaImage->url)
+    @endif
+
     @component('components.breadcumb', [
         'image_url' => asset('images/page-title-bg.png'),
         'upper_title' => $service->title,
@@ -43,8 +53,9 @@
                                 </div>
                                 <div class="help-contact">
                                     <p>@lang('home/services.talk_to_an_expert')</p>
-                                    {{-- need to be linked with settings --}}
-                                    <a href="tel:12463330079">+892 ( 123 ) 112 - 9999</a>
+                                    @if (isset($phone))
+                                        <a href="tel:{{ $phone }}">{{ $phone }}</a>
+                                    @endif
                                 </div>
                             </div>
 
@@ -65,34 +76,36 @@
                     <div class="services-details__content">
                         {!! $service->description !!}
 
+                        {{-- FAQ --}}
+                        @if ($service->faq)
+                            <div class="innerpage mt-25">
+                                <h3>@lang('home/services.faq')</h3>
+                                <p>
+                                    @lang('home/services.faq_desc')
+                                </p>
+                                <ul class="accordion-box wow fadeInRight">
 
-                        <div class="innerpage mt-25">
-                            <h3>@lang('home/services.faq')</h3>
-                            <p>
-                                @lang('home/services.faq_desc')
-                            </p>
-                            <ul class="accordion-box wow fadeInRight">
+                                    @if ($service->faq != '')
 
-                                @if ($service->faq != '')
-
-                                    @foreach ($service->faq as $faq)
-                                        <li class="accordion block">
-                                            <div class="acc-btn">{{ $faq['question'] }}
-                                                <div class="icon fa fa-plus"></div>
-                                            </div>
-                                            <div class="acc-content">
-                                                <div class="content">
-                                                    <div class="text">
-                                                        {{ $faq['answer'] }}
+                                        @foreach ($service->faq as $faq)
+                                            <li class="accordion block">
+                                                <div class="acc-btn">{{ $faq['question'] }}
+                                                    <div class="icon fa fa-plus"></div>
+                                                </div>
+                                                <div class="acc-content">
+                                                    <div class="content">
+                                                        <div class="text">
+                                                            {{ $faq['answer'] }}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                @endif
+                                            </li>
+                                        @endforeach
+                                    @endif
 
-                            </ul>
-                        </div>
+                                </ul>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
