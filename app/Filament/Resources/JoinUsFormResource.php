@@ -2,29 +2,28 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ProductFormResource\Pages;
-use App\Filament\Resources\ProductFormResource\RelationManagers;
-use App\Models\ProductForm;
-use Filament\Tables\Actions\Action;
+use App\Filament\Resources\JoinUsFormResource\Pages;
+use App\Filament\Resources\JoinUsFormResource\RelationManagers;
+use App\Models\JoinUsForm;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ProductFormResource extends Resource
+class JoinUsFormResource extends Resource
 {
-    protected static ?string $model = ProductForm::class;
+    protected static ?string $model = JoinUsForm::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-
     protected static ?string $navigationGroup = 'الاستمارات';
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 3;
 
 
     public static function getNavigationGroup(): ?string
@@ -33,25 +32,25 @@ class ProductFormResource extends Resource
     }
     public static function getModelLabel(): string
     {
-        return __('product_form.product_form');
+        return __('join_us.join_us_form');
     }
     public static function getPluralLabel(): string
     {
-        return __('product_form.product_form');
+        return __('join_us.join_us_form');
     }
     public static function getNavigationLabel(): string
     {
-        return __('product_form.product_form');
+        return __('join_us.join_us_form');
     }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                // Forms\Components\TextInput::make('product_id')
+                // Forms\Components\TextInput::make('join_us_position_id')
                 //     ->required()
                 //     ->numeric(),
-                // Forms\Components\TextInput::make('name')
+                // Forms\Components\TextInput::make('full_name')
                 //     ->required()
                 //     ->maxLength(255),
                 // Forms\Components\TextInput::make('email')
@@ -75,13 +74,13 @@ class ProductFormResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('product.name')
-                    ->label(__("product_form.product_name"))
+                Tables\Columns\TextColumn::make('position.position')
+                    ->label(__("filament_form.join_us_position"))
                     ->sortable()
                     ->searchable(),
 
-                Tables\Columns\TextColumn::make('name')
-                    ->label(__("filament_form.name"))
+                Tables\Columns\TextColumn::make('full_name')
+                    ->label(__("filament_form.full_name"))
                     ->sortable()
                     ->searchable(),
 
@@ -115,7 +114,6 @@ class ProductFormResource extends Resource
             ])
             ->actions([
                 // Tables\Actions\EditAction::make(),
-
                 Action::make('file')
                     ->label(__("filament_form.download_file"))
                     ->icon('heroicon-o-document-arrow-down')
@@ -152,9 +150,9 @@ class ProductFormResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListProductForms::route('/'),
-            // 'create' => Pages\CreateProductForm::route('/create'),
-            // 'edit' => Pages\EditProductForm::route('/{record}/edit'),
+            'index' => Pages\ListJoinUsForms::route('/'),
+            // 'create' => Pages\CreateJoinUsForm::route('/create'),
+            // 'edit' => Pages\EditJoinUsForm::route('/{record}/edit'),
         ];
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Front\HomePage\ShowHomePage;
 use App\Livewire\Front\AboutUsPage\ShowAboutUsPage;
 use App\Livewire\Front\FAQPage\ShowFAQPage;
+use App\Livewire\Front\JoinUsFormPage\ShowJoinUsFormPage;
 use App\Livewire\Front\PostCategoryPage\ShowPostCategoryPage;
 use App\Livewire\Front\PostDetailPage\ShowPostDetailPage;
 use App\Livewire\Front\PostsPage\ShowPostsPage;
@@ -60,15 +61,20 @@ Route::group([
     Route::get('/Products', ShowProductsPage::class)->name('Products');
     Route::get('/Products/{slug}', ShowProductsDetailPage::class)->name('ProductsDetail');
 
-    // for save forms
-    Route::post('/contact-us-form', [FormController::class, 'save_contact_us_form'])->name('save_contact_us_form');
-    Route::post('/product-form', [FormController::class, 'save_product_form'])->name('save_product_form');
-
     // Testimonial //
     Route::get('/Testimonial', ShowTestimonialPage::class)->name('Testimonial');
 
     // FAQ //
     Route::get('/FAQ', ShowFAQPage::class)->name('FAQ');
+
+    // join Us Form //
+    Route::get('/join-us-form', ShowJoinUsFormPage::class)->name('joinUsForm');
+
+
+    // for save forms
+    Route::post('/contact-us-form', [FormController::class, 'save_contact_us_form'])->name('save_contact_us_form');
+    Route::post('/product-form', [FormController::class, 'save_product_form'])->name('save_product_form');
+    Route::post('/join-us-form', [FormController::class, 'save_join_us_form'])->name('save_join_us_form');
 
 
     // Catch-all route for 404 errors

@@ -22,6 +22,9 @@ return [
     'more' => 'More',
     'testimonials' => 'Testimonials',
     'faq' => 'FAQ',
+    'forms' => 'Forms',
+    'join_us_form' => 'Join us form',
+    'product_form' => 'Product Form',
 
     'PoweredBy' => 'Powered By PeakLink',
 ];

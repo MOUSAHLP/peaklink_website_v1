@@ -22,6 +22,9 @@ return [
     'more' => 'المزيد',
     'testimonials' => 'مراجعة العملاء',
     'faq' => 'الأسئلة الشائعة',
+    'forms' => 'الاستمارات',
+    'join_us_form' => 'استمارة انضم الينا',
+    'product_form' => 'استمارة طلب الخدمة',
 
 
     'PoweredBy' => 'مطور من قبل PeakLink',

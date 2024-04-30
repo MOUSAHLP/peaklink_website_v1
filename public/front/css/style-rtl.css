@@ -7168,7 +7168,7 @@ figure.image {
     top: 0;
     right: 0;
     width: 6px;
-    height: 120px;
+    height: 80px;
     background-color: var(--second-color)
 }
 
@@ -7180,7 +7180,7 @@ figure.image {
 
 @media(max-width:575.98px) {
     .faqs-section .sec-title h2::before {
-        height: 90px
+        height: 70px
     }
 }
 

@@ -2,6 +2,7 @@
 
 return [
     'name' => 'Name',
+    'full_name' => 'Full Name',
     'email' => 'Email',
     'phone' => 'Phone',
     'password' => 'Password',
@@ -48,5 +49,5 @@ return [
     'role' => "Role",
     'general_info' => "General Information",
     'settings' => "Settings",
-
+    'join_us_position' => 'Join us position',
 ];

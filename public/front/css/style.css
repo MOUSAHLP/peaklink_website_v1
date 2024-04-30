@@ -4548,6 +4548,11 @@ figure.image {
     z-index: 1
 }
 
+.service-block .inner-box .icon-box svg {
+    width: 40px;
+    height: 40px;
+}
+
 .service-block .inner-box:hover .icon-box svg {
     color: var(--third-color);
 }
@@ -7067,7 +7072,7 @@ figure.image {
 .faqs-section {
     position: relative;
     padding: 120px 0;
-    background-image: url(../images/resource/faqbac.jpg);
+    background-color: var(--theme-color1);
     background-repeat: no-repeat;
     background-size: cover
 }
@@ -7186,8 +7191,8 @@ figure.image {
     top: 0;
     left: 0;
     width: 6px;
-    height: 120px;
-    background-color: var(--theme-color1)
+    height: 80px;
+    background-color: var(--second-color)
 }
 
 @media(max-width:767.98px) {
@@ -7198,7 +7203,7 @@ figure.image {
 
 @media(max-width:575.98px) {
     .faqs-section .sec-title h2::before {
-        height: 90px
+        height: 70px
     }
 }
 

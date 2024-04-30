@@ -136,8 +136,26 @@
 
 
 
-                                    <li><a href="{{ route('contactUs') }}"> @lang('home/homepage.contactUs') </a></li>
 
+                                    <li class="dropdown">
+                                        <a href="#">@lang('home/homepage.forms') </a>
+                                        <ul>
+                                            <li>
+                                                <a href="{{ route('contactUs') }}">
+                                                    @lang('home/homepage.contactUs')
+                                                </a>
+                                            </li>
+
+                                            <li> <a href="{{ route('productForm') }}">
+                                                    @lang('home/homepage.product_form')
+                                                </a>
+                                            </li>
+                                            <li> <a href="{{ route('joinUsForm') }}">
+                                                    @lang('home/homepage.join_us_form')
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
 
                                     <li class="dropdown">
                                         <a>{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'العربية' : 'English' }}
