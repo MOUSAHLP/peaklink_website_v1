@@ -9,7 +9,7 @@ class ShowServices extends Component
 {
     public function render()
     {
-        $services = Service::latest()->where('status',1)->take(4)->get();
-        return view('livewire.front.home-page.services.show-services',['services'=>$services]);
+        $services = Service::latest()->where('status', 1)->get();
+        return view('livewire.front.home-page.services.show-services', ['services' => $services]);
     }
 }

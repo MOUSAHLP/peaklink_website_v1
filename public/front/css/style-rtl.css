@@ -1365,6 +1365,7 @@ figure.image {
 .slick-track {
     display: flex;
 }
+
 .slick-track .slick-slide {
     display: flex;
     height: auto;
@@ -2301,6 +2302,13 @@ figure.image {
     display: flex;
     align-items: center;
     margin: 0 auto 0 0;
+}
+
+@media (min-width:768px) and (max-width: 991.98px) {
+
+    .sticky-header .menu-btn-holder {
+        flex-direction: row-reverse
+    }
 }
 
 .sticky-header .nav-outer {
@@ -4511,6 +4519,7 @@ figure.image {
 
 .service-block .inner-box {
     text-align: center;
+    margin: 0 20px;
     border: 2px solid var(--theme-color1);
     background-color: var(--theme-color-light);
     -webkit-box-shadow: -30px 30px 60px 0 rgba(0, 0, 1, .05);
@@ -4934,7 +4943,7 @@ figure.image {
     margin-left: 0
 }
 
-.project-section .slider-btn button i{
+.project-section .slider-btn button i {
     color: #202020;
     font-size: 20px;
     -webkit-transition: all .3s ease;
@@ -9482,7 +9491,7 @@ figure.image {
 
 .main-footer .widget-title {
     position: relative;
-    color: var(--theme-color-light);
+    color: var(--theme-color1);
     margin-bottom: 45px;
     font-size: 25px;
     font-weight: 500;
@@ -9517,7 +9526,7 @@ figure.image {
     position: relative;
     font-size: 16px;
     line-height: 35px;
-    color: var(--theme-color-light);
+    color: var(--theme-color1);
     opacity: .8;
     font-family: var(--text-font);
     font-weight: 600;
@@ -9547,7 +9556,7 @@ figure.image {
 }
 
 .user-links li a:hover {
-    color: #fff
+    color: var(--second-color);
 }
 
 .user-links li a:before {
@@ -9823,7 +9832,7 @@ figure.image {
 }
 
 .footer-style-one {
-    background: var(--Text-Heading-Color, var(--theme-color-dark))
+    background: linear-gradient(270deg, rgba(144, 255, 122, .267), rgba(35, 75, 255, .171));
 }
 
 .footer-style-one .widgets-section {
@@ -9971,8 +9980,8 @@ figure.image {
     flex-shrink: 0;
     line-height: 52px;
     text-align: center;
-    border: 1px solid #797979;
-    color: #797979;
+    border: 1px solid var(--theme-color1);
+    color: var(--theme-color1);
     -webkit-transition: all .3s ease;
     transition: all .3s ease
 }
@@ -9987,7 +9996,7 @@ figure.image {
 
 .footer-style-one .contact-widget .widget-content .content-box span {
     font-size: 14px;
-    color: var(--theme-color-light);
+    color: var(--theme-color1);
     opacity: .8;
     font-weight: 500;
     line-height: 22px;
@@ -9999,7 +10008,7 @@ figure.image {
 
 .footer-style-one .contact-widget .widget-content .content-box .title {
     font-size: 18px;
-    color: #fff;
+    color: var(--theme-color1);
     text-transform: uppercase;
     margin-bottom: 0
 }
@@ -10008,7 +10017,7 @@ figure.image {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    border-top: 1px solid #797979;
+    border-top: 1px solid var(--theme-color1);
     padding-top: 25px;
     margin-top: 27px;
     flex-wrap: wrap;
@@ -10029,8 +10038,8 @@ figure.image {
     height: 40px;
     line-height: 40px;
     text-align: center;
-    border: 1px solid #797979;
-    color: #797979
+    border: 1px solid var(--theme-color1);
+    color: var(--theme-color1)
 }
 
 .footer-style-one .contact-widget .widget-content .social-icons li a:hover {
@@ -11966,6 +11975,7 @@ table.tbl-shopping-cart>tfoot>tr>th {
         padding: 110px 0
     }
 }
+
 .page-title::before {
     content: "";
     position: absolute;

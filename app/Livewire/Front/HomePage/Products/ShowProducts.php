@@ -9,7 +9,7 @@ class ShowProducts extends Component
 {
     public function render()
     {
-        $products = Product::latest()->where('status', 1)->take(5)->get();
+        $products = Product::latest()->where('status', 1)->get();
 
         return view(
             'livewire.front.home-page.products.show-products',
