@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
+use App\Policies\PagePolicy;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Z3d0X\FilamentFabricator\Models\Page;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -13,9 +15,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        //
+        Page::class => PagePolicy::class,
     ];
-
     /**
      * Register any authentication / authorization services.
      */

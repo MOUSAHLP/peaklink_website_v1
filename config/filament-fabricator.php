@@ -3,8 +3,8 @@
 // config for Z3d0X/FilamentFabricator
 return [
     'routing' => [
-        'enabled' => true,
-        'prefix' => null, //    /pages
+        'enabled' => false,
+        'prefix' => "/asc", //    /pages
     ],
 
     'layouts' => [

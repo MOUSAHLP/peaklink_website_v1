@@ -119,7 +119,8 @@ class PagePolicy
      */
     public function restore(User $user, Page $page): bool
     {
-        return $user->can('{{ Restore }}');
+        // return $user->can('{{ Restore }}');
+        return false;
     }
 
     /**
@@ -130,7 +131,8 @@ class PagePolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('{{ RestoreAny }}');
+        // return $user->can('{{ RestoreAny }}');
+        return false;
     }
 
     /**
@@ -142,7 +144,8 @@ class PagePolicy
      */
     public function replicate(User $user, Page $page): bool
     {
-        return $user->can('replicate_page');
+        // return $user->can('replicate_page');
+        return false;
     }
 
     /**
@@ -153,6 +156,7 @@ class PagePolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_page');
-    }
+        // return $user->can('reorder_page');
+        return false;
+        }
 }

@@ -7,7 +7,7 @@
         'title' => __('team.team'),
     ])
     @endcomponent
-    <section class="team-section position-relative pt-120 pb-100 bg-light">
+    <section class="team-section position-relative pt-120 pb-100 ">
         <div class="auto-container">
             <div class="row">
                 @php

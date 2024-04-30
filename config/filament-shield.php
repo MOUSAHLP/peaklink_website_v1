@@ -49,7 +49,7 @@ return [
     ],
 
     'entities' => [
-        'pages' => true,
+        'pages' => false,
         'widgets' => true,
         'resources' => true,
         'custom_permissions' => false,

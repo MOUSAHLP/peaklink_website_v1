@@ -4665,11 +4665,26 @@ figure.image {
 .service-section-two {
     position: relative;
     padding: 120px 0 90px;
-    background-image: url(../images/background/ser1-1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     -o-object-fit: cover;
-    object-fit: cover
+    object-fit: cover;
+    background-color: var(--theme-color1);
+}
+
+.service-section-two::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/background/ser1-1.jpg);
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    opacity: 0.6;
 }
 
 .service-section-two .content-column .inner-column {
@@ -5645,7 +5660,21 @@ figure.image {
 .team-section {
     position: relative;
     padding: 120px 0 171px;
-    background-image: url(../images/background/team-bg.jpg)
+    background-color: var(--theme-color1);
+}
+
+.team-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/background/team-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    opacity: 0.6;
 }
 
 .team-block {
@@ -5657,11 +5686,15 @@ figure.image {
 .team-block .inner-box {
     background-color: #393939;
     text-align: center;
+    display: flex;
     padding: 30px 30px 32px;
     position: relative;
     -webkit-transition: all 300ms ease;
     transition: all 300ms ease;
-    z-index: 0
+    z-index: 0;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
 }
 
 .team-block .inner-box:hover .image-box .image img {
@@ -5786,6 +5819,10 @@ figure.image {
     padding: 0 0 80px 0;
 }
 
+.news-section.project-section {
+    background-image: none;
+}
+
 @media(max-width:575.98px) {
     .news-section .sec-title h2 {
         font-size: 29px
@@ -5793,7 +5830,7 @@ figure.image {
 }
 
 .news-block {
-    margin-bottom: 30px
+    margin: 0 10px 30px;
 }
 
 .news-block.mix {
@@ -5842,10 +5879,10 @@ figure.image {
     text-align: center;
     background: #f6f6f6;
     border-top: 2px solid var(--theme-color1);
-    padding: 15px 30px;
+    padding: 15px 15px;
     -webkit-transition: all .3s ease;
     transition: all .3s ease;
-    margin: -62px 30px 0
+    margin: -62px 20px 0;
 }
 
 @media(max-width:1199.98px) {
@@ -11178,7 +11215,7 @@ figure.image {
 
 .featured-products {
     position: relative;
-    padding: 120px 0 90px
+    padding: 50px 0
 }
 
 .featured-products .bg-shape {
@@ -13124,7 +13161,8 @@ table.tbl-shopping-cart>tfoot>tr>th {
 
 .blog-details {
     position: relative;
-    display: block
+    display: block;
+    padding: 100px 0 50px;
 }
 
 .blog-details__left {
