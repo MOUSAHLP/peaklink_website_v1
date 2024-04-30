@@ -6,8 +6,13 @@ return [
     'Tags' => 'Tags',
     'Categories' => 'Categories',
     'LatestPosts' => 'Latest Posts',
+    'postCategories' => 'Post Categories',
+    'categoryTitle' => 'Category Title',
+    'categoryLink' => 'Category Link',
 
-    'Tags' => 'Tags',
+    'postTags' => 'Post Tags',
+    'tagTitle' =>'Tag Title',
+    'tagLink' =>'Tag Link',
 
 
 ];

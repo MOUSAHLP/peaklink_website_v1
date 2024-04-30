@@ -172,20 +172,24 @@
 
                 <nav class="menu-box">
                     <div class="upper-box">
-                        <div class="nav-logo"><a href="{{ route('Home') }}">
+                        <div class="nav-logo">
+                            <a href="{{ route('Home') }}">
                                 @if (isset($setting->headerlogo))
                                     <x-curator-glider :media="$setting->headerlogo" :alt="$logo_alt" />
                                 @endif
-                            </a></div>
+                            </a>
+                        </div>
                         <div class="close-btn"><i class="icon fa fa-times"></i></div>
                     </div>
-                    <ul class="navigation clearfix">
+                    <ul class="navigation clearfix"></ul>
+                    <ul class="contact-list-one">
+                        <li>
 
-                        <div class="contact-info-box">
-                            <i class="icon lnr-icon-phone-handset"></i>
-                            <span class="title"> @lang('home/homepage.CallNow') </span>
-                            <a href="tel:{{ $setting->prefixed_phone }}">{{ $setting->prefixed_phone }}</a>
-                        </div>
+                            <div class="contact-info-box">
+                                <i class="icon lnr-icon-phone-handset"></i>
+                                <span class="title"> @lang('home/homepage.CallNow') </span>
+                                <a href="tel:{{ $setting->prefixed_phone }}">{{ $setting->prefixed_phone }}</a>
+                            </div>
                         </li>
                         <li>
 
@@ -197,10 +201,8 @@
                             </div>
                         </li>
                         <li>
-
                             <div class="contact-info-box">
                                 <span class="icon"> <i class="flaticon-placeholder"></i></span>
-
                                 <span class="title"> @lang('home/homepage.location')</span>
                                 {{ $setting->location }}
                             </div>
@@ -249,24 +251,26 @@
                                 @endif
                             </a>
                         </div>
+                        <div class="menu-btn-holder">
+                            <div class="btn">
+                                <a href="{{ route('contactUs') }}" class="theme-btn"> @lang('home/homepage.letUsTalk') </a>
+                            </div>
+                            <div class="nav-outer">
 
-                        <div class="nav-outer">
+                                <nav class="main-menu">
+                                    <div class="navbar-collapse show collapse clearfix">
+                                        <ul class="navigation clearfix">
 
-                            <nav class="main-menu">
-                                <div class="navbar-collapse show collapse clearfix">
-                                    <ul class="navigation clearfix">
+                                        </ul>
+                                    </div>
+                                </nav>
 
-                                    </ul>
+                                <div class="mobile-nav-toggler">
+                                    <i class="fa fa-bars"></i>
                                 </div>
-                            </nav>
-
-                            <div class="mobile-nav-toggler">
-                                <i class="fa fa-bars"></i>
                             </div>
                         </div>
-                        <div class="btn">
-                            <a href="{{ route('contactUs') }}" class="theme-btn"> @lang('home/homepage.letUsTalk') </a>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -276,8 +280,6 @@
 
 
         <footer class="main-footer footer-style-one">
-
-
             <div class="widgets-section">
                 <div class="auto-container">
                     <div class="logo-box">
@@ -373,11 +375,14 @@
             </div>
         </div>
     </div>
-    <div class="scroll-to-top scroll-to-target arrow-btn" data-target="html" style><i
-            class="fa-sharp fa-solid fa-arrow-up"></i></div>
+    <div class="scroll-to-top scroll-to-target arrow-btn" data-target="html" style>
+        <i class="fa-sharp fa-solid fa-arrow-up"></i>
+    </div>
     </footer>
 
     </div>
+
+
     <script src="{{ asset('front/js/jquery.js') }}"></script>
     <script src="{{ asset('front/js/popper.min.js') }}"></script>
     <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>

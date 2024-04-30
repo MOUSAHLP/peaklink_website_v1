@@ -18,7 +18,8 @@ class ManageMenuPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_manage::menu');
+        // return $user->can('view_any_manage::menu');
+        return false;
     }
 
     /**
@@ -147,5 +148,4 @@ class ManageMenuPolicy
     {
         return $user->can('reorder_manage::menu');
     }
-
 }

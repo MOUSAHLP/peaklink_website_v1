@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
             $switch
                 ->locales(['ar', 'en']); // also accepts a closure
         });
-        Setting::observe(SettingObserver::class);
+        // Setting::observe(SettingObserver::class);
         // DB::listen(function ($query) {
         //     Log::info($query->sql, ['bindings' => $query->bindings, 'time' => $query->time]);
         // });

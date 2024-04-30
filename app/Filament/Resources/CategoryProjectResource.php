@@ -25,43 +25,54 @@ class CategoryProjectResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('projects.projects');
+    }
+
     public static function getModelLabel(): string
-{
-    return 'أقسام المشاريع';
-}
+    {
+        return __('projects.projectsCategories');
+    }
     public static function getPluralLabel(): string
-{
-    return 'أقسام المشاريع';
-}
+    {
+        return __('projects.projectsCategories');
+    }
     public static function getNavigationLabel(): string
-{
-    return 'أقسام المشاريع';
-}
+    {
+        return __('projects.projectsCategories');
+    }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getModel()::count() > 10 ? 'warning' : 'info';
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-               Section::make()
-               ->schema([
-                Forms\Components\TextInput::make('title')
-                ->label('عنوان القسم')
-                    ->required(),
-                    // ->reactive()
-                    // ->debounce(1000)
-                    // ->afterStateUpdated(function(Set $set,Get $get){ $set('slug', Str::slug($get('title'))); }),
+                Section::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->label( __('projects.categoryTitle'))
+                            ->required(),
 
-                Forms\Components\TextInput::make('slug')
-                // ->readOnly()
-                ->unique(ignoreRecord: true)
-                ->required(fn (string $operation): bool => $operation === 'create')
-                ->label('رابط القسم')
+                        Forms\Components\TextInput::make('slug')
+                            // ->readOnly()
+                            ->unique(ignoreRecord: true)
+                            ->required(fn (string $operation): bool => $operation === 'create')
+                            ->label( __('projects.categoryLink'))
 
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Toggle::make('status')
-                ->label('حالة نشر القسم'),
-               ])->columns(2),
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\Toggle::make('status')
+                            ->label(__("filament_form.status")),
+                    ])->columns(2),
             ]);
     }
 
@@ -70,19 +81,21 @@ class CategoryProjectResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                ->label('عنوان القسم')
+                    ->label(__('projects.categoryTitle'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
-                ->label('رابط القسم')
+                    ->label(__('projects.categoryLink'))
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('status')
-                ->label('حالة نشر القسم'),
+                    ->label(__("filament_form.status")),
 
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__("filament_form.updated_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

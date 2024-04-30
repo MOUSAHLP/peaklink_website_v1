@@ -19,40 +19,52 @@ class BlogCategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-document-plus';
     protected static ?string $navigationGroup = 'المدونة';
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 2;
 
-                public static function getModelLabel(): string
-            {
-                return 'أقسام المدونة';
-            }
-                public static function getPluralLabel(): string
-            {
-                return 'أقسام المدونة';
-            }
-                public static function getNavigationLabel(): string
-            {
-                return 'أقسام المدونة';
-            }
-          
+    public static function getNavigationGroup(): ?string
+    {
+        return __('posts.posts');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('posts.postCategories');
+    }
+    public static function getPluralLabel(): string
+    {
+        return __('posts.postCategories');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('posts.postCategories');
+    }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getModel()::count() > 10 ? 'danger' : 'warning';
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                
-               Section::make()
-               ->schema([
-                Forms\Components\TextInput::make('name')
-                ->label('عنوان القسم')
-                    ->required(),
-                Forms\Components\TextInput::make('slug')
-                ->label('رابط القسم')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Toggle::make('status')
-                ->label('حالة نشر القسم')
-                    ->required(),
-               ])->columns(2),
+
+                Section::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label(__('posts.categoryTitle'))
+                            ->required(),
+                        Forms\Components\TextInput::make('slug')
+                            ->label(__('posts.categoryLink'))
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\Toggle::make('status')
+                            ->label(__("filament_form.status"))
+                            ->required(),
+                    ])->columns(2),
 
             ]);
     }
@@ -62,18 +74,21 @@ class BlogCategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                ->label('عنوان القسم')
+                    ->label(__('posts.categoryTitle'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
-                ->label('رابط القسم')
+                    ->label(__('posts.categoryLink'))
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('status')
-                ->label('حالة نشر القسم'),
+                    ->label(__("filament_form.status"))
+                    ,
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__("filament_form.updated_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

@@ -37,7 +37,10 @@ class ProductCategoryResource extends Resource
         return 'الفئات';
     }
 
-
+    public static function getNavigationGroup(): ?string
+    {
+        return __('products.products');
+    }
 
     public static function form(Form $form): Form
     {

@@ -34,6 +34,10 @@ class TeamResource extends Resource
     {
         return 'الفريق';
     }
+    public static function getNavigationGroup(): ?string
+    {
+        return __('team.team');
+    }
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::count();

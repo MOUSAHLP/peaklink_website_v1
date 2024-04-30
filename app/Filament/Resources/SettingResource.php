@@ -43,7 +43,10 @@ class SettingResource extends Resource
     {
         return 'إدارة  الموقع';
     }
-
+    public static function getNavigationGroup(): ?string
+    {
+        return __("filament_form.settings");
+    }
     public static function form(Form $form): Form
     {
         return $form
@@ -129,24 +132,24 @@ class SettingResource extends Resource
         return $table
             ->columns([
                 CuratorColumn::make('headerlogo')
-                    ->label(_("صورة المنتج"))
+                    ->label(_("شعار الرأس"))
                     ->width('100px'),
                 CuratorColumn::make('footerlogo')
-                    ->label(_("صورة المنتج"))
+                    ->label(_("شعار التذييل"))
                     ->width('100px'),
                 Tables\Columns\TextColumn::make('email')
                     ->label(__('البريد الالكتروني'))
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('phone')
-                    ->label(__('شعار رأس الصفحة'))
+                    ->label(__('رقم الهاتف'))
                     ->searchable(),
 
                 Tables\Columns\ToggleColumn::make('maintenance')
                     ->label(__('الصيانة')),
 
                 Tables\Columns\TextColumn::make('location')
-                    ->label(__('شعار إسفل الصفحة'))
+                    ->label(__('المكان'))
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
 

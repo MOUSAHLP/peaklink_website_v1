@@ -4,6 +4,7 @@ return [
     'name' => 'Name',
     'email' => 'Email',
     'phone' => 'Phone',
+    'password' => 'Password',
     'text' => 'Text',
     'title' => 'Title',
     'link' => 'Link',
@@ -20,6 +21,8 @@ return [
     'meta_title' => 'Meta Title',
     'meta_keywords' => 'Meta Keywords',
     'meta_description' => 'Meta Description',
+    'meta_image' => 'Meta Image',
+    'SEO' => 'SEO',
     'client_name' => 'Client Name',
     'client_job' => 'Client Job',
     'client_image' => 'Client Image',
@@ -42,4 +45,8 @@ return [
     'category_url' => 'Category Url',
     'socials' => 'socials',
     'download_file' => "Download File",
+    'role' => "Role",
+    'general_info' => "General Information",
+    'settings' => "Settings",
+
 ];

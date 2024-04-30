@@ -2150,7 +2150,13 @@ figure.image {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background: #000
+    background: var(--theme-color-dark)
+}
+
+@media(max-width:767.98px) {
+    .sticky-header.fixed-header .btn {
+        display: none;
+    }
 }
 
 .header-style-one .header-lower .sticky-header .main-menu {
@@ -2245,7 +2251,7 @@ figure.image {
     width: 100%;
     padding: 10px 0;
     z-index: 99999;
-    background: #000;
+    background: var(--theme-color-dark);
     -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, .05);
     box-shadow: 0 0 20px rgba(0, 0, 0, .05)
 }
@@ -2274,13 +2280,18 @@ figure.image {
     width: 120px;
 }
 
+.sticky-header .menu-btn-holder {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 auto;
+}
+
 .sticky-header .nav-outer {
     position: relative;
     background: 0 0;
-    margin: 0 auto;
 }
 
-.sticky-header .btn a{
+.sticky-header .btn a {
     padding: 0 35px;
     line-height: 59px;
     height: 59px;
@@ -2294,7 +2305,12 @@ figure.image {
     margin-left: 60px;
     padding: 20px 0
 }
+@media (max-width:1025px) {
 
+    .sticky-header .main-menu .navigation>li {
+        margin-left: 40px;
+    }
+}
 .sticky-header .main-menu .navigation>li>a {
     color: #fff
 }
