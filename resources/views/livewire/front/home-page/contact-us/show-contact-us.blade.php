@@ -88,7 +88,7 @@
                                         name="contact_form" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
-                                            <div class="form-group col-lg-12">
+                                            <div class="form-group col-sm-6 col-lg-12">
                                                 <div class="input-outer">
                                                     <input type="text" name="name" value="{{ old('name') }}"
                                                         placeholder="@lang('home/contact_us.name')" required>
@@ -101,7 +101,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="form-group col-lg-12">
+                                            <div class="form-group col-sm-6 col-lg-12">
                                                 <div class="input-outer">
                                                     <input type="email" name="email" value="{{ old('email') }}"
                                                         placeholder="@lang('home/contact_us.email')" required>
@@ -114,7 +114,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group col-lg-12">
+                                            <div class="form-group col-sm-6 col-lg-12">
                                                 <div class="input-outer">
                                                     <input type="text" name="phone" value="{{ old('phone') }}"
                                                         placeholder="@lang('home/contact_us.phone')" required>
@@ -127,7 +127,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group col-lg-12">
+                                            <div class="form-group col-sm-6 col-lg-12">
                                                 <div class="input-outer">
                                                     <input type="file" name="file"
                                                         placeholder="@lang('home/contact_us.file')">
@@ -164,7 +164,7 @@
                                                 </div>
                                             @endif
                                         </div>
-                                        <div class="form-group col-lg-12">
+                                        <div class="form-group col-sm-6 col-lg-12">
                                             <button class="theme-btn" type="submit" name="submit-form"><span
                                                     class="btn-title">@lang('home/contact_us.send_your_message')</span><i
                                                     class="far fa-arrow-left-long btn-icon me-1"></i></button>

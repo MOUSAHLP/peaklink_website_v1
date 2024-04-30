@@ -35,7 +35,7 @@
                         <div class="project-details__details-box pb-25">
                             <div class="row" style="justify-content: center;">
                                 <div class="col-6 col-md-3" style="text-align: center;">
-                                    <p class="project-details__client"> {{ __('projects.date') }}</p>
+                                    <p class="project-details__client"> {{ __('projects.Date') }}</p>
                                     <h4 class="project-details__name">{{ $project->date }}</h4>
                                 </div>
                                 <div class="col-6 col-md-3" style="text-align: center;">

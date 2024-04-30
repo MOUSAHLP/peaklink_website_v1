@@ -9,7 +9,7 @@ class ShowFlowWork extends Component
 {
     public function render()
     {
-        $FlowWork = FlowWork::where('status', 1)->get();
+        $FlowWork = FlowWork::where('status', 1)->get()->take(4);
         return view('livewire.front.home-page.flowwork.show-flow-work', ['FlowWork' => $FlowWork]);
     }
 }

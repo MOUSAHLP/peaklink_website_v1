@@ -161,7 +161,7 @@
 
                                         <li class="dropdown">
                                             <a>{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'العربية' : 'English' }}
-                                                @svg('heroicon-o-globe-alt', ['style' => 'color: white; width: 30px;padding: 5px;'])
+                                                @svg('heroicon-o-globe-alt', ['style' => 'color: var(--theme-color1); width: 30px;padding: 5px;'])
                                             </a>
                                             <ul>
                                                 <li> <a href="{{ route('ar') }}">العربية</a> </li>

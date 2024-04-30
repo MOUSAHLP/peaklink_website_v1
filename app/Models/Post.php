@@ -13,12 +13,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Post extends Model
 {
     use HasFactory, HasTranslations;
-    public $translatable = ['title', 'tags', 'content', 'meta_title', 'meta_keywords', 'meta_description'];
+    public $translatable = ['title',  'content', 'meta_title', 'meta_keywords', 'meta_description'];
     protected $table = 'posts';
     protected $fillable = [
         'category_id',
         'user_id',
-        'tags',
         'title',
         'slug',
         'content',
