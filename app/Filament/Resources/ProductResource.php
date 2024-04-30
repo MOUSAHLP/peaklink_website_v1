@@ -29,7 +29,7 @@ class ProductResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
 
-    protected static ?string $navigationGroup = 'المتجر';
+    protected static ?string $navigationGroup = 'المنتجات';
     protected static ?int $navigationSort = 3;
 
     public static function getModelLabel(): string
@@ -51,6 +51,10 @@ class ProductResource extends Resource
     public static function getNavigationBadgeColor(): ?string
     {
         return static::getModel()::count() > 10 ? 'danger' : 'warning';
+    }
+    public static function getNavigationGroup(): ?string
+    {
+        return __('products.products');
     }
 
 

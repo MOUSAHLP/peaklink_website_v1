@@ -34,13 +34,23 @@ class AdminPanelProvider extends PanelProvider
                     'الصفحة الرئيسية',
                     'الخدمات',
                     'المشاريع',
-                    'المدونة',
+                    'المدونات',
                     'الاستمارات',
-                    'المتجر',
-                    'إدارة الفريق',
-                    'انضم الينا',
+                    'منتجات',
+                    'الفريق',
+                    'إعدادات',
+
+                    'Home page',
+                    'System Users',
+                    'Services',
+                    'Projects',
+                    'Posts',
+                    'Products',
+                    'Team',
+                    'Forms',
+                    'Settings',
+
                     'Footer',
-                    // '',
                 ]
             )
 

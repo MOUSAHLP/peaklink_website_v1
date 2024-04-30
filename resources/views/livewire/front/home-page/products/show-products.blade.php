@@ -9,7 +9,6 @@
                     <div class="text">
                         @lang('home/products.products_desc')
                     </div>
-
                 </div>
 
                 <div class="slider-btn">
@@ -45,5 +44,169 @@
             </div>
             <a href="{{ route('Products') }}" class="theme-btn more">@lang('home/homepage.more')</a>
         </section>
+        @script
+            <script>
+                $('.product-slider').slick({
+                    infinite: true,
+                    slidesToShow: 2,
+                    arrows: true,
+                    centerMode: true,
+                    centerPadding: "400px",
+                    slidesToScroll: 1,
+                    dots: false,
+                    responsive: [{
+                            breakpoint: 1500,
+                            settings: {
+                                centerPadding: "100px",
+                                slidesToShow: 4,
+                            }
+                        },
+                        {
+                            breakpoint: 1366,
+                            settings: {
+                                centerPadding: "100px",
+                                slidesToShow: 3,
+                            }
+                        },
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                centerPadding: "50px",
+                                slidesToShow: 3,
+                            }
+                        },
+                        {
+                            breakpoint: 991,
+                            settings: {
+                                slidesToShow: 3,
+                                centerPadding: 0,
+                                centerMode: false,
+                                slidesToScroll: 1,
+                                infinite: true
+                            }
+                        },
+                        {
+                            breakpoint: 767,
+                            settings: {
+                                slidesToShow: 1,
+                                centerPadding: 0,
+                                centerMode: false,
+                                slidesToScroll: 1,
+                                infinite: true
+                            }
+                        },
+                        {
+                            breakpoint: 576,
+                            settings: {
+                                slidesToShow: 1,
+                                centerPadding: 0,
+                                centerMode: false,
+                                slidesToScroll: 1,
+                                infinite: true
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 1,
+                                centerPadding: 0,
+                                centerMode: false,
+                                slidesToScroll: 1,
+                                infinite: true
+                            }
+                        }
+                        // You can unslick at a given breakpoint now by adding:
+                        // settings: "unslick"
+                        // instead of a settings object
+                    ]
+                });
+
+                $('.product-slider-rtl').slick({
+                    infinite: true,
+                    slidesToShow: 2,
+                    arrows: true,
+                    centerMode: true,
+                    centerPadding: "400px",
+                    slidesToScroll: 1,
+                    dots: false,
+                    rtl: true,
+                    responsive: [{
+                            breakpoint: 1500,
+                            settings: {
+                                centerPadding: "100px",
+                                slidesToShow: 4,
+                            }
+                        },
+                        {
+                            breakpoint: 1366,
+                            settings: {
+                                centerPadding: "100px",
+                                slidesToShow: 3,
+                            }
+                        },
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                centerPadding: "50px",
+                                slidesToShow: 3,
+                            }
+                        },
+                        {
+                            breakpoint: 991,
+                            settings: {
+                                slidesToShow: 2,
+                                centerPadding: 0,
+                                centerMode: false,
+                                slidesToScroll: 1,
+                                infinite: true
+                            }
+                        },
+                        {
+                            breakpoint: 767,
+                            settings: {
+                                slidesToShow: 1,
+                                centerPadding: 0,
+                                centerMode: false,
+                                slidesToScroll: 1,
+                                infinite: true
+                            }
+                        },
+                        {
+                            breakpoint: 576,
+                            settings: {
+                                slidesToShow: 1,
+                                centerPadding: 0,
+                                centerMode: false,
+                                slidesToScroll: 1,
+                                infinite: true
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 1,
+                                centerPadding: 0,
+                                centerMode: false,
+                                slidesToScroll: 1,
+                                infinite: true
+                            }
+                        }
+                        // You can unslick at a given breakpoint now by adding:
+                        // settings: "unslick"
+                        // instead of a settings object
+                    ]
+                });
+
+                $('.slider-btn .prev-btn').click(function(e) {
+                    //e.preventDefault();
+                    $('.product-slider, .product-slider-rtl').slick('slickPrev');
+                });
+
+                $('.slider-btn .next-btn').click(function(e) {
+                    //e.preventDefault();
+                    $('.product-slider, .product-slider-rtl').slick('slickNext');
+                });
+            </script>
+        @endscript
     @endif
 </div>

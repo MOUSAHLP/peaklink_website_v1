@@ -18,7 +18,8 @@ class PricingPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_pricing');
+        // return $user->can('view_any_pricing');
+        return false;
     }
 
     /**
@@ -147,5 +148,4 @@ class PricingPolicy
     {
         return $user->can('reorder_pricing');
     }
-
 }

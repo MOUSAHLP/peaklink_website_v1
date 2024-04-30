@@ -18,7 +18,9 @@ class ManageTitlePagePolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_manage::title::page');
+        // return $user->can('view_any_manage::title::page');
+        return false;
+
     }
 
     /**

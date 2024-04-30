@@ -50,9 +50,8 @@ class FlowWorkResource extends Resource
     }
     public static function getNavigationBadgeColor(): ?string
     {
-        return static::getModel()::count() > 10 ? 'warning' : 'dark';
+        return static::getModel()::count() > 10 ? 'warning' : 'info';
     }
-
     public static function form(Form $form): Form
     {
         return $form

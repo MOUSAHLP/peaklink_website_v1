@@ -35,13 +35,17 @@
         <meta property="og:author" content="Auth admin">
 
         <!-- MS Tile - for Microsoft apps-->
-        <meta name="msapplication-TileImage" content="@yield('meta_image', $setting->metaImage != null ? $setting->metaImage->url : '')">
+        @if (isset($setting->metaImage))
+            <meta name="msapplication-TileImage" content="@yield('meta_image', $setting->metaImage->url)">
+        @endif
         <!-- Site Name, Title, and Description to be displayed -->
         <meta property="og:site_name" content="Peak Link">
         <meta property="og:title" content="@yield('meta_title', $setting->meta_title)">
-        <meta property="og:description" content="@yield('meta_description', $setting->meta_description != null ? $setting->meta_description : '')">
+        <meta property="og:description" content="@yield('meta_description', $setting->meta_description)">
         <!-- Image to display -->
-        <meta property="og:image" content="@yield('meta_image', $setting->metaImage != null ? $setting->metaImage->url : '')">
+        @if (isset($setting->metaImage))
+            <meta property="og:image" content="@yield('meta_image', $setting->metaImage->url)">
+        @endif
         <!-- No need to change anything here -->
         <meta property="og:type" content="website" />
         <meta property="og:image:type" content="image/*">
@@ -55,10 +59,10 @@
         <link href="{{ asset('front/css/bootstrap.min.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ asset('front/css/slick-theme.cs') }}s">
         <link rel="stylesheet" type="text/css" href="{{ asset('front/css/slick.css') }}">
-        <link rel="shortcut icon" href="{{ $setting->metaImage != null ? $setting->metaImage->url : '' }}"
-            type="image/x-icon">
-        <link rel="icon" href="{{ $setting->metaImage != null ? $setting->metaImage->url : '' }}"
-            type="image/x-icon">
+        @if (isset($setting->metaImage))
+            <link rel="shortcut icon" href="{{ $setting->metaImage->url }}" type="image/x-icon">
+            <link rel="icon" href="{{ $setting->metaImage->url }}" type="image/x-icon">
+        @endif
 
         {{-- RTL Style  --}}
         @if (str_replace('_', '-', app()->getLocale()) == 'ar')
@@ -192,20 +196,24 @@
 
                     <nav class="menu-box">
                         <div class="upper-box">
-                            <div class="nav-logo"><a href="{{ route('Home') }}">
+                            <div class="nav-logo">
+                                <a href="{{ route('Home') }}">
                                     @if (isset($setting->headerlogo))
                                         <x-curator-glider :media="$setting->headerlogo" :alt="$logo_alt" />
                                     @endif
-                                </a></div>
+                                </a>
+                            </div>
                             <div class="close-btn"><i class="icon fa fa-times"></i></div>
                         </div>
-                        <ul class="navigation clearfix">
+                        <ul class="navigation clearfix"></ul>
+                        <ul class="contact-list-one">
+                            <li>
 
-                            <div class="contact-info-box">
-                                <i class="icon lnr-icon-phone-handset"></i>
-                                <span class="title"> @lang('home/homepage.CallNow') </span>
-                                <a href="tel:{{ $setting->prefixed_phone }}">{{ $setting->prefixed_phone }}</a>
-                            </div>
+                                <div class="contact-info-box">
+                                    <i class="icon lnr-icon-phone-handset"></i>
+                                    <span class="title"> @lang('home/homepage.CallNow') </span>
+                                    <a href="tel:{{ $setting->prefixed_phone }}">{{ $setting->prefixed_phone }}</a>
+                                </div>
                             </li>
                             <li>
 
@@ -217,10 +225,8 @@
                                 </div>
                             </li>
                             <li>
-
                                 <div class="contact-info-box">
                                     <span class="icon"> <i class="flaticon-placeholder"></i></span>
-
                                     <span class="title"> @lang('home/homepage.location')</span>
                                     {{ $setting->location }}
                                 </div>
@@ -269,24 +275,26 @@
                                     @endif
                                 </a>
                             </div>
+                            <div class="menu-btn-holder">
+                                <div class="btn">
+                                    <a href="{{ route('contactUs') }}" class="theme-btn"> @lang('home/homepage.letUsTalk') </a>
+                                </div>
+                                <div class="nav-outer">
 
-                            <div class="nav-outer">
+                                    <nav class="main-menu">
+                                        <div class="navbar-collapse show collapse clearfix">
+                                            <ul class="navigation clearfix">
 
-                                <nav class="main-menu">
-                                    <div class="navbar-collapse show collapse clearfix">
-                                        <ul class="navigation clearfix">
+                                            </ul>
+                                        </div>
+                                    </nav>
 
-                                        </ul>
+                                    <div class="mobile-nav-toggler">
+                                        <i class="fa fa-bars"></i>
                                     </div>
-                                </nav>
-
-                                <div class="mobile-nav-toggler">
-                                    <i class="fa fa-bars"></i>
                                 </div>
                             </div>
-                            <div class="btn">
-                                <a href="{{ route('contactUs') }}" class="theme-btn"> @lang('home/homepage.letUsTalk') </a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -296,8 +304,6 @@
 
 
             <footer class="main-footer footer-style-one">
-
-
                 <div class="widgets-section">
                     <div class="auto-container">
                         <div class="logo-box">
@@ -396,11 +402,14 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-to-top scroll-to-target arrow-btn" data-target="html" style><i
-                class="fa-sharp fa-solid fa-arrow-up"></i></div>
+        <div class="scroll-to-top scroll-to-target arrow-btn" data-target="html" style>
+            <i class="fa-sharp fa-solid fa-arrow-up"></i>
+        </div>
         </footer>
 
         </div>
+
+
         <script src="{{ asset('front/js/jquery.js') }}"></script>
         <script src="{{ asset('front/js/popper.min.js') }}"></script>
         <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>

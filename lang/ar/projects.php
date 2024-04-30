@@ -15,8 +15,17 @@ return [
     'recently_projects' => 'المشاريع المنجزة حديثاً',
     'recently_projects_desc' => 'مشاريعنا الحديثة التي اتتمناها بكل احترافية باستخدام التقنيات المعروفة لنيل رضاء العميل',
 
-    'Previous' => 'السابق',
-    'Previous' => 'السابق',
-    'Previous' => 'السابق',
-     
+    'projectsCategories' => 'أقسام المشاريع',
+    'categoryTitle' => 'عنوان القسم',
+    'categoryLink' => 'رابط القسم',
+    'pickCategory' => 'أختر قسم',
+    'projectTitle' => 'عنوان المشروع',
+    'projectDate' => 'تاريخ المشروع',
+    'doYouHaveLink' => 'هل لديك رابط الموقع ؟',
+    'doYouHaveClientLocation' => "هل لديك موقع العميل ؟",
+    'client_name' => 'أسم العميل',
+    'websiteLink' => 'رابط الموقع',
+    'clientLocation' => 'موقع العميل',
+    'project_description' => 'وصف المشروع',
+
 ];

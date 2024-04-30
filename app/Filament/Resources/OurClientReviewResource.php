@@ -43,7 +43,14 @@ class OurClientReviewResource extends Resource
     {
         return __('home/client_review.client_review');
     }
-
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getModel()::count() > 10 ? 'warning' : 'info';
+    }
 
     public static function form(Form $form): Form
     {
@@ -67,20 +74,20 @@ class OurClientReviewResource extends Resource
                             ->maxLength(30)
                             ->required(),
 
-                Forms\Components\TextInput::make('client_job')
-                    ->label(__("filament_form.client_job"))
-                    ->maxLength(30)
-                    ->required(),
-                Forms\Components\Select::make('stars')
-                    ->label("[1 - 5] ".__("filament_form.stars"))
-                    ->options([
-                        1=>1,
-                        2=>2,
-                        3=>3,
-                        4=>4,
-                        5=>5,
-                    ])
-                    ->required(),
+                        Forms\Components\TextInput::make('client_job')
+                            ->label(__("filament_form.client_job"))
+                            ->maxLength(30)
+                            ->required(),
+                        Forms\Components\Select::make('stars')
+                            ->label("[1 - 5] " . __("filament_form.stars"))
+                            ->options([
+                                1 => 1,
+                                2 => 2,
+                                3 => 3,
+                                4 => 4,
+                                5 => 5,
+                            ])
+                            ->required(),
 
 
                         Forms\Components\TextInput::make('description')
@@ -101,13 +108,13 @@ class OurClientReviewResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('client_name')
-                ->label(__("filament_form.client_name"))
+                    ->label(__("filament_form.client_name"))
                     ->sortable(),
 
-                    
+
                 CuratorColumn::make('client_image')
-                ->label(__("filament_form.client_image"))
-                ->width('100px'),
+                    ->label(__("filament_form.client_image"))
+                    ->width('100px'),
 
 
                 Tables\Columns\TextColumn::make('stars')

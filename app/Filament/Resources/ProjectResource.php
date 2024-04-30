@@ -27,17 +27,22 @@ class ProjectResource extends Resource
     protected static ?string $navigationGroup = 'المشاريع';
     protected static ?int $navigationSort = 2;
 
+    public static function getNavigationGroup(): ?string
+    {
+        return __('projects.projects');
+    }
+
     public static function getModelLabel(): string
     {
-        return 'المشاريع';
+        return __('projects.projects');
     }
     public static function getPluralLabel(): string
     {
-        return 'المشاريع';
+        return __('projects.projects');
     }
     public static function getNavigationLabel(): string
     {
-        return 'المشاريع';
+        return __('projects.projects');
     }
     public static function getNavigationBadge(): ?string
     {
@@ -55,61 +60,61 @@ class ProjectResource extends Resource
 
                 Tabs::make('Tabs')
                     ->tabs([
-                        Tabs\Tab::make('الخدمات')
+                        Tabs\Tab::make(__("filament_form.general_info"))
                             ->icon('heroicon-m-rectangle-group')
                             ->iconPosition(IconPosition::After)
                             ->schema([
                                 Forms\Components\Select::make('category_project_id')
-                                    ->label('أختر قسم')
+                                    ->label(__('projects.pickCategory'))
                                     ->required()
                                     ->relationship('categories', 'title', fn ($query) => $query->where("status", 1))
                                     ->getOptionLabelFromRecordUsing(fn ($record, $livewire) => $record->hasTranslation('title', $livewire->activeLocale)
                                         ? $record->getTranslation('title', $livewire->activeLocale)
                                         : $record->title),
                                 Forms\Components\TextInput::make('title')
-                                    ->label('عنوان المشروع')
+                                    ->label(__('projects.projectTitle'))
                                     ->required(),
-
 
                                 Forms\Components\DatePicker::make('date')
-                                    ->label('تاريخ المشروع')
+                                    ->label(__('projects.projectDate'))
                                     ->required(),
                                 Forms\Components\Toggle::make('Has_website')
-                                    ->label(_("هل لديك رابط الموقع ؟"))
+                                    ->label(__('projects.doYouHaveLink'))
                                     ->columnSpanFull()
                                     ->dehydrated()
                                     ->default(false)
                                     ->live(),
 
                                 Forms\Components\Toggle::make('Has_location')
-                                    ->label(_("هل لديك موقع العميل ؟"))
+                                    ->label(__('projects.doYouHaveClientLocation'))
                                     ->columnSpanFull()
                                     ->dehydrated()
                                     ->default(false)
                                     ->live(),
                                 Forms\Components\TextInput::make('client_name')
-                                    ->label('أسم العميل')
+                                    ->label(__('projects.client_name'))
                                     ->required(),
 
                                 Forms\Components\TextInput::make('website')
-                                    ->label('رابط الموقع')
+                                    ->label(__('projects.websiteLink'))
                                     ->maxLength(255)
                                     ->hidden(fn (Get $get): bool => !$get('Has_website')),
 
 
                                 Forms\Components\TextInput::make('location')
-                                    ->label('موقع العميل')
+                                    ->label(__('projects.clientLocation'))
                                     ->maxLength(255)
                                     ->hidden(fn (Get $get): bool => !$get('Has_location')),
 
                                 TinyEditor::make('description')
-                                    ->label('وصف المشروع')
+                                    ->label(__('projects.project_description'))
                                     ->showMenuBar()
                                     ->toolbarSticky(true)
                                     ->language('ar')
                                     ->columnSpanFull(),
 
                                 CuratorPicker::make('image')->label(__(''))
+                                    ->label(__("filament_form.image"))
                                     ->size('sm')
                                     ->outlined(false)
                                     ->color('info')
@@ -118,6 +123,7 @@ class ProjectResource extends Resource
 
                                 Forms\Components\Toggle::make('status')
                                     ->label('حالة نشر المشروع')
+                                    ->label(__("filament_form.status"))
                                     ->columnSpanFull(),
 
 
@@ -126,13 +132,18 @@ class ProjectResource extends Resource
                         Tabs\Tab::make('محركات البحث جوجل "SEO"')
                             ->icon('heroicon-m-globe-europe-africa')
                             ->iconPosition(IconPosition::After)
+                            ->label(__("filament_form.SEO"))
                             ->schema([
                                 Forms\Components\TextInput::make('meta_title')
+                                    ->label(__("filament_form.meta_title"))
                                     ->maxLength(30),
-                                Forms\Components\TagsInput::make('meta_keywords'),
+                                Forms\Components\TagsInput::make('meta_keywords')
+                                    ->label(__("filament_form.meta_keywords")),
                                 Forms\Components\TextInput::make('meta_description')
+                                    ->label(__("filament_form.meta_description"))
                                     ->columnSpanFull(),
-                                CuratorPicker::make('meta_image')->label(__(''))
+                                CuratorPicker::make('meta_image')
+                                    ->label(__("filament_form.meta_image"))
                                     ->size('sm')
                                     ->outlined(false)
                                     ->color('info')
@@ -141,10 +152,6 @@ class ProjectResource extends Resource
                             ])->columns(2),
 
                     ])->columnSpanFull(),
-
-
-
-
             ]);
     }
 
@@ -153,37 +160,39 @@ class ProjectResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('categories.title')
-                    ->label('اسم القسم')
+                    ->label(__('projects.categoryTitle'))
                     ->sortable(),
                 Tables\Columns\TextColumn::make('title')
-                    ->label('عنوان المشورع')
+                    ->label(__('projects.projectTitle'))
                     ->sortable(),
                 Tables\Columns\TextColumn::make('client_name')
-                    ->label('اسم العميل')
+                    ->label(__('projects.client_name'))
                     ->sortable(),
                 CuratorColumn::make('image')
-                    ->label(_("صورة المشروع"))
+                    ->label(__("filament_form.image"))
                     ->width('100px'),
                 Tables\Columns\TextColumn::make('date')
-                    ->label('التاريخ')
+                    ->label(__('projects.projectDate'))
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('website')
-                    ->label('رابط الموقع')
+                    ->label(__('projects.websiteLink'))
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('location')
-                    ->label('موقع العميل')
+                    ->label(__('projects.clientLocation'))
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
 
                 Tables\Columns\ToggleColumn::make('status')
-                    ->label('حالة نشر المشروع'),
+                    ->label(__("filament_form.status")),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__("filament_form.updated_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

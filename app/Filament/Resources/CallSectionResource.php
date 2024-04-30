@@ -117,13 +117,20 @@ class CallSectionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('button_link')
-                    ->label(__("filament_form.button_link"))
-
+                Tables\Columns\TextColumn::make('title')
+                    ->label(__("filament_form.title"))
                     ->searchable(),
-                CuratorColumn::make('image')
-                    ->label(__("filament_form.icon"))
+                CuratorColumn::make('background_image')
+                    ->label(__("filament_form.image"))
                     ->width('100px'),
+
+                Tables\Columns\TextColumn::make('phone')
+                    ->label(__("filament_form.phone"))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->label(__("filament_form.email"))
+                    ->searchable(),
+
                 Tables\Columns\ToggleColumn::make('status')
                     ->label(__("filament_form.status")),
                 Tables\Columns\TextColumn::make('created_at')

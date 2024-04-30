@@ -3,7 +3,7 @@
         @if (isset($ContactUsContact))
 
 
-            <section style="z-index: 20" class="contact-section mb-lg-120">
+            <section style="z-index: 20" class="contact-section">
                 <div class="auto-container">
                     <div class="outer-box">
                         <div class="row">

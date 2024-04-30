@@ -21,64 +21,67 @@ class UserResource extends Resource
     protected static ?string $navigationGroup = 'مستخدمين النظام';
     protected static ?int $navigationSort = 1;
 
-                public static function getPluralLabel(): string
-            {
-                return 'المستخدمين';
-            }
-                public static function getNavigationLabel(): string
-            {
-                return 'المستخدمين';
-            }
-            public static function getNavigationBadge(): ?string
-            {
-                return static::getModel()::count();
-            }
-            public static function getNavigationBadgeColor(): ?string
-            {
-                return static::getModel()::count() > 10 ? 'warning' : 'danger';
-            }
-     
-    
+    public static function getPluralLabel(): string
+    {
+        return __('users.users');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('users.users');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('users.users');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('users.systemUsers');
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getModel()::count() > 10 ? 'warning' : 'danger';
+    }
+
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->label(__('الاسم'))
+                    ->label(__("filament_form.name"))
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
-                ->label(__('البريد الالكتروني'))
+                    ->label(__("filament_form.email"))
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\DateTimePicker::make('email_verified_at')
-                ->required()
-                ->native(false)
-                ->default(now())
-                ->format('Y-m-d')
-                ->minDate(now()->toDateString())
-                ,
+
                 Forms\Components\TextInput::make('password')
-                ->label(__('التحقق'))
+                    ->label(__("filament_form.password"))
                     ->password()
                     ->maxLength(255)
                     ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
                     ->dehydrated(fn (?string $state): bool => filled($state))
-                    ->required(fn (string $operation): bool => $operation === 'create') ,
+                    ->required(fn (string $operation): bool => $operation === 'create'),
 
-                    Forms\Components\Select::make('role')
-                    ->relationship(name:'roles',titleAttribute: 'name')
-                    ->label(__('صلاحية المستخدم'))
+                Forms\Components\Select::make('role')
+                    ->relationship(name: 'roles', titleAttribute: 'name')
+                    ->label(__("filament_form.role"))
                     ->searchable()
                     ->multiple()
                     ->preload()
                     ->live()
-                    ->label('اختر الدور')
-                    ->columnSpanFull()
-                        ,
-                        
+                    ->columnSpanFull(),
+
             ]);
     }
 
@@ -87,22 +90,22 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                  ->label(__('الاسم'))
+                    ->label(__("filament_form.name"))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
-                ->label(__('البريد الالكتروني'))
+                    ->label(__("filament_form.email"))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                ->label(__('التحقق'))
-                    ->dateTime()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('roles.name')
+                    ->label(__("filament_form.role"))
+                    ->badge()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
-                ->label(__('تاريخ الأنشاء'))
+                    ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                ->label(__('تاريخ التعديل'))
+                    ->label(__("filament_form.updated_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -114,8 +117,8 @@ class UserResource extends Resource
                 ActionGroup::make(
                     [
                         Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                        Tables\Actions\EditAction::make(),
+                        Tables\Actions\DeleteAction::make(),
                     ]
                 )
             ])

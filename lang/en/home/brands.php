@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'brands' => 'Brands',
-    'brand_name' => 'Brand Name',
-    'brand_link' => 'Brand Link',
-    'brand_logo' => 'Brand Logo',
+    'brands' => 'Partners',
+    'brand_name' => 'Partner Name',
+    'brand_link' => 'Partner Link',
+    'brand_logo' => 'Partner Logo',
 ];

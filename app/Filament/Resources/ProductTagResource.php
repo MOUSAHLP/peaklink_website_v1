@@ -35,6 +35,10 @@ class ProductTagResource extends Resource
     {
         return 'الوسوم';
     }
+    public static function getNavigationGroup(): ?string
+    {
+        return __('products.products');
+    }
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::count();

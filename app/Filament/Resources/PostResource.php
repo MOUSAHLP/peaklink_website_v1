@@ -26,19 +26,32 @@ class PostResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
     protected static ?string $navigationGroup = 'المدونة';
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 1;
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('posts.posts');
+    }
 
     public static function getModelLabel(): string
     {
-        return 'التدوينات';
+        return __('posts.posts');
     }
     public static function getPluralLabel(): string
     {
-        return 'التدوينات';
+        return __('posts.posts');
     }
     public static function getNavigationLabel(): string
     {
-        return 'التدوينات';
+        return __('posts.posts');
+    }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getModel()::count() > 10 ? 'danger' : 'warning';
     }
 
     public static function form(Form $form): Form
@@ -54,13 +67,13 @@ class PostResource extends Resource
                                 Forms\Components\Select::make('category_id')
                                     ->required()
                                     ->label('أختر القسم')
-                                    ->relationship('categories', 'name', fn ($query) => $query->where("status",1))
+                                    ->relationship('categories', 'name', fn ($query) => $query->where("status", 1))
                                     ->getOptionLabelFromRecordUsing(fn ($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
                                         ? $record->getTranslation('name', $livewire->activeLocale)
                                         : $record->name),
 
                                 Forms\Components\Select::make('tags')
-                                    ->relationship('tags', 'name', fn ($query) => $query->where("status",1))
+                                    ->relationship('tags', 'name', fn ($query) => $query->where("status", 1))
                                     ->getOptionLabelFromRecordUsing(fn ($record, $livewire) => $record->hasTranslation('name', $livewire->activeLocale)
                                         ? $record->getTranslation('name', $livewire->activeLocale)
                                         : $record->name)

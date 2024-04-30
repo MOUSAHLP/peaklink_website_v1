@@ -23,13 +23,14 @@ use App\Livewire\Front\TeamPage\ShowTeamPage;
 use App\Livewire\Front\TestimonialPage\ShowTestimonialPage;
 use App\Models\Product;
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 Route::group([
-    "middleware" => "localization"
+    "middleware" => ["localization", "maintenance"]
 ], function () {
     Route::get('/', ShowHomePage::class)->name('Home');
 
@@ -102,8 +103,7 @@ Route::group([
 
     Route::get('/z', function () {
         // Cache::put("setting", "dd", 12425634661);
-        $s = Cache::get("setting");
-        dd($s);
+        $s = User::with('roles')->get();
         return $s;
     })->name('z');
 });

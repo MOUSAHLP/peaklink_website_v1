@@ -18,7 +18,8 @@ class PagePolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_page');
+        // return $user->can('view_any_page');
+        return false;
     }
 
     /**
@@ -30,7 +31,8 @@ class PagePolicy
      */
     public function view(User $user, Page $page): bool
     {
-        return $user->can('view_page');
+        // return $user->can('view_page');
+        return false;
     }
 
     /**
@@ -41,7 +43,8 @@ class PagePolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_page');
+        // return $user->can('create_page');
+        return false;
     }
 
     /**
@@ -53,7 +56,8 @@ class PagePolicy
      */
     public function update(User $user, Page $page): bool
     {
-        return $user->can('update_page');
+        // return $user->can('update_page');
+        return false;
     }
 
     /**
@@ -65,7 +69,8 @@ class PagePolicy
      */
     public function delete(User $user, Page $page): bool
     {
-        return $user->can('delete_page');
+        // return $user->can('delete_page');
+        return false;
     }
 
     /**
@@ -76,7 +81,8 @@ class PagePolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_page');
+        // return $user->can('delete_any_page');
+        return false;
     }
 
     /**
@@ -88,7 +94,8 @@ class PagePolicy
      */
     public function forceDelete(User $user, Page $page): bool
     {
-        return $user->can('{{ ForceDelete }}');
+        // return $user->can('{{ ForceDelete }}');
+        return false;
     }
 
     /**
@@ -99,7 +106,8 @@ class PagePolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('{{ ForceDeleteAny }}');
+        // return $user->can('{{ ForceDeleteAny }}');
+        return false;
     }
 
     /**
@@ -147,5 +155,4 @@ class PagePolicy
     {
         return $user->can('reorder_page');
     }
-
 }

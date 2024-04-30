@@ -19,40 +19,52 @@ class TagResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
     protected static ?string $navigationGroup = 'المدونة';
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 3;
 
-                public static function getModelLabel(): string
-            {
-                return 'وسوم المدونة';
-            }
-                public static function getPluralLabel(): string
-            {
-                return 'وسوم المدونة';
-            }
-                public static function getNavigationLabel(): string
-            {
-                return 'وسوم المدونة';
-            }
+    public static function getNavigationGroup(): ?string
+    {
+        return __('posts.posts');
+    }
 
+    public static function getModelLabel(): string
+    {
+        return __('posts.postTags');
+    }
+    public static function getPluralLabel(): string
+    {
+        return __('posts.postTags');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('posts.postTags');
+    }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getModel()::count() > 10 ? 'danger' : 'warning';
+    }
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
 
                 Section::make()
-                ->schema([
-                 Forms\Components\TextInput::make('name')
-                 ->label('عنوان الوسم')
-                     ->required(),
-                 Forms\Components\TextInput::make('slug')
-                 ->label('رابط الوسم')
-                     ->required()
-                     ->maxLength(255),
-                 Forms\Components\Toggle::make('status')
-                 ->label('حالة نشر الوسم')
-                     ->required(),
-                ])->columns(2),
-                
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label(__('posts.tagTitle'))
+                            ->required(),
+                        Forms\Components\TextInput::make('slug')
+                            ->label(__('posts.tagLink'))
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\Toggle::make('status')
+                            ->label(__("filament_form.status"))
+                            ->required(),
+                    ])->columns(2),
+
             ]);
     }
 
@@ -61,18 +73,22 @@ class TagResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                ->label('عنوان الوسم')
+                    ->label(__('posts.tagTitle'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
-                ->label('رابط الوسم')
+                    ->label(__('posts.tagLink'))
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('status')
-                ->label('حالة نشر الوسم'),
+                    ->label(__("filament_form.status"))
+                    ,
+
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__("filament_form.created_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__("filament_form.updated_at"))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

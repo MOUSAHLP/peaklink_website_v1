@@ -5,6 +5,7 @@ return [
     'full_name' => 'الاسم الكامل',
     'email' => 'البريد الالكتروني',
     'phone' => 'رقم الهاتف',
+    'password' => 'كلمة السر',
     'text' => 'النص',
     'title' => 'العنوان',
     'link' => 'الرابط',
@@ -21,6 +22,8 @@ return [
     'meta_title' => 'عنوان Meta',
     'meta_keywords' => 'الكلمات المفتاحية',
     'meta_description' => 'وصف Meta',
+    'meta_image' => 'صورة Meta',
+    'SEO' => 'محركات البحث جوجل "SEO"',
     'client_name' => 'اسم العميل',
     'client_job' => 'وظيفة العميل',
     'client_image' => 'صورة العميل',
@@ -43,6 +46,9 @@ return [
     'category_url' => 'رابط القسم',
     'socials' => 'الروابط الاجتماعية',
     'download_file' => "تحميل الملف",
+    'role' => "صلاحية المستخدم",
+    'general_info' => "معلومات عامة",
+    'settings' => "إعدادات",
     'join_us_position' => 'اسم المنصب',
 
 ];
