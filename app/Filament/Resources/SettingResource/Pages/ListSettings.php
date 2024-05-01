@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
+use App\Jobs\GenerateSiteMap;
 use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\ListRecords;
@@ -21,15 +22,9 @@ class ListSettings extends ListRecords
             Action::make("sitemap")
                 ->label("تحديث ال sitemap")
                 ->action(function () {
-                    ini_set('max_execution_time', 300);
-                    SitemapGenerator::create(env("APP_URL"))
-                        ->hasCrawled(function (Url $url) {
-                            if ($url->segment(1) === 'admin') {
-                                return;
-                            }
-                            return $url;
-                        })
-                        ->writeToFile(public_path('sitemap.xml'));
+                    // ini_set('max_execution_time', 300);
+                    // GenerateSiteMap::dispatchAfterResponse();
+                    // return 1;
                 }),
 
         ];

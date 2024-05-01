@@ -56,6 +56,16 @@
         <priority>0.8</priority>
             </url>
     <url>
+        <loc>http://127.0.0.1:8000/product-form</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/join-us-form</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
         <loc>http://127.0.0.1:8000/ar</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
@@ -67,6 +77,21 @@
             </url>
     <url>
         <loc>http://127.0.0.1:8000/Services/1</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/Services/2</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/Services/3</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/Services/4</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
@@ -146,7 +171,17 @@
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/Posts/%D8%B1%D8%A7%D8%A8%D8%B7%20</loc>
+        <loc>http://127.0.0.1:8000/Posts/aaasa</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/Posts/abas-asx</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/Posts/abasasxx</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
