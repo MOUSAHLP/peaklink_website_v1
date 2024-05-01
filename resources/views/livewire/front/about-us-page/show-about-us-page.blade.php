@@ -84,6 +84,6 @@
 
 
     {{-- faqs  Section  --}}
-    <livewire:front.home-page.faqs.show-faq />
+    <livewire:front.home-page.faqs.showfaq />
 
 </div>

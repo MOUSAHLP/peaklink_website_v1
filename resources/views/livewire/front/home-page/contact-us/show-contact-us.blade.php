@@ -157,6 +157,12 @@
 
                                                 {!! NoCaptcha::renderJs() !!}
                                                 {!! NoCaptcha::display() !!}
+                                                <div>
+                                                    @error('g-recaptcha-response')
+                                                        <span style="color: red;font-size: 14px;"
+                                                            class="error">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
                                             </div>
                                             @if (session()->has('message'))
                                                 <div class="alert alert-success">

@@ -27,7 +27,7 @@ class GenerateSitemap extends Command
      */
     public function handle()
     {
-        SitemapGenerator::create(env("APP_URL"))
+        SitemapGenerator::create(env("URL"))
             ->hasCrawled(function (Url $url) {
                 if ($url->segment(1) === 'admin') {
                     return;

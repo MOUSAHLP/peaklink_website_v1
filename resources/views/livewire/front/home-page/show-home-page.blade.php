@@ -44,7 +44,7 @@
         <livewire:front.home-page.project.show-project />
 
         {{-- Contact us  Section  --}}
-        <livewire:front.home-page.contactus.show-contact-us />
+        <livewire:front.home-page.contact-us.show-contact-us />
 
         {{-- post  Section  --}}
         <livewire:front.home-page.post.show-post />
@@ -53,7 +53,7 @@
 
     @if ($render >= 4)
         {{-- faqs  Section  --}}
-        <livewire:front.home-page.faqs.show-faq />
+        <livewire:front.home-page.faqs.showfaq />
 
         {{-- Brands  Section  --}}
         <livewire:front.home-page.brand.show-brand />
