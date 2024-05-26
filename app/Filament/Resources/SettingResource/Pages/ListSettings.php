@@ -4,6 +4,7 @@ namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
 use App\Jobs\GenerateSiteMap;
+use App\Models\Post;
 use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\ListRecords;
@@ -23,7 +24,12 @@ class ListSettings extends ListRecords
                 ->label("تحديث ال sitemap")
                 ->action(function () {
                     // ini_set('max_execution_time', 300);
-                    // GenerateSiteMap::dispatchAfterResponse();
+                    set_time_limit(300);
+                    SitemapGenerator::create(env("URL"))
+                        ->getSitemap()
+                        ->add(Url::create('/link1')->setPriority(0.5))
+                        ->add("Posts/".Post::all()->pluck("slug"))
+                        ->writeToFile(public_path('sitemap.xml'));
                     // return 1;
                 }),
 
